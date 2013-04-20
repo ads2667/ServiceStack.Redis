@@ -16,25 +16,25 @@ using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
-	public class RedisMessageQueueClient
+	public abstract class MessageQueueClient
 		: IMessageQueueClient
 	{
 		private readonly Action onPublishedCallback;
-		private readonly IRedisClientsManager clientsManager;
+		// private readonly IRedisClientsManager clientsManager;
 
         public int MaxSuccessQueueSize { get; set; }
 
-		public RedisMessageQueueClient(IRedisClientsManager clientsManager)
-			: this(clientsManager, null) {}
-
-		public RedisMessageQueueClient(
-			IRedisClientsManager clientsManager, Action onPublishedCallback)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageQueueClient"/> class.
+        /// </summary>
+        /// <param name="onPublishedCallback">A callback method to be executed after a message is published, can be null.</param>
+        protected MessageQueueClient(Action onPublishedCallback)
 		{
 			this.onPublishedCallback = onPublishedCallback;
-			this.clientsManager = clientsManager;
 		    this.MaxSuccessQueueSize = 100;
 		}
 
+        /*
 		private IRedisNativeClient readWriteClient;
 		public IRedisNativeClient ReadWriteClient
 		{
@@ -60,6 +60,9 @@ namespace ServiceStack.Redis.Messaging
 				return readOnlyClient;
 			}
 		}
+        */
+
+        protected abstract string GetQueueNameOrUrl(string queueName);
 
 		public void Publish<T>(T messageBody)
 		{
@@ -83,8 +86,11 @@ namespace ServiceStack.Redis.Messaging
 
 		public void Publish(string queueName, byte[] messageBytes)
 		{
-			this.ReadWriteClient.LPush(queueName, messageBytes);
+            this.PublishMessage(queueName, messageBytes);
+			/*
+            this.ReadWriteClient.LPush(queueName, messageBytes);
 			this.ReadWriteClient.Publish(QueueNames.TopicIn, queueName.ToUtf8Bytes());
+            */
 
 			if (onPublishedCallback != null)
 			{
@@ -92,27 +98,36 @@ namespace ServiceStack.Redis.Messaging
 			}
 		}
 
-		public void Notify(string queueName, byte[] messageBytes)
+        protected abstract void PublishMessage(string queueName, byte[] messageBytes);
+
+	    public abstract void Notify(string queueName, byte[] messageBytes);
+        /*
 		{
 			this.ReadWriteClient.LPush(queueName, messageBytes);
             this.ReadWriteClient.LTrim(queueName, 0, this.MaxSuccessQueueSize);
 			this.ReadWriteClient.Publish(QueueNames.TopicOut, queueName.ToUtf8Bytes());
 		}
+        */
 
-		public byte[] Get(string queueName, TimeSpan? timeOut)
+	    public abstract byte[] Get(string queueName, TimeSpan? timeOut);
+        /*
 		{
 			var unblockingKeyAndValue = this.ReadOnlyClient.BRPop(queueName, (int) timeOut.GetValueOrDefault().TotalSeconds);
             return unblockingKeyAndValue.Length != 2 
                 ? null 
                 : unblockingKeyAndValue[1];
 		}
+        */
 
-		public byte[] GetAsync(string queueName)
+	    public abstract byte[] GetAsync(string queueName);
+        /*
 		{
 			return this.ReadOnlyClient.RPop(queueName);
 		}
+        */
 
-		public string WaitForNotifyOnAny(params string[] channelNames)
+	    public abstract string WaitForNotifyOnAny(params string[] channelNames);
+        /*
 		{
 			string result = null;
 			var subscription = new RedisSubscription(readOnlyClient);
@@ -123,17 +138,7 @@ namespace ServiceStack.Redis.Messaging
 			subscription.SubscribeToChannels(channelNames); //blocks
 			return result;
 		}
-
-		public void Dispose()
-		{
-			if (this.readOnlyClient != null)
-			{
-				this.readOnlyClient.Dispose();
-			}
-			if (this.readWriteClient != null)
-			{
-				this.readWriteClient.Dispose();
-			}
-		}
+        */
+	    public abstract void Dispose();
 	}
 }

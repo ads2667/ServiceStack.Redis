@@ -21,9 +21,9 @@ namespace ServiceStack.Redis.Messaging
     /// The Start/Stop methods are idempotent i.e. It's safe to call them repeatedly on multiple threads 
     /// and the Redis MQ Host will only have Started/Stopped once.
     /// </summary>
-    public class RedisMqHost : IMessageService
+    public abstract class MqHost : IMessageService
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RedisMqHost));
+        protected static ILog Log;
         public const int DefaultRetryCount = 2; //Will be a total of 3 attempts
 
         public IMessageFactory MessageFactory { get; private set; }
@@ -70,20 +70,22 @@ namespace ServiceStack.Redis.Messaging
 
         public Action<Exception> ErrorHandler { get; set; }
 
-        private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
+        // private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
 
-        public IMessageQueueClient CreateMessageQueueClient()
+        public abstract IMessageQueueClient CreateMessageQueueClient();
+        /*
         {
             return new RedisMessageQueueClient(this.clientsManager);
         }
+        */
 
-        public RedisMqHost(IRedisClientsManager clientsManager,
-            int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
+        protected MqHost(IMessageFactory messageFactory, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
         {
-            this.clientsManager = clientsManager;
+            Log = LogManager.GetLogger(this.GetType());
+            // this.clientsManager = clientsManager;
             this.RetryCount = retryCount;
             this.RequestTimeOut = requestTimeOut;
-            this.MessageFactory = new RedisMessageFactory(clientsManager);
+            this.MessageFactory = messageFactory; // new RedisMessageFactory(clientsManager);
             this.ErrorHandler = ex => Log.Error("Exception in Background Thread: " + ex.Message, ex);
         }
 
@@ -301,6 +303,8 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
+        protected abstract void StopMqService();
+
         public virtual void Stop()
         {
             if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Disposed)
@@ -310,19 +314,7 @@ namespace ServiceStack.Redis.Messaging
             {
                 Log.Debug("Stopping MQ Host...");
 
-                //Unblock current bgthread by issuing StopCommand
-                try
-                {
-                    using (var redis = clientsManager.GetClient())
-                    {
-                        redis.PublishMessage(QueueNames.TopicIn, WorkerStatus.StopCommand);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (this.ErrorHandler != null) this.ErrorHandler(ex);
-                    Log.Warn("Could not send STOP message to bg thread: " + ex.Message);
-                }
+                this.StopMqService();                
             }
         }
 

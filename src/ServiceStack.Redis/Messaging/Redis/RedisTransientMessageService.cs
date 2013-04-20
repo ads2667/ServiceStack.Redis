@@ -14,7 +14,7 @@ using System;
 using ServiceStack.Common.Extensions;
 using ServiceStack.Messaging;
 
-namespace ServiceStack.Redis.Messaging
+namespace ServiceStack.Redis.Messaging.Redis
 {
 	public class RedisTransientMessageService
 		: TransientMessageServiceBase

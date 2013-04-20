@@ -14,21 +14,19 @@ using System;
 using ServiceStack.Messaging;
 using ServiceStack.Text;
 
-namespace ServiceStack.Redis.Messaging
+namespace ServiceStack.Redis.Messaging.Redis
 {
-	public class RedisMessageProducer
-		: IMessageProducer 
+	public class RedisMessageProducer : MessageProducer 
 	{
 		private readonly IRedisClientsManager clientsManager;
-		private readonly Action onPublishedCallback;
-
+		
 		public RedisMessageProducer(IRedisClientsManager clientsManager)
 			: this(clientsManager, null) {}
 
 		public RedisMessageProducer(IRedisClientsManager clientsManager, Action onPublishedCallback)
+            : base(onPublishedCallback)
 		{
 			this.clientsManager = clientsManager;
-			this.onPublishedCallback = onPublishedCallback;
 		}
 
 		private IRedisNativeClient readWriteClient;
@@ -44,27 +42,19 @@ namespace ServiceStack.Redis.Messaging
 			}
 		}
 
-		public void Publish<T>(T messageBody)
-		{
-            if (typeof(IMessage<T>).IsAssignableFrom(typeof(T)))
-                Publish((IMessage<T>)messageBody);
-            else
-                Publish((IMessage<T>)new Message<T>(messageBody));
+	    protected override void PublishMessage<T>(IMessage<T> message)
+	    {
+            var messageBytes = message.ToBytes();
+            this.ReadWriteClient.LPush(this.GetQueueNameOrUrl(message), messageBytes);
+            this.ReadWriteClient.Publish(QueueNames.TopicIn, message.ToInQueueName().ToUtf8Bytes());
+	    }
+
+        protected override string GetQueueNameOrUrl<T>(IMessage<T> message)
+        {
+            return message.ToInQueueName();
         }
 
-		public void Publish<T>(IMessage<T> message)
-		{
-			var messageBytes = message.ToBytes();
-			this.ReadWriteClient.LPush(message.ToInQueueName(), messageBytes);
-			this.ReadWriteClient.Publish(QueueNames.TopicIn, message.ToInQueueName().ToUtf8Bytes());
-			
-			if (onPublishedCallback != null)
-			{
-				onPublishedCallback();
-			}
-		}
-
-		public void Dispose()
+	    public override void Dispose()
 		{
 			if (readWriteClient != null)
 			{

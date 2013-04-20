@@ -13,7 +13,7 @@
 using System;
 using ServiceStack.Messaging;
 
-namespace ServiceStack.Redis.Messaging
+namespace ServiceStack.Redis.Messaging.Redis
 {
 	public class RedisMessageQueueClientFactory
 		: IMessageQueueClientFactory

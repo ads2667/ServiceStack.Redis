@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Amazon.SQS;
+using ServiceStack.Messaging;
+
+namespace ServiceStack.Aws.Messaging
+{
+    public class AwsSqsMessageFactory : IMessageFactory
+    {
+        private readonly AmazonSQS client;
+        private readonly IDictionary<string, string> queueUrls;
+
+        public AwsSqsMessageFactory(AmazonSQS sqsClient, IDictionary<string, string> queueUrls)
+        {            
+            if (sqsClient == null) throw new ArgumentNullException("sqsClient");
+            if (queueUrls == null) throw new ArgumentNullException("queueUrls");
+            this.client = sqsClient;
+            this.queueUrls = queueUrls;
+        }
+
+        public void Dispose()
+        {
+            if (client != null)
+            {
+                client.Dispose();
+            }
+        }
+
+        public IMessageQueueClient CreateMessageQueueClient()
+        {
+            return new AwsSqsMessageQueueClient(client, queueUrls, null);
+        }
+
+        public IMessageProducer CreateMessageProducer()
+        {
+            return new AwsSqsMessageProducer(client, queueUrls, null);
+        }
+    }
+}

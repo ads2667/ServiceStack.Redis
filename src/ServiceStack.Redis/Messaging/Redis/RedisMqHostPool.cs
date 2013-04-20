@@ -8,7 +8,7 @@ using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Text;
 
-namespace ServiceStack.Redis.Messaging
+namespace ServiceStack.Redis.Messaging.Redis
 {
     [Obsolete("Will be removed. Use RedisMqServer")]
     public class RedisMqHostPool : IMessageService

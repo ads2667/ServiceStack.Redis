@@ -8,6 +8,7 @@ using ServiceStack.Logging;
 using ServiceStack.Logging.Support.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
+using ServiceStack.Redis.Messaging.Redis;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Tests

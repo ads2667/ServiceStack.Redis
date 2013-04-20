@@ -6,15 +6,14 @@ using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
-    internal class MessageHandlerWorker : IDisposable
+    public abstract class MessageHandlerWorker : IDisposable
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(MessageHandlerWorker));
+        protected static ILog Log;
 
         readonly object msgLock = new object();
 
-        private readonly IMessageHandler messageHandler;
-        private readonly IRedisClientsManager clientsManager;
-
+        protected readonly IMessageHandler messageHandler;
+        
         public string QueueName { get; set; }
 
         private int status;
@@ -46,20 +45,21 @@ namespace ServiceStack.Redis.Messaging
             get { return msgNotificationsReceived; }
         }
 
-        public MessageHandlerWorker(
-            IRedisClientsManager clientsManager, IMessageHandler messageHandler, string queueName,
+        protected MessageHandlerWorker(IMessageHandler messageHandler, string queueName,
             Action<MessageHandlerWorker, Exception> errorHandler)
         {
-            this.clientsManager = clientsManager;
+            Log = LogManager.GetLogger(this.GetType());
             this.messageHandler = messageHandler;
             this.QueueName = queueName;
             this.errorHandler = errorHandler;
         }
 
-        public MessageHandlerWorker Clone()
+        public abstract MessageHandlerWorker Clone();
+        /*
         {
             return new MessageHandlerWorker(clientsManager, messageHandler, QueueName, errorHandler);
         }
+        */
 
         public void NotifyNewMessage()
         {
@@ -107,6 +107,8 @@ namespace ServiceStack.Redis.Messaging
             Start();
         }
 
+        protected abstract IMessageQueueClient CreateMessageQueueClient();
+
         private void Run()
         {
             if (Interlocked.CompareExchange(ref status, WorkerStatus.Started, WorkerStatus.Starting) != WorkerStatus.Starting) return;
@@ -120,7 +122,7 @@ namespace ServiceStack.Redis.Messaging
                     {
                         receivedNewMsgs = false;
 
-                        using (var mqClient = new RedisMessageQueueClient(clientsManager))
+                        using (var mqClient = this.CreateMessageQueueClient()) // new RedisMessageQueueClient(clientsManager))
                         {
                             var msgsProcessedThisTime = messageHandler.ProcessQueue(mqClient, QueueName,
                                 () => Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started);

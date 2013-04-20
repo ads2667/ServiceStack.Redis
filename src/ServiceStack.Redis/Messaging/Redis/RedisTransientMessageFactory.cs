@@ -13,7 +13,7 @@
 using System;
 using ServiceStack.Messaging;
 
-namespace ServiceStack.Redis.Messaging
+namespace ServiceStack.Redis.Messaging.Redis
 {
 	/// <summary>
 	/// Transient message queues are a one-pass message queue service that starts

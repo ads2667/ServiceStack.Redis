@@ -11,31 +11,58 @@ using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
-    /// <summary>
-    /// Creates a Redis MQ Server that processes each message on its own background thread.
-    /// i.e. if you register 3 handlers it will create 7 background threads:
-    ///   - 1 listening to the Redis MQ Subscription, getting notified of each new message
-    ///   - 3x1 Normal InQ for each message handler
-    ///   - 3x1 PriorityQ for each message handler
-    /// 
-    /// When RedisMqServer Starts it creates a background thread subscribed to the Redis MQ Topic that
-    /// listens for new incoming messages. It also starts 2 background threads for each message type:
-    ///  - 1 for processing the services Priority Queue and 1 processing the services normal Inbox Queue.
-    /// 
-    /// Priority Queue's can be enabled on a message-per-message basis by specifying types in the 
-    /// OnlyEnablePriortyQueuesForTypes property. The DisableAllPriorityQueues property disables all Queues.
-    /// 
-    /// The Start/Stop methods are idempotent i.e. It's safe to call them repeatedly on multiple threads 
-    /// and the Redis MQ Server will only have Started or Stopped once.
-    /// </summary>
-    public class RedisMqServer : IMessageService
+    public class MessageHandler<T>
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(RedisMqServer));
+        public Func<IMessage<T>, object> ProcessMessageFn { get; set; }
+        public Action<IMessage<T>, Exception> ProcessExceptionEx { get; set; }
+
+        public MessageHandler(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
+        {
+            // TODO: Check for null
+            ProcessMessageFn = processMessageFn;
+            ProcessExceptionEx = processExceptionEx;
+        }
+    }
+
+    public class MessageHandlerRegister
+    {
+        public MqServer2 MessageServer { get; set; }
+
+        public MessageHandlerRegister(MqServer2 messageServer)
+        {
+            MessageServer = messageServer;
+        }
+
+        public void AddHandler<T>(Func<IMessage<T>, object> processMessageFn)
+        {
+            AddHandler(processMessageFn, null, noOfThreads: 1);
+        }
+
+        public void AddHandler<T>(Func<IMessage<T>, object> processMessageFn, int noOfThreads)
+        {
+            AddHandler(processMessageFn, null, noOfThreads);
+        }
+
+        public void AddHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
+        {
+            AddHandler(processMessageFn, processExceptionEx, noOfThreads: 1);
+        }
+
+        public void AddHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        {
+            MessageServer.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads);           
+        }
+    }
+
+
+    public abstract class MqServer2 : IMessageService
+    {
+        protected static ILog Log;
         public const int DefaultRetryCount = 2; //Will be a total of 3 attempts
 
         public int RetryCount { get; protected set; }
 
-        public IMessageFactory MessageFactory { get; private set; }
+        public virtual IMessageFactory MessageFactory { get; private set; }
 
         public Func<string, IOneWayClient> ReplyClientFactory { get; set; }
 
@@ -72,19 +99,21 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
-        private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
+        // private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
 
-        public IMessageQueueClient CreateMessageQueueClient()
+        public abstract IMessageQueueClient CreateMessageQueueClient();
+        /*
         {
             return new RedisMessageQueueClient(this.clientsManager, null);
         }
+        */
 
         //Stats
         private long timesStarted = 0;
         private long noOfErrors = 0;
-        private int noOfContinuousErrors = 0;
+        protected int noOfContinuousErrors = 0;
         private string lastExMsg = null;
-        private int status;
+        protected int status;
 
         private Thread bgThread; //Subscription controller thread
         private long bgThreadCount = 0;
@@ -93,26 +122,35 @@ namespace ServiceStack.Redis.Messaging
             get { return Interlocked.CompareExchange(ref bgThreadCount, 0, 0); }
         }
 
-        private readonly Dictionary<Type, IMessageHandlerFactory> handlerMap
+        /*
+        protected readonly Dictionary<Type, IMessageHandlerFactory> handlerMap
             = new Dictionary<Type, IMessageHandlerFactory>();
 
-        private readonly Dictionary<Type, int> handlerThreadCountMap
+        protected readonly Dictionary<Type, int> handlerThreadCountMap
+            = new Dictionary<Type, int>();
+        */
+
+        protected MessageHandlerWorker[] workers;
+        protected Dictionary<string, int[]> queueWorkerIndexMap;
+
+
+        protected internal readonly Dictionary<Type, IMessageHandlerFactory> handlerMap
+            = new Dictionary<Type, IMessageHandlerFactory>();
+
+        internal readonly Dictionary<Type, int> handlerThreadCountMap
             = new Dictionary<Type, int>();
 
-        private MessageHandlerWorker[] workers;
-        private Dictionary<string, int[]> queueWorkerIndexMap;
-
-
-        public RedisMqServer(IRedisClientsManager clientsManager,
+        public MqServer2(IMessageFactory messageFactory,
             int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
         {
-            this.clientsManager = clientsManager;
+            Log = LogManager.GetLogger(this.GetType());
+           //  this.clientsManager = clientsManager;
             this.RetryCount = retryCount;
             //this.RequestTimeOut = requestTimeOut;
-            this.MessageFactory = new RedisMessageFactory(clientsManager);
+            this.MessageFactory = messageFactory; // new RedisMessageFactory(clientsManager);
             this.ErrorHandler = ex => Log.Error("Exception in Redis MQ Server: " + ex.Message, ex);
         }
-
+        
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn)
         {
             RegisterHandler(processMessageFn, null, noOfThreads:1);
@@ -125,18 +163,24 @@ namespace ServiceStack.Redis.Messaging
 
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
-            RegisterHandler(processMessageFn, processExceptionEx, noOfThreads: 1);
+            throw new NotSupportedException("Register message queue listeners using the 'RegisterMessageHandlers' function.");
         }
-
-        public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        
+        internal void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             if (handlerMap.ContainsKey(typeof(T)))
             {
                 throw new ArgumentException("Message handler has already been registered for type: " + typeof(T).Name);
             }
-
+            
             handlerMap[typeof(T)] = CreateMessageHandlerFactory(processMessageFn, processExceptionEx);
             handlerThreadCountMap[typeof(T)] = noOfThreads;
+        }
+        
+
+        public virtual void RegisterMessageHandlers(Action<MessageHandlerRegister> messageHandlerRegister)
+        {
+            messageHandlerRegister.Invoke(new MessageHandlerRegister(this));
         }
 
         protected IMessageHandlerFactory CreateMessageHandlerFactory<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
@@ -148,7 +192,9 @@ namespace ServiceStack.Redis.Messaging
             };
         }
 
-        public void Init()
+        protected internal abstract MessageHandlerWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler);
+
+        private void Init()
         {
             if (workers == null)
             {
@@ -158,7 +204,7 @@ namespace ServiceStack.Redis.Messaging
                 {
                     var msgType = entry.Key;
                     var handlerFactory = entry.Value;
-                    
+
                     var queueNames = new QueueNames(msgType);
                     var noOfThreads = handlerThreadCountMap[msgType];
 
@@ -166,19 +212,31 @@ namespace ServiceStack.Redis.Messaging
                         || OnlyEnablePriortyQueuesForTypes.Any(x => x == msgType))
                     {
                         noOfThreads.Times(i =>
-                            workerBuilder.Add(new MessageHandlerWorker(
-                                clientsManager,
+                            workerBuilder.Add(this.CreateMessageHandlerWorker(
                                 handlerFactory.CreateMessageHandler(),
                                 queueNames.Priority,
                                 WorkerErrorHandler)));
+                        /*    
+                        new MessageHandlerWorker(
+                                clientsManager,
+                                handlerFactory.CreateMessageHandler(),
+                                queueNames.Priority,
+                                WorkerErrorHandler)*/
+
                     }
 
                     noOfThreads.Times(i =>
-                        workerBuilder.Add(new MessageHandlerWorker(
-                            clientsManager,
+                        workerBuilder.Add(this.CreateMessageHandlerWorker(
                             handlerFactory.CreateMessageHandler(),
                             queueNames.In,
                             WorkerErrorHandler)));
+                    /*
+                    new MessageHandlerWorker(
+                        clientsManager,
+                        handlerFactory.CreateMessageHandler(),
+                        queueNames.In,
+                        WorkerErrorHandler)));
+                     * */
                 }
 
                 workers = workerBuilder.ToArray();
@@ -252,6 +310,8 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
+        protected abstract void ProcessMessages();
+
         private void RunLoop()
         {
             if (Interlocked.CompareExchange(ref status, WorkerStatus.Started, WorkerStatus.Starting) != WorkerStatus.Starting) return;
@@ -259,47 +319,7 @@ namespace ServiceStack.Redis.Messaging
 
             try
             {
-                using (var redisClient = clientsManager.GetReadOnlyClient())
-                {
-                    //Record that we had a good run...
-                    Interlocked.CompareExchange(ref noOfContinuousErrors, 0, noOfContinuousErrors);
-
-                    using (var subscription = redisClient.CreateSubscription())
-                    {
-                        subscription.OnUnSubscribe = channel => Log.Debug("OnUnSubscribe: " + channel);
-
-                        subscription.OnMessage = (channel, msg) => {
-
-                            if (msg == WorkerStatus.StopCommand)
-                            {
-                                Log.Debug("Stop Command Issued");
-
-                                if (Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Started) != WorkerStatus.Started)
-                                    Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Stopping);
-
-                                Log.Debug("UnSubscribe From All Channels...");
-                                subscription.UnSubscribeFromAllChannels(); //Un block thread.
-                                return;
-                            }
-
-                            if (!string.IsNullOrEmpty(msg))
-                            {
-                                int[] workerIndexes;
-                                if (queueWorkerIndexMap.TryGetValue(msg, out workerIndexes))
-                                {
-                                    foreach (var workerIndex in workerIndexes)
-                                    {
-                                        workers[workerIndex].NotifyNewMessage();
-                                    }
-                                }
-                            }
-                        };
-
-                        subscription.SubscribeToChannels(QueueNames.TopicIn); //blocks thread
-                    }
-
-                    StopWorkerThreads();
-                }
+                this.ProcessMessages();                
             }
             catch (Exception ex)
             {
@@ -317,6 +337,8 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
+        protected abstract void StopListeningToMessages();
+
         public void Stop()
         {
             if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Disposed)
@@ -329,10 +351,7 @@ namespace ServiceStack.Redis.Messaging
                 //Unblock current bgthread by issuing StopCommand
                 try
                 {
-                    using (var redis = clientsManager.GetClient())
-                    {
-                        redis.PublishMessage(QueueNames.TopicIn, WorkerStatus.StopCommand);
-                    }
+                    this.StopListeningToMessages();
                 }
                 catch (Exception ex)
                 {

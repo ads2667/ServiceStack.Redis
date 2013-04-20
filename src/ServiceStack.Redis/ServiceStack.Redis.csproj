@@ -155,11 +155,22 @@
     <Compile Include="Generic\RedisTypedPipeline.cs" />
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
+    <Compile Include="Messaging\MqServer2.cs" />
     <Compile Include="Messaging\MessageHandlerWorker.cs" />
-    <Compile Include="Messaging\RedisMqHost.cs" />
-    <Compile Include="Messaging\RedisMessageFactory.cs" />
-    <Compile Include="Messaging\RedisMqHostPool.cs" />
-    <Compile Include="Messaging\RedisMqServer.cs" />
+    <Compile Include="Messaging\MqHost.cs" />
+    <Compile Include="Messaging\MessageFactory.cs" />
+    <Compile Include="Messaging\MqHostPool.cs" />
+    <Compile Include="Messaging\MqServer.cs" />
+    <Compile Include="Messaging\Redis\RedisMessageHandlerWorker.cs" />
+    <Compile Include="Messaging\Redis\RedisMessageFactory.cs" />
+    <Compile Include="Messaging\Redis\RedisMessageProducer.cs" />
+    <Compile Include="Messaging\Redis\RedisMessageQueueClient.cs" />
+    <Compile Include="Messaging\Redis\RedisMessageQueueClientFactory.cs" />
+    <Compile Include="Messaging\Redis\RedisMqHost.cs" />
+    <Compile Include="Messaging\Redis\RedisMqHostPool.cs" />
+    <Compile Include="Messaging\Redis\RedisMqServer.cs" />
+    <Compile Include="Messaging\Redis\RedisTransientMessageFactory.cs" />
+    <Compile Include="Messaging\Redis\RedisTransientMessageService.cs" />
     <Compile Include="Messaging\WorkerStatus.cs" />
     <Compile Include="RedisClientManagerCacheClient.cs" />
     <Compile Include="RedisClientsManagerExtensions.cs" />
@@ -200,10 +211,10 @@
     <Compile Include="Generic\RedisTypedClient_Set.cs" />
     <Compile Include="Generic\RedisTypedClient_List.cs" />
     <Compile Include="RedisClientSortedSet.cs" />
-    <Compile Include="Messaging\RedisTransientMessageFactory.cs" />
-    <Compile Include="Messaging\RedisMessageProducer.cs" />
-    <Compile Include="Messaging\RedisMessageQueueClient.cs" />
-    <Compile Include="Messaging\RedisTransientMessageService.cs" />
+    <Compile Include="Messaging\TransientMessageFactory.cs" />
+    <Compile Include="Messaging\MessageProducer.cs" />
+    <Compile Include="Messaging\MessageQueueClient.cs" />
+    <Compile Include="Messaging\TransientMessageService.cs" />
     <Compile Include="Pipeline\RedisCommandQueue.cs" />
     <Compile Include="RedisException.cs" />
     <Compile Include="RedisLock.cs" />
@@ -231,7 +242,7 @@
     <Compile Include="RedisNativeClient_Utils.cs" />
     <Compile Include="RedisResponseException.cs" />
     <Compile Include="RedisExtensions.cs" />
-    <Compile Include="Messaging\RedisMessageQueueClientFactory.cs" />
+    <Compile Include="Messaging\MessageQueueClientFactory.cs" />
     <Compile Include="Support\IOrderedDictionary.cs">
       <SubType>Code</SubType>
     </Compile>

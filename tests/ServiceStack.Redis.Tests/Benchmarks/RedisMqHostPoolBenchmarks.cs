@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using NUnit.Framework;
 using ServiceStack.Redis.Messaging;
+using ServiceStack.Redis.Messaging.Redis;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Tests.Benchmarks
