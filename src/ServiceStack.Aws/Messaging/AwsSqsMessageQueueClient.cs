@@ -15,15 +15,18 @@ namespace ServiceStack.Aws.Messaging
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsMessageQueueClient));
 
+        public AwsSqsServer MqServer { get; set; }
         public IDictionary<string, string> QueueNames { get; set; }
         private readonly AmazonSQS client;
 
-        public AwsSqsMessageQueueClient(Amazon.SQS.AmazonSQS sqsClient, IDictionary<string, string> queueNames, Action onPublishedCallback) 
+        public AwsSqsMessageQueueClient(Amazon.SQS.AmazonSQS sqsClient, AwsSqsServer mqServer, IDictionary<string, string> queueNames, Action onPublishedCallback) 
             : base(onPublishedCallback)
         {            
             if (sqsClient == null) throw new ArgumentNullException("sqsClient");
+            if (mqServer == null) throw new ArgumentNullException("mqServer");
             if (queueNames == null) throw new ArgumentNullException("queueNames");
             client = sqsClient;
+            MqServer = mqServer;
             QueueNames = queueNames;
         }
 
@@ -31,7 +34,7 @@ namespace ServiceStack.Aws.Messaging
         {
             // TODO: Refactor!
             // Publish to queue
-            Log.Info(string.Format("Publishing to queue: {0}", queueName));
+            Log.DebugFormat("Publishing to queue: {0}", queueName);
             var response = AwsQueingService.PublishMessage(client, this.GetQueueNameOrUrl(queueName), Convert.ToBase64String(messageBytes));
             if (!response.IsSetSendMessageResult())
             {
@@ -46,7 +49,7 @@ namespace ServiceStack.Aws.Messaging
 
             // TODO: Config messages so no notification is sent! Message.Options
             // Publish to queue
-            Log.Info(string.Format("Notify from: {0}", queueName));
+            Log.DebugFormat("Notify send from queue: {0}", queueName);
             var response = AwsQueingService.PublishMessage(client, this.GetQueueNameOrUrl(queueName), message);
             if (!response.IsSetSendMessageResult())
             {
@@ -57,7 +60,7 @@ namespace ServiceStack.Aws.Messaging
         public override byte[] Get(string queueName, TimeSpan? timeOut)
         {
             // TODO: Timeout?!??!
-            Log.Info(string.Format("Get from: {0}", queueName));
+            Log.Debug(string.Format("Sync Get from queue: {0}", queueName));
             /*
             var response = AwsQueingService.ReceiveMessage(client, this.GetQueueNameOrUrl(queueName));
             if (response.IsSetReceiveMessageResult())
@@ -79,7 +82,19 @@ namespace ServiceStack.Aws.Messaging
 
         public override byte[] GetAsync(string queueName)
         {
-            Log.Info(string.Format("Get Async from: {0}", queueName));
+            Log.DebugFormat("Get Async from queue: {0}", queueName);
+
+            var message = this.MqServer.DequeMessage(queueName);
+            if (message == null)
+            {
+                return null;
+            }
+
+            // For testing, delete here to see what happens
+            Log.Debug(string.Format("Deleting Message From Queue: {0}", queueName));
+            AwsQueingService.DeleteMessage(client, this.GetQueueNameOrUrl(queueName), message.ReceiptHandle);
+
+            return Convert.FromBase64String(message.Body);
             /*
             var response = AwsQueingService.ReceiveMessage(client, this.GetQueueNameOrUrl(queueName));
             if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)

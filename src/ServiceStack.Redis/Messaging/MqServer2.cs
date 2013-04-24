@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -136,7 +137,9 @@ namespace ServiceStack.Redis.Messaging
             = new Dictionary<Type, int>();
         */
 
-        protected IMessageHandlerBackgroundWorker[] workers;
+        protected IMessageHandlerBackgroundWorker[] messageWorkers;
+        protected IQueueHandlerBackgroundWorker[] queueWorkers;
+
         protected Dictionary<string, int[]> queueWorkerIndexMap;
 
 
@@ -204,12 +207,13 @@ namespace ServiceStack.Redis.Messaging
         }
 
         protected internal abstract IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler);
-
+        
         private void Init()
         {
-            if (workers == null)
+            if (messageWorkers == null)
             {
                 var workerBuilder = new List<IMessageHandlerBackgroundWorker>();
+                var queuesToMonitor = new List<string>();
 
                 foreach (var entry in handlerMap)
                 {
@@ -227,6 +231,8 @@ namespace ServiceStack.Redis.Messaging
                                 handlerFactory.CreateMessageHandler(),
                                 queueNames.Priority,
                                 WorkerErrorHandler)));
+
+                        queuesToMonitor.Add(queueNames.Priority);
                         /*    
                         new MessageHandlerWorker(
                                 clientsManager,
@@ -241,6 +247,8 @@ namespace ServiceStack.Redis.Messaging
                             handlerFactory.CreateMessageHandler(),
                             queueNames.In,
                             WorkerErrorHandler)));
+
+                    queuesToMonitor.Add(queueNames.In);
                     /*
                     new MessageHandlerWorker(
                         clientsManager,
@@ -250,12 +258,21 @@ namespace ServiceStack.Redis.Messaging
                      * */
                 }
 
-                workers = workerBuilder.ToArray();
+                messageWorkers = workerBuilder.ToArray();
+
+                // Create the background worker thread(s) to monitor message queue(s)
+                queueWorkers = this.CreateQueueHandlerWorkers(queuesToMonitor, QueueWorkerErrorHandler).ToArray(); //// New
+
+                /*
+                var localQueue = new Queue<string>();
+                var threadSafeQueue = Queue.Synchronized(localQueue);
+                */
+                // queueWorkerIndexMap = new ConcurrentDictionary<string, int[]>();
 
                 queueWorkerIndexMap = new Dictionary<string, int[]>();
-                for (var i = 0; i < workers.Length; i++)
+                for (var i = 0; i < messageWorkers.Length; i++)
                 {
-                    var worker = workers[i];
+                    var worker = messageWorkers[i];
 
                     int[] workerIds;
                     if (!queueWorkerIndexMap.TryGetValue(worker.QueueName, out workerIds))
@@ -277,6 +294,7 @@ namespace ServiceStack.Redis.Messaging
             {
                 //Start any stopped worker threads
                 StartWorkerThreads();
+                // TODO: Start any stopped queue worker threads.
                 return;
             }
             if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Disposed)
@@ -289,35 +307,43 @@ namespace ServiceStack.Redis.Messaging
                 {
                     Init();
 
-                    if (workers == null || workers.Length == 0)
+                    if (messageWorkers == null || messageWorkers.Length == 0)
                     {
                         Log.Warn("Cannot start a MQ Server with no Message Handlers registered, ignoring.");
                         Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Starting);
                         return;
                     }
 
-                    foreach (var worker in workers)
+                    foreach (var worker in messageWorkers)
                     {
                         worker.Start();
                     }
 
                     SleepBackOffMultiplier(Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
 
-                    KillBgThreadIfExists();
+                    KillQueueWorkerThreads();
 
                     // Redis uses a single thread for receiving msgs, but with SQS we need 1 thread per MQ
                     // TODO: Create a thread-safe class used to receive messages from a message queue.
                     // Remember, that after a msg is succesfully received it must be deleted.
                     // Must be BG threads, subscribe only to one queue, and signal to workers when a msg is received
                     // TODO: Configure one Thread to Poll Each MQ, then notify workers that a MSG Is ready to process
+
+                    // TODO: Use the RedisQueueHandlerWorker instead!
+                    /*
                     bgThread = new Thread(RunLoop) {
                         IsBackground = true,
                         Name = "Redis MQ Server " + Interlocked.Increment(ref bgThreadCount)
                     };
                     bgThread.Start();
                     Log.Debug("Started Background Thread: " + bgThread.Name);
+                    */
 
+                    // Start the worker threads before the MQ listeners, so they're ready to process
                     StartWorkerThreads();
+
+                    // Start retrieving messages from the message queue(s)
+                    // StartQueueWorkerThreads(); //// New
                 }
                 catch (Exception ex)
                 {
@@ -326,6 +352,9 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
+        protected abstract IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IList<string> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler);
+
+        /*
         protected abstract void ProcessMessages();
 
         private void RunLoop()
@@ -351,9 +380,9 @@ namespace ServiceStack.Redis.Messaging
                 if (this.ErrorHandler != null) 
                     this.ErrorHandler(ex);
             }
+            // TODO: Finally -> Stop all Background Threads (Messages, and Queues)
         }
-
-        protected abstract void StopListeningToMessages();
+        */
 
         public void Stop()
         {
@@ -367,12 +396,12 @@ namespace ServiceStack.Redis.Messaging
                 //Unblock current bgthread by issuing StopCommand
                 try
                 {
-                    this.StopListeningToMessages();
+                    this.DisposeWorkerThreads();
                 }
                 catch (Exception ex)
                 {
                     if (this.ErrorHandler != null) this.ErrorHandler(ex);
-                    Log.Warn("Could not send STOP message to bg thread: " + ex.Message);
+                    Log.Warn("Could not stop bg thread: " + ex.Message);
                 }
             }
         }
@@ -380,7 +409,7 @@ namespace ServiceStack.Redis.Messaging
         public void NotifyAll()
         {
             Log.Debug("Notifying all worker threads to check for new messages...");
-            foreach (var worker in workers)
+            foreach (var worker in messageWorkers)
             {
                 worker.NotifyNewMessage();
             }
@@ -388,46 +417,82 @@ namespace ServiceStack.Redis.Messaging
 
         public void StartWorkerThreads()
         {
-            Log.Debug("Starting all Redis MQ Server worker threads...");
-            Array.ForEach(workers, x => x.Start());
+            Log.Debug("Starting all background message worker threads...");
+            Array.ForEach(messageWorkers, x => x.Start());
+
+            Log.Debug("Starting all background queue worker threads...");
+            Array.ForEach(queueWorkers, x => x.Start());
+        }
+
+        public void KillQueueWorkerThreads()
+        {
+            Log.Debug("Kill all background queue worker threads...");
+            Array.ForEach(queueWorkers, x => x.KillBgThreadIfExists());            
         }
 
         public void ForceRestartWorkerThreads()
         {
-            Log.Debug("ForceRestart all Redis MQ Server worker threads...");
-            Array.ForEach(workers, x => x.ForceRestart());
+            Log.Debug("ForceRestart all background worker threads...");
+            Array.ForEach(queueWorkers, x => x.KillBgThreadIfExists());
+            Array.ForEach(messageWorkers, x => x.KillBgThreadIfExists());
+
+            StartWorkerThreads();
         }
 
         public void StopWorkerThreads()
         {
-            Log.Debug("Stopping all Redis MQ Server worker threads...");
-            Array.ForEach(workers, x => x.Stop());
+            Log.Debug("Stopping all queue worker threads...");
+            Array.ForEach(queueWorkers, x => x.Stop());
+
+            Log.Debug("Stopping all message worker threads...");
+            Array.ForEach(messageWorkers, x => x.Stop());
         }
 
         void DisposeWorkerThreads()
         {
-            Log.Debug("Disposing all Redis MQ Server worker threads...");
-            if (workers != null) Array.ForEach(workers, x => x.Dispose());
+            Log.Debug("Disposing all message worker threads...");
+            if (messageWorkers != null) Array.ForEach(messageWorkers, x => x.Dispose());
+
+            Log.Debug("Disposing all queue worker threads...");
+            if (messageWorkers != null) Array.ForEach(queueWorkers, x => x.Dispose());
         }
 
         void WorkerErrorHandler(IMessageHandlerBackgroundWorker source, Exception ex)
         {
             Log.Error("Received exception in Worker: " + source.QueueName, ex);
-            for (int i = 0; i < workers.Length; i++)
+            for (int i = 0; i < messageWorkers.Length; i++)
             {
-                var worker = workers[i];
+                var worker = messageWorkers[i];
                 if (worker == source)
                 {
                     Log.Debug("Starting new {0} Worker at index {1}...".Fmt(source.QueueName, i));
-                    workers[i] = (IMessageHandlerBackgroundWorker)source.Clone();
-                    workers[i].Start();
+                    messageWorkers[i] = (IMessageHandlerBackgroundWorker)source.Clone();
+                    messageWorkers[i].Start();
                     worker.Dispose();
                     return;
                 }
             }
         }
 
-        private void KillBgThreadIfExists()
+        void QueueWorkerErrorHandler(IQueueHandlerBackgroundWorker source, Exception ex)
+        {
+            Log.Error("Received exception in Queue Worker: " + source.QueueName, ex);
+            for (int i = 0; i < queueWorkers.Length; i++)
+            {
+                var worker = queueWorkers[i];
+                if (worker == source)
+                {
+                    Log.Debug("Starting new {0} Queue Worker at index {1}...".Fmt(source.QueueName, i));
+                    queueWorkers[i] = (IQueueHandlerBackgroundWorker)source.Clone();
+                    queueWorkers[i].Start();
+                    worker.Dispose();
+                    return;
+                }
+            }
+        }
+
+        // TODO: Destroy all Bg Queue Workers.
+        private void KillBgThreadIfExists22()
         {
             if (bgThread != null && bgThread.IsAlive)
             {
@@ -484,8 +549,8 @@ namespace ServiceStack.Redis.Messaging
 
             try
             {
-                Thread.Sleep(100); //give it a small chance to die gracefully
-                KillBgThreadIfExists();
+                //Thread.Sleep(100); //give it a small chance to die gracefully
+                // KillBgThreadIfExists(); -> Performed by Dispose
             }
             catch (Exception ex)
             {
@@ -513,28 +578,28 @@ namespace ServiceStack.Redis.Messaging
 
         public IMessageHandlerStats GetStats()
         {
-            lock (workers)
+            lock (messageWorkers)
             {
                 var total = new MessageHandlerStats("All Handlers");
-                workers.ToList().ForEach(x => total.Add(x.GetStats()));
+                messageWorkers.ToList().ForEach(x => total.Add(x.GetStats()));
                 return total;
             }
         }
 
         public string GetStatsDescription()
         {
-            lock (workers)
+            lock (messageWorkers)
             {
                 var sb = new StringBuilder("#MQ SERVER STATS:\n");
                 sb.AppendLine("===============");
                 sb.AppendLine("Current Status: " + GetStatus());
-                sb.AppendLine("Listening On: " + string.Join(", ", workers.ToList().ConvertAll(x => x.QueueName).ToArray()));
+                sb.AppendLine("Listening On: " + string.Join(", ", messageWorkers.ToList().ConvertAll(x => x.QueueName).ToArray()));
                 sb.AppendLine("Times Started: " + Interlocked.CompareExchange(ref timesStarted, 0, 0));
                 sb.AppendLine("Num of Errors: " + Interlocked.CompareExchange(ref noOfErrors, 0, 0));
                 sb.AppendLine("Num of Continuous Errors: " + Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
                 sb.AppendLine("Last ErrorMsg: " + lastExMsg);
                 sb.AppendLine("===============");
-                foreach (var worker in workers)
+                foreach (var worker in messageWorkers)
                 {
                     sb.AppendLine(worker.GetStats().ToString());
                     sb.AppendLine("---------------\n");
@@ -545,7 +610,7 @@ namespace ServiceStack.Redis.Messaging
 
         public List<string> WorkerThreadsStatus()
         {
-            return workers.ToList().ConvertAll(x => x.GetStatus());
+            return messageWorkers.ToList().ConvertAll(x => x.GetStatus());
         }
     }
 }

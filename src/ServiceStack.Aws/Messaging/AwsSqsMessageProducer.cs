@@ -32,6 +32,8 @@ namespace ServiceStack.Aws.Messaging
 
         protected override void PublishMessage<T>(IMessage<T> message)
         {
+            // TODO: Should messaegs from the Producer be auto-configured to be one-way only?
+            Log.DebugFormat("Publishing message to queue {0}.", message.ToInQueueName());
             var response =
                 client.SendMessage(
                     new SendMessageRequest().WithQueueUrl(this.GetQueueNameOrUrl(message))

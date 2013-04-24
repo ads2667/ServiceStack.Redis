@@ -25,7 +25,8 @@ namespace ServiceStack.Aws.Messaging
 
         public override IMessageQueueClient CreateMessageQueueClient()
         {
-            return new AwsSqsMessageQueueClient(client, this.QueueUrls, null);
+            throw new NotImplementedException();
+            // return new AwsSqsMessageQueueClient(client, this.QueueUrls, null);
         }
 
         protected override void StopMqService()

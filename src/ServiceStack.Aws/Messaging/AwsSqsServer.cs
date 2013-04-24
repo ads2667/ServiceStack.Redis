@@ -11,6 +11,7 @@ using Amazon.SQS;
 using Amazon.SQS.Model;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
+using Message = Amazon.SQS.Model.Message;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -28,100 +29,27 @@ namespace ServiceStack.Aws.Messaging
 
         public override IMessageQueueClient CreateMessageQueueClient()
         {
-            return new AwsSqsMessageQueueClient(client, this.QueueUrls, null);
+            return new AwsSqsMessageQueueClient(client, this, this.QueueUrls, null);
         }
-        
-
-        ConcurrentQueue<object> localQueue = new ConcurrentQueue<object>(); 
+       
+        // ConcurrentQueue<object> localQueue = new ConcurrentQueue<object>(); 
 
         IDictionary<string, AwsSqsQueueHandlerWorker> queueWorkers = new Dictionary<string, AwsSqsQueueHandlerWorker>();
 
-        protected void InitMessageQueueHandlerWorkers()
+        protected override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {
-            // TODO: Ensure only 1 -thread can enter here
-
-            // TODO: Do not listen to dead letter queues
-            // TODO: Do not listen to 'OUT' queues, these should be monitored by clients - not the server. 
-            foreach (var queue in this.QueueUrls)
-            {                
-                var queueHandlerWorker = new AwsSqsQueueHandlerWorker(client, queue);
-                // Amazon Client? or a factory? Post to see if it is thread-safe!!
-                // Queue URL
-                // Local Queue
-                // Access to worker(s)...
-                
-                queueWorkers.Add(queue.Key, queueHandlerWorker);
-                /*
-                // Add to dictionary/list, then start. Keep reference for stopping.
-                var t = new Thread(queueHandlerWorker.Start)
-                    {
-                        IsBackground = true
-                    };
-                t.Start();
-                */
-            }
+           return new AwsSqsMessageHandlerWorker(client, this, this.QueueUrls, messageHandler, queueName, errorHandler);
         }
 
-        protected override void ProcessMessages()
+        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IList<string> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
         {
-            // TODO: Look @ Redis implementation.
-            // Does AWS provide transient Queues?
-
-            // TODO: Move to 'START' method...
-            InitMessageQueueHandlerWorkers();
-
-            foreach (var queueHandlerWorker in this.queueWorkers.Values)
+            var queueHandlers = new List<IQueueHandlerBackgroundWorker>();
+            foreach (var queue in messageQueueNames)
             {
-                // Add to dictionary/list, then start. Keep reference for stopping.
-                var t = new Thread(queueHandlerWorker.Start)
-                    {
-                        IsBackground = true
-                    };
-                Log.DebugFormat("Starting queue handler worker '{0}' on thread {1}.", queueHandlerWorker.QueueName, t.ManagedThreadId);
-                t.Start();
+                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.client, this, new KeyValuePair<string, string>(queue, this.QueueUrls[queue]), errorHandler));
             }
 
-            /*
-            lock (threadLock)
-            {
-                Monitor.Wait(threadLock);    
-            }
-            */
-
-            Log.DebugFormat("Shutting down server...");
-            Log.DebugFormat("Shutting down background threads.");
-            // Thread.CurrentThread.Join();
-            // TODO: Need to block the thread until we need to stop processing...
-
-            /*
-            foreach (var queueUrl in this.QueueUrls)
-            {
-                // Create a new thread for each MQ; use one thread per MQ to perform long polling...
-
-                // if queue gets a stop command, need to stop the thread running.
-            }
-
-           */
-            // throw new NotImplementedException();
-        }
-
-        private readonly object threadLock = new object();
-
-        protected override void StopListeningToMessages()
-        {
-            // TODO: Unsubsribe from the queue, removing any listeners.
-            /*
-            lock (threadLock)
-            {
-                Monitor.Pulse(threadLock);
-            }
-            */
-            // throw new NotImplementedException();
-        }
-
-        protected override MessageHandlerWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler)
-        {
-           return new AwsSqsMessageHandlerWorker(client, this.QueueUrls, messageHandler, queueName, errorHandler);
+            return queueHandlers;
         }
 
         public override void Dispose()
@@ -140,7 +68,7 @@ namespace ServiceStack.Aws.Messaging
             {
                 // TODO: Throw EX if Handlers are not already configured.
                 // TODO: Change CTOR code to remove or null MessageFactory param, remember Redis requirements.
-                return messageFactory ?? (messageFactory = new AwsSqsMessageFactory(client, this.QueueUrls));
+                return messageFactory ?? (messageFactory = new AwsSqsMessageFactory(client, this, this.QueueUrls));
             }
         }
 
@@ -160,6 +88,9 @@ namespace ServiceStack.Aws.Messaging
                 var queueNamesToCreate = this.GetNewQueueNames(handler.Key);
                 foreach (var newQueueName in queueNamesToCreate)
                 {
+                    // Init the local queue
+                    messages.Add(newQueueName, new Queue<Message>());
+
                     // var queueName = this.GetQueueName(handler.Key, priority);
                     var queueUrl = this.GetQueueUrl(newQueueName);
                     this.QueueUrls.Add(newQueueName, queueUrl);
@@ -251,6 +182,39 @@ namespace ServiceStack.Aws.Messaging
             }
 
             return AwsQueingService.CreateMessageQueue(client, queueName);
+        }
+        
+        // private object threadLock = new object();
+        private IDictionary<string, Queue<Message>> messages = new Dictionary<string, Queue<Message>>(); 
+        // private Queue<Message> queue = new Queue<Message>(); 
+        public void EnqueMessage(string queueName, Message message)
+        {
+            lock (messages)
+            {
+                messages[queueName].Enqueue(message);
+
+                int[] workerIndexes;
+                if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
+                {
+                    foreach (var workerIndex in workerIndexes)
+                    {
+                        messageWorkers[workerIndex].NotifyNewMessage();
+                    }
+                }
+            }
+        }
+
+        public Message DequeMessage(string queueName)
+        {
+            lock (messages)
+            {
+                if (messages[queueName].Count > 0)
+                {
+                    return messages[queueName].Dequeue();
+                }
+
+                return null;
+            }
         }
     }
 }

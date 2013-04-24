@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using ServiceStack.Messaging;
 
@@ -46,6 +47,15 @@ namespace ServiceStack.Redis.Messaging.Redis
                 errorHandler);
         }
 
+        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IList<string> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        {
+            return new List<IQueueHandlerBackgroundWorker>
+                {
+                    new RedisQueueHandlerWorker(clientsManager, this, "RedisMq", errorHandler)
+                };
+        }
+        
+/*
         protected override void StopListeningToMessages()
         {
             using (var redis = clientsManager.GetClient())
@@ -87,7 +97,7 @@ namespace ServiceStack.Redis.Messaging.Redis
                             {
                                 foreach (var workerIndex in workerIndexes)
                                 {
-                                    workers[workerIndex].NotifyNewMessage();
+                                    messageWorkers[workerIndex].NotifyNewMessage();
                                 }
                             }
                         }
@@ -97,6 +107,27 @@ namespace ServiceStack.Redis.Messaging.Redis
                 }
 
                 StopWorkerThreads();
+            }
+        }
+        */
+        private object threadLock = new object();
+
+        public void NotifyMessageHandlerWorkers(string queueName)
+        {
+            // TODO: Thread-safety
+            if (!string.IsNullOrEmpty(queueName))
+            {
+                lock (threadLock)
+                {
+                    int[] workerIndexes;
+                    if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
+                    {
+                        foreach (var workerIndex in workerIndexes)
+                        {
+                            messageWorkers[workerIndex].NotifyNewMessage();
+                        }
+                    }
+                }
             }
         }
     }

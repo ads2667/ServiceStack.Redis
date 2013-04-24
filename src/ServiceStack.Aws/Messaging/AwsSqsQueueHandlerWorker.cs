@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.SQS;
-using Amazon.SQS.Model;
 using ServiceStack.Logging;
+using ServiceStack.Messaging;
+using ServiceStack.Redis.Messaging;
+using Message = Amazon.SQS.Model.Message;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -16,30 +18,40 @@ namespace ServiceStack.Aws.Messaging
     /// <remarks>
     /// TODO: DO NOT LISTEN TO DEAD-LETTER QUEUES!
     /// </remarks>
-    public class AwsSqsQueueHandlerWorker
+    public class AwsSqsQueueHandlerWorker : QueueHandlerBackgroundWorker
     {
+        public AwsSqsServer MqServer { get; set; }
         private readonly AmazonSQS _client;
         private readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsQueueHandlerWorker));
 
-        private bool listenForMessages;
+        private bool listenForMessages = true;
 
         private readonly object syncLock = new object();
 
-        public AwsSqsQueueHandlerWorker(AmazonSQS client, KeyValuePair<string, string> queue)
+        public AwsSqsQueueHandlerWorker(AmazonSQS client, AwsSqsServer mqServer, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+            : base(queue.Key, errorHandler)
         {
+            if (mqServer == null) throw new ArgumentNullException("mqServer");
+            this.MqServer = mqServer;
             _client = client;
             this.QueueName = queue.Key;
             this.QueueUrl = queue.Value;
-           this.LocalMessageQueue = new ConcurrentQueue<Message>();
+           // this.LocalMessageQueue = new ConcurrentQueue<Message>();
         }
 
 
-        protected System.Collections.Concurrent.ConcurrentQueue<Amazon.SQS.Model.Message> LocalMessageQueue { get; private set; }
+        // protected System.Collections.Concurrent.ConcurrentQueue<Amazon.SQS.Model.Message> LocalMessageQueue { get; private set; }
 
         public string QueueUrl { get; private set; }
 
         public string QueueName { get; private set; }
 
+        protected override IMessageQueueClient CreateMessageQueueClient()
+        {
+            return new AwsSqsMessageQueueClient(this._client, this.MqServer, this.MqServer.QueueUrls, null);
+        }
+
+        /*
         public void Start()
         {
             // Start Listening
@@ -49,27 +61,14 @@ namespace ServiceStack.Aws.Messaging
                 this.ReceieveMessages();
             }
         }
-
-        public void Stop()
+        */
+        
+        protected override void Execute()
         {
-            // Stop Listening
-            lock (syncLock)
-            {
-                listenForMessages = false;
-            }
-        }
-
-        // TODO: Subclass the MessageHandlerWorker class, to base 'HandlerWorker', include common Thread Functions
-        // This can then be re-used by this class for starting/stopping queue handlers also.
-
-        // TODO: Internally use a 'QueueHandler' to pass behavior from the worker to the handler.
-        private void ReceieveMessages()
-        {            
-            // Use Long-Polling to retrieve messages from a specific SQS queue.
-            var continuePolling = false;
+            var continuePolling = true;
+            // Use Long-Polling to retrieve messages from a specific SQS queue.            
             do
             {
-                // TODO: Need to get logging working!
                 Log.DebugFormat("Polling SQS Queue '{0}' for messages.", this.QueueName);
 
                 var response = AwsQueingService.ReceiveMessage(_client, this.QueueUrl); // Blocks until timout, or msg received
@@ -77,13 +76,17 @@ namespace ServiceStack.Aws.Messaging
                 {
                     // Place the item in the ready to process queue, and notify workers that a new msg has arrived.                    
                     Log.DebugFormat("Received {0} Message(s) from Queue '{1}'.", response.ReceiveMessageResult.Message.Count, this.QueueName);
-                    
+
                     // Thread-safe local queue -> Provides access to msg reponse, and retrieving multiple msgs!
                     foreach (var message in response.ReceiveMessageResult.Message)
                     {
                         // NOTE: We are not deleting anything, so it will continue to get the same messages
                         // Remember: Need to code so no problem if same message received twice... consider cache?
-                        this.LocalMessageQueue.Enqueue(message);
+                        // TODO: Will need to create a seperate queue for each queue litener...
+                        // this.LocalMessageQueue.Enqueue(this.QueueName, message);
+
+                        this.MqServer.EnqueMessage(this.QueueName, message);
+                        // this.MqServer.NotifyMessageHandlerWorkers(this.QueueName);
 
                         // For testing only.
                         // AwsQueingService.DeleteMessage(_client, this.QueueUrl, message.ReceiptHandle); 
@@ -113,6 +116,19 @@ namespace ServiceStack.Aws.Messaging
                     }
                 }
             } while (continuePolling);
+        }
+
+        protected override void OnStop()
+        {
+            lock (syncLock)
+            {
+                listenForMessages = false;
+            }
+        }
+
+        public override IQueueHandlerBackgroundWorker CloneBackgroundWorker()
+        {
+            return new AwsSqsQueueHandlerWorker(this._client, this.MqServer, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
         }
     }
 }

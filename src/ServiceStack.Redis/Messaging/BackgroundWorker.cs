@@ -11,21 +11,21 @@ namespace ServiceStack.Redis.Messaging
         {
             void Start();
 
-            void Stop();
-
-            void NotifyNewMessage();
+            void Stop();            
 
             void ForceRestart();
 
             string GetStatus();
+
+            void KillBgThreadIfExists();
         }
 
         public abstract class BackgroundWorker : IBackgroundWorker
         {
             protected static ILog Log;
 
-            readonly object msgLock = new object();
-
+            // readonly object msgLock = new object();
+            // private bool receivedNewMsgs = false;
             // protected readonly IMessageHandler messageHandler;
 
             // public string QueueName { get; set; }
@@ -38,51 +38,13 @@ namespace ServiceStack.Redis.Messaging
 
             private Thread bgThread;
             private int timesStarted = 0;
-            private bool receivedNewMsgs = false;
-            // public Action<MessageHandlerWorker, Exception> errorHandler { get; set; }
-
-            /*
-            private DateTime lastMsgProcessed;
-            public DateTime LastMsgProcessed
-            {
-                get { return lastMsgProcessed; }
-            }
-
-            private int totalMessagesProcessed;
-            public int TotalMessagesProcessed
-            {
-                get { return totalMessagesProcessed; }
-            }
-
-            private int msgNotificationsReceived;
-            public int MsgNotificationsReceived
-            {
-                get { return msgNotificationsReceived; }
-            }
-            */
-
+            
             protected BackgroundWorker()
             {
                 Log = LogManager.GetLogger(this.GetType());                
             }
             
-            public virtual void NotifyNewMessage()
-            {
-                // Interlocked.Increment(ref msgNotificationsReceived);
-                if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
-                {
-                    if (Monitor.TryEnter(msgLock))
-                    {
-                        Monitor.Pulse(msgLock);
-                        Monitor.Exit(msgLock);
-                    }
-                    else
-                    {
-                        receivedNewMsgs = true;
-                    }
-                }
-            }
-
+            
             public void Start()
             {
                 if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
@@ -126,18 +88,7 @@ namespace ServiceStack.Redis.Messaging
 
                 try
                 {
-                    lock (msgLock)
-                    {
-                        while (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
-                        {
-                            receivedNewMsgs = false;
-
-                            this.Execute();
-
-                            if (!receivedNewMsgs)
-                                Monitor.Wait(msgLock);
-                        }
-                    }
+                    this.Execute();                   
                 }
                 catch (Exception ex)
                 {
@@ -172,14 +123,13 @@ namespace ServiceStack.Redis.Messaging
                 {
                     Log.Debug("Stopping Background Worker: {0}...".Fmt(this.ThreadName));
                     Thread.Sleep(100);
-                    lock (msgLock)
-                    {
-                        Monitor.Pulse(msgLock);
-                    }
+                    this.OnStop();                    
                 }
             }
 
-            private void KillBgThreadIfExists()
+            protected abstract void OnStop();
+
+            public void KillBgThreadIfExists()
             {
                 try
                 {
@@ -263,7 +213,7 @@ namespace ServiceStack.Redis.Messaging
         }
 
         public abstract class BackgroundWorker<TBackgroundWorker> : BackgroundWorker
-            where TBackgroundWorker : BackgroundWorker
+            where TBackgroundWorker : IBackgroundWorker
         {
             protected BackgroundWorker(Action<TBackgroundWorker, Exception> errorHandler)
             {                

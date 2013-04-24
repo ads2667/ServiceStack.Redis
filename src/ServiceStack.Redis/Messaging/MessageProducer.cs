@@ -11,14 +11,17 @@
 //
 
 using System;
+using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
 	public abstract class MessageProducer
-		: IMessageProducer 
-	{		
+		: IMessageProducer
+	{
+	    protected static ILog Log;
+
 		private readonly Action onPublishedCallback;
 
         /// <summary>
@@ -27,6 +30,7 @@ namespace ServiceStack.Redis.Messaging
         /// <param name="onPublishedCallback">A callback method to be executed after a message is published, can be null.</param>
 	    protected MessageProducer(Action onPublishedCallback)
 		{
+            Log = LogManager.GetLogger(this.GetType());
 			this.onPublishedCallback = onPublishedCallback;
 		}
 

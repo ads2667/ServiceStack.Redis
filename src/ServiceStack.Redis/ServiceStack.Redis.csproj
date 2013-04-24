@@ -156,6 +156,7 @@
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
     <Compile Include="Messaging\BackgroundWorker.cs" />
+    <Compile Include="Messaging\QueueHandlerWorker.cs" />
     <Compile Include="Messaging\MqServer2.cs" />
     <Compile Include="Messaging\MessageHandlerWorker.cs" />
     <Compile Include="Messaging\MqHost.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Messaging\Redis\RedisMqHost.cs" />
     <Compile Include="Messaging\Redis\RedisMqHostPool.cs" />
     <Compile Include="Messaging\Redis\RedisMqServer.cs" />
+    <Compile Include="Messaging\Redis\RedisQueueHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageFactory.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageService.cs" />
     <Compile Include="Messaging\WorkerStatus.cs" />

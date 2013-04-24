@@ -12,12 +12,13 @@ namespace ServiceStack.Redis.Messaging
         string QueueName { get; }
 
         IMessageHandlerStats GetStats();
+
+        void NotifyNewMessage();
     }
 
-    public abstract class MessageHandlerBackgroundWorker<TBackgroundWorker> : BackgroundWorker<TBackgroundWorker>, IMessageHandlerBackgroundWorker 
-        where TBackgroundWorker : BackgroundWorker
+    public abstract class MessageHandlerBackgroundWorker : BackgroundWorker<IMessageHandlerBackgroundWorker>, IMessageHandlerBackgroundWorker 
     {
-        protected MessageHandlerBackgroundWorker(Action<TBackgroundWorker, Exception> errorHandler) 
+        protected MessageHandlerBackgroundWorker(Action<IMessageHandlerBackgroundWorker, Exception> errorHandler) 
             : base(errorHandler)
         {
         }
@@ -44,7 +45,7 @@ namespace ServiceStack.Redis.Messaging
             get { return msgNotificationsReceived; }
         }
 
-        protected MessageHandlerBackgroundWorker(IMessageHandler messageHandler, string queueName, Action<TBackgroundWorker, Exception> errorHandler)
+        protected MessageHandlerBackgroundWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
             : base(errorHandler)
         {
             this.messageHandler = messageHandler;
@@ -54,12 +55,6 @@ namespace ServiceStack.Redis.Messaging
         public IMessageHandlerStats GetStats()
         {
             return messageHandler.GetStats();
-        }
-
-        public override void NotifyNewMessage()
-        {
-            Interlocked.Increment(ref msgNotificationsReceived);
-            base.NotifyNewMessage();
         }
 
         protected abstract IMessageQueueClient CreateMessageQueueClient();
@@ -75,21 +70,69 @@ namespace ServiceStack.Redis.Messaging
             get { return "{0}: {1}".Fmt(GetType().Name, QueueName); }
         }
 
+        readonly object msgLock = new object();
+        private bool receivedNewMsgs = false;
+
+        protected override void OnStop()
+        {
+            lock (msgLock)
+            {
+                Monitor.Pulse(msgLock);
+            }
+        }
+
+        public virtual void NotifyNewMessage()
+        {
+            Interlocked.Increment(ref msgNotificationsReceived);
+            if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
+            {
+                if (Monitor.TryEnter(msgLock))
+                {
+                    Monitor.Pulse(msgLock);
+                    Monitor.Exit(msgLock);
+                }
+                else
+                {
+                    receivedNewMsgs = true;
+                }
+            }
+        }
+
         /// <summary>
         /// Performs exceution on a background thread within a locked context.
         /// </summary>
         protected override void Execute()
         {
-            using (var mqClient = this.CreateMessageQueueClient()) // new RedisMessageQueueClient(clientsManager))
+            lock (msgLock)
             {
-                var msgsProcessedThisTime = messageHandler.ProcessQueue(mqClient, QueueName,
-                    () => Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started);
+                while (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
+                {
+                    receivedNewMsgs = false;
 
-                totalMessagesProcessed += msgsProcessedThisTime;
+                    //this.Execute();
 
-                if (msgsProcessedThisTime > 0)
-                    lastMsgProcessed = DateTime.UtcNow;
+                    // ======
+                    using (var mqClient = this.CreateMessageQueueClient()) // new RedisMessageQueueClient(clientsManager))
+                    {
+                        var msgsProcessedThisTime = messageHandler.ProcessQueue(mqClient, QueueName,
+                            () => Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started);
+
+                        totalMessagesProcessed += msgsProcessedThisTime;
+
+                        if (msgsProcessedThisTime > 0)
+                            lastMsgProcessed = DateTime.UtcNow;
+                    }
+
+                    // ======
+                    if (!receivedNewMsgs)
+                        Monitor.Wait(msgLock);
+                }
             }
+        }
+
+        protected override sealed void InvokeErrorHandler(Exception ex)
+        {
+            this.ErrorHandler.Invoke(this, ex);
         }
     }
 

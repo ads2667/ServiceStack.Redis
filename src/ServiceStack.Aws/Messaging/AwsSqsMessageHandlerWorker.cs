@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Amazon.SQS;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
-    public class AwsSqsMessageHandlerWorker : MessageHandlerWorker
+    public class AwsSqsMessageHandlerWorker : MessageHandlerBackgroundWorker // MessageHandlerWorker
     {
+        public AwsSqsServer MqServer { get; set; }
         public IDictionary<string, string> QueueUrls { get; set; }
         private readonly AmazonSQS client;
 
-        public AwsSqsMessageHandlerWorker(Amazon.SQS.AmazonSQS sqsClient, IDictionary<string, string> queueUrls, IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler) 
+        public AwsSqsMessageHandlerWorker(Amazon.SQS.AmazonSQS sqsClient, AwsSqsServer mqServer, IDictionary<string, string> queueUrls, IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler) 
             : base(messageHandler, queueName, errorHandler)
         {            
             if (sqsClient == null) throw new ArgumentNullException("sqsClient");
+            if (mqServer == null) throw new ArgumentNullException("mqServer");
             if (queueUrls == null) throw new ArgumentNullException("queueUrls");
             client = sqsClient;
+            MqServer = mqServer;
             QueueUrls = queueUrls;
         }
 
-        public override MessageHandlerWorker Clone()
+        public override IMessageHandlerBackgroundWorker CloneBackgroundWorker()
         {
-            return new AwsSqsMessageHandlerWorker(client, this.QueueUrls, this.messageHandler, this.QueueName, this.errorHandler);
+            return new AwsSqsMessageHandlerWorker(client, this.MqServer, this.QueueUrls, this.messageHandler, this.QueueName, this.ErrorHandler);
         }
         
         protected override IMessageQueueClient CreateMessageQueueClient()
         {
-            return new AwsSqsMessageQueueClient(client, this.QueueUrls, null);
+            return new AwsSqsMessageQueueClient(client, this.MqServer, this.QueueUrls, null);
         }
 
         public override void Dispose()
