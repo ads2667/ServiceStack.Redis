@@ -31,13 +31,12 @@ namespace ServiceStack.Aws.Messaging
         }
 
         protected override void PublishMessage<T>(IMessage<T> message)
-        {            
-            var response = client.SendMessage(new SendMessageRequest()
-                {   
-                    QueueUrl = this.GetQueueNameOrUrl(message), // Need to convert to URL
-                    MessageBody = Convert.ToBase64String(message.ToBytes()) // Convert to Base64?
-                });
-             
+        {
+            var response =
+                client.SendMessage(
+                    new SendMessageRequest().WithQueueUrl(this.GetQueueNameOrUrl(message))
+                                            .WithMessageBody(Convert.ToBase64String(message.ToBytes())));
+               
             if (!response.IsSetSendMessageResult())
             {
                 throw new NotImplementedException("Could not publish message. Error handling not implemented.");    

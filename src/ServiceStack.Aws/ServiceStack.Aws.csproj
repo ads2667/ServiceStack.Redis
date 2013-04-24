@@ -42,6 +42,10 @@
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\..\lib\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ServiceStack.Redis\bin\Debug\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +61,7 @@
     <Compile Include="Messaging\AwsSqsMessageHandlerWorker.cs" />
     <Compile Include="Messaging\AwsSqsMessageProducer.cs" />
     <Compile Include="Messaging\AwsSqsMessageQueueClient.cs" />
+    <Compile Include="Messaging\AwsSqsQueueHandlerWorker.cs" />
     <Compile Include="Messaging\AwsSqsServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

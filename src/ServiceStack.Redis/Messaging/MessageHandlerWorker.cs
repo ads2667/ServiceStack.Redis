@@ -2,10 +2,98 @@ using System;
 using System.Threading;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
+using ServiceStack.Redis.Messaging.ServiceStack.Redis.Messaging;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
-{
+{    
+    public interface IMessageHandlerBackgroundWorker : IBackgroundWorker
+    {
+        string QueueName { get; }
+
+        IMessageHandlerStats GetStats();
+    }
+
+    public abstract class MessageHandlerBackgroundWorker<TBackgroundWorker> : BackgroundWorker<TBackgroundWorker>, IMessageHandlerBackgroundWorker 
+        where TBackgroundWorker : BackgroundWorker
+    {
+        protected MessageHandlerBackgroundWorker(Action<TBackgroundWorker, Exception> errorHandler) 
+            : base(errorHandler)
+        {
+        }
+
+        protected readonly IMessageHandler messageHandler;
+        public string QueueName { get; set; }
+
+        
+        private DateTime lastMsgProcessed;
+        public DateTime LastMsgProcessed
+        {
+            get { return lastMsgProcessed; }
+        }
+
+        private int totalMessagesProcessed;
+        public int TotalMessagesProcessed
+        {
+            get { return totalMessagesProcessed; }
+        }
+
+        private int msgNotificationsReceived;
+        public int MsgNotificationsReceived
+        {
+            get { return msgNotificationsReceived; }
+        }
+
+        protected MessageHandlerBackgroundWorker(IMessageHandler messageHandler, string queueName, Action<TBackgroundWorker, Exception> errorHandler)
+            : base(errorHandler)
+        {
+            this.messageHandler = messageHandler;
+            this.QueueName = queueName;            
+        }
+
+        public IMessageHandlerStats GetStats()
+        {
+            return messageHandler.GetStats();
+        }
+
+        public override void NotifyNewMessage()
+        {
+            Interlocked.Increment(ref msgNotificationsReceived);
+            base.NotifyNewMessage();
+        }
+
+        protected abstract IMessageQueueClient CreateMessageQueueClient();
+
+        public override string GetStatus()
+        {
+            return "[Worker: {0}, Status: {1}, ThreadStatus: {2}, LastMsgAt: {3}]"
+                .Fmt(QueueName, WorkerStatus.ToString(status), this.BgThreadState, LastMsgProcessed);
+        }
+
+        protected override string ThreadName
+        {
+            get { return "{0}: {1}".Fmt(GetType().Name, QueueName); }
+        }
+
+        /// <summary>
+        /// Performs exceution on a background thread within a locked context.
+        /// </summary>
+        protected override void Execute()
+        {
+            using (var mqClient = this.CreateMessageQueueClient()) // new RedisMessageQueueClient(clientsManager))
+            {
+                var msgsProcessedThisTime = messageHandler.ProcessQueue(mqClient, QueueName,
+                    () => Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started);
+
+                totalMessagesProcessed += msgsProcessedThisTime;
+
+                if (msgsProcessedThisTime > 0)
+                    lastMsgProcessed = DateTime.UtcNow;
+            }
+        }
+    }
+
+    /*
     public abstract class MessageHandlerWorker : IDisposable
     {
         protected static ILog Log;
@@ -55,12 +143,7 @@ namespace ServiceStack.Redis.Messaging
         }
 
         public abstract MessageHandlerWorker Clone();
-        /*
-        {
-            return new MessageHandlerWorker(clientsManager, messageHandler, QueueName, errorHandler);
-        }
-        */
-
+       
         public void NotifyNewMessage()
         {
             Interlocked.Increment(ref msgNotificationsReceived);
@@ -79,7 +162,7 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
-        public void Start()
+        public void  Start()
         {
             if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
                 return;
@@ -122,6 +205,7 @@ namespace ServiceStack.Redis.Messaging
                     {
                         receivedNewMsgs = false;
 
+                        // TODO: Create Protected Abstract Method for executing thread logic (In base class)
                         using (var mqClient = this.CreateMessageQueueClient()) // new RedisMessageQueueClient(clientsManager))
                         {
                             var msgsProcessedThisTime = messageHandler.ProcessQueue(mqClient, QueueName,
@@ -234,4 +318,5 @@ namespace ServiceStack.Redis.Messaging
                 .Fmt(QueueName, WorkerStatus.ToString(status), bgThread.ThreadState, LastMsgProcessed);
         }
     }
+    */
 }

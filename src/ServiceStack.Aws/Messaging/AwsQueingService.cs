@@ -47,12 +47,12 @@ namespace ServiceStack.Aws.Messaging
         /// Attempts to receive a message from a message queue.
         /// </summary>
         /// <param name="client">The amazon sqs client.</param>
-        /// <param name="queueName">The name of the queue to retrieve a message from.</param>
+        /// <param name="queueUrl">The url of the queue to retrieve a message from.</param>
         /// <returns>The received message reponse.</returns>
-        public static ReceiveMessageResponse ReceiveMessage(AmazonSQS client, string queueName)
+        public static ReceiveMessageResponse ReceiveMessage(AmazonSQS client, string queueUrl)
         {
             return client.ReceiveMessage(new ReceiveMessageRequest()
-                                             .WithQueueUrl(queueName)
+                                             .WithQueueUrl(queueUrl)
                                              .WithMaxNumberOfMessages(1)
                                              .WithWaitTimeSeconds(5));
         }
@@ -61,14 +61,19 @@ namespace ServiceStack.Aws.Messaging
         /// Attempts to send a message to a message queue.
         /// </summary>
         /// <param name="client">The amazon sqs client.</param>
-        /// <param name="queueName">The name of the queue to send the message to.</param>
+        /// <param name="queueUrl">The url of the queue to retrieve a message from.</param>
         /// <param name="message">The message to send.</param>
         /// <returns>The send message response.</returns>
-        public static SendMessageResponse PublishMessage(AmazonSQS client, string queueName, string message)
+        public static SendMessageResponse PublishMessage(AmazonSQS client, string queueUrl, string message)
         {
             return client.SendMessage(new SendMessageRequest()
-                                             .WithQueueUrl(queueName)
+                                             .WithQueueUrl(queueUrl)
                                              .WithMessageBody(message));
+        }
+
+        public static void DeleteMessage(AmazonSQS client, string queueUrl, string receiptHandle)
+        {
+            client.DeleteMessage(new DeleteMessageRequest().WithQueueUrl(queueUrl).WithReceiptHandle(receiptHandle));
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ServiceStack.Redis.Messaging.Redis
     /// The Start/Stop methods are idempotent i.e. It's safe to call them repeatedly on multiple threads 
     /// and the Redis MQ Server will only have Started or Stopped once.
     /// </summary>
-    public class RedisMqServer : MqServer
+    public class RedisMqServer : MqServer2
     {       
         private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
 
@@ -37,7 +37,7 @@ namespace ServiceStack.Redis.Messaging.Redis
             this.clientsManager = clientsManager;            
         }
 
-        protected override MessageHandlerWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler)
+        protected internal override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {
             return new RedisMessageHandlerWorker(
                 clientsManager,

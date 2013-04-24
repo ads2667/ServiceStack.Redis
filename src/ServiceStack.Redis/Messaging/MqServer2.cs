@@ -6,11 +6,13 @@ using System.Threading;
 using ServiceStack.Common;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
+using ServiceStack.Redis.Messaging.Redis;
 using ServiceStack.Service;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
+    /*
     public class MessageHandler<T>
     {
         public Func<IMessage<T>, object> ProcessMessageFn { get; set; }
@@ -23,13 +25,15 @@ namespace ServiceStack.Redis.Messaging
             ProcessExceptionEx = processExceptionEx;
         }
     }
+    */
 
     public class MessageHandlerRegister
     {
-        public MqServer2 MessageServer { get; set; }
+        public MqServer2 MessageServer { get; private set; }
 
         public MessageHandlerRegister(MqServer2 messageServer)
         {
+            if (messageServer == null) throw new ArgumentNullException("messageServer");
             MessageServer = messageServer;
         }
 
@@ -50,12 +54,14 @@ namespace ServiceStack.Redis.Messaging
 
         public void AddHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
+            // Wrap func with another that enables message to be deleted from queue after successful processing...
             MessageServer.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads);           
         }
     }
 
 
     public abstract class MqServer2 : IMessageService
+        // where TMessageHandlerBackgroundWorker : IMessageHandlerBackgroundWorker
     {
         protected static ILog Log;
         public const int DefaultRetryCount = 2; //Will be a total of 3 attempts
@@ -130,7 +136,7 @@ namespace ServiceStack.Redis.Messaging
             = new Dictionary<Type, int>();
         */
 
-        protected MessageHandlerWorker[] workers;
+        protected IMessageHandlerBackgroundWorker[] workers;
         protected Dictionary<string, int[]> queueWorkerIndexMap;
 
 
@@ -150,22 +156,27 @@ namespace ServiceStack.Redis.Messaging
             this.MessageFactory = messageFactory; // new RedisMessageFactory(clientsManager);
             this.ErrorHandler = ex => Log.Error("Exception in Redis MQ Server: " + ex.Message, ex);
         }
-        
+
+        [Obsolete("Use RegisterMessageHandlers instead.")]
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn)
         {
             RegisterHandler(processMessageFn, null, noOfThreads:1);
         }
 
+        [Obsolete("Use RegisterMessageHandlers instead.")]
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, int noOfThreads)
         {
             RegisterHandler(processMessageFn, null, noOfThreads);
         }
 
+        [Obsolete("Use RegisterMessageHandlers instead.")]
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
-            throw new NotSupportedException("Register message queue listeners using the 'RegisterMessageHandlers' function.");
+            RegisterHandler(processMessageFn, processExceptionEx, noOfThreads: 1);
+            // throw new NotSupportedException("Register message queue listeners using the 'RegisterMessageHandlers' function.");
         }
-        
+
+        [Obsolete("Use RegisterMessageHandlers instead.")]
         internal void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             if (handlerMap.ContainsKey(typeof(T)))
@@ -192,13 +203,13 @@ namespace ServiceStack.Redis.Messaging
             };
         }
 
-        protected internal abstract MessageHandlerWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler);
+        protected internal abstract IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler);
 
         private void Init()
         {
             if (workers == null)
             {
-                var workerBuilder = new List<MessageHandlerWorker>();
+                var workerBuilder = new List<IMessageHandlerBackgroundWorker>();
 
                 foreach (var entry in handlerMap)
                 {
@@ -294,6 +305,11 @@ namespace ServiceStack.Redis.Messaging
 
                     KillBgThreadIfExists();
 
+                    // Redis uses a single thread for receiving msgs, but with SQS we need 1 thread per MQ
+                    // TODO: Create a thread-safe class used to receive messages from a message queue.
+                    // Remember, that after a msg is succesfully received it must be deleted.
+                    // Must be BG threads, subscribe only to one queue, and signal to workers when a msg is received
+                    // TODO: Configure one Thread to Poll Each MQ, then notify workers that a MSG Is ready to process
                     bgThread = new Thread(RunLoop) {
                         IsBackground = true,
                         Name = "Redis MQ Server " + Interlocked.Increment(ref bgThreadCount)
@@ -394,7 +410,7 @@ namespace ServiceStack.Redis.Messaging
             if (workers != null) Array.ForEach(workers, x => x.Dispose());
         }
 
-        void WorkerErrorHandler(MessageHandlerWorker source, Exception ex)
+        void WorkerErrorHandler(IMessageHandlerBackgroundWorker source, Exception ex)
         {
             Log.Error("Received exception in Worker: " + source.QueueName, ex);
             for (int i = 0; i < workers.Length; i++)
@@ -403,7 +419,7 @@ namespace ServiceStack.Redis.Messaging
                 if (worker == source)
                 {
                     Log.Debug("Starting new {0} Worker at index {1}...".Fmt(source.QueueName, i));
-                    workers[i] = source.Clone();
+                    workers[i] = (IMessageHandlerBackgroundWorker)source.Clone();
                     workers[i].Start();
                     worker.Dispose();
                     return;

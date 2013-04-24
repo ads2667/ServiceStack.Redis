@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Amazon.SQS;
 using Amazon.SQS.Model;
@@ -29,27 +31,92 @@ namespace ServiceStack.Aws.Messaging
             return new AwsSqsMessageQueueClient(client, this.QueueUrls, null);
         }
         
+
+        ConcurrentQueue<object> localQueue = new ConcurrentQueue<object>(); 
+
+        IDictionary<string, AwsSqsQueueHandlerWorker> queueWorkers = new Dictionary<string, AwsSqsQueueHandlerWorker>();
+
+        protected void InitMessageQueueHandlerWorkers()
+        {
+            // TODO: Ensure only 1 -thread can enter here
+
+            // TODO: Do not listen to dead letter queues
+            // TODO: Do not listen to 'OUT' queues, these should be monitored by clients - not the server. 
+            foreach (var queue in this.QueueUrls)
+            {                
+                var queueHandlerWorker = new AwsSqsQueueHandlerWorker(client, queue);
+                // Amazon Client? or a factory? Post to see if it is thread-safe!!
+                // Queue URL
+                // Local Queue
+                // Access to worker(s)...
+                
+                queueWorkers.Add(queue.Key, queueHandlerWorker);
+                /*
+                // Add to dictionary/list, then start. Keep reference for stopping.
+                var t = new Thread(queueHandlerWorker.Start)
+                    {
+                        IsBackground = true
+                    };
+                t.Start();
+                */
+            }
+        }
+
         protected override void ProcessMessages()
         {
             // TODO: Look @ Redis implementation.
             // Does AWS provide transient Queues?
 
-            // Subscribe to queue and register listeners.
-            while (true)
+            // TODO: Move to 'START' method...
+            InitMessageQueueHandlerWorkers();
+
+            foreach (var queueHandlerWorker in this.queueWorkers.Values)
             {
-                // Need to perform for each registered listener.
-                // Does this need to be multi-threaded, or can we use the MessageHandlerWorker, or other class for this?
-                client.ReceiveMessage(new ReceiveMessageRequest(){});
-                // TODO: Add ability to stop processing from method below. Should exist gracefully.
+                // Add to dictionary/list, then start. Keep reference for stopping.
+                var t = new Thread(queueHandlerWorker.Start)
+                    {
+                        IsBackground = true
+                    };
+                Log.DebugFormat("Starting queue handler worker '{0}' on thread {1}.", queueHandlerWorker.QueueName, t.ManagedThreadId);
+                t.Start();
             }
-            
-            throw new NotImplementedException();
+
+            /*
+            lock (threadLock)
+            {
+                Monitor.Wait(threadLock);    
+            }
+            */
+
+            Log.DebugFormat("Shutting down server...");
+            Log.DebugFormat("Shutting down background threads.");
+            // Thread.CurrentThread.Join();
+            // TODO: Need to block the thread until we need to stop processing...
+
+            /*
+            foreach (var queueUrl in this.QueueUrls)
+            {
+                // Create a new thread for each MQ; use one thread per MQ to perform long polling...
+
+                // if queue gets a stop command, need to stop the thread running.
+            }
+
+           */
+            // throw new NotImplementedException();
         }
+
+        private readonly object threadLock = new object();
 
         protected override void StopListeningToMessages()
         {
-            // Unsubsribe from the queue, removing any listeners.
-            throw new NotImplementedException();
+            // TODO: Unsubsribe from the queue, removing any listeners.
+            /*
+            lock (threadLock)
+            {
+                Monitor.Pulse(threadLock);
+            }
+            */
+            // throw new NotImplementedException();
         }
 
         protected override MessageHandlerWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<MessageHandlerWorker, Exception> errorHandler)
@@ -101,7 +168,7 @@ namespace ServiceStack.Aws.Messaging
 
             //mq:Hello.outq
             
-            // Remove the qu
+            // Remove the local queues
             this.amazonQueueUrls.Clear();
         }
 
