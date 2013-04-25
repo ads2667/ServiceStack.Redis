@@ -28,28 +28,45 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new ServiceStack.Aws.Messaging.AwsSqsServer(new Amazon.SQS.AmazonSQSClient(null, null));            
+            var svc = new ServiceStack.Aws.Messaging.AwsSqsServer(new Amazon.SQS.AmazonSQSClient("AKIAIORYIECWONNZHDOA", "NyBWos/5P/xqTpx7l7CN2XaldXjkLkHWIQtuqUnC"));            
             return RegisterMessageHandlers(svc);
         }
 
         private static IMessageService RegisterMessageHandlers(MqServer2 messageService)
         {            
-            // TODO: Create Handler Wrappers to delete messages when processed successfully.
+            // TODO: Code verification checks that a MQ exists before a msg is sent, and when a svr is started
+            // TODO: Code Graceful Shutdown of all worker threads, log msgs, should take ~30secs to stop
+            // TODO: Create QueueWorker Stats
+            // TODO: Need to refactor QueueHandlers with 'noContinuosErrors' etc...
+            // TODO: Create Handler Wrappers to delete messages when processed successfully for AWS.            
             messageService.RegisterMessageHandlers(register =>
-            {
-                register.AddHandler<Hello>((m) =>
                 {
-                    Log.Debug("Server Says: " + m.GetBody().Text);
-                    // return m.GetBody();                        
-                    return null;
-                });
+                    // TODO: Create [Thread]PooledWorkerHandler!?!
+                    // register.AddPooledHandler<TypeName>(() => );
 
-                register.AddHandler<Hello2>((m) =>
-                {
-                    Log.Debug("Server Says: " + m.GetBody().Text);
-                    // return m.GetBody();
-                    return null;
-                });
+                    // Standard Background Message Handlers
+                    register.AddHandler<Hello>((m) =>
+                    {
+                        Log.Debug("Server Says: " + m.GetBody().Text);
+                        // return m.GetBody();                        
+                        return null;
+                    });
+
+                    register.AddHandler<Hello2>((m) =>
+                    {
+                        Log.Debug("Server Says: " + m.GetBody().Text);
+                        // return m.GetBody();
+                        return null;
+                    });
+
+                    /*
+                    register.AddHandler<Hello3>((m) =>
+                    {
+                        Log.Debug("Server Says: " + m.GetBody().Text);
+                        // return m.GetBody();
+                        return null;
+                    });
+                    */
             });
 
             return messageService;

@@ -40,13 +40,13 @@ namespace ServiceStack.Aws.Messaging
         {
            return new AwsSqsMessageHandlerWorker(client, this, this.QueueUrls, messageHandler, queueName, errorHandler);
         }
-
-        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IList<string> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        
+        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
         {
             var queueHandlers = new List<IQueueHandlerBackgroundWorker>();
             foreach (var queue in messageQueueNames)
             {
-                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.client, this, new KeyValuePair<string, string>(queue, this.QueueUrls[queue]), errorHandler));
+                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.client, this, queue.Value, new KeyValuePair<string, string>(queue.Key, this.QueueUrls[queue.Key]), errorHandler));
             }
 
             return queueHandlers;
@@ -74,6 +74,11 @@ namespace ServiceStack.Aws.Messaging
 
         public IDictionary<string, string> QueueUrls { get; private set; }
 
+        protected override MessageHandlerRegister CreateMessageHandlerRegister()
+        {
+            return new AwsSqsMessageHandlerRegister(this, client);
+        }
+
         public override void RegisterMessageHandlers(Action<MessageHandlerRegister> messageHandlerRegister)
         {
             base.RegisterMessageHandlers(messageHandlerRegister);
@@ -89,7 +94,8 @@ namespace ServiceStack.Aws.Messaging
                 foreach (var newQueueName in queueNamesToCreate)
                 {
                     // Init the local queue
-                    messages.Add(newQueueName, new Queue<Message>());
+                    // localMessageQueues.Add(newQueueName, new Queue<IAwsSqsMessage>());
+                    localMessageQueues.Add(newQueueName, new Queue<IMessage>());
 
                     // var queueName = this.GetQueueName(handler.Key, priority);
                     var queueUrl = this.GetQueueUrl(newQueueName);
@@ -140,7 +146,7 @@ namespace ServiceStack.Aws.Messaging
         {
             // TODO: Use assembly qualified name for versioned queue's?
             var stronglyTypedMessage = typeof(Message<>).MakeGenericType(messageType);
-            var messageInstance = (IMessage)Activator.CreateInstance(stronglyTypedMessage);
+            // var messageInstance = (IMessage)Activator.CreateInstance(stronglyTypedMessage);
 
             // Use reflection to call the extension method
             var queueNames = typeof(QueueNames<>);
@@ -185,14 +191,22 @@ namespace ServiceStack.Aws.Messaging
         }
         
         // private object threadLock = new object();
-        private IDictionary<string, Queue<Message>> messages = new Dictionary<string, Queue<Message>>(); 
-        // private Queue<Message> queue = new Queue<Message>(); 
-        public void EnqueMessage(string queueName, Message message)
-        {
-            lock (messages)
-            {
-                messages[queueName].Enqueue(message);
+        private IDictionary<string, Queue<IMessage>> localMessageQueues = new Dictionary<string, Queue<IMessage>>();
+        // private IDictionary<string, Queue<IAwsSqsMessage>> localMessageQueues = new Dictionary<string, Queue<IAwsSqsMessage>>(); 
 
+        // private Queue<Message> queue = new Queue<Message>(); 
+        public void EnqueMessage(string queueName, IMessage /*IAwsSqsMessage*/ message)
+        {
+            lock (localMessageQueues)
+            {
+                localMessageQueues[queueName].Enqueue(message);
+
+                // TODO: If ThreadPooling is to be supported, this code block will need to support both methods
+                // For threadPooling; this would involve adding a new [TASK] to the threadpool. Create contained class.
+                // Would need to get the HANDLER TYPE, based on the queue, and queue the thread. Use LocalMQ?
+                // TODO: Need to manage msg timeouts/retries and multiple processing of msg's. => Wrap in msg obj?
+
+                // TODO: Support mix/match Pooled and Static thread handlers.
                 int[] workerIndexes;
                 if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
                 {
@@ -204,13 +218,13 @@ namespace ServiceStack.Aws.Messaging
             }
         }
 
-        public Message DequeMessage(string queueName)
+        public /*IAwsSqsMessage*/ IMessage DequeMessage(string queueName)
         {
-            lock (messages)
+            lock (localMessageQueues)
             {
-                if (messages[queueName].Count > 0)
+                if (localMessageQueues[queueName].Count > 0)
                 {
-                    return messages[queueName].Dequeue();
+                    return localMessageQueues[queueName].Dequeue();
                 }
 
                 return null;

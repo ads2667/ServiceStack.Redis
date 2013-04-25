@@ -8,6 +8,7 @@ using Amazon.SQS.Model;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
+using ServiceStack.Text;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -53,6 +54,7 @@ namespace ServiceStack.Aws.Messaging
             var response = AwsQueingService.PublishMessage(client, this.GetQueueNameOrUrl(queueName), message);
             if (!response.IsSetSendMessageResult())
             {
+                // TODO: Do not throw ex from BG Thread
                 throw new InvalidOperationException(string.Format("Message could not be published to the queue '{0}'.", queueName));
             }
         }
@@ -81,20 +83,30 @@ namespace ServiceStack.Aws.Messaging
         }
 
         public override byte[] GetAsync(string queueName)
-        {
-            Log.DebugFormat("Get Async from queue: {0}", queueName);
-
+        {            
             var message = this.MqServer.DequeMessage(queueName);
             if (message == null)
             {
                 return null;
             }
 
+            // var sqsMessage = message.Body as ISqsMessage;
+            
+
             // For testing, delete here to see what happens
+            /*
             Log.Debug(string.Format("Deleting Message From Queue: {0}", queueName));
             AwsQueingService.DeleteMessage(client, this.GetQueueNameOrUrl(queueName), message.ReceiptHandle);
+            */
 
-            return Convert.FromBase64String(message.Body);
+            /*
+            var serializedMessage = JsonSerializer.SerializeToString(message);
+            return System.Text.Encoding.UTF8.GetBytes(serializedMessage);
+            */
+            Log.DebugFormat("Get Async from queue: {0}", queueName);
+            return message.ToBytes();
+            // return Convert.FromBase64String(message.Body);
+
             /*
             var response = AwsQueingService.ReceiveMessage(client, this.GetQueueNameOrUrl(queueName));
             if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)
@@ -118,7 +130,9 @@ namespace ServiceStack.Aws.Messaging
         {
             if (client != null)
             {
-               //client.Dispose();
+                // TODO: Need to dispose of the client at some stage, consider adding a 'STOP' method to clients?
+                // TODO: Or create a factory method for the client and dispose within the context of a client, what is the overhead?
+                //client.Dispose();
             }
         }
     }

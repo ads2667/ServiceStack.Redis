@@ -47,7 +47,7 @@ namespace ServiceStack.Redis.Messaging.Redis
                 errorHandler);
         }
 
-        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IList<string> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
         {
             return new List<IQueueHandlerBackgroundWorker>
                 {

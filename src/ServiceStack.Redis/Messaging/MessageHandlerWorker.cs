@@ -52,6 +52,25 @@ namespace ServiceStack.Redis.Messaging
             this.QueueName = queueName;            
         }
 
+        public virtual void NotifyNewMessage()
+        {
+            Interlocked.Increment(ref msgNotificationsReceived);
+            if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
+            {
+                if (Monitor.TryEnter(msgLock))
+                {
+                    Monitor.Pulse(msgLock);
+                    Monitor.Exit(msgLock);
+                }
+                else
+                {
+                    receivedNewMsgs = true;
+                }
+            }
+        }
+
+        
+
         public IMessageHandlerStats GetStats()
         {
             return messageHandler.GetStats();
@@ -78,23 +97,6 @@ namespace ServiceStack.Redis.Messaging
             lock (msgLock)
             {
                 Monitor.Pulse(msgLock);
-            }
-        }
-
-        public virtual void NotifyNewMessage()
-        {
-            Interlocked.Increment(ref msgNotificationsReceived);
-            if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
-            {
-                if (Monitor.TryEnter(msgLock))
-                {
-                    Monitor.Pulse(msgLock);
-                    Monitor.Exit(msgLock);
-                }
-                else
-                {
-                    receivedNewMsgs = true;
-                }
             }
         }
 

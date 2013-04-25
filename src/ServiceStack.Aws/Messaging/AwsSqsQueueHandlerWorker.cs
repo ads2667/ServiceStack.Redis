@@ -2,7 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Amazon.SQS;
 using ServiceStack.Logging;
@@ -20,7 +22,8 @@ namespace ServiceStack.Aws.Messaging
     /// </remarks>
     public class AwsSqsQueueHandlerWorker : QueueHandlerBackgroundWorker
     {
-        public AwsSqsServer MqServer { get; set; }
+        public AwsSqsServer MqServer { get; private set; }
+        public Type MessageType { get; private set; }
         private readonly AmazonSQS _client;
         private readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsQueueHandlerWorker));
 
@@ -28,12 +31,14 @@ namespace ServiceStack.Aws.Messaging
 
         private readonly object syncLock = new object();
 
-        public AwsSqsQueueHandlerWorker(AmazonSQS client, AwsSqsServer mqServer, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        public AwsSqsQueueHandlerWorker(AmazonSQS client, AwsSqsServer mqServer, Type messageType, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
             : base(queue.Key, errorHandler)
         {
             if (mqServer == null) throw new ArgumentNullException("mqServer");
+            if (messageType == null) throw new ArgumentNullException("messageType");
             this.MqServer = mqServer;
-            _client = client;
+            this.MessageType = messageType;
+            this._client = client;
             this.QueueName = queue.Key;
             this.QueueUrl = queue.Value;
            // this.LocalMessageQueue = new ConcurrentQueue<Message>();
@@ -85,7 +90,51 @@ namespace ServiceStack.Aws.Messaging
                         // TODO: Will need to create a seperate queue for each queue litener...
                         // this.LocalMessageQueue.Enqueue(this.QueueName, message);
 
-                        this.MqServer.EnqueMessage(this.QueueName, message);
+                        // TODO: Need to verify Message MD5, and use 'IsSet()' methods to ensure the msg is valid. Earlier in process.
+
+                        
+                        
+
+                        /***** CODE: if the 'MessageHandler' class could be modified to prevent the need to subclass Message Types *****
+                        // Use reflection to call the extension method
+                        var awsSqsMessage = typeof(AwsSqsMessage<>);
+                        var typedAwsSqsMessageType = awsSqsMessage.MakeGenericType(this.MessageType);
+                        var typedAwsSqsMessage = (IAwsSqsMessage)Activator.CreateInstance(typedAwsSqsMessageType);
+                        
+                        // Invoke the method                                                
+                        var messageExtensions = typeof (MessageExtensions);
+                        var extensionMethod = messageExtensions.GetMethods(BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.Public);
+                        MethodInfo method = null;
+                        foreach (var methodInfo in extensionMethod)
+                        {
+                            if (methodInfo.Name == "ToMessage" && methodInfo.IsGenericMethod)
+                            {
+                                method = methodInfo;
+                                break;
+                            }
+                        }
+
+                        
+                        var typedExtensionMethod = method.MakeGenericMethod(this.MessageType);
+                        var typedMessage = typedExtensionMethod.Invoke(messageBytes, BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.Public, null, new object[] { messageBytes }, Thread.CurrentThread.CurrentCulture);
+
+                        typedAwsSqsMessageType.InvokeMember("FromMessage", BindingFlags.InvokeMethod | BindingFlags.Static | BindingFlags.Public, null, typedAwsSqsMessage, new object[] { typedMessage });
+                        typedAwsSqsMessage.MessageId = message.MessageId;
+                        typedAwsSqsMessage.ReceiptHandle = message.ReceiptHandle;
+                        typedAwsSqsMessage.QueueUrl = this.QueueUrl;
+                        */
+                        var messageBytes = Convert.FromBase64String(message.Body);
+
+                        // =====================
+                        var m1 = messageBytes.ToMessage(this.MessageType);
+                        var sqsMessage = (SqsMessage) m1.Body;
+                        sqsMessage.MessageId = message.MessageId;
+                        sqsMessage.ReceiptHandle = message.ReceiptHandle;
+                        sqsMessage.QueueUrl = this.QueueUrl;
+                        sqsMessage.QueueName = this.QueueName;
+                        // =====================
+
+                        this.MqServer.EnqueMessage(this.QueueName, m1 /*sqsMessagetypedAwsSqsMessage message*/);
                         // this.MqServer.NotifyMessageHandlerWorkers(this.QueueName);
 
                         // For testing only.
@@ -128,7 +177,7 @@ namespace ServiceStack.Aws.Messaging
 
         public override IQueueHandlerBackgroundWorker CloneBackgroundWorker()
         {
-            return new AwsSqsQueueHandlerWorker(this._client, this.MqServer, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
+            return new AwsSqsQueueHandlerWorker(this._client, this.MqServer, this.MessageType, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
         }
     }
 }

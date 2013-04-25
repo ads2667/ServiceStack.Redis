@@ -12,7 +12,7 @@ namespace ServiceStack.Aws.Messaging
 {
     public class AwsSqsMessageProducer : MessageProducer
     {
-        public IDictionary<string, string> QueueUrls { get; set; }
+        public IDictionary<string, string> QueueUrls { get; private set; }
         private readonly AmazonSQS client;
         // Amazon.SQS.AmazonSQS client = Amazon.AWSClientFactory.CreateAmazonSQSClient("key", "secretKey");
 
@@ -32,7 +32,19 @@ namespace ServiceStack.Aws.Messaging
 
         protected override void PublishMessage<T>(IMessage<T> message)
         {
+            // TODO: Refactor to reusable method. Also use when sending notification messages?
+            var messageQueueName = message.ToInQueueName();
+            if (!this.QueueUrls.ContainsKey(messageQueueName))
+            {
+                throw new InvalidOperationException(string.Format("No queue is registered for the message type {0}.", typeof(T).Name));
+            }
+
+            // TODO: If a notification response is required, clients should use the 'MessageQueueClient'.
             // TODO: Should messaegs from the Producer be auto-configured to be one-way only?
+            // TODO: Need to test DLQ, and write tests to verify all messages are being processed.
+            // TODO: Look at using in-memory for these unit tests
+            message.Options = (int)MessageOption.None; //// Do not send a reply to the out queue.
+            
             Log.DebugFormat("Publishing message to queue {0}.", message.ToInQueueName());
             var response =
                 client.SendMessage(
