@@ -17,28 +17,27 @@ namespace ServiceStack.Aws.Messaging
     /// <summary>
     /// Defines a class that receives messages from a queue, and notifies worker threads that a new message has arrived.
     /// </summary>
-    /// <remarks>
-    /// TODO: DO NOT LISTEN TO DEAD-LETTER QUEUES!
-    /// </remarks>
     public class AwsSqsQueueHandlerWorker : QueueHandlerBackgroundWorker
     {
-        public AwsSqsServer MqServer { get; private set; }
+        public ISqsClient SqsClient { get; private set; }
+        public IMessageCoordinator MessageCoordinator { get; private set; }
         public Type MessageType { get; private set; }
-        private readonly AmazonSQS _client;
+        
         private readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsQueueHandlerWorker));
 
         private bool listenForMessages = true;
 
         private readonly object syncLock = new object();
 
-        public AwsSqsQueueHandlerWorker(AmazonSQS client, AwsSqsServer mqServer, Type messageType, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        public AwsSqsQueueHandlerWorker(ISqsClient sqsClient, IMessageCoordinator messageCoordinator, Type messageType, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
             : base(queue.Key, errorHandler)
         {
-            if (mqServer == null) throw new ArgumentNullException("mqServer");
+            if (sqsClient == null) throw new ArgumentNullException("sqsClient");
+            if (messageCoordinator == null) throw new ArgumentNullException("messageCoordinator");
             if (messageType == null) throw new ArgumentNullException("messageType");
-            this.MqServer = mqServer;
-            this.MessageType = messageType;
-            this._client = client;
+            this.SqsClient = sqsClient;
+            this.MessageCoordinator = messageCoordinator;
+            this.MessageType = messageType;            
             this.QueueName = queue.Key;
             this.QueueUrl = queue.Value;
            // this.LocalMessageQueue = new ConcurrentQueue<Message>();
@@ -49,12 +48,14 @@ namespace ServiceStack.Aws.Messaging
 
         public string QueueUrl { get; private set; }
 
-        public string QueueName { get; private set; }
+        // public string QueueName { get; private set; }
 
+        /*
         protected override IMessageQueueClient CreateMessageQueueClient()
         {
-            return new AwsSqsMessageQueueClient(this._client, this.MqServer, this.MqServer.QueueUrls, null);
+            return new AwsSqsMessageQueueClient(this._client, this.MessageCoordinator, this.MessageCoordinator.QueueUrls, null);
         }
+        */
 
         /*
         public void Start()
@@ -76,7 +77,7 @@ namespace ServiceStack.Aws.Messaging
             {
                 Log.DebugFormat("Polling SQS Queue '{0}' for messages.", this.QueueName);
 
-                var response = AwsQueingService.ReceiveMessage(_client, this.QueueUrl); // Blocks until timout, or msg received
+                var response = this.SqsClient.ReceiveMessage(this.QueueUrl); // Blocks until timout, or msg received
                 if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)
                 {
                     // Place the item in the ready to process queue, and notify workers that a new msg has arrived.                    
@@ -127,14 +128,22 @@ namespace ServiceStack.Aws.Messaging
 
                         // =====================
                         var m1 = messageBytes.ToMessage(this.MessageType);
-                        var sqsMessage = (SqsMessage) m1.Body;
-                        sqsMessage.MessageId = message.MessageId;
-                        sqsMessage.ReceiptHandle = message.ReceiptHandle;
-                        sqsMessage.QueueUrl = this.QueueUrl;
-                        sqsMessage.QueueName = this.QueueName;
+                        var sqsMessage = m1.Body as ISqsMessage;
+                        if (sqsMessage != null)
+                        {
+                            sqsMessage.MessageId = message.MessageId;
+                            sqsMessage.ReceiptHandle = message.ReceiptHandle;
+                            sqsMessage.QueueUrl = this.QueueUrl;
+                            sqsMessage.QueueName = this.QueueName;
+                        }
+                        else
+                        {
+                            Log.WarnFormat("The message type '{0}' is using the AwsSqsQueueHandler, but does not implement 'ISqsMessage'. No AwsSqsMessageHandlerRegister pre,post or error message handlers will be executed.", this.MessageType.Name);
+                        }
                         // =====================
 
-                        this.MqServer.EnqueMessage(this.QueueName, m1 /*sqsMessagetypedAwsSqsMessage message*/);
+                        this.MessageCoordinator.EnqueMessage(this.QueueName, m1 /*sqsMessagetypedAwsSqsMessage message*/);
+                        this.IncrementMessageCount(1);
                         // this.MqServer.NotifyMessageHandlerWorkers(this.QueueName);
 
                         // For testing only.
@@ -177,7 +186,7 @@ namespace ServiceStack.Aws.Messaging
 
         public override IQueueHandlerBackgroundWorker CloneBackgroundWorker()
         {
-            return new AwsSqsQueueHandlerWorker(this._client, this.MqServer, this.MessageType, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
+            return new AwsSqsQueueHandlerWorker(this.SqsClient, this.MessageCoordinator, this.MessageType, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
         }
     }
 }

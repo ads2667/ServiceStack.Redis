@@ -1,0 +1,80 @@
+log4net: log4net assembly [log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a]. Loaded from [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\log4net.dll]. (.NET Runtime [4.0.30319.18033] on Microsoft Windows NT 6.2.9200.0)
+log4net: defaultRepositoryType [log4net.Repository.Hierarchy.Hierarchy]
+log4net: Creating repository for assembly [Playground, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]
+log4net: Assembly [Playground, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null] Loaded From [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\Playground.exe]
+log4net: Assembly [Playground, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null] does not have a RepositoryAttribute specified.
+log4net: Assembly [Playground, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null] using repository [log4net-default-repository] and repository type [log4net.Repository.Hierarchy.Hierarchy]
+log4net: Creating repository [log4net-default-repository] using type [log4net.Repository.Hierarchy.Hierarchy]
+log4net: configuring repository [log4net-default-repository] using file [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\Playground.vshost.exe.Config] watching for file updates
+log4net: configuring repository [log4net-default-repository] using file [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\Playground.vshost.exe.Config]
+log4net: configuring repository [log4net-default-repository] using stream
+log4net: loading XML configuration
+log4net: Configuring Repository [log4net-default-repository]
+log4net: Configuration update mode [Merge].
+log4net: Logger [root] Level string is [INFO].
+log4net: Logger [root] level set to [name="INFO",value=40000].
+log4net: Loading Appender [ConsoleAppender] type: [log4net.Appender.ConsoleAppender]
+log4net: Setting Property [Threshold] to Level value [INFO]
+log4net: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Setting Property [ConversionPattern] to String value [%-4timestamp [%thread] %-5level %logger %ndc - %message%newline]
+log4net: Converter [timestamp] Option [] Format [min=4,max=2147483647,leftAlign=True]
+log4net: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [ndc] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: reated Appender [ConsoleAppender]
+log4net: Adding appender named [ConsoleAppender] to logger [root].
+log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could be found.
+log4net:ERROR Appender named [FileAppender] not found.
+log4net: Hierarchy Threshold []
+log4net: configuring repository [log4net-default-repository] using file [Lab.exe.config] watching for file updates
+log4net: configuring repository [log4net-default-repository] using file [Lab.exe.config]
+log4net: config file [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\Lab.exe.config] not found. Configuration unchanged.
+log4net: Creating repository for assembly [ServiceStack.Logging.Log4Net, Version=1.0.8.0, Culture=neutral, PublicKeyToken=null]
+log4net: Assembly [ServiceStack.Logging.Log4Net, Version=1.0.8.0, Culture=neutral, PublicKeyToken=null] Loaded From [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\ServiceStack.Logging.Log4Net.dll]
+log4net: Assembly [ServiceStack.Logging.Log4Net, Version=1.0.8.0, Culture=neutral, PublicKeyToken=null] does not have a RepositoryAttribute specified.
+log4net: Assembly [ServiceStack.Logging.Log4Net, Version=1.0.8.0, Culture=neutral, PublicKeyToken=null] using repository [log4net-default-repository] and repository type [log4net.Repository.Hierarchy.Hierarchy]
+log4net: repository [log4net-default-repository] already exists, using repository type [log4net.Repository.Hierarchy.Hierarchy]
+log4net: Shutdown called on Hierarchy [log4net-default-repository]
+log4net: configuring repository [log4net-default-repository] using .config file section
+log4net: Application config file is [C:\Users\Adam\Documents\ServiceStack.Redis\src\Playground\bin\Debug\Playground.vshost.exe.Config]
+log4net: Configuring Repository [log4net-default-repository]
+log4net: Configuration update mode [Merge].
+log4net: Logger [root] Level string is [INFO].
+log4net: Logger [root] level set to [name="INFO",value=40000].
+log4net: Loading Appender [ConsoleAppender] type: [log4net.Appender.ConsoleAppender]
+log4net: Setting Property [Threshold] to Level value [INFO]
+log4net: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Setting Property [ConversionPattern] to String value [%-4timestamp [%thread] %-5level %logger %ndc - %message%newline]
+log4net: Converter [timestamp] Option [] Format [min=4,max=2147483647,leftAlign=True]
+log4net: Converter [literal] Option [ [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [thread] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [] ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [level] Option [] Format [min=5,max=2147483647,leftAlign=True]
+log4net: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [logger] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [ ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [ndc] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [literal] Option [ - ] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [message] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Converter [newline] Option [] Format [min=-1,max=2147483647,leftAlign=False]
+log4net: Setting Property [Layout] to object [log4net.Layout.PatternLayout]
+log4net: reated Appender [ConsoleAppender]
+log4net: Adding appender named [ConsoleAppender] to logger [root].
+log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could be found.
+log4net:ERROR Appender named [FileAppender] not found.
+log4net: Hierarchy Threshold []
+log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could be found.
+log4net:ERROR Appender named [FileAppender] not found.
+log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could be found.
+log4net:ERROR Appender named [FileAppender] not found.

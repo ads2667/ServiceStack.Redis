@@ -43,9 +43,9 @@ namespace Playground
             var svc = MessageServerFactory.CreateMessageService();
 
             // Register the handlers before creating any client objects.
-            var producer = svc.MessageFactory.CreateMessageProducer();
+            var messageQueueClient = svc.MessageFactory.CreateMessageQueueClient();
             
-            Log.Info("===== Message Queue Server Started =====");
+            Log.Info("===== Message Queue Client Started =====");
             Log.Info("Type 'EXIT' to close.");
             // svc.Start();
 
@@ -53,8 +53,53 @@ namespace Playground
 
             while (true)
             {
-                producer.Publish(new Hello {Text = "This comes from the client"});
-                producer.Publish(new Hello2 {Text = "This comes from the client #2"});
+                // The MqClient should result in a message in the out q, as the messages are not configured to be one-way
+                messageQueueClient.Publish(new Hello {Text = "This comes from the client"});
+
+                // This message should return a response.
+                messageQueueClient.Publish(new Hello3 {Text = "This comes from the client #3" });
+
+                Log.Info("Waiting for message response.");
+                var responseQueueName = QueueNames<Hello3Response>.In;
+                var response = messageQueueClient.Get(responseQueueName, TimeSpan.FromSeconds(20));
+                if (response != null)
+                {
+                    var obj = response.ToMessage<Hello3Response>().GetBody();
+                    Log.InfoFormat("Message response received: {0}", obj.ResponseText);
+                    ((AwsSqsMessageQueueClient)messageQueueClient).DeleteMessageFromQueue(responseQueueName, obj.ReceiptHandle);
+                    Log.InfoFormat("Deleted response message from queue: {0}", obj.QueueName);
+                }
+                else
+                {
+                    Log.Info("No message response received.");
+                }
+                
+                // ================== REQ/REPLY MQ ===============
+                var uniqueCallbackQ = "MyUniqueQueueName";
+                messageQueueClient.Publish(new Message<Hello4>(new Hello4 { Text = "This comes from the client #4" })
+                    {
+                        ReplyTo = uniqueCallbackQ
+                    });
+
+                Log.Info("Waiting for message response.");
+                var uniqueResponse = messageQueueClient.Get(uniqueCallbackQ, TimeSpan.FromSeconds(20));
+                if (uniqueResponse != null)
+                {
+                    var obj = uniqueResponse.ToMessage<Hello4Response>().GetBody();
+                    Log.InfoFormat("Message response received: {0}", obj.ResponseText);
+                    ((AwsSqsMessageQueueClient)messageQueueClient).DeleteMessageFromQueue(uniqueCallbackQ, obj.ReceiptHandle);
+                    Log.InfoFormat("Deleted response message from queue: {0}", obj.QueueName);
+                }
+                else
+                {
+                    Log.Info("No message response received.");
+                }
+
+                // TODO: Optionally, delete the mq?
+
+                // ===============================================
+
+                // TODO: TEST - messageQueueClient.WaitForNotifyOnAny()
 
                 var text = Console.ReadLine() ?? string.Empty;
                 if (text.ToUpperInvariant() == "EXIT")

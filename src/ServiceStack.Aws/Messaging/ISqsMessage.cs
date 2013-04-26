@@ -1,33 +1,33 @@
-﻿using ServiceStack.Messaging;
-
-namespace ServiceStack.Aws.Messaging
+﻿namespace ServiceStack.Aws.Messaging
 {
-    public interface ISqsMessage : IMessage
+    public interface ISqsMessage
     {
         /// <summary>
         /// Gets or sets the message Id.
         /// </summary>
-        string MessageId { get; }
+        string MessageId { get; set; }
 
         /// <summary>
         /// Gets or sets the receipt handle of the message.
         /// </summary>
-        string ReceiptHandle { get; }
+        string ReceiptHandle { get; set; }
 
         /// <summary>
         /// Gets or sets the URL of the queue where the message was received from.
         /// </summary>
-        string QueueUrl { get; }
+        string QueueUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the queue where the message was received from.
         /// </summary>
-        string QueueName { get; }
+        string QueueName { get; set; }
     }
 
+    /*
     public interface ISqsMessage<T> : IMessage<T>, ISqsMessage
     {
     }
+    */
 
     /*
     // This code was intended to prevent the Message's having to implement from ISqsMessage

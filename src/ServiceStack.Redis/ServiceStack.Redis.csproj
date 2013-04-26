@@ -156,6 +156,7 @@
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
     <Compile Include="Messaging\BackgroundWorker.cs" />
+    <Compile Include="Messaging\IQueueHandlerStats.cs" />
     <Compile Include="Messaging\QueueHandlerWorker.cs" />
     <Compile Include="Messaging\MqServer2.cs" />
     <Compile Include="Messaging\MessageHandlerWorker.cs" />

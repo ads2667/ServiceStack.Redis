@@ -12,17 +12,18 @@ namespace ServiceStack.Aws.Messaging
 {
     public class AwsSqsMessageProducer : MessageProducer
     {
+        public ISqsClient SqsClient { get; private set; }
         public IDictionary<string, string> QueueUrls { get; private set; }
-        private readonly AmazonSQS client;
+        
         // Amazon.SQS.AmazonSQS client = Amazon.AWSClientFactory.CreateAmazonSQSClient("key", "secretKey");
 
-        public AwsSqsMessageProducer(Amazon.SQS.AmazonSQS client, IDictionary<string, string> queueUrls, Action onPublishedCallback) 
+        public AwsSqsMessageProducer(ISqsClient sqsClient, IDictionary<string, string> queueUrls, Action onPublishedCallback) 
             : base(onPublishedCallback)
         {
-            if (client == null) throw new ArgumentNullException("client");
+            if (sqsClient == null) throw new ArgumentNullException("sqsClient");
             if (queueUrls == null) throw new ArgumentNullException("queueUrls");
+            this.SqsClient = sqsClient;
             this.QueueUrls = queueUrls;
-            this.client = client;
         }
 
         protected override string GetQueueNameOrUrl<T>(IMessage<T> message)
@@ -47,14 +48,11 @@ namespace ServiceStack.Aws.Messaging
             
             Log.DebugFormat("Publishing message to queue {0}.", message.ToInQueueName());
             var response =
-                client.SendMessage(
+                this.SqsClient.PublishMessage(
                     new SendMessageRequest().WithQueueUrl(this.GetQueueNameOrUrl(message))
                                             .WithMessageBody(Convert.ToBase64String(message.ToBytes())));
                
-            if (!response.IsSetSendMessageResult())
-            {
-                throw new NotImplementedException("Could not publish message. Error handling not implemented.");    
-            }
+            
 
             //message. client.SendMessage(new SendMessageRequest(){})
             // throw new NotImplementedException();
@@ -62,9 +60,9 @@ namespace ServiceStack.Aws.Messaging
 
         public override void Dispose()
         {
-            if (client != null)
+            if (this.SqsClient != null)
             {
-                client.Dispose();
+                this.SqsClient.Dispose();
             }
         }
     }

@@ -4,17 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A53F1744-1566-4ED3-8A03-8DA19CE5931E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{F25B2CF8-454B-48AA-8986-0BE06D84BFF2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceStack.Aws</RootNamespace>
-    <AssemblyName>ServiceStack.Aws</AssemblyName>
+    <RootNamespace>Playground</RootNamespace>
+    <AssemblyName>Playground</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AWSSDK.1.5.16.1\lib\AWSSDK.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Common, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Common.dll</HintPath>
@@ -44,11 +50,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Logging.Log4Net">
+      <HintPath>..\packages\ServiceStack.Logging.Log4Net.1.0.8.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.Text.3.9.43\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,28 +67,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\AwsQueingService.cs" />
-    <Compile Include="Messaging\AwsSqsHost.cs" />
-    <Compile Include="Messaging\SqsMessage.cs" />
-    <Compile Include="Messaging\AwsSqsMessageFactory.cs" />
-    <Compile Include="Messaging\AwsSqsMessageHandlerRegister.cs" />
-    <Compile Include="Messaging\AwsSqsMessageHandlerWorker.cs" />
-    <Compile Include="Messaging\AwsSqsMessageProducer.cs" />
-    <Compile Include="Messaging\AwsSqsMessageQueueClient.cs" />
-    <Compile Include="Messaging\AwsSqsQueueHandlerWorker.cs" />
-    <Compile Include="Messaging\AwsSqsServer.cs" />
-    <Compile Include="Messaging\ISqsClient.cs" />
-    <Compile Include="Messaging\ISqsMessage.cs" />
-    <Compile Include="Messaging\MessageSecurity.cs" />
-    <Compile Include="Messaging\SqsClient.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Messaging.Core\Messaging.Core.csproj">
+      <Project>{8AB2FF55-30E7-48F8-B040-D3C43E8AD389}</Project>
+      <Name>Messaging.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceStack.Aws\ServiceStack.Aws.csproj">
+      <Project>{a53f1744-1566-4ed3-8a03-8da19ce5931e}</Project>
+      <Name>ServiceStack.Aws</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceStack.Redis\ServiceStack.Redis.csproj">
-      <Project>{AF99F19B-4C04-4F58-81EF-B092F1FCC540}</Project>
+      <Project>{af99f19b-4c04-4f58-81ef-b092f1fcc540}</Project>
       <Name>ServiceStack.Redis</Name>
     </ProjectReference>
   </ItemGroup>

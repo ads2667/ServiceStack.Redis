@@ -33,7 +33,8 @@ namespace Server
 
             Log.Info("Stopping server...");
             svc.Stop();
-            Log.Info("Server stopped.");
+            Log.Info("Server stopped. Press enter to close.");
+            Console.ReadLine();
         }
 
     }

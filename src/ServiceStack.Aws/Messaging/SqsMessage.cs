@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceStack.Messaging;
-
-namespace ServiceStack.Aws.Messaging
+﻿namespace ServiceStack.Aws.Messaging
 {
-    public abstract class SqsMessage : Message, ISqsMessage
+    public abstract class SqsMessage : ISqsMessage
     {
         /// <summary>
-        /// Gets the message Id.
+        /// Gets or sets the message Id.
         /// </summary>
-        public string MessageId { get; internal set; }
+        public string MessageId { get; set; }
 
         /// <summary>
-        /// Gets the receipt handle of the message.
+        /// Gets or sets the receipt handle of the message.
         /// </summary>
-        public string ReceiptHandle { get; internal set; }
+        public string ReceiptHandle { get; set; }
 
         /// <summary>
-        /// Gets the URL of the queue where the message was received from.
+        /// Gets or sets the URL of the queue where the message was received from.
         /// </summary>
-        public string QueueUrl { get; internal set; }
+        public string QueueUrl { get; set; }
 
         /// <summary>
-        /// Gets the name of the queue where the message was received from.
+        /// Gets or sets the name of the queue where the message was received from.
         /// </summary>
-        public string QueueName { get; internal set; }
+        public string QueueName { get; set; }
     }
     /*
     // Need to decorate with JSON Serializer (ServiceStack) attributes to have properties included.

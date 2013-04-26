@@ -401,6 +401,7 @@ namespace ServiceStack.Redis.Messaging
 
             if (Interlocked.CompareExchange(ref status, WorkerStatus.Stopping, WorkerStatus.Started) == WorkerStatus.Started)
             {
+                Log.Info(this.GetStatsDescription());
                 Log.Debug("Stopping MQ Host...");
 
                 //Unblock current bgthread by issuing StopCommand
@@ -469,13 +470,13 @@ namespace ServiceStack.Redis.Messaging
 
         void WorkerErrorHandler(IMessageHandlerBackgroundWorker source, Exception ex)
         {
-            Log.Error("Received exception in Worker: " + source.QueueName, ex);
+            Log.Error("Received exception in Message Worker: " + source.QueueName, ex);
             for (int i = 0; i < messageWorkers.Length; i++)
             {
                 var worker = messageWorkers[i];
                 if (worker == source)
                 {
-                    Log.Debug("Starting new {0} Worker at index {1}...".Fmt(source.QueueName, i));
+                    Log.Debug("Starting new {0} Message Worker at index {1}...".Fmt(source.QueueName, i));
                     messageWorkers[i] = (IMessageHandlerBackgroundWorker)source.Clone();
                     messageWorkers[i].Start();
                     worker.Dispose();
@@ -600,7 +601,8 @@ namespace ServiceStack.Redis.Messaging
         {
             lock (messageWorkers)
             {
-                var sb = new StringBuilder("#MQ SERVER STATS:\n");
+                var sb = new StringBuilder("===============\n");
+                sb.AppendLine("#MQ SERVER STATS:");
                 sb.AppendLine("===============");
                 sb.AppendLine("Current Status: " + GetStatus());
                 sb.AppendLine("Listening On: " + string.Join(", ", messageWorkers.ToList().ConvertAll(x => x.QueueName).ToArray()));
@@ -609,6 +611,11 @@ namespace ServiceStack.Redis.Messaging
                 sb.AppendLine("Num of Continuous Errors: " + Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
                 sb.AppendLine("Last ErrorMsg: " + lastExMsg);
                 sb.AppendLine("===============");
+                foreach (var queueWorker in queueWorkers)
+                {
+                    sb.AppendLine(queueWorker.GetStats().ToString());
+                    sb.AppendLine("---------------\n");
+                }
                 foreach (var worker in messageWorkers)
                 {
                     sb.AppendLine(worker.GetStats().ToString());

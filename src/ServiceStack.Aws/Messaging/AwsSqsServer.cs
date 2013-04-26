@@ -16,29 +16,42 @@ using Message = Amazon.SQS.Model.Message;
 namespace ServiceStack.Aws.Messaging
 {
 
-    public class AwsSqsServer : MqServer2
+    public interface IMessageCoordinator
     {
-        private readonly AmazonSQS client;
+        void EnqueMessage(string queueName, IMessage message);
+        
+        IMessage DequeMessage(string queueName);
+    }
 
-        public AwsSqsServer(Amazon.SQS.AmazonSQS sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
+    // TODO: Create a ISqsClient impl that wraps the amazon client object and exposes methods, which also accepts amazon msg objects as input/output
+    // TODO: Make the MQs Versioned using the Assmbly qualified name!?
+    // ThreadPool Handler
+    // Parameterize SQS polling times, visibility, etc...
+    // Graceful termination of threads
+    public class AwsSqsServer : MqServer2, IMessageCoordinator
+    {        
+        public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
             : base(null, retryCount, requestTimeOut)
         {
+            if (sqsClient == null)
+            {
+                throw new ArgumentNullException("sqsClient");
+            }
+
+            this.SqsClient = sqsClient;
             this.QueueUrls = new Dictionary<string, string>();
-            client = sqsClient;
         }
+
+        public ISqsClient SqsClient { get; private set; }
 
         public override IMessageQueueClient CreateMessageQueueClient()
         {
-            return new AwsSqsMessageQueueClient(client, this, this.QueueUrls, null);
+            return new AwsSqsMessageQueueClient(this.SqsClient, this, this.QueueUrls, null);
         }
        
-        // ConcurrentQueue<object> localQueue = new ConcurrentQueue<object>(); 
-
-        IDictionary<string, AwsSqsQueueHandlerWorker> queueWorkers = new Dictionary<string, AwsSqsQueueHandlerWorker>();
-
         protected override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {
-           return new AwsSqsMessageHandlerWorker(client, this, this.QueueUrls, messageHandler, queueName, errorHandler);
+            return new AwsSqsMessageHandlerWorker(this.SqsClient, this, this.QueueUrls, messageHandler, queueName, errorHandler);
         }
         
         protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
@@ -46,7 +59,7 @@ namespace ServiceStack.Aws.Messaging
             var queueHandlers = new List<IQueueHandlerBackgroundWorker>();
             foreach (var queue in messageQueueNames)
             {
-                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.client, this, queue.Value, new KeyValuePair<string, string>(queue.Key, this.QueueUrls[queue.Key]), errorHandler));
+                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.SqsClient, this, queue.Value, new KeyValuePair<string, string>(queue.Key, this.QueueUrls[queue.Key]), errorHandler));
             }
 
             return queueHandlers;
@@ -55,9 +68,9 @@ namespace ServiceStack.Aws.Messaging
         public override void Dispose()
         {
             base.Dispose();
-            if (client != null)
+            if (this.SqsClient != null)
             {
-                client.Dispose();
+                this.SqsClient.Dispose();
             }
         }
 
@@ -66,9 +79,13 @@ namespace ServiceStack.Aws.Messaging
         {
             get
             {
-                // TODO: Throw EX if Handlers are not already configured.
+                if (this.handlerMap.Count == 0)
+                {
+                    throw new InvalidOperationException("No Message Handlers have been configured. Clients can not be created until one or more message handlers have been registered.");
+                }
+                
                 // TODO: Change CTOR code to remove or null MessageFactory param, remember Redis requirements.
-                return messageFactory ?? (messageFactory = new AwsSqsMessageFactory(client, this, this.QueueUrls));
+                return messageFactory ?? (messageFactory = new AwsSqsMessageFactory(this.SqsClient, this, this.QueueUrls));
             }
         }
 
@@ -76,14 +93,14 @@ namespace ServiceStack.Aws.Messaging
 
         protected override MessageHandlerRegister CreateMessageHandlerRegister()
         {
-            return new AwsSqsMessageHandlerRegister(this, client);
+            return new AwsSqsMessageHandlerRegister(this, this.SqsClient);
         }
 
         public override void RegisterMessageHandlers(Action<MessageHandlerRegister> messageHandlerRegister)
         {
             base.RegisterMessageHandlers(messageHandlerRegister);
 
-            // Get the Url for each registered message handler.
+            // For Amazon SQS we need to get the Url for each registered message handler.
             foreach (var handler in this.handlerMap)
             {
                 // Get all queue names
@@ -98,19 +115,13 @@ namespace ServiceStack.Aws.Messaging
                     localMessageQueues.Add(newQueueName, new Queue<IMessage>());
 
                     // var queueName = this.GetQueueName(handler.Key, priority);
-                    var queueUrl = this.GetQueueUrl(newQueueName);
+                    var queueUrl = this.SqsClient.GetOrCreateQueueUrl(newQueueName);
                     this.QueueUrls.Add(newQueueName, queueUrl);
                 }                
             }
-
-            //mq:Hello.outq
-            
-            // Remove the local queues
-            this.amazonQueueUrls.Clear();
         }
-
-        private IList<string> amazonQueueUrls = null;
-
+        
+        
         private string GetQueueName(Type messageType, long priority)
         {
             // TODO: Use assembly qualified name for versioned queue's?
@@ -165,31 +176,8 @@ namespace ServiceStack.Aws.Messaging
             return newQueueNames;
         }
 
-        private static readonly Regex QueueNameRegex = new Regex("[:\\.]");
+        // TODO: Refactor local queue management into its own class? Or move to ISqsClient?
 
-        private string GetQueueUrl(string queueName)
-        {
-            // Clean the queue name
-            queueName = QueueNameRegex.Replace(queueName, "_");
-
-            // Get a list of queues from SQS
-            if (amazonQueueUrls == null)
-            {
-                amazonQueueUrls = AwsQueingService.GetAllQueueNames(client);
-            }
-
-            // Check if the queue exists
-            foreach (var queueUrl in amazonQueueUrls)
-            {
-                if (queueUrl.Substring(queueUrl.LastIndexOf('/') + 1).ToUpperInvariant() == queueName.ToUpperInvariant())
-                {
-                    return queueUrl;
-                }
-            }
-
-            return AwsQueingService.CreateMessageQueue(client, queueName);
-        }
-        
         // private object threadLock = new object();
         private IDictionary<string, Queue<IMessage>> localMessageQueues = new Dictionary<string, Queue<IMessage>>();
         // private IDictionary<string, Queue<IAwsSqsMessage>> localMessageQueues = new Dictionary<string, Queue<IAwsSqsMessage>>(); 

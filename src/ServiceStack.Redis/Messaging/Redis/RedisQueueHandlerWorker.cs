@@ -47,8 +47,9 @@ namespace ServiceStack.Redis.Messaging.Redis
                             subscription.UnSubscribeFromAllChannels(); //Un block thread.
                             return;
                         }
-
+                        
                         this.MqServer.NotifyMessageHandlerWorkers(msg);
+                        this.IncrementMessageCount(1);
                         /*
                         // this.Server.NotifyMessageHandlerWorkers(msg);
                         // Just need to do a little reading on events in multi-threaded environements...
@@ -87,9 +88,11 @@ namespace ServiceStack.Redis.Messaging.Redis
             return new RedisQueueHandlerWorker(clientsManager, this.MqServer, this.QueueName, this.ErrorHandler);
         }
 
+        /*
         protected override IMessageQueueClient CreateMessageQueueClient()
         {
            return new RedisMessageQueueClient(clientsManager);
         }
+        */
     }
 }
