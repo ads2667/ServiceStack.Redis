@@ -44,8 +44,11 @@ namespace ServiceStack.Aws.Messaging
         /// Attempts to receive a message from a message queue.
         /// </summary>
         /// <param name="queueUrl">The url of the queue to retrieve a message from.</param>
+        /// <param name="waitTimeInSeconds">The time in seconds, to wait for a message to be returned from the SQS message queue.</param>
+        /// <param name="maxNumberOfMessages">The maximum number of messges to receive per request.</param>
+        /// <param name="visibilityTimeout">The time, in seconds, the client has to process the message before it can be received by another client.</param>
         /// <returns>The received message reponse.</returns>
-        ReceiveMessageResponse ReceiveMessage(string queueUrl);        
+        ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout);
 
         /// <summary>
         /// Attempts to receive one or more messages from a message queue.
@@ -81,5 +84,18 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="deleteMessageRequest">The delete message request.</param>
         /// <returns>The delete message response.</returns>
         DeleteMessageResponse DeleteMessage(DeleteMessageRequest deleteMessageRequest);
+
+        /// <summary>
+        /// Deletes a SQS message queue.
+        /// </summary>
+        /// <param name="queueUrl">The url of the queue to delete.</param>
+        void DeleteQueue(string queueUrl);
+
+        /// <summary>
+        /// Deletes a SQS message queue.
+        /// </summary>
+        /// <param name="deleteQueueRequest">The delete queue request.</param>
+        /// <returns>The delete queue response.</returns>
+        DeleteQueueResponse DeleteQueue(DeleteQueueRequest deleteQueueRequest);
     }
 }

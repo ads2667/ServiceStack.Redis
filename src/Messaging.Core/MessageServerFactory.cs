@@ -29,7 +29,11 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAI32WJMKWXTRJ6EHQ", "pjpRGOLvT0WsHrXC0DcKaSENKaNygJKs9zJg1TeG")));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(null, null)));
+
+            // TODO: Use customer registration to override default values
+            // svc.RegisterMessageHandlers(register => register.AddHandler());
+
             return RegisterMessageHandlers(svc);
         }
 

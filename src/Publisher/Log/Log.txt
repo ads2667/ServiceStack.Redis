@@ -6489,3 +6489,907 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-04-26 20:09:07,357 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
 2013-04-26 20:09:07,359 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
 2013-04-26 20:09:55,619 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:38:17,647 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:38:17,908 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,620 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,763 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,895 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,027 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,156 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,279 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,415 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,545 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,669 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,800 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,933 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,064 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,198 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,327 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,456 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,588 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 14:38:20,588 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:38:20,592 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 14:38:20,683 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:38:21,066 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 14:38:21,072 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 14:38:42,934 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 14:38:42,935 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:38:43,162 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 14:38:43,163 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 14:38:47,582 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:40:45,550 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:40:45,643 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,456 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,634 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,763 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,893 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,021 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,155 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,272 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,405 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,534 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,659 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,789 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,918 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,032 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,218 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,344 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,481 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 14:40:48,481 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:40:48,490 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 14:40:48,605 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:40:48,816 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 14:40:48,821 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 14:43:22,947 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:43:33,646 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:43:33,906 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,680 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,802 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,922 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,039 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,153 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,272 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,393 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,512 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,638 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,756 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,882 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,002 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,129 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,262 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,400 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,524 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 14:43:36,525 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:43:36,543 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 14:43:36,685 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:43:36,860 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 14:43:36,865 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 14:43:43,250 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:00:58,130 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:00:58,284 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:58,991 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,182 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,307 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,437 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,562 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,687 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,818 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,947 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,080 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,207 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,329 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,460 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,579 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,697 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,816 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,946 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:01:00,946 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:01:00,957 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:01:01,098 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:01:01,327 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:01:01,334 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:02:05,667 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:11:20,917 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:11:20,971 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,675 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,796 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,925 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,051 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,172 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,299 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,425 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,559 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,689 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,821 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,952 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,083 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,213 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,329 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,453 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,589 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:11:23,589 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:11:23,603 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:11:23,708 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:11:24,018 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:11:24,024 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:11:54,236 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:13:02,760 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:13:02,812 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,543 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,676 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,815 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,951 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,085 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,224 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,358 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,502 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,634 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,771 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,912 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,055 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,191 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,330 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,464 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,603 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:13:05,604 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:13:05,616 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:13:05,719 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:13:05,924 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:13:05,934 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:13:54,338 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:18:44,917 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:18:44,968 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:45,719 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,029 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,155 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,308 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,453 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,579 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,712 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,856 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,989 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,128 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,263 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,388 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,531 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,662 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,784 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,922 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:18:47,922 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:18:47,928 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:18:48,039 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:18:48,327 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:18:48,335 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:19:04,046 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:33:58,937 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:33:59,078 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:33:59,895 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,016 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,147 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,356 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,477 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,605 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,729 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,864 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,993 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,118 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,244 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,372 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,494 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,620 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,749 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,870 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:34:01,871 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:34:01,884 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:34:02,051 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:34:02,234 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:34:02,241 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:35:03,195 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:35:03,277 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,092 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,256 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,385 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,515 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,644 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,775 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,907 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,044 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,179 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,297 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,419 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,552 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,685 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,818 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,948 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:06,081 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-27 15:35:06,081 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:35:06,086 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:35:06,170 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:35:06,380 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:35:06,389 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:36,672 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:36,672 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:37,156 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:37,156 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:37,284 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:37,285 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:37,442 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:37,443 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:37,581 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:37,581 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:37,728 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:37,728 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:37,868 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:37,868 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:38,013 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:38,013 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:38,276 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:38,277 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:38,417 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:38,418 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:38,549 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:38,552 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:38,691 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:38,692 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:38,836 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:38,836 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:38,986 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:38,986 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:39,117 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:39,118 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:39,259 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:39,259 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:39,392 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:39,392 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:39,531 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:39,532 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:39,691 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:39,692 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:39,827 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:39,828 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:39,948 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:39,950 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:40,088 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:40,088 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:40,220 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:40,221 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:40,336 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:40,337 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:40,482 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:40,483 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:40,625 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:40,625 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:40,744 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:40,744 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:40,882 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:40,883 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:41,025 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:41,027 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:41,166 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:41,167 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:41,377 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:41,378 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:41,514 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:41,514 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:41,647 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:41,647 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:41,781 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:41,781 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:41,920 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:41,922 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:42,053 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:42,054 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:42,178 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:42,178 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:42,309 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:42,310 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:42,453 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:42,454 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:42,585 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:42,585 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:42,704 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:42,704 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:42,838 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:42,839 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:42,967 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:42,968 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:43,090 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:43,091 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:43,222 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:43,222 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:43,354 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:43,354 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:43,491 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:43,491 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:43,611 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:43,611 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:43,735 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:43,736 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:43,870 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:43,870 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:43,988 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:43,988 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:44,114 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:44,115 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:44,240 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:44,241 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:44,380 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:44,381 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:44,510 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:44,510 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:44,634 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:44,635 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:44,755 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:44,756 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:44,892 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:44,892 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:45,018 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:45,018 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:45,139 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:45,140 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:45,261 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:45,263 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:45,468 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:45,468 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:45,584 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:45,585 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:45,722 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:45,723 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:45,852 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:45,852 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:45,991 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:45,992 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:46,195 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:46,196 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:46,325 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:46,325 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:46,459 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:46,462 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:46,580 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:46,580 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:46,696 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:46,696 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:46,828 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:46,828 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:46,944 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:46,944 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:47,063 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:47,063 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:47,221 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:47,221 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:47,338 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:47,339 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:47,461 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:47,461 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:47,581 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:47,581 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:47,697 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:47,698 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:47,881 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:47,881 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:47,998 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:47,998 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:48,129 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:48,130 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:48,270 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:48,270 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:48,399 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:48,399 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:48,533 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:48,534 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:48,652 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:48,652 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:48,772 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:48,772 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:48,905 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:48,905 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:49,028 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:49,029 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:49,162 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:49,163 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:49,284 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:49,284 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:49,436 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:49,436 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:49,556 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:49,556 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:49,679 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:49,679 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:49,799 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:49,800 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:49,919 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:49,919 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:50,037 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:50,038 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:50,174 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:50,175 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:58,807 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:58,807 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:59,053 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:59,053 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:59,178 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:59,178 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:59,294 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:59,295 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:59,412 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:59,412 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:59,554 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:59,555 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:59,684 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:59,684 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:59,805 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:37:59,805 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:37:59,924 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:37:59,924 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:00,053 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:00,053 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:00,181 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:00,181 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:00,301 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:00,302 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:00,434 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:00,434 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:00,557 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:00,557 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:00,676 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:00,676 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:00,802 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:00,802 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:00,918 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:00,918 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:01,044 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:01,044 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:01,171 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:01,172 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:01,300 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:01,300 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:01,423 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:01,423 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:01,553 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:01,553 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:01,799 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:01,799 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:01,928 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:01,928 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:02,058 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:02,059 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:02,188 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:02,189 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:02,312 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:02,312 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:02,443 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:02,444 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:02,575 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:02,575 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:02,708 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:02,709 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:02,837 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:02,837 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:02,965 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:02,966 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:03,089 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:03,090 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:03,217 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:03,218 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:03,341 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-27 15:38:03,341 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:38:03,473 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-27 15:38:03,473 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-27 15:38:04,895 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-28 14:09:40,150 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 14:09:40,468 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,244 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,488 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,622 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,755 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,890 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,022 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,146 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,287 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,425 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,563 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,695 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,823 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,002 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,123 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,327 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,459 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-28 14:09:43,460 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 14:09:43,472 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:09:43,699 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:09:44,052 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:09:44,058 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:18,482 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:18,482 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:18,603 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:18,603 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:19,865 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:19,865 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:20,120 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:20,121 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:20,816 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:20,817 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:20,947 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:20,947 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:25,113 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:25,113 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:25,414 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:25,415 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:27,057 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:27,058 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:27,194 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:27,195 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:44,848 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:44,848 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:45,029 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:45,030 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:49,256 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:49,256 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:49,389 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:49,390 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:10:55,640 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:10:55,640 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:10:56,453 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:10:56,454 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:36,496 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:36,496 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:36,616 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:36,617 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:36,996 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:36,996 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:37,128 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:37,129 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:37,258 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:37,258 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:37,376 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:37,377 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:37,504 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:37,505 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:37,626 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:37,626 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:37,750 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:37,750 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:37,870 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:37,870 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:37,990 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:37,991 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:38,116 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:38,116 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:38,240 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:38,240 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:38,363 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:38,363 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:38,490 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:38,491 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:38,627 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:38,627 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:38,758 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:38,759 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:38,891 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:38,891 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:39,015 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:39,016 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:39,144 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:39,144 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:41,240 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:41,240 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:41,357 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:41,358 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:41,739 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:41,740 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:41,857 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:41,857 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:41,976 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:41,976 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:42,105 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:42,105 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:42,237 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:42,238 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:42,364 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:42,364 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:42,485 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:42,486 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:42,612 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:42,612 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:42,728 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:42,728 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:42,855 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:42,855 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:42,971 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:42,971 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:43,095 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:43,095 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:11:43,260 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 14:11:43,261 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:43,378 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 14:11:43,379 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 14:12:07,255 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-28 15:37:17,225 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 15:37:17,484 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,200 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,322 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,484 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,628 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,753 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:18,898 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,025 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,172 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,302 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,439 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,569 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,692 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,876 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:39,152 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:41,875 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:42,501 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-28 15:37:42,501 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 15:37:42,505 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 15:39:25,070 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 15:39:25,390 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,184 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,487 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,627 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,775 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,215 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,361 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,521 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,661 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,813 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,962 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,112 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,263 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,410 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,550 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,703 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,853 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-28 15:39:28,853 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 15:39:28,858 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 15:39:28,990 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 15:39:29,192 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 15:39:29,196 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-28 16:15:50,581 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 16:15:51,177 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,011 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,137 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,270 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,394 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,520 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,652 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,779 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,913 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,046 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,176 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,310 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,441 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,570 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,694 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,845 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,992 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-28 16:15:53,992 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 16:15:54,010 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-28 16:15:54,207 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 16:15:54,437 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-28 16:15:54,440 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 18:29:25,715 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:29:25,931 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:26,654 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:26,802 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:26,950 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,103 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,241 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,387 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,529 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,667 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,816 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,957 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,102 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,249 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,400 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,539 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,681 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,814 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 18:29:28,814 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:29:28,826 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 18:29:28,985 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:29:29,416 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 18:29:29,421 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 18:55:54,030 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:55:54,141 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:54,883 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,032 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,184 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,311 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,441 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,574 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,704 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,841 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,976 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,119 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,261 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,388 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,504 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,636 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,774 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,903 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 18:55:56,903 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:55:56,908 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 18:55:57,002 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:55:57,154 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 18:55:57,157 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 18:59:11,098 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:59:11,469 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,289 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,435 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,568 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,706 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,844 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,982 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,115 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,246 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,381 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,529 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,661 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,797 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,943 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,127 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,259 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,404 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 18:59:14,404 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:59:14,409 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 18:59:14,505 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:59:14,727 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 18:59:14,730 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 19:32:40,628 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:32:40,753 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:41,859 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:42,011 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:42,278 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:42,456 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:42,649 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:42,843 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,001 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,192 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,416 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,637 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,821 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,991 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:44,159 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:44,349 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:44,534 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:44,705 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 19:32:44,705 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:32:44,719 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 19:32:44,915 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:32:45,228 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 19:32:45,234 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 19:36:17,163 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:36:17,399 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:18,343 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:18,582 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:18,735 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:18,912 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:19,064 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:19,212 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:20,621 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:20,797 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:20,953 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:21,130 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:21,328 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:21,516 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:21,696 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:21,874 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:23,281 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:23,448 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 19:36:23,449 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:36:23,458 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 19:36:23,603 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:36:23,869 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 19:36:23,875 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 19:38:49,853 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:38:50,132 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,045 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,231 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,417 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,615 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,799 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,964 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:53,136 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:53,323 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:53,513 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:53,677 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:53,867 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,029 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,195 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,352 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,766 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,937 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 19:38:57,938 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:38:57,945 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 19:38:58,085 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:38:58,403 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 19:38:58,415 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-29 19:55:18,090 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:55:18,189 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:19,361 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:19,748 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:19,937 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:20,115 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:20,309 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:20,517 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:20,714 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:20,889 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,054 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,224 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,402 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,562 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,729 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:21,937 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:23,314 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:23,487 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-29 19:55:23,488 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:55:23,498 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-29 19:55:23,599 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:55:23,795 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-29 19:55:23,799 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-30 17:32:13,336 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-30 17:32:13,580 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,199 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,328 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,462 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,589 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,715 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,837 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,968 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,092 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,220 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,356 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,472 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,603 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,718 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,842 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,958 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:16,096 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-30 17:32:16,097 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-30 17:32:16,099 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-30 17:32:16,190 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-30 17:32:16,577 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-30 17:32:16,579 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello2_inq.
+2013-04-30 17:35:50,426 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-30 17:53:48,995 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-30 17:53:52,164 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-04-30 17:53:52,164 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-30 17:53:52,167 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-04-30 17:53:52,534 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-04-30 17:55:44,306 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:35:54,500 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:36:01,635 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-03 14:36:01,635 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:36:01,652 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:36:02,362 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:37:42,088 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:37:42,390 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:37:53,080 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:38:30,123 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:38:36,537 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-03 14:38:36,537 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:38:36,548 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:38:37,186 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:43:52,667 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:43:54,025 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:43:54,335 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:43:54,622 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:44:07,644 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:44:08,037 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:44:08,899 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:44:09,266 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:44:09,573 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:44:09,881 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:44:25,835 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:44:26,116 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:44:51,115 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:47:35,265 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:47:41,748 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-03 14:47:41,748 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:47:41,766 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 14:47:42,219 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 14:48:30,952 [1] INFO  Playground.Program [(null)] - Stopping Client.

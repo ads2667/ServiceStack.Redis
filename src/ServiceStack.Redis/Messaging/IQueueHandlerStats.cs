@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace ServiceStack.Redis.Messaging
 {
@@ -27,17 +28,29 @@ namespace ServiceStack.Redis.Messaging
 
     public class QueueHandlerStats : IQueueHandlerStats
     {
-        public QueueHandlerStats(string name, long totalMessagesReceived)
+        public QueueHandlerStats(string name, long totalMessagesReceived, int noOfContinousErrors)
         {
             this.QueueName = name;
             this.TotalMessagesReceived = totalMessagesReceived;
+            this.NoOfContinousErrors = noOfContinousErrors;
         }
 
         public string QueueName { get; private set; }
         public long TotalMessagesReceived { get; private set; }
+        public int NoOfContinousErrors { get; set; }
+
         public IQueueHandlerStats Add(IQueueHandlerStats stats)
         {
-            return new QueueHandlerStats(this.QueueName, this.TotalMessagesReceived + stats.TotalMessagesReceived);
+            return new QueueHandlerStats(this.QueueName, this.TotalMessagesReceived + stats.TotalMessagesReceived, this.NoOfContinousErrors);
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder("===============\n");
+            sb.AppendFormat("Queue Handler: {0}\n", this.QueueName);
+            sb.AppendFormat("Total Messages Received: {0}\n", this.TotalMessagesReceived);
+            sb.AppendLine("Num of Continuous Errors: " + this.NoOfContinousErrors);
+            return sb.ToString();
         }
     }
 }

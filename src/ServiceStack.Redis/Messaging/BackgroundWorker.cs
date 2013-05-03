@@ -24,18 +24,8 @@ namespace ServiceStack.Redis.Messaging
         {
             protected static ILog Log;
 
-            // readonly object msgLock = new object();
-            // private bool receivedNewMsgs = false;
-            // protected readonly IMessageHandler messageHandler;
-
-            // public string QueueName { get; set; }
-
             protected int status;
-            /*public int Status
-            {
-                get { return status; }
-            }*/
-
+            
             private Thread bgThread;
             private int timesStarted = 0;
             
@@ -52,11 +42,11 @@ namespace ServiceStack.Redis.Messaging
                 if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Disposed)
                     throw new ObjectDisposedException("MQ Host has been disposed");
                 if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Stopping)
-                    KillBgThreadIfExists();
+                    KillBgThreadIfExists();                
 
                 if (Interlocked.CompareExchange(ref status, WorkerStatus.Starting, WorkerStatus.Stopped) == WorkerStatus.Stopped)
                 {
-                    Log.Debug("Starting MQ Handler Worker: {0}...".Fmt(this.ThreadName));
+                    Log.Debug("Starting Background Worker: {0}...".Fmt(this.ThreadName));
 
                     //Should only be 1 thread past this point
                     bgThread = new Thread(Run)
@@ -82,12 +72,12 @@ namespace ServiceStack.Redis.Messaging
             protected abstract void Execute();
 
             private void Run()
-            {
+            {                
                 if (Interlocked.CompareExchange(ref status, WorkerStatus.Started, WorkerStatus.Starting) != WorkerStatus.Starting) return;
                 timesStarted++;
 
                 try
-                {
+                {                    
                     this.Execute();                   
                 }
                 catch (Exception ex)
@@ -127,7 +117,9 @@ namespace ServiceStack.Redis.Messaging
                 }
             }
 
-            protected abstract void OnStop();
+            protected virtual void OnStop()
+            {                
+            }
 
             public void KillBgThreadIfExists()
             {
@@ -135,8 +127,8 @@ namespace ServiceStack.Redis.Messaging
                 {
                     if (bgThread != null && bgThread.IsAlive)
                     {
-                        //give it a small chance to die gracefully
-                        if (!bgThread.Join(500))
+                        //give it a (small) chance to die gracefully
+                        if (!bgThread.Join(25000)) // TODO: Make this value configurable (Orig: 500).
                         {
                             //Ideally we shouldn't get here, but lets try our hardest to clean it up
                             Log.Warn("Interrupting previous Background Worker: " + bgThread.Name);
@@ -160,8 +152,15 @@ namespace ServiceStack.Redis.Messaging
             {
                 if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Disposed)
                     return;
-
-                Stop();
+                
+                try
+                {
+                    Stop();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Error Stopping BackgroundWorker for: " + this.ThreadName, ex);
+                }
 
                 if (Interlocked.CompareExchange(ref status, WorkerStatus.Disposed, WorkerStatus.Stopped) != WorkerStatus.Stopped)
                     Interlocked.CompareExchange(ref status, WorkerStatus.Disposed, WorkerStatus.Stopping);
@@ -184,17 +183,10 @@ namespace ServiceStack.Redis.Messaging
             /// </remarks>
             protected abstract string ThreadName { get; }
 
-            /*
-            public IMessageHandlerStats GetStats()
-            {
-                return messageHandler.GetStats();
-            }
-            */
-
             public virtual string GetStatus()
             {
-                return "[Worker: {0}, Status: {1}, ThreadStatus: {2}]"
-                    .Fmt(this.ThreadName, WorkerStatus.ToString(status), bgThread.ThreadState);
+                return "[Worker: {0}, Status: {1}, ThreadStatus: {2}, Times Started: {3}]"
+                    .Fmt(this.ThreadName, WorkerStatus.ToString(status), bgThread.ThreadState, timesStarted);
             }
 
             protected ThreadState BgThreadState
@@ -235,15 +227,10 @@ namespace ServiceStack.Redis.Messaging
             }
 
             public abstract TBackgroundWorker CloneBackgroundWorker();
-            /*
-            {
-                return new MessageHandlerWorker(clientsManager, messageHandler, QueueName, errorHandler);
-            }
-            */
-
+            
             protected abstract void InvokeErrorHandler(Exception ex);
 
-            protected sealed override void ExecuteErrorHandler(Exception ex)
+            protected override void ExecuteErrorHandler(Exception ex)
             {
                 if (this.ErrorHandler != null)
                 {

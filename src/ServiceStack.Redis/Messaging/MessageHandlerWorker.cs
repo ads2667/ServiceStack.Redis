@@ -54,7 +54,14 @@ namespace ServiceStack.Redis.Messaging
 
         public IMessageHandlerStats GetStats()
         {
-            return messageHandler.GetStats();
+            // return messageHandler.GetStats();
+            var stats = messageHandler.GetStats();
+            return new MessageHandlerStats(string.Format("Message Type: {1}, Queue: {0}.", this.QueueName, messageHandler.MessageType.Name),
+                stats.TotalMessagesProcessed,
+                stats.TotalMessagesFailed,
+                stats.TotalRetries,
+                stats.TotalNormalMessagesReceived,
+                stats.TotalPriorityMessagesReceived);            
         }
 
         protected abstract IMessageQueueClient CreateMessageQueueClient();
@@ -111,6 +118,11 @@ namespace ServiceStack.Redis.Messaging
         protected override sealed void InvokeErrorHandler(Exception ex)
         {
             this.ErrorHandler.Invoke(this, ex);
+        }
+
+        protected override sealed void ExecuteErrorHandler(Exception ex)
+        {
+            base.ExecuteErrorHandler(ex);
         }
     }
 }

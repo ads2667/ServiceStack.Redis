@@ -78,3 +78,31 @@ log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could b
 log4net:ERROR Appender named [FileAppender] not found.
 log4net:ERROR XmlHierarchyConfigurator: No appender named [FileAppender] could be found.
 log4net:ERROR Appender named [FileAppender] not found.
+log4net:ERROR Failed to append to appender [ConsoleAppender]
+System.Threading.ThreadInterruptedException: Thread was interrupted from a waiting state.
+   at System.Threading.Monitor.ReliableEnter(Object obj, Boolean& lockTaken)
+   at log4net.Appender.AppenderSkeleton.DoAppend(LoggingEvent loggingEvent)
+   at log4net.Util.AppenderAttachedImpl.AppendLoopOnAppenders(LoggingEvent loggingEvent)
+log4net:ERROR Failed to append to appender [ConsoleAppender]
+System.Threading.ThreadInterruptedException: Thread was interrupted from a waiting state.
+   at System.Threading.Monitor.ReliableEnter(Object obj, Boolean& lockTaken)
+   at log4net.Appender.AppenderSkeleton.DoAppend(LoggingEvent loggingEvent)
+   at log4net.Util.AppenderAttachedImpl.AppendLoopOnAppenders(LoggingEvent loggingEvent)
+log4net:ERROR Exception while logging
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at log4net.Util.AppenderAttachedImpl.AppendLoopOnAppenders(LoggingEvent loggingEvent)
+   at log4net.Repository.Hierarchy.Logger.CallAppenders(LoggingEvent loggingEvent)
+   at log4net.Repository.Hierarchy.Logger.ForcedLog(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)
+   at log4net.Repository.Hierarchy.Logger.Log(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)
+log4net:ERROR Failed to append to appender [ConsoleAppender]
+System.Threading.ThreadInterruptedException: Thread was interrupted from a waiting state.
+   at System.Threading.Monitor.ReliableEnter(Object obj, Boolean& lockTaken)
+   at System.Threading.Monitor.Enter(Object obj, Boolean& lockTaken)
+   at log4net.Appender.AppenderSkeleton.DoAppend(LoggingEvent loggingEvent)
+   at log4net.Util.AppenderAttachedImpl.AppendLoopOnAppenders(LoggingEvent loggingEvent)
+log4net:ERROR Exception while logging
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at log4net.Util.AppenderAttachedImpl.AppendLoopOnAppenders(LoggingEvent loggingEvent)
+   at log4net.Repository.Hierarchy.Logger.CallAppenders(LoggingEvent loggingEvent)
+   at log4net.Repository.Hierarchy.Logger.ForcedLog(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)
+   at log4net.Repository.Hierarchy.Logger.Log(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)

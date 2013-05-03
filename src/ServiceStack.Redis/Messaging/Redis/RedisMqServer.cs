@@ -33,7 +33,7 @@ namespace ServiceStack.Redis.Messaging.Redis
 
         public RedisMqServer(IRedisClientsManager clientsManager,
             int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
-            : base(new RedisMessageFactory(clientsManager), retryCount, requestTimeOut)
+            : base(new RedisMessageFactory(clientsManager), requestTimeOut, retryCount)
         {
             this.clientsManager = clientsManager;            
         }

@@ -36,10 +36,12 @@ namespace ServiceStack.Aws.Messaging
         public override void Dispose()
         {
             base.Dispose();
+            /*
             if (this.SqsClient != null)
             {
                 this.SqsClient.Dispose();
             }
+            */
         }
     }
 }

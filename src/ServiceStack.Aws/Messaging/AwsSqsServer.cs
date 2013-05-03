@@ -18,7 +18,7 @@ namespace ServiceStack.Aws.Messaging
 
     public interface IMessageCoordinator
     {
-        void EnqueMessage(string queueName, IMessage message);
+        void EnqueMessage(string queueName, IMessage message, Type messageType);
         
         IMessage DequeMessage(string queueName);
     }
@@ -30,8 +30,8 @@ namespace ServiceStack.Aws.Messaging
     // Graceful termination of threads
     public class AwsSqsServer : MqServer2, IMessageCoordinator
     {        
-        public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
-            : base(null, retryCount, requestTimeOut)
+        public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null, decimal maxNumberOfMessagesToReceivePerRequest = 10, decimal messageVisibilityTimeout = 10)
+            : base(null, requestTimeOut.HasValue ? requestTimeOut.Value : TimeSpan.FromSeconds(20), retryCount) //// Default to use Long Polling
         {
             if (sqsClient == null)
             {
@@ -39,10 +39,14 @@ namespace ServiceStack.Aws.Messaging
             }
 
             this.SqsClient = sqsClient;
+            this.MaxNumberOfMessagesToReceivePerRequest = maxNumberOfMessagesToReceivePerRequest;
+            this.MessageVisibilityTimeout = messageVisibilityTimeout;
             this.QueueUrls = new Dictionary<string, string>();
         }
 
         public ISqsClient SqsClient { get; private set; }
+        public decimal MaxNumberOfMessagesToReceivePerRequest { get; private set; }
+        public decimal MessageVisibilityTimeout { get; private set; }
 
         public override IMessageQueueClient CreateMessageQueueClient()
         {
@@ -59,7 +63,7 @@ namespace ServiceStack.Aws.Messaging
             var queueHandlers = new List<IQueueHandlerBackgroundWorker>();
             foreach (var queue in messageQueueNames)
             {
-                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.SqsClient, this, queue.Value, new KeyValuePair<string, string>(queue.Key, this.QueueUrls[queue.Key]), errorHandler));
+                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.SqsClient, this, queue.Value, queue.Key, this.QueueUrls[queue.Key], errorHandler, Convert.ToInt32(this.RequestTimeOut.Value.TotalSeconds), this.MaxNumberOfMessagesToReceivePerRequest, this.MessageVisibilityTimeout));
             }
 
             return queueHandlers;
@@ -183,18 +187,59 @@ namespace ServiceStack.Aws.Messaging
         // private IDictionary<string, Queue<IAwsSqsMessage>> localMessageQueues = new Dictionary<string, Queue<IAwsSqsMessage>>(); 
 
         // private Queue<Message> queue = new Queue<Message>(); 
-        public void EnqueMessage(string queueName, IMessage /*IAwsSqsMessage*/ message)
+        public void EnqueMessage(string queueName, IMessage /*IAwsSqsMessage*/ message, Type messageType)
         {
-            lock (localMessageQueues)
-            {
-                localMessageQueues[queueName].Enqueue(message);
-
-                // TODO: If ThreadPooling is to be supported, this code block will need to support both methods
+            // TODO: If ThreadPooling is to be supported, this code block will need to support both methods
                 // For threadPooling; this would involve adding a new [TASK] to the threadpool. Create contained class.
                 // Would need to get the HANDLER TYPE, based on the queue, and queue the thread. Use LocalMQ?
                 // TODO: Need to manage msg timeouts/retries and multiple processing of msg's. => Wrap in msg obj?
+               
+            // TODO: Support mix/match Pooled and Static thread handlers.
+            var handlerThreadCount = handlerThreadCountMap[messageType];
 
-                // TODO: Support mix/match Pooled and Static thread handlers.
+            if (handlerThreadCount == 0) //// 0 => Threadpool
+            {         
+                throw new NotImplementedException("Threadpool support not implemented.");
+                /*
+                // The handler is registered to use the thread pool.
+                // TODO: Create a new task, using the message handler, and add it to the thread pool
+                // TODO: Can pass MQ Name with EnqueMessage method.
+                    
+                // ** TODO: Create Factory that creates tasks to assign to threadpool - based on queue name.
+                var task = new Task(, , TaskCreationOptions.PreferFairness);
+                var taskList = new List<Task>();
+                lock (taskList)
+                {
+                    taskList.Add(task);
+                        // Need to track all tasks, enables WaitAll functionality to close gracefully.
+                }
+                    
+                // TODO: ************ NEED TO ADD MESSAGE VISIBILITY TIMEOUT TO MESSAGE **************
+
+                task.Start(); // Executes async using threadpool.
+                // Task.WaitAll(taskList); // Example of WaitAll
+                task.ContinueWith((t) =>
+                    {
+                        lock (taskList)
+                        {
+                            taskList.Remove(t);
+                        }
+                    }); // Must remove the task after it's been executed. Otherwise, we'll be waiting forever.
+
+                // TODO: On the thread, create a handler and process the message.
+                this.handlerMap[typeof(object)].CreateMessageHandler().ProcessQueue(, queueName, null);
+                // throw new NotImplementedException("ThreadPool support");
+                */
+            }
+            else
+            {
+                // Static Thread
+                lock (localMessageQueues)
+                {
+                    localMessageQueues[queueName].Enqueue(message);
+                }
+
+                // Notify the static threads that there's messages to process.
                 int[] workerIndexes;
                 if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
                 {
@@ -204,6 +249,7 @@ namespace ServiceStack.Aws.Messaging
                     }
                 }
             }
+                
         }
 
         public /*IAwsSqsMessage*/ IMessage DequeMessage(string queueName)

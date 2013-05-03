@@ -1,7 +1,5 @@
 using System;
 using System.Threading;
-using ServiceStack.Logging;
-using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging.ServiceStack.Redis.Messaging;
 using ServiceStack.Text;
 
@@ -12,8 +10,6 @@ namespace ServiceStack.Redis.Messaging
         string QueueName { get; }
 
         IQueueHandlerStats GetStats();
-
-        // void NotifyNewMessage();
     }
 
     public abstract class QueueHandlerBackgroundWorker : BackgroundWorker<IQueueHandlerBackgroundWorker>, IQueueHandlerBackgroundWorker 
@@ -29,17 +25,16 @@ namespace ServiceStack.Redis.Messaging
 
         public string QueueName { get; set; }
         
-        // TODO: Need Queue Stats
-        
         protected void IncrementMessageCount(int increment)
         {
             totalMessagesReceived += increment;
             lastMsgProcessed = DateTime.UtcNow;
+            Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0);
         }
 
         public IQueueHandlerStats GetStats() 
-        {
-            return new QueueHandlerStats(this.QueueName, totalMessagesReceived);
+        {            
+            return new QueueHandlerStats(this.QueueName, totalMessagesReceived, Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
         }
         
         public override string GetStatus()
@@ -56,6 +51,39 @@ namespace ServiceStack.Redis.Messaging
         protected override sealed void InvokeErrorHandler(Exception ex)
         {
             this.ErrorHandler.Invoke(this, ex);
+        }
+
+        protected override sealed void ExecuteErrorHandler(Exception ex)
+        {
+            // Increment the continuous error count.
+            Interlocked.Increment(ref noOfContinuousErrors);
+            base.ExecuteErrorHandler(ex);
+        }
+
+        protected override sealed void Execute()
+        {
+            SleepBackOffMultiplier(Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
+
+            this.RunLoop();
+        }
+
+        protected abstract void RunLoop();
+
+        private int noOfContinuousErrors = 0;
+        readonly Random rand = new Random(Environment.TickCount);
+        private void SleepBackOffMultiplier(int continuousErrorsCount)
+        {
+            if (continuousErrorsCount == 0) return;
+            const int MaxSleepMs = 60 * 1000;
+
+            //exponential/random retry back-off.
+            var nextTry = Math.Min(
+                rand.Next((int)Math.Pow(continuousErrorsCount, 3), (int)Math.Pow(continuousErrorsCount + 1, 3) + 1),
+                MaxSleepMs);
+
+            Log.Debug("Sleeping for {0}ms after {1} continuous errors".Fmt(nextTry, continuousErrorsCount));
+
+            Thread.Sleep(nextTry);
         }
     }
 }

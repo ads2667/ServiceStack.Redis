@@ -25,24 +25,49 @@ namespace ServiceStack.Aws.Messaging
         
         private readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsQueueHandlerWorker));
 
-        private bool listenForMessages = true;
+       //  private bool listenForMessages = true;
 
-        private readonly object syncLock = new object();
+        // private readonly object syncLock = new object();
 
-        public AwsSqsQueueHandlerWorker(ISqsClient sqsClient, IMessageCoordinator messageCoordinator, Type messageType, KeyValuePair<string, string> queue, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
-            : base(queue.Key, errorHandler)
+        public AwsSqsQueueHandlerWorker(
+            ISqsClient sqsClient, 
+            IMessageCoordinator messageCoordinator, 
+            Type messageType, 
+            string queueName,
+            string queueUrl,
+            Action<IQueueHandlerBackgroundWorker, Exception> errorHandler,
+            int waitTimeInSeconds,
+            decimal maxNumberOfMessages,
+            decimal messageVisibilityTimeout)
+            : base(queueName, errorHandler)
         {
             if (sqsClient == null) throw new ArgumentNullException("sqsClient");
             if (messageCoordinator == null) throw new ArgumentNullException("messageCoordinator");
             if (messageType == null) throw new ArgumentNullException("messageType");
+            if (waitTimeInSeconds > 20)
+            {
+                throw new ArgumentException("WaitTimeInSeconds must be a value between 0 and 20 seconds.", "waitTimeInSeconds");
+            }
+
+            if (maxNumberOfMessages < 1)
+            {
+                throw new ArgumentException("MaxNumberOfMessages must be a minimum value of 1.", "maxNumberOfMessages");
+            }
+
             this.SqsClient = sqsClient;
             this.MessageCoordinator = messageCoordinator;
-            this.MessageType = messageType;            
-            this.QueueName = queue.Key;
-            this.QueueUrl = queue.Value;
-           // this.LocalMessageQueue = new ConcurrentQueue<Message>();
+            this.MessageType = messageType;
+            this.QueueName = queueName; // queue.Key;
+            this.QueueUrl = queueUrl; // queue.Value;
+            this.WaitTimeInSeconds = waitTimeInSeconds;
+            this.MaxNumberOfMessages = maxNumberOfMessages;
+            this.MessageVisibilityTimeout = messageVisibilityTimeout;
         }
 
+        public decimal MaxNumberOfMessages { get; private set; }
+        public decimal MessageVisibilityTimeout { get; private set; }
+
+        public int WaitTimeInSeconds { get; private set; }
 
         // protected System.Collections.Concurrent.ConcurrentQueue<Amazon.SQS.Model.Message> LocalMessageQueue { get; private set; }
 
@@ -69,17 +94,21 @@ namespace ServiceStack.Aws.Messaging
         }
         */
         
-        protected override void Execute()
+        protected override void RunLoop()
         {
-            var continuePolling = true;
-            // Use Long-Polling to retrieve messages from a specific SQS queue.            
-            do
+            // var continuePolling = true;
+            // Use Long-Polling to retrieve messages from a specific SQS queue.      
+
+            // do
+            while (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)            
             {
                 Log.DebugFormat("Polling SQS Queue '{0}' for messages.", this.QueueName);
 
-                var response = this.SqsClient.ReceiveMessage(this.QueueUrl); // Blocks until timout, or msg received
+                var response = this.SqsClient.ReceiveMessage(this.QueueUrl, this.WaitTimeInSeconds, this.MaxNumberOfMessages, this.MessageVisibilityTimeout); // Blocks until timout, or msg received
                 if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)
                 {
+                    // TODO: Reset noOfContinuousErrors, to notify we had a successful run...
+
                     // Place the item in the ready to process queue, and notify workers that a new msg has arrived.                    
                     Log.DebugFormat("Received {0} Message(s) from Queue '{1}'.", response.ReceiveMessageResult.Message.Count, this.QueueName);
 
@@ -93,7 +122,6 @@ namespace ServiceStack.Aws.Messaging
 
                         // TODO: Need to verify Message MD5, and use 'IsSet()' methods to ensure the msg is valid. Earlier in process.
 
-                        
                         
 
                         /***** CODE: if the 'MessageHandler' class could be modified to prevent the need to subclass Message Types *****
@@ -135,14 +163,16 @@ namespace ServiceStack.Aws.Messaging
                             sqsMessage.ReceiptHandle = message.ReceiptHandle;
                             sqsMessage.QueueUrl = this.QueueUrl;
                             sqsMessage.QueueName = this.QueueName;
+                            sqsMessage.VisibilityTimeout = this.MessageVisibilityTimeout;
+                            // TODO: Assign the message visibility timeout
                         }
                         else
                         {
                             Log.WarnFormat("The message type '{0}' is using the AwsSqsQueueHandler, but does not implement 'ISqsMessage'. No AwsSqsMessageHandlerRegister pre,post or error message handlers will be executed.", this.MessageType.Name);
                         }
                         // =====================
-
-                        this.MessageCoordinator.EnqueMessage(this.QueueName, m1 /*sqsMessagetypedAwsSqsMessage message*/);
+                        
+                        this.MessageCoordinator.EnqueMessage(this.QueueName, m1 /*sqsMessagetypedAwsSqsMessage message*/, this.MessageType);
                         this.IncrementMessageCount(1);
                         // this.MqServer.NotifyMessageHandlerWorkers(this.QueueName);
 
@@ -165,28 +195,50 @@ namespace ServiceStack.Aws.Messaging
                         }
                     }
                     */
-
-                    // For testing, delete here to see what happens
-                    // AwsQueingService.DeleteMessage(client, this.GetQueueNameOrUrl(queueName), response.ReceiveMessageResult.Message[0].ReceiptHandle);                   
-                    lock (syncLock)
-                    {
-                        continuePolling = listenForMessages;
-                    }
                 }
-            } while (continuePolling);
-        }
 
-        protected override void OnStop()
-        {
+                /*
+                // For testing, delete here to see what happens
+                // AwsQueingService.DeleteMessage(client, this.GetQueueNameOrUrl(queueName), response.ReceiveMessageResult.Message[0].ReceiptHandle);                                       
+                lock (syncLock)
+                {
+                    continuePolling = listenForMessages;
+                }*/
+            }  // while (continuePolling);
+          
+            Log.DebugFormat("Stopped polling SQS queue: {0}", this.QueueName);
+            
+            /*
+            WaitHandle.WaitAll()
+            if (Monitor.TryEnter(disposeLock))
+            {
+                Monitor.Pulse(disposeLock);
+                Monitor.Exit(disposeLock);
+            }
+            else
+            {
+                canDispose = true;
+            }*/
+            /*
             lock (syncLock)
             {
-                listenForMessages = false;
-            }
+                Monitor.Pulse(syncLock);
+            }*/
         }
+
+        /*
+        protected override void OnStop()
+        {            
+            lock (syncLock)
+            {                
+                listenForMessages = false;
+                Monitor.Wait(syncLock); // TODO: Add Timeout.
+            }
+        }*/
 
         public override IQueueHandlerBackgroundWorker CloneBackgroundWorker()
         {
-            return new AwsSqsQueueHandlerWorker(this.SqsClient, this.MessageCoordinator, this.MessageType, new KeyValuePair<string, string>(this.QueueName, this.QueueUrl), this.ErrorHandler);
+            return new AwsSqsQueueHandlerWorker(this.SqsClient, this.MessageCoordinator, this.MessageType, this.QueueName, this.QueueUrl, this.ErrorHandler, this.WaitTimeInSeconds, this.MaxNumberOfMessages, this.MessageVisibilityTimeout);
         }
     }
 }

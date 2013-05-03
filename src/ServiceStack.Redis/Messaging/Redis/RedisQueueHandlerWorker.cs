@@ -21,14 +21,10 @@ namespace ServiceStack.Redis.Messaging.Redis
             this.MqServer = mqServer;
         }
 
-        protected override void Execute()
+        protected override void RunLoop()
         {
             using (var redisClient = clientsManager.GetReadOnlyClient())
-            {
-                //Record that we had a good run...
-                // TODO: Need to look at original purpose, and ensure it is still the same...
-                //Interlocked.CompareExchange(ref noOfContinuousErrors, 0, noOfContinuousErrors);
-
+            {                
                 using (var subscription = redisClient.CreateSubscription())
                 {
                     subscription.OnUnSubscribe = channel => Log.Debug("OnUnSubscribe: " + channel);

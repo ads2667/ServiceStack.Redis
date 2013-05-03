@@ -169,18 +169,17 @@ namespace ServiceStack.Aws.Messaging
         public override void Dispose()
         {
             /*
-            if (client != null)
+            if (this.SqsClient != null)
             {
                 // TODO: Need to dispose of the client at some stage, consider adding a 'STOP' method to clients?
                 // TODO: Or create a factory method for the client and dispose within the context of a client, what is the overhead?
-                //client.Dispose();
+                this.SqsClient.Dispose();
             }
             */
         }
 
         protected virtual void CreateMessageQueueIfNotExists(string queueName)
         {
-            // TODO: Consider making this method thread-safe and provide static access?
             if (this.QueueNames.ContainsKey(queueName))
             {
                 // The message queue already exists;
@@ -190,6 +189,17 @@ namespace ServiceStack.Aws.Messaging
             // We need to either get the URL remotely, or possibly create a new queue.
             var queueUrl = this.SqsClient.GetOrCreateQueueUrl(queueName);
             this.QueueNames.Add(queueName, queueUrl);
+        }
+
+        public void DeleteQueue(string queueName)
+        {
+            if (string.IsNullOrWhiteSpace(queueName))
+            {
+                throw new ArgumentNullException("queueName");
+            }
+
+            this.SqsClient.DeleteQueue(this.GetQueueNameOrUrl(queueName));
+            this.QueueNames.Remove(queueName);
         }
     }
 }

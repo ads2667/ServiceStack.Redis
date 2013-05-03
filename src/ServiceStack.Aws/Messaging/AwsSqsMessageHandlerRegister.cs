@@ -37,6 +37,15 @@ namespace ServiceStack.Aws.Messaging
         protected virtual void OnPreMessageProcessed(ISqsMessage message)
         {            
             Log.DebugFormat("On Pre Message Processing, Queue: {0}.", message.QueueName);
+            var remainingMessageProcessingTime = DateTime.UtcNow.Subtract(message.MessageExpiryTimeUtc).TotalSeconds;
+            if (remainingMessageProcessingTime > 0)
+            {
+                // The message is expired.
+                this.Log.WarnFormat("The message '{0}' has passed it's expiry time by {1} seconds. The message will not be processed.", message.MessageId, remainingMessageProcessingTime);
+                throw new NotImplementedException("Exception is not ideal now, should return a bool or alter message");
+            }
+            
+            this.Log.InfoFormat("The message '{0}' has a remaining {1} seconds to be processed.", message.MessageId, Math.Abs(remainingMessageProcessingTime));
         }
 
         /// <summary>
@@ -69,6 +78,20 @@ namespace ServiceStack.Aws.Messaging
             Log.DebugFormat("On Message Processing Failed, Queue: {0}.", message.QueueName);
         }
         
+        /*** TODO: Allow default values for queue configuration to be overridden - Add Geneeric Arg to MqServer2 for MessageHandlerRegister, introduce Interface
+        protected virtual void AddMessageHandler<T>(
+            Func<IMessage<T>, object> processMessageFn,
+            Action<IMessage<T>, Exception> processExceptionEx,
+            int noOfThreads,
+            int? retryCount,
+            TimeSpan? requestTimeOut,
+            decimal? maxNumberOfMessagesToReceivePerRequest,
+            decimal? messageVisibilityTimeout)
+        {
+            
+        }
+        */
+
         protected sealed override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             if (processMessageFn == null)
@@ -134,9 +157,9 @@ namespace ServiceStack.Aws.Messaging
             base.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
         }
 
-        protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
-            base.AddPooledMessageHandler(processMessageFn, processExceptionEx, noOfThreads);
+            base.AddPooledMessageHandler(processMessageFn, processExceptionEx);
         }
     }
 }

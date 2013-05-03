@@ -51,7 +51,7 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("listQueuesRequest");
             }
 
-            Log.Debug("SqsClient: Getting all queue names");
+            // Log.Debug("SqsClient: Getting all queue names");
             var listQueuesResponse = this.Client.ListQueues(listQueuesRequest);
             if (!listQueuesResponse.IsSetListQueuesResult())
             {
@@ -113,7 +113,7 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("createQueueRequest");
             }
 
-            Log.DebugFormat("SqsClient: Creating new queue: {0}.", createQueueRequest.QueueName);
+            // Log.DebugFormat("SqsClient: Creating new queue: {0}.", createQueueRequest.QueueName);
             var response = this.Client.CreateQueue(createQueueRequest);
             if (!response.IsSetCreateQueueResult())
             {
@@ -127,13 +127,27 @@ namespace ServiceStack.Aws.Messaging
         /// Attempts to receive a message from a message queue.
         /// </summary>
         /// <param name="queueUrl">The url of the queue to retrieve a message from.</param>
+        /// <param name="waitTimeInSeconds">The time in seconds, to wait for a message to be returned from the SQS message queue.</param>
+        /// <param name="maxNumberOfMessages">The maximum number of messges to receive per request.</param>
+        /// <param name="visibilityTimeout">The time, in seconds, the client has to process the message before it can be received by another client.</param>
         /// <returns>The received message reponse.</returns>
-        public ReceiveMessageResponse ReceiveMessage(string queueUrl)
+        public ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout)
         {
+            if (waitTimeInSeconds > 20)
+            {
+                throw new ArgumentException("WaitTimeInSeconds must be a value between 0 and 20 seconds.", "waitTimeInSeconds");    
+            }
+
+            if (maxNumberOfMessages < 1)
+            {
+                throw new ArgumentException("MaxNumberOfMessages must be a minimum value of 1.", "maxNumberOfMessages");
+            }
+
             return this.ReceiveMessage(new ReceiveMessageRequest()
                                              .WithQueueUrl(queueUrl)
-                                             .WithMaxNumberOfMessages(1)
-                                             .WithWaitTimeSeconds(5));
+                                             .WithVisibilityTimeout(visibilityTimeout)
+                                             .WithMaxNumberOfMessages(maxNumberOfMessages)
+                                             .WithWaitTimeSeconds(waitTimeInSeconds));
         }
 
         /// <summary>
@@ -148,7 +162,7 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("receiveMessageRequest");
             }
 
-            Log.DebugFormat("SqsClient: Receiving message(s) from queue: {0}.", receiveMessageRequest.QueueUrl);
+            // Log.DebugFormat("SqsClient: Receiving message(s) from queue: {0}.", receiveMessageRequest.QueueUrl);
             return this.Client.ReceiveMessage(receiveMessageRequest);
         }
 
@@ -176,7 +190,7 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("sendMessageRequest");
             }
 
-            Log.DebugFormat("SqsClient: Sending message to queue: {0}.", sendMessageRequest.QueueUrl);
+            // Log.DebugFormat("SqsClient: Sending message to queue: {0}.", sendMessageRequest.QueueUrl);
             var response = this.Client.SendMessage(sendMessageRequest);
             if (!response.IsSetSendMessageResult())
             {
@@ -218,8 +232,38 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("deleteMessageRequest");
             }
 
-            Log.DebugFormat("SqsClient: Deleting message from queue: {0}.", deleteMessageRequest.QueueUrl);
+            // Log.DebugFormat("SqsClient: Deleting message from queue: {0}.", deleteMessageRequest.QueueUrl);
             return this.Client.DeleteMessage(deleteMessageRequest);
+        }
+
+        /// <summary>
+        /// Deletes a SQS message queue.
+        /// </summary>
+        /// <param name="queueUrl">The url of the queue to delete.</param>
+        public virtual void DeleteQueue(string queueUrl)
+        {
+            if (string.IsNullOrWhiteSpace(queueUrl))
+            {
+                throw new ArgumentNullException("queueUrl");
+            }
+
+            this.DeleteQueue(new DeleteQueueRequest().WithQueueUrl(queueUrl));
+        }
+
+        /// <summary>
+        /// Deletes a SQS message queue.
+        /// </summary>
+        /// <param name="deleteQueueRequest">The delete queue request.</param>
+        /// <returns>The delete queue response.</returns>
+        public virtual DeleteQueueResponse DeleteQueue(DeleteQueueRequest deleteQueueRequest)
+        {
+            if (deleteQueueRequest == null)
+            {
+                throw new ArgumentNullException("deleteQueueRequest");
+            }
+
+            // Log.DebugFormat("SqsClient: Deleting queue: {0}.", deleteQueueRequest.QueueUrl);
+            return this.Client.DeleteQueue(deleteQueueRequest);
         }
 
         public void Dispose()

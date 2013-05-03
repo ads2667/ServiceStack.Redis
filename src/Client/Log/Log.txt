@@ -6588,3 +6588,1446 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-04-26 20:09:10,451 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
 2013-04-26 20:09:10,571 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
 2013-04-26 20:09:52,603 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:38:17,858 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:38:18,004 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,630 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,758 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:18,886 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,011 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,139 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,285 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,411 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,538 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,665 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,792 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:19,924 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,050 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,169 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,294 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,423 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:20,552 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 14:38:20,552 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:38:20,649 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 14:38:20,652 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:38:21,036 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 14:38:21,036 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 14:38:21,453 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:38:21,459 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:21,576 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 14:38:21,581 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:38:22,702 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 14:38:22,703 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:38:22,988 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 14:38:23,007 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 14:38:23,007 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 14:38:23,219 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:38:23,219 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:38:23,362 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 14:38:23,363 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:38:23,537 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 14:38:23,537 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:38:23,681 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 14:38:44,502 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 14:38:44,503 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:38:44,729 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 14:38:44,730 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 14:38:44,954 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:38:44,955 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 14:38:44,957 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:38:45,378 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 14:38:45,378 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:38:45,512 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 14:38:45,512 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 14:38:45,515 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 14:38:45,703 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:38:45,703 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 14:38:45,704 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:38:45,825 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 14:38:45,825 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:38:45,946 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 14:38:49,870 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:40:45,703 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:40:45,754 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,446 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,634 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,762 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:46,889 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,016 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,150 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,272 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,397 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,529 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,644 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,756 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,882 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:47,993 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,120 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,251 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:48,380 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 14:40:48,380 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:40:48,541 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 14:40:48,545 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:40:48,766 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 14:40:48,767 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 14:40:48,902 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:40:48,904 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:40:49,025 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 14:40:49,026 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:40:55,382 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 14:40:55,385 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:41:00,114 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 14:41:07,478 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 14:41:07,479 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 14:41:07,620 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:41:07,621 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:41:07,746 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 14:41:07,746 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:41:11,951 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 14:41:11,951 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:41:12,075 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 14:43:19,827 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 14:43:34,069 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 14:43:34,119 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,716 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,828 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:34,952 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,070 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,201 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,332 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,465 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,581 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,724 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,857 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:35,980 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,101 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,219 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,335 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,452 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:36,578 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 14:43:36,579 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 14:43:36,702 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 14:43:36,704 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 14:43:36,866 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 14:43:36,866 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 14:43:36,986 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:43:36,992 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:37,134 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 14:43:37,137 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:43:38,263 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 14:43:38,264 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 14:43:38,454 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 14:43:38,469 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 14:43:38,470 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 14:43:38,612 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 14:43:38,613 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 14:43:38,728 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 14:43:38,729 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:43:38,898 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 14:43:38,903 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 14:43:39,031 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 14:43:47,378 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:00:58,168 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:00:58,230 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,002 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,183 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,324 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,464 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,601 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,745 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:00:59,908 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,047 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,198 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,340 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,481 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,623 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,752 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:00,890 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:01,019 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:01,157 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:01:01,157 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:01:01,230 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:01:01,232 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:01:01,519 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:01:01,520 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:01:01,673 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:01:01,675 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:01,820 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:01:01,821 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:01:02,654 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:01:02,656 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:01:02,949 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:01:02,967 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:01:02,967 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:01:03,115 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:01:03,115 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:01:03,243 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 15:01:03,244 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:01:03,448 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:01:03,448 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:01:03,590 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 15:02:07,924 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:11:20,912 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:11:20,967 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,673 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,797 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:21,922 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,050 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,175 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,303 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,429 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,567 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,696 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,822 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:22,950 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,084 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,211 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,334 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,459 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:23,594 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:11:23,595 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:11:23,709 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:11:23,711 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:11:23,907 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:11:23,908 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:11:24,209 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:11:24,213 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:24,335 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:11:24,336 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:11:25,271 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:11:25,274 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:11:25,445 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:11:25,453 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:11:25,454 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:11:25,653 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:11:25,653 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:11:26,094 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 15:11:26,094 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:11:26,265 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:11:26,266 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:11:26,398 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 15:11:47,860 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:13:02,752 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:13:02,809 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,530 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,655 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,780 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:03,908 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,073 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,198 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,312 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,443 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,565 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,690 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,816 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:04,989 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,107 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,222 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,352 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:05,488 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:13:05,488 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:13:05,695 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:13:05,697 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:13:06,004 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:13:06,004 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:13:06,134 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:13:06,141 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:06,276 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:13:06,278 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:13:07,409 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:13:07,412 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:13:07,564 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:13:07,574 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:13:07,574 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:13:07,862 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:13:07,862 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:13:07,994 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 15:13:07,995 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:13:08,164 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:13:08,164 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:13:08,291 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 15:13:56,491 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:18:44,934 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:18:44,980 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:45,717 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,028 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,153 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,294 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,414 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,540 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,667 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,802 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:46,926 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,052 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,177 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,307 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,436 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,562 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,686 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:47,816 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:18:47,817 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:18:48,018 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:18:48,021 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:18:48,204 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:18:48,204 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:18:48,352 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:18:48,355 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:48,476 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:18:48,477 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:18:49,495 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:18:49,497 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:18:49,652 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:18:49,666 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:18:49,667 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:18:50,103 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:18:50,103 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:18:50,240 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: MyUniqueQueueName
+2013-04-27 15:18:50,241 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:18:50,426 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:18:50,427 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/MyUniqueQueueName.
+2013-04-27 15:18:50,558 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: MyUniqueQueueName
+2013-04-27 15:18:58,671 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-27 15:33:58,967 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:33:59,092 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:33:59,885 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,011 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,143 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,369 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,498 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,627 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,779 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:00,904 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,033 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,162 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,294 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,413 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,539 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,665 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,790 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:01,920 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:34:01,920 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:34:02,067 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:34:02,070 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:34:02,264 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:34:02,264 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:34:02,640 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:34:02,646 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:02,781 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:34:02,783 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:34:03,449 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:34:03,452 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:34:03,753 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:34:03,760 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:34:03,760 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:34:03,964 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:34:03,964 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:34:04,107 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_a1f0b219f2be43fb9c8180453e377d58.
+2013-04-27 15:34:04,438 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:a1f0b219f2be43fb9c8180453e377d58
+2013-04-27 15:34:04,438 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_a1f0b219f2be43fb9c8180453e377d58.
+2013-04-27 15:34:04,737 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:34:04,737 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_a1f0b219f2be43fb9c8180453e377d58.
+2013-04-27 15:34:04,866 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:a1f0b219f2be43fb9c8180453e377d58
+2013-04-27 15:34:04,869 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: mq:c1:a1f0b219f2be43fb9c8180453e377d58.
+2013-04-27 15:35:03,290 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-27 15:35:03,365 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,092 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,256 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,394 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,530 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,665 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,799 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:04,933 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,074 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,193 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,319 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,450 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,581 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,710 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,847 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:05,983 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:06,117 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-27 15:35:06,117 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-27 15:35:06,186 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:35:06,188 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:35:06,398 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:35:06,398 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:35:06,546 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:35:06,554 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:06,682 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:35:06,683 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:35:07,573 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:35:07,574 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:35:07,793 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:35:07,807 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:35:07,808 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:35:07,979 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:35:07,980 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:35:08,119 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_2d7df0aeaa98416b986f9fba081090f0.
+2013-04-27 15:35:08,499 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:2d7df0aeaa98416b986f9fba081090f0
+2013-04-27 15:35:08,499 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_2d7df0aeaa98416b986f9fba081090f0.
+2013-04-27 15:35:08,660 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:35:08,660 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_2d7df0aeaa98416b986f9fba081090f0.
+2013-04-27 15:35:08,801 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:2d7df0aeaa98416b986f9fba081090f0
+2013-04-27 15:35:08,805 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_2d7df0aeaa98416b986f9fba081090f0.
+2013-04-27 15:37:51,031 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:37:51,031 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:51,525 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:37:51,526 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:37:51,661 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:51,661 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:37:51,661 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:51,973 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:37:51,973 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:52,098 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:37:52,098 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:37:52,098 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:37:52,234 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:52,234 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:37:52,376 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_b69f8914ec2840d68fdf6d516291c1f2.
+2013-04-27 15:37:52,706 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:b69f8914ec2840d68fdf6d516291c1f2
+2013-04-27 15:37:52,706 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_b69f8914ec2840d68fdf6d516291c1f2.
+2013-04-27 15:37:52,873 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:37:52,874 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_b69f8914ec2840d68fdf6d516291c1f2.
+2013-04-27 15:37:52,998 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:b69f8914ec2840d68fdf6d516291c1f2
+2013-04-27 15:37:52,998 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_b69f8914ec2840d68fdf6d516291c1f2.
+2013-04-27 15:37:53,233 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:37:53,233 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:53,359 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:37:53,360 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:37:53,496 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:53,496 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:37:53,496 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:53,760 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:37:53,760 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:53,889 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:37:53,889 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:37:53,889 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:37:54,024 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:54,024 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:37:54,149 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_e5f74c8b40d24a24873086952423db14.
+2013-04-27 15:37:54,426 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:e5f74c8b40d24a24873086952423db14
+2013-04-27 15:37:54,427 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_e5f74c8b40d24a24873086952423db14.
+2013-04-27 15:37:54,653 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:37:54,653 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_e5f74c8b40d24a24873086952423db14.
+2013-04-27 15:37:54,783 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:e5f74c8b40d24a24873086952423db14
+2013-04-27 15:37:54,784 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_e5f74c8b40d24a24873086952423db14.
+2013-04-27 15:37:54,976 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:37:54,977 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:55,104 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:37:55,104 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:37:55,272 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:55,272 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:37:55,274 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:55,524 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:37:55,525 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:55,659 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:37:55,660 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:37:55,661 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:37:55,793 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:55,794 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:37:55,922 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_be639adacd7d4dc8901f610616f37615.
+2013-04-27 15:37:56,189 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:be639adacd7d4dc8901f610616f37615
+2013-04-27 15:37:56,190 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_be639adacd7d4dc8901f610616f37615.
+2013-04-27 15:37:56,349 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:37:56,350 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_be639adacd7d4dc8901f610616f37615.
+2013-04-27 15:37:56,474 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:be639adacd7d4dc8901f610616f37615
+2013-04-27 15:37:56,475 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_be639adacd7d4dc8901f610616f37615.
+2013-04-27 15:37:56,671 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-27 15:37:56,671 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-27 15:37:56,801 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-27 15:37:56,802 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-27 15:37:56,948 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:56,948 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-27 15:37:56,949 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:57,276 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-27 15:37:57,276 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-27 15:37:57,411 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-27 15:37:57,412 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-27 15:37:57,412 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-27 15:37:57,569 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-27 15:37:57,569 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-27 15:37:57,695 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_c3176a7450b64f3a827434d1b7f01b7d.
+2013-04-27 15:37:58,091 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:c3176a7450b64f3a827434d1b7f01b7d
+2013-04-27 15:37:58,092 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_c3176a7450b64f3a827434d1b7f01b7d.
+2013-04-27 15:37:58,305 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-27 15:37:58,305 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_c3176a7450b64f3a827434d1b7f01b7d.
+2013-04-27 15:37:58,439 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:c3176a7450b64f3a827434d1b7f01b7d
+2013-04-27 15:37:58,440 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_c3176a7450b64f3a827434d1b7f01b7d.
+2013-04-27 15:38:07,104 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-28 14:09:40,103 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 14:09:40,335 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,242 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,488 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,620 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,756 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:41,892 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,023 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,151 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,300 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,439 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,561 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,681 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:42,823 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,229 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,405 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,530 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:43,649 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-28 14:09:43,649 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 14:09:43,768 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:09:43,770 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:09:44,059 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:09:44,059 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:09:44,345 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:09:44,348 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:44,486 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:09:44,490 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:09:45,409 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:09:45,411 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:09:45,563 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:09:45,579 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:09:45,579 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:09:45,824 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:09:45,825 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:09:45,963 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_c63584c7ce13477bbe4649d06ff0eb4e.
+2013-04-28 14:09:46,276 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:c63584c7ce13477bbe4649d06ff0eb4e
+2013-04-28 14:09:46,276 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_c63584c7ce13477bbe4649d06ff0eb4e.
+2013-04-28 14:09:46,558 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:09:46,558 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_c63584c7ce13477bbe4649d06ff0eb4e.
+2013-04-28 14:09:46,685 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:c63584c7ce13477bbe4649d06ff0eb4e
+2013-04-28 14:09:46,689 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_c63584c7ce13477bbe4649d06ff0eb4e.
+2013-04-28 14:11:04,600 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:04,601 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:04,751 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:04,752 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:05,174 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:05,174 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:05,175 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:05,432 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:05,433 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:05,556 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:05,557 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:05,558 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:05,748 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:05,749 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:05,895 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_e61cf16aa8ba46df8bf824149986f8b2.
+2013-04-28 14:11:06,149 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:e61cf16aa8ba46df8bf824149986f8b2
+2013-04-28 14:11:06,150 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_e61cf16aa8ba46df8bf824149986f8b2.
+2013-04-28 14:11:06,399 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:06,400 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_e61cf16aa8ba46df8bf824149986f8b2.
+2013-04-28 14:11:06,522 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:e61cf16aa8ba46df8bf824149986f8b2
+2013-04-28 14:11:06,523 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_e61cf16aa8ba46df8bf824149986f8b2.
+2013-04-28 14:11:07,911 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:07,912 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:08,032 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:08,032 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:08,165 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:08,166 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:08,166 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:08,611 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:08,611 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:08,746 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:08,746 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:08,747 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:08,914 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:08,914 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:09,037 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_bf223b9f968245cabd500876adb30b8f.
+2013-04-28 14:11:09,294 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:bf223b9f968245cabd500876adb30b8f
+2013-04-28 14:11:09,294 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_bf223b9f968245cabd500876adb30b8f.
+2013-04-28 14:11:09,609 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:09,610 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_bf223b9f968245cabd500876adb30b8f.
+2013-04-28 14:11:09,733 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:bf223b9f968245cabd500876adb30b8f
+2013-04-28 14:11:09,734 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_bf223b9f968245cabd500876adb30b8f.
+2013-04-28 14:11:10,767 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:10,768 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:10,915 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:10,916 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:11,308 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:11,309 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:11,309 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:11,598 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:11,598 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:11,731 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:11,732 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:11,732 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:11,854 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:11,855 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:12,020 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_5e0fa9e35b6a47d8b5fa7b8ee7ec654d.
+2013-04-28 14:11:12,298 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:5e0fa9e35b6a47d8b5fa7b8ee7ec654d
+2013-04-28 14:11:12,298 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_5e0fa9e35b6a47d8b5fa7b8ee7ec654d.
+2013-04-28 14:11:12,724 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:12,725 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_5e0fa9e35b6a47d8b5fa7b8ee7ec654d.
+2013-04-28 14:11:12,865 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:5e0fa9e35b6a47d8b5fa7b8ee7ec654d
+2013-04-28 14:11:12,866 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_5e0fa9e35b6a47d8b5fa7b8ee7ec654d.
+2013-04-28 14:11:13,432 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:13,432 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:13,555 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:13,555 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:13,678 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:13,679 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:13,680 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:13,937 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:13,937 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:14,071 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:14,072 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:14,073 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:14,286 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:14,287 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:14,422 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_768b4ca5b0904f6c8ac22784450b298d.
+2013-04-28 14:11:14,668 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:768b4ca5b0904f6c8ac22784450b298d
+2013-04-28 14:11:14,669 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_768b4ca5b0904f6c8ac22784450b298d.
+2013-04-28 14:11:15,105 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:15,105 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_768b4ca5b0904f6c8ac22784450b298d.
+2013-04-28 14:11:15,224 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:768b4ca5b0904f6c8ac22784450b298d
+2013-04-28 14:11:15,225 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_768b4ca5b0904f6c8ac22784450b298d.
+2013-04-28 14:11:16,783 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:16,784 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:16,905 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:16,905 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:17,028 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:17,028 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:17,030 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:17,298 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:17,298 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:17,416 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:17,417 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:17,417 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:17,541 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:17,542 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:17,666 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_e6320d27523244c9a665012a6c46aea6.
+2013-04-28 14:11:18,871 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:e6320d27523244c9a665012a6c46aea6
+2013-04-28 14:11:18,871 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_e6320d27523244c9a665012a6c46aea6.
+2013-04-28 14:11:19,042 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:19,043 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_e6320d27523244c9a665012a6c46aea6.
+2013-04-28 14:11:19,159 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:e6320d27523244c9a665012a6c46aea6
+2013-04-28 14:11:19,160 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_e6320d27523244c9a665012a6c46aea6.
+2013-04-28 14:11:19,808 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:19,809 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:19,936 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:19,936 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:20,083 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:20,083 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:20,084 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:20,332 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:20,332 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:20,469 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:20,470 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:20,470 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:20,647 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:20,648 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:20,770 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_c5c5cc0782af4d2fba1ba0f923986c83.
+2013-04-28 14:11:21,018 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:c5c5cc0782af4d2fba1ba0f923986c83
+2013-04-28 14:11:21,018 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_c5c5cc0782af4d2fba1ba0f923986c83.
+2013-04-28 14:11:21,636 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:21,637 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_c5c5cc0782af4d2fba1ba0f923986c83.
+2013-04-28 14:11:21,758 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:c5c5cc0782af4d2fba1ba0f923986c83
+2013-04-28 14:11:21,759 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_c5c5cc0782af4d2fba1ba0f923986c83.
+2013-04-28 14:11:23,264 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:23,264 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:23,386 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:23,386 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:23,507 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:23,508 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:23,508 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:23,767 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:23,768 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:23,931 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:23,932 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:23,933 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:24,054 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:24,055 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:24,177 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_9e1f977f0e8e4af382565540b522caeb.
+2013-04-28 14:11:24,415 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:9e1f977f0e8e4af382565540b522caeb
+2013-04-28 14:11:24,416 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_9e1f977f0e8e4af382565540b522caeb.
+2013-04-28 14:11:24,581 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:24,581 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_9e1f977f0e8e4af382565540b522caeb.
+2013-04-28 14:11:24,698 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:9e1f977f0e8e4af382565540b522caeb
+2013-04-28 14:11:24,699 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_9e1f977f0e8e4af382565540b522caeb.
+2013-04-28 14:11:25,440 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:25,440 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:25,571 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:25,572 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:25,725 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:25,725 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:25,727 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:26,105 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:26,105 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:26,241 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:26,241 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:26,242 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:26,364 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:26,365 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:26,493 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_1b60ca34b8c24d07a5d90183ddea7791.
+2013-04-28 14:11:26,786 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:1b60ca34b8c24d07a5d90183ddea7791
+2013-04-28 14:11:26,786 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_1b60ca34b8c24d07a5d90183ddea7791.
+2013-04-28 14:11:27,148 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:27,148 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_1b60ca34b8c24d07a5d90183ddea7791.
+2013-04-28 14:11:27,276 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:1b60ca34b8c24d07a5d90183ddea7791
+2013-04-28 14:11:27,277 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_1b60ca34b8c24d07a5d90183ddea7791.
+2013-04-28 14:11:27,616 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:27,616 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:27,778 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:27,779 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:27,898 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:27,898 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:27,898 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:28,167 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:28,167 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:28,284 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:28,285 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:28,285 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:28,404 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:28,404 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:28,526 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_0272404c670c4d329c162ea53035af13.
+2013-04-28 14:11:28,863 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:0272404c670c4d329c162ea53035af13
+2013-04-28 14:11:28,864 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_0272404c670c4d329c162ea53035af13.
+2013-04-28 14:11:29,095 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:29,095 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_0272404c670c4d329c162ea53035af13.
+2013-04-28 14:11:29,211 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:0272404c670c4d329c162ea53035af13
+2013-04-28 14:11:29,212 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_0272404c670c4d329c162ea53035af13.
+2013-04-28 14:11:31,775 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:31,775 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:31,895 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:31,896 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:32,016 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:32,016 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:32,017 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:32,290 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:32,290 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:32,407 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:32,408 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:32,409 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:32,533 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:32,533 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:32,646 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_6d5e8fe1c53342ee84204ff596898c00.
+2013-04-28 14:11:32,899 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:6d5e8fe1c53342ee84204ff596898c00
+2013-04-28 14:11:32,900 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_6d5e8fe1c53342ee84204ff596898c00.
+2013-04-28 14:11:33,045 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:33,046 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_6d5e8fe1c53342ee84204ff596898c00.
+2013-04-28 14:11:33,173 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:6d5e8fe1c53342ee84204ff596898c00
+2013-04-28 14:11:33,174 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_6d5e8fe1c53342ee84204ff596898c00.
+2013-04-28 14:11:33,348 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:33,349 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:33,472 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:33,472 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:33,615 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:33,616 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:33,616 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:33,876 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:33,877 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:33,991 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:33,991 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:33,992 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:34,110 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:34,111 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:34,241 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_84edef75f9a84d76baf46d6d80ec268f.
+2013-04-28 14:11:34,475 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:84edef75f9a84d76baf46d6d80ec268f
+2013-04-28 14:11:34,475 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_84edef75f9a84d76baf46d6d80ec268f.
+2013-04-28 14:11:34,746 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:34,746 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_84edef75f9a84d76baf46d6d80ec268f.
+2013-04-28 14:11:34,867 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:84edef75f9a84d76baf46d6d80ec268f
+2013-04-28 14:11:34,867 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_84edef75f9a84d76baf46d6d80ec268f.
+2013-04-28 14:11:35,457 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:35,457 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:35,644 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:35,645 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:35,769 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:35,769 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:35,770 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:36,029 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:36,030 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:36,169 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:36,170 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:36,170 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:36,294 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:36,294 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:36,414 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_e04455ba5e994374884412a9a043e5fd.
+2013-04-28 14:11:36,701 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:e04455ba5e994374884412a9a043e5fd
+2013-04-28 14:11:36,702 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_e04455ba5e994374884412a9a043e5fd.
+2013-04-28 14:11:36,883 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:36,883 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_e04455ba5e994374884412a9a043e5fd.
+2013-04-28 14:11:37,005 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:e04455ba5e994374884412a9a043e5fd
+2013-04-28 14:11:37,005 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_e04455ba5e994374884412a9a043e5fd.
+2013-04-28 14:11:37,198 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:37,198 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:37,317 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:37,317 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:37,443 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:37,443 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:37,443 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:37,771 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:37,771 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:37,893 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:37,893 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:37,894 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:38,033 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:38,034 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:38,145 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_8f0d3119f9a848d488850794556de38c.
+2013-04-28 14:11:38,402 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:8f0d3119f9a848d488850794556de38c
+2013-04-28 14:11:38,402 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_8f0d3119f9a848d488850794556de38c.
+2013-04-28 14:11:38,627 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:38,627 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_8f0d3119f9a848d488850794556de38c.
+2013-04-28 14:11:38,748 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:8f0d3119f9a848d488850794556de38c
+2013-04-28 14:11:38,748 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_8f0d3119f9a848d488850794556de38c.
+2013-04-28 14:11:38,952 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:38,952 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:39,076 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:39,076 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:39,196 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:39,197 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:39,198 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:39,450 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:39,450 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:39,578 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:39,579 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:39,579 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:39,695 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:39,695 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:39,814 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_31ac470139bc41db85b9167778d36406.
+2013-04-28 14:11:40,086 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:31ac470139bc41db85b9167778d36406
+2013-04-28 14:11:40,087 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_31ac470139bc41db85b9167778d36406.
+2013-04-28 14:11:40,237 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:40,237 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_31ac470139bc41db85b9167778d36406.
+2013-04-28 14:11:40,353 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:31ac470139bc41db85b9167778d36406
+2013-04-28 14:11:40,353 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_31ac470139bc41db85b9167778d36406.
+2013-04-28 14:11:40,517 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:40,518 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:40,639 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:40,639 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:40,761 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:40,762 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:40,762 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:41,151 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:41,151 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:41,268 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:41,268 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:41,268 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:41,392 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:41,392 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:41,516 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_4d9677a3dbab4739b78e7ed1c79a0ba6.
+2013-04-28 14:11:41,756 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:4d9677a3dbab4739b78e7ed1c79a0ba6
+2013-04-28 14:11:41,756 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_4d9677a3dbab4739b78e7ed1c79a0ba6.
+2013-04-28 14:11:41,985 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:41,985 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_4d9677a3dbab4739b78e7ed1c79a0ba6.
+2013-04-28 14:11:42,113 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:4d9677a3dbab4739b78e7ed1c79a0ba6
+2013-04-28 14:11:42,113 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_4d9677a3dbab4739b78e7ed1c79a0ba6.
+2013-04-28 14:11:42,332 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:42,333 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:42,459 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:42,459 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:42,580 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:42,580 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:42,580 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:42,831 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:42,831 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:42,946 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:42,947 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:42,947 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:43,067 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:43,067 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:43,185 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_5529215416fa445b8d751d05ca187619.
+2013-04-28 14:11:43,603 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:5529215416fa445b8d751d05ca187619
+2013-04-28 14:11:43,603 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_5529215416fa445b8d751d05ca187619.
+2013-04-28 14:11:43,855 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:43,856 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_5529215416fa445b8d751d05ca187619.
+2013-04-28 14:11:43,972 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:5529215416fa445b8d751d05ca187619
+2013-04-28 14:11:43,973 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_5529215416fa445b8d751d05ca187619.
+2013-04-28 14:11:44,162 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:44,163 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:44,281 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:44,282 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:44,404 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:44,405 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:44,405 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:44,657 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:44,658 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:44,794 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:44,794 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:44,795 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:44,918 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:44,919 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:45,032 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_db3c22166c71465d8f3a3604a5160564.
+2013-04-28 14:11:45,321 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:db3c22166c71465d8f3a3604a5160564
+2013-04-28 14:11:45,322 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_db3c22166c71465d8f3a3604a5160564.
+2013-04-28 14:11:45,524 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:45,524 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_db3c22166c71465d8f3a3604a5160564.
+2013-04-28 14:11:45,659 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:db3c22166c71465d8f3a3604a5160564
+2013-04-28 14:11:45,660 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_db3c22166c71465d8f3a3604a5160564.
+2013-04-28 14:11:45,853 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:45,853 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:45,968 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:45,969 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:46,089 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:46,090 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:46,090 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:46,353 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:46,353 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:46,480 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:46,481 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:46,481 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:46,618 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:46,618 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:46,735 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_6b730ed125be4462a6de5e8cc9440852.
+2013-04-28 14:11:46,985 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:6b730ed125be4462a6de5e8cc9440852
+2013-04-28 14:11:46,986 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_6b730ed125be4462a6de5e8cc9440852.
+2013-04-28 14:11:47,216 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:47,216 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_6b730ed125be4462a6de5e8cc9440852.
+2013-04-28 14:11:47,332 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:6b730ed125be4462a6de5e8cc9440852
+2013-04-28 14:11:47,333 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_6b730ed125be4462a6de5e8cc9440852.
+2013-04-28 14:11:47,536 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:47,537 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:47,674 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:47,675 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:47,797 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:47,798 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:47,798 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:48,057 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:48,057 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:48,176 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:48,177 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:48,177 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:48,296 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:48,297 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:48,419 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_37981c1fd9ab4d03adad9c090fea265e.
+2013-04-28 14:11:48,678 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:37981c1fd9ab4d03adad9c090fea265e
+2013-04-28 14:11:48,679 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_37981c1fd9ab4d03adad9c090fea265e.
+2013-04-28 14:11:48,887 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:48,887 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_37981c1fd9ab4d03adad9c090fea265e.
+2013-04-28 14:11:49,084 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:37981c1fd9ab4d03adad9c090fea265e
+2013-04-28 14:11:49,084 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_37981c1fd9ab4d03adad9c090fea265e.
+2013-04-28 14:11:49,281 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 14:11:49,282 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 14:11:49,405 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 14:11:49,405 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 14:11:49,543 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:49,544 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 14:11:49,544 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:49,786 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 14:11:49,786 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 14:11:49,908 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 14:11:49,908 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 14:11:49,909 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 14:11:50,028 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 14:11:50,029 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 14:11:50,148 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_a008b855ab25497b9d413968caafab04.
+2013-04-28 14:11:50,399 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:a008b855ab25497b9d413968caafab04
+2013-04-28 14:11:50,400 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_a008b855ab25497b9d413968caafab04.
+2013-04-28 14:11:50,821 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 14:11:50,821 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_a008b855ab25497b9d413968caafab04.
+2013-04-28 14:11:50,946 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:a008b855ab25497b9d413968caafab04
+2013-04-28 14:11:50,947 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_a008b855ab25497b9d413968caafab04.
+2013-04-28 14:12:09,847 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-28 15:37:17,434 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 15:37:17,497 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,444 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,571 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,714 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:19,877 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:20,016 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:20,200 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:20,342 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:39,165 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:41,876 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:42,500 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:37:43,363 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:25,136 [8] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 15:39:25,285 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,177 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,487 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,616 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,752 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:26,879 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,007 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,187 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,309 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,429 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,569 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,685 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,816 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:27,954 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,081 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,212 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:28,333 [8] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-28 15:39:28,333 [8] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 15:39:28,436 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 15:39:28,440 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 15:39:28,765 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 15:39:28,765 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 15:39:29,114 [8] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 15:39:29,116 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:29,231 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 15:39:29,231 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 15:39:30,470 [8] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 15:39:30,472 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 15:39:30,648 [8] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 15:39:30,665 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 15:39:30,666 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 15:39:31,266 [8] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 15:39:31,267 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 15:39:31,390 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_2f0ddb31472a41abbe2b25a9e5074039.
+2013-04-28 15:39:31,866 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:2f0ddb31472a41abbe2b25a9e5074039
+2013-04-28 15:39:31,866 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_2f0ddb31472a41abbe2b25a9e5074039.
+2013-04-28 15:39:32,081 [8] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 15:39:32,081 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_2f0ddb31472a41abbe2b25a9e5074039.
+2013-04-28 15:39:32,230 [8] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:2f0ddb31472a41abbe2b25a9e5074039
+2013-04-28 15:39:32,233 [8] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_2f0ddb31472a41abbe2b25a9e5074039.
+2013-04-28 16:15:51,665 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-28 16:15:51,715 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,347 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,473 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,604 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,752 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:52,883 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,134 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,256 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,385 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,524 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,654 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,781 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:53,948 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:54,076 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:54,206 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:54,344 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:54,475 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-28 16:15:54,475 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-28 16:15:54,555 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-28 16:15:54,557 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-28 16:15:54,809 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-28 16:15:54,809 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-28 16:15:54,986 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 16:15:54,988 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:55,123 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-28 16:15:55,125 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 16:15:56,167 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-28 16:15:56,169 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-28 16:15:56,361 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-28 16:15:56,389 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-28 16:15:56,389 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-28 16:15:56,525 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-28 16:15:56,526 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-28 16:15:56,653 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_bf79006777054e91a815c22d1f580125.
+2013-04-28 16:15:57,075 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:bf79006777054e91a815c22d1f580125
+2013-04-28 16:15:57,075 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_bf79006777054e91a815c22d1f580125.
+2013-04-28 16:15:57,312 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-28 16:15:57,312 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_bf79006777054e91a815c22d1f580125.
+2013-04-28 16:15:57,446 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:bf79006777054e91a815c22d1f580125
+2013-04-28 16:15:57,451 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_bf79006777054e91a815c22d1f580125.
+2013-04-29 18:29:25,715 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:29:25,854 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,731 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,857 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:27,984 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,120 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,238 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,387 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,520 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,647 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,772 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:28,908 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:29,041 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:29,173 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:29,301 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:29,440 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:32,950 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:33,979 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 18:29:33,979 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:29:37,976 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 18:29:37,979 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:29:40,417 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 18:29:40,417 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 18:29:40,604 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:29:40,612 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:40,740 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 18:29:40,743 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:29:41,360 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-29 18:29:41,362 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:29:41,722 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-29 18:29:41,731 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 18:29:41,732 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 18:29:42,367 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:29:42,369 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:29:42,528 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_1efef3de5aa24b8b8eb26f6d5718c4ef.
+2013-04-29 18:29:42,946 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:1efef3de5aa24b8b8eb26f6d5718c4ef
+2013-04-29 18:29:42,946 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_1efef3de5aa24b8b8eb26f6d5718c4ef.
+2013-04-29 18:29:43,185 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-29 18:29:43,186 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_1efef3de5aa24b8b8eb26f6d5718c4ef.
+2013-04-29 18:29:43,306 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:1efef3de5aa24b8b8eb26f6d5718c4ef
+2013-04-29 18:29:43,309 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_1efef3de5aa24b8b8eb26f6d5718c4ef.
+2013-04-29 18:55:54,083 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:55:54,144 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:54,890 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,046 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,188 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,321 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,568 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,716 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,851 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:55,985 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,114 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,263 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,387 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,522 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,652 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,792 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:56,927 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:55:57,060 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 18:55:57,061 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:55:57,141 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 18:55:57,143 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:55:57,380 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 18:55:57,380 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 18:56:07,140 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:56:07,143 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:56:07,295 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 18:56:07,296 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:56:09,251 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-29 18:56:09,252 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:56:09,413 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-29 18:56:09,419 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 18:56:09,419 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 18:56:09,634 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:56:09,635 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:56:09,773 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_a96057d116164240af65136e14dd39a9.
+2013-04-29 18:56:10,141 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:a96057d116164240af65136e14dd39a9
+2013-04-29 18:56:10,142 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_a96057d116164240af65136e14dd39a9.
+2013-04-29 18:56:10,331 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-29 18:56:10,331 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_a96057d116164240af65136e14dd39a9.
+2013-04-29 18:56:10,497 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:a96057d116164240af65136e14dd39a9
+2013-04-29 18:56:10,498 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_a96057d116164240af65136e14dd39a9.
+2013-04-29 18:59:11,581 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 18:59:11,647 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,318 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,451 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,576 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,702 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,831 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:12,956 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,085 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,215 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,355 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,480 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,648 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,791 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:13,934 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,084 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,217 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,350 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 18:59:14,350 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 18:59:14,464 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 18:59:14,468 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 18:59:14,716 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 18:59:14,716 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 18:59:14,853 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:59:14,861 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:14,995 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 18:59:14,998 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:59:18,879 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-29 18:59:18,881 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 18:59:19,118 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-29 18:59:19,139 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 18:59:19,139 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 18:59:19,583 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 18:59:19,585 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 18:59:19,717 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_e2768b73939246f58cdeb66f22d705c7.
+2013-04-29 18:59:21,239 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:e2768b73939246f58cdeb66f22d705c7
+2013-04-29 18:59:21,240 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_e2768b73939246f58cdeb66f22d705c7.
+2013-04-29 18:59:21,410 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-29 18:59:21,412 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_e2768b73939246f58cdeb66f22d705c7.
+2013-04-29 18:59:21,536 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:e2768b73939246f58cdeb66f22d705c7
+2013-04-29 18:59:21,538 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_e2768b73939246f58cdeb66f22d705c7.
+2013-04-29 19:32:40,622 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:32:40,691 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,087 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,314 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,536 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,745 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:43,922 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:46,323 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:46,509 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:32:47,899 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:01,695 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:01,908 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:02,115 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:06,542 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:06,746 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:06,930 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:07,146 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:08,603 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 19:33:08,603 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:33:08,809 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 19:33:08,814 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:33:09,060 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 19:33:09,060 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 19:33:09,269 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:33:09,277 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:09,456 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 19:33:09,458 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:33:10,099 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-29 19:33:10,101 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:33:11,597 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-29 19:33:11,612 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 19:33:11,613 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 19:33:11,859 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:33:11,860 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:33:12,033 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_2181f41458444b3480b3866d06580ad3.
+2013-04-29 19:33:12,522 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:2181f41458444b3480b3866d06580ad3
+2013-04-29 19:33:12,523 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_2181f41458444b3480b3866d06580ad3.
+2013-04-29 19:33:12,844 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-29 19:33:12,844 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_2181f41458444b3480b3866d06580ad3.
+2013-04-29 19:33:13,036 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:2181f41458444b3480b3866d06580ad3
+2013-04-29 19:33:13,040 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_2181f41458444b3480b3866d06580ad3.
+2013-04-29 19:36:17,139 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:36:17,326 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:22,893 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:23,056 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:23,244 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:23,423 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:26,406 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:29,956 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,160 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,333 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,496 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,654 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,818 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:30,997 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:33,637 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:33,813 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:33,991 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:34,166 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 19:36:34,166 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:36:34,377 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 19:36:34,380 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:36:34,666 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 19:36:34,666 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 19:36:34,969 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:36:34,977 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:36:35,159 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 19:36:35,162 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:37:23,574 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-04-29 19:37:23,579 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 19:37:23,579 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 19:37:27,026 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:37:27,027 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:37:28,465 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_3566b9332bfe4a639008ec92dea56fff.
+2013-04-29 19:37:32,638 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:3566b9332bfe4a639008ec92dea56fff
+2013-04-29 19:37:32,638 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_3566b9332bfe4a639008ec92dea56fff.
+2013-04-29 19:37:53,206 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-04-29 19:37:53,209 [10] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_3566b9332bfe4a639008ec92dea56fff.
+2013-04-29 19:38:49,885 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:38:50,061 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:51,090 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:51,267 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:51,459 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:52,845 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,264 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,433 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,616 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,795 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:54,974 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:55,166 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:56,793 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:56,974 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,156 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,330 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,506 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:57,681 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 19:38:57,681 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:38:57,874 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 19:38:57,879 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:38:58,205 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 19:38:58,205 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 19:38:58,427 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:38:58,430 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:38:58,601 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 19:38:58,604 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:39:19,604 [9] INFO  Playground.Program [(null)] - No message response received.
+2013-04-29 19:39:19,617 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 19:39:19,617 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 19:39:19,848 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:39:19,849 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:39:20,022 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_5c51677db89b4d8a91e2db4839256d6a.
+2013-04-29 19:39:26,837 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:5c51677db89b4d8a91e2db4839256d6a
+2013-04-29 19:39:26,840 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_5c51677db89b4d8a91e2db4839256d6a.
+2013-04-29 19:39:30,004 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-29 19:39:30,005 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_5c51677db89b4d8a91e2db4839256d6a.
+2013-04-29 19:39:30,212 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:5c51677db89b4d8a91e2db4839256d6a
+2013-04-29 19:39:30,214 [9] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_5c51677db89b4d8a91e2db4839256d6a.
+2013-04-29 19:55:18,067 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-29 19:55:18,176 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:22,173 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:22,358 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:22,528 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:22,709 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:22,876 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:23,054 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:24,569 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:24,765 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:24,948 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:25,109 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:25,282 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:25,470 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:25,649 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:25,812 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:27,229 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:27,405 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-29 19:55:27,405 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-29 19:55:27,513 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-29 19:55:27,516 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-29 19:55:27,760 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-29 19:55:27,760 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-29 19:55:28,067 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:55:28,073 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:28,259 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-29 19:55:28,263 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:55:29,629 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-29 19:55:29,630 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-29 19:55:29,828 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-29 19:55:29,832 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-29 19:55:29,832 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-29 19:55:30,072 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-29 19:55:30,072 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-29 19:55:30,243 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_5a133f88c50346f28b50a477bd325eca.
+2013-04-29 19:55:30,769 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:5a133f88c50346f28b50a477bd325eca
+2013-04-29 19:55:30,770 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_5a133f88c50346f28b50a477bd325eca.
+2013-04-29 19:55:52,114 [1] INFO  Playground.Program [(null)] - No message response received.
+2013-04-29 19:55:52,118 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_5a133f88c50346f28b50a477bd325eca.
+2013-04-30 17:32:13,313 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-30 17:32:13,525 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,229 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,354 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,481 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,613 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,755 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:14,879 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,005 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,134 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,259 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,384 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,512 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,639 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,767 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:15,894 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:16,077 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:16,210 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-30 17:32:16,211 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-30 17:32:16,282 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-30 17:32:16,285 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello_inq.
+2013-04-30 17:32:16,580 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-30 17:32:16,580 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello3_inq.
+2013-04-30 17:32:16,746 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-30 17:32:16,748 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:16,872 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-30 17:32:16,873 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-30 17:32:17,103 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-30 17:32:17,104 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_Hello3Response_inq.
+2013-04-30 17:32:17,241 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-30 17:32:17,246 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-30 17:32:17,247 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Sending message to queue: https://queue.amazonaws.com/275796705536/mq_Hello4_inq.
+2013-04-30 17:32:17,450 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-30 17:32:17,450 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Getting all queue names
+2013-04-30 17:32:17,574 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Creating new queue: mq_c1_4b24b6d6e1d54c4a8338c015ef2d9630.
+2013-04-30 17:32:17,887 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:4b24b6d6e1d54c4a8338c015ef2d9630
+2013-04-30 17:32:17,887 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Receiving message(s) from queue: https://queue.amazonaws.com/275796705536/mq_c1_4b24b6d6e1d54c4a8338c015ef2d9630.
+2013-04-30 17:32:19,521 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-30 17:32:19,522 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting message from queue: https://queue.amazonaws.com/275796705536/mq_c1_4b24b6d6e1d54c4a8338c015ef2d9630.
+2013-04-30 17:32:19,654 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:4b24b6d6e1d54c4a8338c015ef2d9630
+2013-04-30 17:32:19,655 [1] DEBUG ServiceStack.Aws.Messaging.SqsClient [(null)] - SqsClient: Deleting queue: https://queue.amazonaws.com/275796705536/mq_c1_4b24b6d6e1d54c4a8338c015ef2d9630.
+2013-04-30 17:35:52,506 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-04-30 17:53:49,010 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-04-30 17:53:52,001 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-04-30 17:53:52,001 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-04-30 17:53:52,137 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-04-30 17:53:52,485 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-04-30 17:53:52,611 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-30 17:53:52,735 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-04-30 17:53:52,976 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-04-30 17:53:53,125 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-04-30 17:53:53,133 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-04-30 17:53:53,271 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-04-30 17:53:54,378 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:2e63ac36af5a437582d55dcd87d397c7
+2013-04-30 17:53:55,123 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-04-30 17:53:55,255 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:2e63ac36af5a437582d55dcd87d397c7
+2013-04-30 17:55:45,818 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:35:54,466 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:36:01,637 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-03 14:36:01,637 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:36:01,830 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:36:02,357 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:36:02,975 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:36:08,610 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:36:49,141 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:36:49,514 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:36:49,519 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:36:50,046 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:36:50,949 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:7ac2c9835af1423ba1b8d07f990aecd0
+2013-05-03 14:36:51,935 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-03 14:36:52,221 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:7ac2c9835af1423ba1b8d07f990aecd0
+2013-05-03 14:37:54,888 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:38:30,165 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:38:36,461 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-03 14:38:36,461 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:38:36,667 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:38:37,066 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:38:37,386 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:38:37,676 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:38:38,305 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:38:38,707 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:38:38,723 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:38:39,070 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:39:18,400 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:0dcf689c884d4d8aa8688c91a43ddeb4
+2013-05-03 14:40:08,567 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-05-03 14:43:52,667 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:43:54,976 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:43:55,381 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:43:55,382 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:43:55,750 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:43:56,056 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:43:56,056 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:43:56,465 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:43:57,350 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:a9983e97975f45ae84e1070c0354a27b
+2013-05-03 14:43:59,049 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-03 14:44:02,855 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:a9983e97975f45ae84e1070c0354a27b
+2013-05-03 14:44:11,171 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:44:11,519 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:44:11,816 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:44:11,817 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:44:12,104 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:44:12,441 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:44:12,441 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:44:12,791 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:44:13,692 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:cb48d273ac8f421d8afb6b3e7e447f72
+2013-05-03 14:44:34,047 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-05-03 14:44:37,315 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:44:37,632 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:44:38,126 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:44:38,126 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:44:38,410 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:44:38,695 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:44:38,695 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:44:39,004 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:44:40,014 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:1ca0d603903e4c169ce65b62024551d7
+2013-05-03 14:45:00,364 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-05-03 14:45:00,777 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:45:01,086 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:45:01,575 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:45:01,575 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:45:01,903 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:45:02,208 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:45:02,208 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:45:02,520 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:45:03,332 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:a831537db7a943f39872bfcd16c8a6ed
+2013-05-03 14:45:23,611 [10] INFO  Playground.Program [(null)] - No message response received.
+2013-05-03 14:45:26,371 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 14:47:35,255 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 14:47:41,768 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-03 14:47:41,768 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 14:47:41,896 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello.inq
+2013-05-03 14:47:42,229 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3.inq
+2013-05-03 14:47:42,681 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:47:42,965 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-03 14:47:43,497 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-03 14:47:43,816 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-03 14:47:43,836 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4.inq
+2013-05-03 14:47:44,231 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-03 14:47:45,046 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:0830ab8620f44b909050a7d79ae61f97
+2013-05-03 14:47:48,948 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-03 14:47:49,330 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:0830ab8620f44b909050a7d79ae61f97
+2013-05-03 14:48:28,752 [1] INFO  Playground.Program [(null)] - Stopping Client.

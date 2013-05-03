@@ -68,9 +68,11 @@ namespace ServiceStack.Redis.Messaging
             MessageServer.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads);
         }
 
-        protected virtual void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        protected virtual void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
-            throw new NotImplementedException("Pooled Handler not implemented");
+            // A thread count of 0, indicates that the handler should use the thread pool
+            MessageServer.RegisterHandler(processMessageFn, processExceptionEx, 0);
+            // throw new NotImplementedException("Pooled Handler not implemented");
         }
     }
 
@@ -131,11 +133,11 @@ namespace ServiceStack.Redis.Messaging
         //Stats
         private long timesStarted = 0;
         private long noOfErrors = 0;
-        protected int noOfContinuousErrors = 0;
+        //protected int noOfContinuousErrors = 0;
         private string lastExMsg = null;
         protected int status;
 
-        private Thread bgThread; //Subscription controller thread
+        // private Thread bgThread; //Subscription controller thread
         private long bgThreadCount = 0;
         public long BgThreadCount
         {
@@ -159,16 +161,19 @@ namespace ServiceStack.Redis.Messaging
         protected internal readonly Dictionary<Type, IMessageHandlerFactory> handlerMap
             = new Dictionary<Type, IMessageHandlerFactory>();
 
-        internal readonly Dictionary<Type, int> handlerThreadCountMap
+        protected internal readonly Dictionary<Type, int> handlerThreadCountMap
             = new Dictionary<Type, int>();
 
-        public MqServer2(IMessageFactory messageFactory,
-            int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
+        public TimeSpan? RequestTimeOut { get; private set; }
+
+        public MqServer2(
+            IMessageFactory messageFactory,
+            TimeSpan? requestTimeOut,
+            int retryCount = DefaultRetryCount)
         {
             Log = LogManager.GetLogger(this.GetType());
-           //  this.clientsManager = clientsManager;
             this.RetryCount = retryCount;
-            //this.RequestTimeOut = requestTimeOut;
+            this.RequestTimeOut = requestTimeOut;
             this.MessageFactory = messageFactory; // new RedisMessageFactory(clientsManager);
             this.ErrorHandler = ex => Log.Error("Exception in Redis MQ Server: " + ex.Message, ex);
         }
@@ -324,12 +329,15 @@ namespace ServiceStack.Redis.Messaging
                         return;
                     }
 
+                    /*
                     foreach (var worker in messageWorkers)
                     {
                         worker.Start();
                     }
+                    */
 
-                    SleepBackOffMultiplier(Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
+                    // TODO: Move this to the Queue Handler
+                    // SleepBackOffMultiplier(Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
 
                     KillQueueWorkerThreads();
 
@@ -351,6 +359,9 @@ namespace ServiceStack.Redis.Messaging
 
                     // Start the worker threads before the MQ listeners, so they're ready to process
                     StartWorkerThreads();
+
+                    if (Interlocked.CompareExchange(ref status, WorkerStatus.Started, WorkerStatus.Starting) != WorkerStatus.Starting) return;
+                    Interlocked.Increment(ref timesStarted);
 
                     // Start retrieving messages from the message queue(s)
                     // StartQueueWorkerThreads(); //// New
@@ -461,11 +472,16 @@ namespace ServiceStack.Redis.Messaging
 
         void DisposeWorkerThreads()
         {
-            Log.Debug("Disposing all message worker threads...");
-            if (messageWorkers != null) Array.ForEach(messageWorkers, x => x.Dispose());
+            Log.Debug("Stopping all queue worker threads...");
+            if (queueWorkers != null) Array.ForEach(queueWorkers, x => x.Stop());
+
+            // Block & Wait for each of the MQ workers to stop?
 
             Log.Debug("Disposing all queue worker threads...");
-            if (messageWorkers != null) Array.ForEach(queueWorkers, x => x.Dispose());
+            if (queueWorkers != null) Array.ForEach(queueWorkers, x => x.Dispose());
+
+            Log.Debug("Disposing all message worker threads...");
+            if (messageWorkers != null) Array.ForEach(messageWorkers, x => x.Dispose());
         }
 
         void WorkerErrorHandler(IMessageHandlerBackgroundWorker source, Exception ex)
@@ -502,7 +518,7 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
-        // TODO: Destroy all Bg Queue Workers.
+        /*
         private void KillBgThreadIfExists22()
         {
             if (bgThread != null && bgThread.IsAlive)
@@ -522,22 +538,7 @@ namespace ServiceStack.Redis.Messaging
                 bgThread = null;
             }
         }
-
-        readonly Random rand = new Random(Environment.TickCount);
-        private void SleepBackOffMultiplier(int continuousErrorsCount)
-        {
-            if (continuousErrorsCount == 0) return;
-            const int MaxSleepMs = 60 * 1000;
-
-            //exponential/random retry back-off.
-            var nextTry = Math.Min(
-                rand.Next((int)Math.Pow(continuousErrorsCount, 3), (int)Math.Pow(continuousErrorsCount + 1, 3) + 1),
-                MaxSleepMs);
-
-            Log.Debug("Sleeping for {0}ms after {1} continuous errors".Fmt(nextTry, continuousErrorsCount));
-
-            Thread.Sleep(nextTry);
-        }
+        */        
 
         public virtual void Dispose()
         {
@@ -561,7 +562,7 @@ namespace ServiceStack.Redis.Messaging
             try
             {
                 //Thread.Sleep(100); //give it a small chance to die gracefully
-                // KillBgThreadIfExists(); -> Performed by Dispose
+                // TODO:??? KillBgThreadIfExists(); -> Performed by Dispose
             }
             catch (Exception ex)
             {
@@ -608,7 +609,7 @@ namespace ServiceStack.Redis.Messaging
                 sb.AppendLine("Listening On: " + string.Join(", ", messageWorkers.ToList().ConvertAll(x => x.QueueName).ToArray()));
                 sb.AppendLine("Times Started: " + Interlocked.CompareExchange(ref timesStarted, 0, 0));
                 sb.AppendLine("Num of Errors: " + Interlocked.CompareExchange(ref noOfErrors, 0, 0));
-                sb.AppendLine("Num of Continuous Errors: " + Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
+                // sb.AppendLine("Num of Continuous Errors: " + Interlocked.CompareExchange(ref noOfContinuousErrors, 0, 0));
                 sb.AppendLine("Last ErrorMsg: " + lastExMsg);
                 sb.AppendLine("===============");
                 foreach (var queueWorker in queueWorkers)
