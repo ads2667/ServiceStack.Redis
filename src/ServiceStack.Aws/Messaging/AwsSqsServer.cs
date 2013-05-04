@@ -28,7 +28,7 @@ namespace ServiceStack.Aws.Messaging
     // ThreadPool Handler
     // Parameterize SQS polling times, visibility, etc...
     // Graceful termination of threads
-    public class AwsSqsServer : MqServer2, IMessageCoordinator
+    public class AwsSqsServer : MqServer2 /*<AwsSqsMessageHandlerRegister>*/, IMessageCoordinator
     {        
         public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null, decimal maxNumberOfMessagesToReceivePerRequest = 10, decimal messageVisibilityTimeout = 10)
             : base(null, requestTimeOut.HasValue ? requestTimeOut.Value : TimeSpan.FromSeconds(20), retryCount) //// Default to use Long Polling
@@ -71,6 +71,10 @@ namespace ServiceStack.Aws.Messaging
 
         public override void Dispose()
         {
+            // TODO: Wait for all ThreadPool messages to execute
+            Task.WaitAll(taskList.ToArray());
+
+
             base.Dispose();
             if (this.SqsClient != null)
             {
@@ -95,11 +99,13 @@ namespace ServiceStack.Aws.Messaging
 
         public IDictionary<string, string> QueueUrls { get; private set; }
 
+        // protected override AwsSqsMessageHandlerRegister CreateMessageHandlerRegister()
         protected override MessageHandlerRegister CreateMessageHandlerRegister()
         {
             return new AwsSqsMessageHandlerRegister(this, this.SqsClient);
         }
 
+        // public override void RegisterMessageHandlers(Action<AwsSqsMessageHandlerRegister> messageHandlerRegister)
         public override void RegisterMessageHandlers(Action<MessageHandlerRegister> messageHandlerRegister)
         {
             base.RegisterMessageHandlers(messageHandlerRegister);
@@ -186,6 +192,41 @@ namespace ServiceStack.Aws.Messaging
         private IDictionary<string, Queue<IMessage>> localMessageQueues = new Dictionary<string, Queue<IMessage>>();
         // private IDictionary<string, Queue<IAwsSqsMessage>> localMessageQueues = new Dictionary<string, Queue<IAwsSqsMessage>>(); 
 
+        private void ExecuteUsingThreadPool(object obj)
+        {
+            var threadPoolTask = obj as ThreadPoolTask;
+            if (threadPoolTask == null)
+            {
+                // TODO: Log, throw ex? We should never get here.
+                return;
+            }
+
+            // TODO: On the thread, create a handler and process the message.
+            Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
+
+            // We're already on a BG Thread here, we don't need to start a new BG Thread.
+            // var worker = messageWorkers[0]; // How to get the worker by queueName/messageType?
+            // worker.StartSynchronous(); // TODO: How to run in sync; and still utilize error handlers, etc..?
+            // TODO: prob need to create a 'PooledMessageHandlerWorker', should be able to contain all logic in this class.
+            // TODO: Do not need 'NotifyNewMessage' in the PooledMessageHandlerWorker class
+                        
+            using (var client = this.CreateMessageQueueClient())
+            {
+                threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
+            }
+        }
+
+        private class ThreadPoolTask
+        {
+            public Type MessageType { get; set; }
+
+            public string QueueName { get; set; }
+
+            public string MessageId { get; set; }
+        }
+
+        IList<Task> taskList = new List<Task>();
+
         // private Queue<Message> queue = new Queue<Message>(); 
         public void EnqueMessage(string queueName, IMessage /*IAwsSqsMessage*/ message, Type messageType)
         {
@@ -193,21 +234,45 @@ namespace ServiceStack.Aws.Messaging
                 // For threadPooling; this would involve adding a new [TASK] to the threadpool. Create contained class.
                 // Would need to get the HANDLER TYPE, based on the queue, and queue the thread. Use LocalMQ?
                 // TODO: Need to manage msg timeouts/retries and multiple processing of msg's. => Wrap in msg obj?
-               
+
+            // Add the message to the local queue.
+            lock (localMessageQueues)
+            {
+                localMessageQueues[queueName].Enqueue(message);
+            }
+
             // TODO: Support mix/match Pooled and Static thread handlers.
             var handlerThreadCount = handlerThreadCountMap[messageType];
 
             if (handlerThreadCount == 0) //// 0 => Threadpool
             {         
-                throw new NotImplementedException("Threadpool support not implemented.");
-                /*
+                // throw new NotImplementedException("Threadpool support not implemented.");
+                
                 // The handler is registered to use the thread pool.
                 // TODO: Create a new task, using the message handler, and add it to the thread pool
                 // TODO: Can pass MQ Name with EnqueMessage method.
-                    
+                var msgId = message.Id.ToString();
+                var sqsMessage = message.Body as ISqsMessage;
+                if (sqsMessage != null)
+                {
+                    msgId = sqsMessage.MessageId;
+                }
+
+                var threadPoolTask = new ThreadPoolTask { MessageType = messageType, QueueName = queueName, MessageId = msgId };
+                Log.DebugFormat("Assigning message {0} to thread pool", threadPoolTask.MessageId);
+
                 // ** TODO: Create Factory that creates tasks to assign to threadpool - based on queue name.
-                var task = new Task(, , TaskCreationOptions.PreferFairness);
-                var taskList = new List<Task>();
+                
+                var task = new Task(ExecuteUsingThreadPool, threadPoolTask, TaskCreationOptions.PreferFairness);
+                task.ContinueWith((t) =>
+                    {
+                        lock (taskList)
+                        {
+                            // TODO: Should this only be removed if executed successfully, w/out ex or cancellation?
+                            taskList.Remove(t);
+                        }
+                    }); // Must remove the task after it's been executed. Otherwise, we'll be waiting forever.
+
                 lock (taskList)
                 {
                     taskList.Add(task);
@@ -218,27 +283,13 @@ namespace ServiceStack.Aws.Messaging
 
                 task.Start(); // Executes async using threadpool.
                 // Task.WaitAll(taskList); // Example of WaitAll
-                task.ContinueWith((t) =>
-                    {
-                        lock (taskList)
-                        {
-                            taskList.Remove(t);
-                        }
-                    }); // Must remove the task after it's been executed. Otherwise, we'll be waiting forever.
-
-                // TODO: On the thread, create a handler and process the message.
-                this.handlerMap[typeof(object)].CreateMessageHandler().ProcessQueue(, queueName, null);
+                
                 // throw new NotImplementedException("ThreadPool support");
-                */
+                
             }
             else
             {
-                // Static Thread
-                lock (localMessageQueues)
-                {
-                    localMessageQueues[queueName].Enqueue(message);
-                }
-
+                // Static Thread                
                 // Notify the static threads that there's messages to process.
                 int[] workerIndexes;
                 if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))

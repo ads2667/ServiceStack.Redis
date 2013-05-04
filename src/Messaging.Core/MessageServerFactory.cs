@@ -29,15 +29,17 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(null, null)));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAI32WJMKWXTRJ6EHQ", "pjpRGOLvT0WsHrXC0DcKaSENKaNygJKs9zJg1TeG")));
 
             // TODO: Use customer registration to override default values
-            // svc.RegisterMessageHandlers(register => register.AddHandler());
-
+            // svc.RegisterMessageHandlers(register => register.AddPooledHandler());
+            
             return RegisterMessageHandlers(svc);
         }
 
-        private static IMessageService RegisterMessageHandlers(MqServer2 messageService)
+        //private static IMessageService RegisterMessageHandlers<T>(MqServer2<T> messageService) 
+        //    where T : MessageHandlerRegister
+        private static IMessageService RegisterMessageHandlers(MqServer2 messageService) 
         {            
             // TODO: Add all 'GetStats' to the MqHandlers
             // TODO: Verify that handlers have been registered before creating any clients/server
@@ -51,11 +53,12 @@ namespace Messaging.Core
                     // register.AddPooledHandler<TypeName>(() => );
 
                     // Standard Background Message Handlers
-                    register.AddHandler<Hello>((m) =>
+                    // register.AddHandler<Hello>((m) =>
+                    register.AddPooledHandler<Hello>((m) =>
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
                         return null;
-                    });
+                    }, null);
 
                     register.AddHandler<Hello2>((m) =>
                     {

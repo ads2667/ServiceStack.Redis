@@ -77,9 +77,9 @@ namespace ServiceStack.Aws.Messaging
         {
             Log.DebugFormat("On Message Processing Failed, Queue: {0}.", message.QueueName);
         }
-        
+
         /*** TODO: Allow default values for queue configuration to be overridden - Add Geneeric Arg to MqServer2 for MessageHandlerRegister, introduce Interface
-        protected virtual void AddMessageHandler<T>(
+        public virtual void AddMessageHandler<T>(
             Func<IMessage<T>, object> processMessageFn,
             Action<IMessage<T>, Exception> processExceptionEx,
             int noOfThreads,
@@ -88,7 +88,7 @@ namespace ServiceStack.Aws.Messaging
             decimal? maxNumberOfMessagesToReceivePerRequest,
             decimal? messageVisibilityTimeout)
         {
-            
+            // this.MessageServer.R
         }
         */
 
@@ -99,6 +99,25 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("processMessageFn");
             }
 
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
+        }
+
+        protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
+        {
+            if (processMessageFn == null)
+            {
+                throw new ArgumentNullException("processMessageFn");
+            }
+
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddPooledMessageHandler(processWrapper, exceptionWrapper);
+        }
+
+        private Func<IMessage<T>, object> WrapMessageProcessor<T>(Func<IMessage<T>, object> processMessageFn)
+        {
             // Wrap func with another that enables message to be deleted from queue after successful processing...
             var processWrapper = new Func<IMessage<T>, object>(message =>
             {
@@ -109,7 +128,9 @@ namespace ServiceStack.Aws.Messaging
                 }
                 else
                 {
-                    Log.InfoFormat("The message body for message {0} does not implement the interface {1}, no custom AwsSqsMessageHandlerRegister methods will be executed.", typeof(T).Name, typeof(ISqsMessage).Name);
+                    Log.InfoFormat(
+                        "The message body for message {0} does not implement the interface {1}, no custom AwsSqsMessageHandlerRegister methods will be executed.",
+                        typeof(T).Name, typeof(ISqsMessage).Name);
                 }
 
                 // Process the messge using the handler registration method.
@@ -120,17 +141,25 @@ namespace ServiceStack.Aws.Messaging
                     this.OnMessageProcessed(sqsMessage);
                 }
 
-                return result;               
+                return result;
             });
+            return processWrapper;
+        }
 
+        private Action<IMessage<T>, Exception> WrapExceptionHandler<T>(Action<IMessage<T>, Exception> processExceptionEx)
+        {
             var exceptionWrapper = new Action<IMessage<T>, Exception>((message, exception) =>
             {
-                Log.WarnFormat("An error occurred processing a message of type '{0}{1}' with the AwsSqsMessageHandler, error handlers should catch and log/handle the error. The exception message is: {2}.",  message.GetType().Name, message.Body == null ? string.Empty : string.Format("<{0}>", message.Body.GetType().Name), exception.Message);
+                Log.WarnFormat(
+                    "An error occurred processing a message of type '{0}{1}' with the AwsSqsMessageHandler, error handlers should catch and log/handle the error. The exception message is: {2}.",
+                    message.GetType().Name,
+                    message.Body == null ? string.Empty : string.Format("<{0}>", message.Body.GetType().Name),
+                    exception.Message);
                 try
                 {
                     var sqsMessage = message.Body as ISqsMessage;
                     if (sqsMessage != null)
-                    {                        
+                    {
                         this.OnMessageProcessingFailed(sqsMessage);
                     }
                 }
@@ -153,13 +182,7 @@ namespace ServiceStack.Aws.Messaging
                     Log.Error("Message exception handler threw an error", exHandlerEx);
                 }
             });
-
-            base.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
-        }
-
-        protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
-        {
-            base.AddPooledMessageHandler(processMessageFn, processExceptionEx);
+            return exceptionWrapper;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace ServiceStack.Redis.Messaging
 
     public class MessageHandlerRegister
     {
-        public MqServer2 MessageServer { get; private set; }
+        protected MqServer2 MessageServer { get; private set; }
 
         protected ILog Log;
 
@@ -68,13 +68,40 @@ namespace ServiceStack.Redis.Messaging
             MessageServer.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads);
         }
 
+        public void AddPooledHandler<T>(Func<IMessage<T>, object> processMessageFn)
+        {
+            AddPooledHandler(processMessageFn, null);
+        }
+
+        public void AddPooledHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
+        {
+            AddPooledMessageHandler(processMessageFn, processExceptionEx);
+        }
+
         protected virtual void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
             // A thread count of 0, indicates that the handler should use the thread pool
             MessageServer.RegisterHandler(processMessageFn, processExceptionEx, 0);
-            // throw new NotImplementedException("Pooled Handler not implemented");
         }
     }
+
+    ////public abstract class MqServer2<TMessageHandlerRegister> : MqServer2
+    ////    where TMessageHandlerRegister : MessageHandlerRegister
+    ////    // where TMessageHandlerBackgroundWorker : IMessageHandlerBackgroundWorker
+    ////{
+    ////    protected MqServer2(IMessageFactory messageFactory, TimeSpan? requestTimeOut, int retryCount = DefaultRetryCount) : base(messageFactory, requestTimeOut, retryCount)
+    ////    {
+    ////    }
+
+    ////    protected abstract TMessageHandlerRegister CreateMessageHandlerRegister();
+        
+    ////    public virtual void RegisterMessageHandlers(Action<TMessageHandlerRegister> messageHandlerRegister)
+    ////    {
+    ////        messageHandlerRegister.Invoke(this.CreateMessageHandlerRegister());
+    ////    }
+    ////}
+
+ 
 
     public abstract class MqServer2 : IMessageService
         // where TMessageHandlerBackgroundWorker : IMessageHandlerBackgroundWorker
@@ -204,10 +231,12 @@ namespace ServiceStack.Redis.Messaging
                 throw new ArgumentException("Message handler has already been registered for type: " + typeof(T).Name);
             }
             
+            // TODO:? Move to the MsgRegistation Class, and return a dictionary<Type, [T]DTO> Describing the handler
+            // TODO:? Create a BackgroundWorkerFactory<[T]Dto> that uses the MsgReg class to create workers?
             handlerMap[typeof(T)] = CreateMessageHandlerFactory(processMessageFn, processExceptionEx);
             handlerThreadCountMap[typeof(T)] = noOfThreads;
         }
-        
+
         protected virtual MessageHandlerRegister CreateMessageHandlerRegister()
         {
             return new MessageHandlerRegister(this);
@@ -228,14 +257,17 @@ namespace ServiceStack.Redis.Messaging
         }
 
         protected internal abstract IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler);
-        
+
+        protected internal readonly Dictionary<Type, IMessageHandler> threadPoolHandlers
+            = new Dictionary<Type, IMessageHandler>();
+
         private void Init()
         {
             if (messageWorkers == null)
             {
                 var workerBuilder = new List<IMessageHandlerBackgroundWorker>();
                 var queuesToMonitor = new Dictionary<string, Type>();
-
+                
                 foreach (var entry in handlerMap)
                 {
                     var msgType = entry.Key;
@@ -244,14 +276,18 @@ namespace ServiceStack.Redis.Messaging
                     var queueNames = new QueueNames(msgType);
                     var noOfThreads = handlerThreadCountMap[msgType];
 
+                                          
                     if (OnlyEnablePriortyQueuesForTypes == null
                         || OnlyEnablePriortyQueuesForTypes.Any(x => x == msgType))
                     {
-                        noOfThreads.Times(i =>
-                            workerBuilder.Add(this.CreateMessageHandlerWorker(
-                                handlerFactory.CreateMessageHandler(),
-                                queueNames.Priority,
-                                WorkerErrorHandler)));
+                        if (noOfThreads > 0)
+                        {
+                            noOfThreads.Times(i =>
+                                              workerBuilder.Add(this.CreateMessageHandlerWorker(
+                                                  handlerFactory.CreateMessageHandler(),
+                                                  queueNames.Priority,
+                                                  WorkerErrorHandler)));
+                        }
 
                         queuesToMonitor.Add(queueNames.Priority, msgType);
                         /*    
@@ -263,21 +299,28 @@ namespace ServiceStack.Redis.Messaging
 
                     }
 
-                    noOfThreads.Times(i =>
-                        workerBuilder.Add(this.CreateMessageHandlerWorker(
+                    if (noOfThreads == 0)
+                    {
+                        threadPoolHandlers.Add(msgType, handlerFactory.CreateMessageHandler());
+                    }
+                    else
+                    {
+                        noOfThreads.Times(i =>
+                                          workerBuilder.Add(this.CreateMessageHandlerWorker(
+                                              handlerFactory.CreateMessageHandler(),
+                                              queueNames.In,
+                                              WorkerErrorHandler)));
+                    }
+
+                    queuesToMonitor.Add(queueNames.In, msgType);
+                        /*
+                        new MessageHandlerWorker(
+                            clientsManager,
                             handlerFactory.CreateMessageHandler(),
                             queueNames.In,
                             WorkerErrorHandler)));
-
-                    queuesToMonitor.Add(queueNames.In, msgType);
-                    /*
-                    new MessageHandlerWorker(
-                        clientsManager,
-                        handlerFactory.CreateMessageHandler(),
-                        queueNames.In,
-                        WorkerErrorHandler)));
-                     * */
-                }
+                         * */
+                }                
 
                 messageWorkers = workerBuilder.ToArray();
 

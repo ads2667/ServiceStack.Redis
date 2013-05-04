@@ -7393,3 +7393,324 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-03 14:47:41,766 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
 2013-05-03 14:47:42,219 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
 2013-05-03 14:48:30,952 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 16:14:14,134 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 16:14:19,943 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-03 16:14:19,943 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 16:14:19,947 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 16:14:20,620 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 16:15:09,592 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 16:15:09,966 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 16:15:20,167 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 16:15:20,459 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-03 16:17:05,798 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-03 16:24:12,218 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-03 16:24:19,041 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-03 16:24:19,041 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-03 16:24:19,046 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-03 16:24:19,460 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 00:40:46,478 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 00:40:52,558 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 00:40:52,558 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 00:40:52,568 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 00:40:53,124 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:17:44,025 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:17:49,981 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 01:17:49,982 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 01:17:49,991 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:17:50,481 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:18:09,582 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-04 01:19:17,851 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:19:23,669 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 01:19:23,669 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 01:19:23,682 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:19:24,135 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:21:31,588 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-04 01:26:54,992 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:30:46,182 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 01:30:46,182 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 01:30:46,188 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:30:46,658 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:31:03,340 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-04 01:36:34,789 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:37:41,579 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:39:43,225 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:42:30,979 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:43:15,273 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 01:43:15,273 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 01:43:15,281 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:49:00,796 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 01:49:06,730 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 01:49:06,730 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 01:49:06,736 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:49:07,166 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:52:47,402 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:52:48,708 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:11,882 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:12,159 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:12,590 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:12,884 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:13,181 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:13,466 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:13,759 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:14,043 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:14,343 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:14,637 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 01:53:14,942 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 01:53:15,233 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:11:52,120 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 02:11:57,944 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 02:11:57,945 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 02:11:57,960 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:11:58,444 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:24:57,003 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 02:25:03,247 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 02:25:03,248 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 02:25:03,257 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:25:03,766 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:10,335 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:11,466 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:12,639 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:12,937 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:15,215 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:15,515 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:16,663 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:17,000 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:17,792 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:18,087 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:18,999 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:19,294 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:21,151 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:21,448 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:40,799 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:41,101 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:41,455 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:41,756 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:42,037 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:42,334 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:42,643 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:42,951 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:43,248 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:43,543 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:43,868 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:44,174 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:44,477 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:44,777 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:45,073 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:45,369 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:45,657 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:45,950 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:46,244 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:46,537 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:46,830 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:47,122 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:47,421 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:47,711 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:48,003 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:48,337 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:48,615 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:48,909 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:49,191 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:49,471 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:49,799 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:50,095 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:50,378 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:50,667 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:50,965 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:51,274 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:51,562 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:51,844 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:52,124 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:52,429 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:52,712 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:52,994 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:53,292 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:53,573 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:53,857 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:54,142 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:54,444 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:54,726 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:55,012 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:55,297 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:27:55,582 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:27:55,865 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:09,351 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:09,629 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:09,919 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:10,202 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:10,509 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:10,802 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:11,100 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:11,381 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:11,682 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:12,001 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:12,291 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:12,575 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:12,871 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:13,161 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:13,526 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:13,808 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:14,104 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:14,399 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:14,690 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:15,027 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:15,313 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:15,596 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:16,044 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:16,335 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:16,627 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:16,907 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:17,204 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:17,500 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:17,778 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:18,076 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:18,353 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:18,629 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:18,931 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:19,215 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:19,496 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:19,777 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:20,070 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:20,363 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:20,643 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:20,922 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:21,201 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:21,480 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:21,758 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:22,036 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:22,317 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:22,612 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:22,898 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:23,181 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:23,464 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:23,742 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:24,028 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:24,311 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:24,620 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:24,928 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:25,221 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:25,527 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:25,827 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:26,109 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:26,392 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:26,674 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:26,954 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:27,232 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:27,516 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:27,791 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:28,076 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:28,354 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:28,652 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:28,931 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:29,212 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:29,490 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:29,770 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:30,050 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:30,343 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:30,621 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:30,907 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:31,186 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:31,466 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:31,741 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:32,090 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:32,369 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:32,642 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:32,928 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:33,256 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:33,549 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:33,866 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:34,144 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:34,425 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:34,705 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:34,984 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:35,262 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:35,541 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:35,825 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:36,112 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:36,392 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:36,675 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:36,961 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:37,241 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:37,525 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:37,810 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:38,094 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:38,375 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:38,672 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:38,953 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:39,236 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:39,521 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:39,806 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:40,093 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:40,376 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:40,660 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:40,949 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:41,234 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:41,515 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:41,796 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:42,077 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:42,361 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:42,654 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:42,932 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:43,209 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:43,586 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:43,863 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:44,141 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:44,422 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:44,697 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:44,975 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:45,259 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:45,543 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:45,822 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:46,100 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:46,376 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:46,658 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:46,934 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:47,213 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:47,494 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:47,778 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:48,065 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:48,342 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:48,619 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:48,898 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:49,178 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:49,454 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:49,748 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:50,024 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:50,304 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:50,596 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:50,874 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:51,150 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:51,426 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:51,708 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:51,992 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:52,274 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:52,557 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:52,837 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:53,150 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:53,424 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:53,702 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:53,981 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:54,260 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:54,552 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:54,830 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:55,112 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:55,394 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:55,755 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:56,031 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:56,308 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:56,592 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:56,873 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:57,148 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:57,427 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:28:57,723 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:28:58,000 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:34:59,621 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 02:35:00,899 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 02:35:49,545 [1] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-04 04:50:07,038 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-04 04:50:12,791 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-04 04:50:12,791 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-04 04:50:12,793 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 04:50:13,246 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 04:50:54,193 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello.inq.
+2013-05-04 04:50:54,660 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2.inq.
+2013-05-04 04:51:18,824 [1] INFO  Playground.Program [(null)] - Stopping Client.
