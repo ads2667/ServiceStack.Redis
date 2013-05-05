@@ -52,43 +52,4 @@ namespace ServiceStack.Aws.Messaging
             get { return this.dateCreated.AddSeconds((double)this.VisibilityTimeout); }
         }
     }
-    /*
-    // Need to decorate with JSON Serializer (ServiceStack) attributes to have properties included.
-    // TODO: May need to use fields to provide required serializer access.
-    public class AwsSqsMessage : Message, IAwsSqsMessage
-    {
-        public string MessageId { get; set; }
-        public string ReceiptHandle { get; set; }
-        public string QueueUrl { get; set; }
-    }
-
-    [DataContract]
-    public class AwsSqsMessage<T> : Message<T>, IAwsSqsMessage<T>
-    {
-        public static IAwsSqsMessage<T> FromMessage(IMessage<T> message)
-        {
-            if (message == null) throw new ArgumentNullException("message");
-            var msg = new AwsSqsMessage<T>();
-            msg.Body = message.Body;
-            msg.CreatedDate = message.CreatedDate;
-            msg.Error = message.Error;
-            msg.Id = message.Id;
-            msg.Options = message.Options;
-            msg.Priority = message.Priority;
-            msg.ReplyId = message.ReplyId;
-            msg.ReplyTo = message.ReplyTo;
-            msg.RetryAttempts = message.RetryAttempts;
-            return msg;
-        }
-
-        [DataMember]
-        public string MessageId { get; set; }
-
-        [DataMember]
-        public string ReceiptHandle { get; set; }
-
-        [DataMember]
-        public string QueueUrl { get; set; }
-    }
-    */
 }

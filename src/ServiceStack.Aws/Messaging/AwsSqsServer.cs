@@ -1,37 +1,17 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
-using Amazon.SQS;
-using Amazon.SQS.Model;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
-using Message = Amazon.SQS.Model.Message;
 
 namespace ServiceStack.Aws.Messaging
 {
-
-    public interface IMessageCoordinator
-    {
-        void EnqueMessage(string queueName, IMessage message, Type messageType);
-        
-        IMessage DequeMessage(string queueName);
-    }
-
-    // TODO: Create a ISqsClient impl that wraps the amazon client object and exposes methods, which also accepts amazon msg objects as input/output
-    // TODO: Make the MQs Versioned using the Assmbly qualified name!?
-    // ThreadPool Handler
-    // Parameterize SQS polling times, visibility, etc...
-    // Graceful termination of threads
-    public class AwsSqsServer : MqServer2 /*<AwsSqsMessageHandlerRegister>*/, IMessageCoordinator
+    public class AwsSqsServer : MqServer2<AwsSqsHandlerConfiguration, AwsSqsMessageHandlerRegister, AwsSqsBackgroundWorkerFactory> /*<AwsSqsMessageHandlerRegister>*/, IMessageCoordinator
     {        
         public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null, decimal maxNumberOfMessagesToReceivePerRequest = 10, decimal messageVisibilityTimeout = 10)
-            : base(null, requestTimeOut.HasValue ? requestTimeOut.Value : TimeSpan.FromSeconds(20), retryCount) //// Default to use Long Polling
+            : base(null, retryCount) //// Default to use Long Polling
         {
             if (sqsClient == null)
             {
@@ -39,12 +19,14 @@ namespace ServiceStack.Aws.Messaging
             }
 
             this.SqsClient = sqsClient;
+            this.RequestTimeOut = requestTimeOut.HasValue ? requestTimeOut.Value : TimeSpan.FromSeconds(20);
             this.MaxNumberOfMessagesToReceivePerRequest = maxNumberOfMessagesToReceivePerRequest;
             this.MessageVisibilityTimeout = messageVisibilityTimeout;
             this.QueueUrls = new Dictionary<string, string>();
         }
 
         public ISqsClient SqsClient { get; private set; }
+        public TimeSpan RequestTimeOut { get; private set; }
         public decimal MaxNumberOfMessagesToReceivePerRequest { get; private set; }
         public decimal MessageVisibilityTimeout { get; private set; }
 
@@ -52,28 +34,16 @@ namespace ServiceStack.Aws.Messaging
         {
             return new AwsSqsMessageQueueClient(this.SqsClient, this, this.QueueUrls, null);
         }
-       
-        protected override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
-        {
-            return new AwsSqsMessageHandlerWorker(this.SqsClient, this, this.QueueUrls, messageHandler, queueName, errorHandler);
-        }
-        
-        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
-        {
-            var queueHandlers = new List<IQueueHandlerBackgroundWorker>();
-            foreach (var queue in messageQueueNames)
-            {
-                queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.SqsClient, this, queue.Value, queue.Key, this.QueueUrls[queue.Key], errorHandler, Convert.ToInt32(this.RequestTimeOut.Value.TotalSeconds), this.MaxNumberOfMessagesToReceivePerRequest, this.MessageVisibilityTimeout));
-            }
 
-            return queueHandlers;
+        protected override AwsSqsBackgroundWorkerFactory CreateBackgroundWorkerFactory()
+        {
+            return new AwsSqsBackgroundWorkerFactory(this);
         }
 
         public override void Dispose()
         {
-            // TODO: Wait for all ThreadPool messages to execute
+            // Wait for all ThreadPool handlers to execute
             Task.WaitAll(taskList.ToArray());
-
 
             base.Dispose();
             if (this.SqsClient != null)
@@ -87,7 +57,7 @@ namespace ServiceStack.Aws.Messaging
         {
             get
             {
-                if (this.handlerMap.Count == 0)
+                if (this.MessageHandlerRegister.HandlerConfigurations.Count == 0)
                 {
                     throw new InvalidOperationException("No Message Handlers have been configured. Clients can not be created until one or more message handlers have been registered.");
                 }
@@ -99,25 +69,20 @@ namespace ServiceStack.Aws.Messaging
 
         public IDictionary<string, string> QueueUrls { get; private set; }
 
-        // protected override AwsSqsMessageHandlerRegister CreateMessageHandlerRegister()
-        protected override MessageHandlerRegister CreateMessageHandlerRegister()
+        protected override AwsSqsMessageHandlerRegister CreateMessageHandlerRegister()
         {
             return new AwsSqsMessageHandlerRegister(this, this.SqsClient);
         }
 
         // public override void RegisterMessageHandlers(Action<AwsSqsMessageHandlerRegister> messageHandlerRegister)
-        public override void RegisterMessageHandlers(Action<MessageHandlerRegister> messageHandlerRegister)
+        public override void RegisterMessageHandlers(Action<AwsSqsMessageHandlerRegister> messageHandlerRegister)
         {
             base.RegisterMessageHandlers(messageHandlerRegister);
-
+            
             // For Amazon SQS we need to get the Url for each registered message handler.
-            foreach (var handler in this.handlerMap)
+            foreach (var handlerConfig in this.MessageHandlerRegister.HandlerConfigurations)
             {
-                // Get all queue names
-                // QueueNames<T>.Out
-                
-                // for (var priority = 0; priority <= 1; priority++)
-                var queueNamesToCreate = this.GetNewQueueNames(handler.Key);
+                var queueNamesToCreate = this.GetNewQueueNames(handlerConfig.Key);
                 foreach (var newQueueName in queueNamesToCreate)
                 {
                     // Init the local queue
@@ -127,11 +92,11 @@ namespace ServiceStack.Aws.Messaging
                     // var queueName = this.GetQueueName(handler.Key, priority);
                     var queueUrl = this.SqsClient.GetOrCreateQueueUrl(newQueueName);
                     this.QueueUrls.Add(newQueueName, queueUrl);
-                }                
+                }   
             }
         }
         
-        
+        /*
         private string GetQueueName(Type messageType, long priority)
         {
             // TODO: Use assembly qualified name for versioned queue's?
@@ -162,24 +127,21 @@ namespace ServiceStack.Aws.Messaging
             method = method.MakeGenericMethod(messageType);
             return (string)method.Invoke(messageInstance, new object[] { messageInstance });            
         }
+        */
 
         private IList<string> GetNewQueueNames(Type messageType)
-        {
-            // TODO: Use assembly qualified name for versioned queue's?
-            var stronglyTypedMessage = typeof(Message<>).MakeGenericType(messageType);
-            // var messageInstance = (IMessage)Activator.CreateInstance(stronglyTypedMessage);
-
+        {            
             // Use reflection to call the extension method
-            var queueNames = typeof(QueueNames<>);
-            var properties = queueNames.GetProperties(BindingFlags.Static | BindingFlags.Public);
+            var queueNames = typeof(VersionedQueueNames);
+            var properties = queueNames.GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
-            var newQueueNames = new List<string>();    
-            var queueNamesInstance = queueNames.MakeGenericType(messageType);
+            var newQueueNames = new List<string>();
+            var queueNamesInstance = new VersionedQueueNames(messageType);
             foreach (var property in properties)
             {
-                if (property.PropertyType == typeof (string))
-                {                
-                    newQueueNames.Add((string)queueNamesInstance.InvokeMember(property.Name, BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty, null, queueNamesInstance, null));
+                if (property.PropertyType == typeof(string))
+                {
+                    newQueueNames.Add((string)queueNames.InvokeMember(property.Name, BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetProperty, null, queueNamesInstance, null));
                 }
             }
 
@@ -188,13 +150,12 @@ namespace ServiceStack.Aws.Messaging
 
         // TODO: Refactor local queue management into its own class? Or move to ISqsClient?
 
-        // private object threadLock = new object();
         private IDictionary<string, Queue<IMessage>> localMessageQueues = new Dictionary<string, Queue<IMessage>>();
-        // private IDictionary<string, Queue<IAwsSqsMessage>> localMessageQueues = new Dictionary<string, Queue<IAwsSqsMessage>>(); 
-
+        
+        // TODO: Move threadpool code to base class so it can be re-used.
         private void ExecuteUsingThreadPool(object obj)
         {
-            var threadPoolTask = obj as ThreadPoolTask;
+            var threadPoolTask = obj as MessageReceivedArgs;
             if (threadPoolTask == null)
             {
                 // TODO: Log, throw ex? We should never get here.
@@ -203,107 +164,24 @@ namespace ServiceStack.Aws.Messaging
 
             // TODO: On the thread, create a handler and process the message.
             Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
-
-            // We're already on a BG Thread here, we don't need to start a new BG Thread.
-            // var worker = messageWorkers[0]; // How to get the worker by queueName/messageType?
-            // worker.StartSynchronous(); // TODO: How to run in sync; and still utilize error handlers, etc..?
-            // TODO: prob need to create a 'PooledMessageHandlerWorker', should be able to contain all logic in this class.
-            // TODO: Do not need 'NotifyNewMessage' in the PooledMessageHandlerWorker class
-                        
             using (var client = this.CreateMessageQueueClient())
             {
                 threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
             }
-        }
-
-        private class ThreadPoolTask
-        {
-            public Type MessageType { get; set; }
-
-            public string QueueName { get; set; }
-
-            public string MessageId { get; set; }
-        }
+        }        
 
         IList<Task> taskList = new List<Task>();
 
-        // private Queue<Message> queue = new Queue<Message>(); 
-        public void EnqueMessage(string queueName, IMessage /*IAwsSqsMessage*/ message, Type messageType)
+        public void EnqueMessage(string queueName, IMessage message, Type messageType)
         {
-            // TODO: If ThreadPooling is to be supported, this code block will need to support both methods
-                // For threadPooling; this would involve adding a new [TASK] to the threadpool. Create contained class.
-                // Would need to get the HANDLER TYPE, based on the queue, and queue the thread. Use LocalMQ?
-                // TODO: Need to manage msg timeouts/retries and multiple processing of msg's. => Wrap in msg obj?
-
             // Add the message to the local queue.
             lock (localMessageQueues)
             {
                 localMessageQueues[queueName].Enqueue(message);
-            }
-
-            // TODO: Support mix/match Pooled and Static thread handlers.
-            var handlerThreadCount = handlerThreadCountMap[messageType];
-
-            if (handlerThreadCount == 0) //// 0 => Threadpool
-            {         
-                // throw new NotImplementedException("Threadpool support not implemented.");
-                
-                // The handler is registered to use the thread pool.
-                // TODO: Create a new task, using the message handler, and add it to the thread pool
-                // TODO: Can pass MQ Name with EnqueMessage method.
-                var msgId = message.Id.ToString();
-                var sqsMessage = message.Body as ISqsMessage;
-                if (sqsMessage != null)
-                {
-                    msgId = sqsMessage.MessageId;
-                }
-
-                var threadPoolTask = new ThreadPoolTask { MessageType = messageType, QueueName = queueName, MessageId = msgId };
-                Log.DebugFormat("Assigning message {0} to thread pool", threadPoolTask.MessageId);
-
-                // ** TODO: Create Factory that creates tasks to assign to threadpool - based on queue name.
-                
-                var task = new Task(ExecuteUsingThreadPool, threadPoolTask, TaskCreationOptions.PreferFairness);
-                task.ContinueWith((t) =>
-                    {
-                        lock (taskList)
-                        {
-                            // TODO: Should this only be removed if executed successfully, w/out ex or cancellation?
-                            taskList.Remove(t);
-                        }
-                    }); // Must remove the task after it's been executed. Otherwise, we'll be waiting forever.
-
-                lock (taskList)
-                {
-                    taskList.Add(task);
-                        // Need to track all tasks, enables WaitAll functionality to close gracefully.
-                }
-                    
-                // TODO: ************ NEED TO ADD MESSAGE VISIBILITY TIMEOUT TO MESSAGE **************
-
-                task.Start(); // Executes async using threadpool.
-                // Task.WaitAll(taskList); // Example of WaitAll
-                
-                // throw new NotImplementedException("ThreadPool support");
-                
-            }
-            else
-            {
-                // Static Thread                
-                // Notify the static threads that there's messages to process.
-                int[] workerIndexes;
-                if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
-                {
-                    foreach (var workerIndex in workerIndexes)
-                    {
-                        messageWorkers[workerIndex].NotifyNewMessage();
-                    }
-                }
-            }
-                
+            }      
         }
 
-        public /*IAwsSqsMessage*/ IMessage DequeMessage(string queueName)
+        public IMessage DequeMessage(string queueName)
         {
             lock (localMessageQueues)
             {
@@ -314,6 +192,43 @@ namespace ServiceStack.Aws.Messaging
 
                 return null;
             }
+        }
+
+        public override void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
+        {
+            var handlerThreadCount = this.MessageHandlerRegister.HandlerConfigurations[messageReceivedArgs.MessageType].NoOfThreads;
+
+            if (handlerThreadCount == 0) //// 0 => Threadpool
+            {
+                Log.DebugFormat("Assigning message {0} to thread pool", messageReceivedArgs.MessageId);
+
+                // ** TODO: Create Factory that creates tasks to assign to threadpool - based on queue name.
+
+                var task = new Task(ExecuteUsingThreadPool, messageReceivedArgs, TaskCreationOptions.PreferFairness);
+                task.ContinueWith((t) =>
+                {
+                    lock (taskList)
+                    {
+                        // TODO: Should this only be removed if executed successfully, w/out ex or cancellation?
+                        taskList.Remove(t);
+                    }
+                }); // Must remove the task after it's been executed. Otherwise, we'll be waiting forever.
+
+                lock (taskList)
+                {
+                    taskList.Add(task);
+                    // Need to track all tasks, enables WaitAll functionality to close gracefully.
+                }
+
+                // TODO: ************ NEED TO ADD MESSAGE VISIBILITY TIMEOUT TO MESSAGE **************
+
+                task.Start(); // Executes async using threadpool.
+            }
+            else
+            {
+                // Static Thread                
+                base.NotifyMessageReceived(messageReceivedArgs);
+            }                   
         }
     }
 }

@@ -13,7 +13,6 @@
 using System;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
-using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
 {
@@ -33,21 +32,6 @@ namespace ServiceStack.Redis.Messaging
             Log = LogManager.GetLogger(this.GetType());
 			this.onPublishedCallback = onPublishedCallback;
 		}
-
-        /*
-		private IRedisNativeClient readWriteClient;
-		public IRedisNativeClient ReadWriteClient
-		{
-			get
-			{
-				if (this.readWriteClient == null)
-				{
-					this.readWriteClient = (IRedisNativeClient)clientsManager.GetClient();
-				}
-				return readWriteClient;
-			}
-		}
-        */
 
 	    protected abstract string GetQueueNameOrUrl<T>(IMessage<T> message);
 
@@ -69,12 +53,7 @@ namespace ServiceStack.Redis.Messaging
 		}
 
 	    protected abstract void PublishMessage<T>(IMessage<T> message);
-        /*
-            var messageBytes = message.ToBytes();
-		    this.ReadWriteClient.LPush(message.ToInQueueName(), messageBytes);
-		    this.ReadWriteClient.Publish(QueueNames.TopicIn, message.ToInQueueName().ToUtf8Bytes());
-        */
-
+        
 	    public abstract void Dispose();
 	}
 }

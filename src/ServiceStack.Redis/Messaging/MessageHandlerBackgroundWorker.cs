@@ -1,38 +1,29 @@
-using System;
+﻿using System;
 using System.Threading;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging.ServiceStack.Redis.Messaging;
 using ServiceStack.Text;
 
 namespace ServiceStack.Redis.Messaging
-{    
-    public interface IMessageHandlerBackgroundWorker : IBackgroundWorker
+{
+    public abstract class MessageHandlerBackgroundWorker : BackgroundWorker<IMessageHandlerBackgroundWorker>, IMessageHandlerBackgroundWorker
     {
-        string QueueName { get; }
-
-        IMessageHandlerStats GetStats();
-
-        void NotifyNewMessage();
-    }
-
-    public abstract class MessageHandlerBackgroundWorker : BackgroundWorker<IMessageHandlerBackgroundWorker>, IMessageHandlerBackgroundWorker 
-    {
-        protected MessageHandlerBackgroundWorker(Action<IMessageHandlerBackgroundWorker, Exception> errorHandler) 
+        protected MessageHandlerBackgroundWorker(Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
             : base(errorHandler)
         {
         }
 
         protected readonly IMessageHandler messageHandler;
         public string QueueName { get; set; }
-        private DateTime lastMsgProcessed;        
-        private int totalMessagesProcessed;        
+        private DateTime lastMsgProcessed;
+        private int totalMessagesProcessed;
         private int msgNotificationsReceived;
-        
+
         protected MessageHandlerBackgroundWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
             : base(errorHandler)
         {
             this.messageHandler = messageHandler;
-            this.QueueName = queueName;            
+            this.QueueName = queueName;
         }
 
         public virtual void NotifyNewMessage()
@@ -61,7 +52,7 @@ namespace ServiceStack.Redis.Messaging
                 stats.TotalMessagesFailed,
                 stats.TotalRetries,
                 stats.TotalNormalMessagesReceived,
-                stats.TotalPriorityMessagesReceived);            
+                stats.TotalPriorityMessagesReceived);
         }
 
         protected abstract IMessageQueueClient CreateMessageQueueClient();

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using ServiceStack.Messaging;
+﻿using ServiceStack.Messaging;
 
 namespace ServiceStack.Redis.Messaging.Redis
 {
@@ -22,7 +19,7 @@ namespace ServiceStack.Redis.Messaging.Redis
     /// The Start/Stop methods are idempotent i.e. It's safe to call them repeatedly on multiple threads 
     /// and the Redis MQ Server will only have Started or Stopped once.
     /// </summary>
-    public class RedisMqServer : MqServer2 //<MessageHandlerRegister>
+    public class RedisMqServer : MqServer2<DefaultHandlerConfiguration, DefaultMessageHandlerRegister, RedisBackgroundWorkerFactory> //<MessageHandlerRegister>
     {       
         private readonly IRedisClientsManager clientsManager; //Thread safe redis client/conn factory
 
@@ -32,108 +29,20 @@ namespace ServiceStack.Redis.Messaging.Redis
         }
 
         public RedisMqServer(IRedisClientsManager clientsManager,
-            int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null)
-            : base(new RedisMessageFactory(clientsManager), requestTimeOut, retryCount)
+            int retryCount = DefaultRetryCount)
+            : base(new RedisMessageFactory(clientsManager), retryCount)
         {
             this.clientsManager = clientsManager;            
         }
 
-        protected internal override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(IMessageHandler messageHandler, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
+        protected override RedisBackgroundWorkerFactory CreateBackgroundWorkerFactory()
         {
-            return new RedisMessageHandlerWorker(
-                clientsManager,
-                messageHandler,
-                queueName,
-                errorHandler);
+            return new RedisBackgroundWorkerFactory(this.clientsManager, this);
         }
 
-        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        protected override DefaultMessageHandlerRegister CreateMessageHandlerRegister()
         {
-            return new List<IQueueHandlerBackgroundWorker>
-                {
-                    new RedisQueueHandlerWorker(clientsManager, this, "RedisMq", errorHandler)
-                };
-        }
-        
-/*
-        protected override void StopListeningToMessages()
-        {
-            using (var redis = clientsManager.GetClient())
-            {
-                redis.PublishMessage(QueueNames.TopicIn, WorkerStatus.StopCommand);
-            }
-        }
-
-        protected override void ProcessMessages()
-        {
-            using (var redisClient = clientsManager.GetReadOnlyClient())
-            {
-                //Record that we had a good run...
-                Interlocked.CompareExchange(ref noOfContinuousErrors, 0, noOfContinuousErrors);
-
-                using (var subscription = redisClient.CreateSubscription())
-                {
-                    subscription.OnUnSubscribe = channel => Log.Debug("OnUnSubscribe: " + channel);
-
-                    subscription.OnMessage = (channel, msg) =>
-                    {
-
-                        if (msg == WorkerStatus.StopCommand)
-                        {
-                            Log.Debug("Stop Command Issued");
-
-                            if (Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Started) != WorkerStatus.Started)
-                                Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Stopping);
-
-                            Log.Debug("UnSubscribe From All Channels...");
-                            subscription.UnSubscribeFromAllChannels(); //Un block thread.
-                            return;
-                        }
-
-                        if (!string.IsNullOrEmpty(msg))
-                        {
-                            int[] workerIndexes;
-                            if (queueWorkerIndexMap.TryGetValue(msg, out workerIndexes))
-                            {
-                                foreach (var workerIndex in workerIndexes)
-                                {
-                                    messageWorkers[workerIndex].NotifyNewMessage();
-                                }
-                            }
-                        }
-                    };
-
-                    subscription.SubscribeToChannels(QueueNames.TopicIn); //blocks thread
-                }
-
-                StopWorkerThreads();
-            }
-        }
-        */
-        private object threadLock = new object();
-
-        public void NotifyMessageHandlerWorkers(string queueName)
-        {
-            // TODO: Thread-safety
-            if (!string.IsNullOrEmpty(queueName))
-            {
-                lock (threadLock)
-                {
-                    int[] workerIndexes;
-                    if (queueWorkerIndexMap.TryGetValue(queueName, out workerIndexes))
-                    {
-                        foreach (var workerIndex in workerIndexes)
-                        {
-                            messageWorkers[workerIndex].NotifyNewMessage();
-                        }
-                    }
-                }
-            }
-        }
-
-        protected override MessageHandlerRegister CreateMessageHandlerRegister()
-        {
-            return new MessageHandlerRegister(this);
+            return new DefaultMessageHandlerRegister(this, this.RetryCount);
         }
     }
 }

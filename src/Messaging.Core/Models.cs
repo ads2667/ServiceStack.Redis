@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceStack.Aws.Messaging;
-using ServiceStack.Messaging;
+﻿using ServiceStack.Aws.Messaging;
 
 namespace Messaging.Core
 {    

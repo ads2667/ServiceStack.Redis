@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceStack.Aws.Messaging;
+﻿using ServiceStack.Aws.Messaging;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Redis;
@@ -18,6 +13,7 @@ namespace Messaging.Core
 
         public static IMessageService CreateMessageService()
         {
+            // return CreateRedisMessageService();
             return CreateAwsMessageService();
         }
 
@@ -29,17 +25,38 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAI32WJMKWXTRJ6EHQ", "pjpRGOLvT0WsHrXC0DcKaSENKaNygJKs9zJg1TeG")));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(null, null)));
 
-            // TODO: Use customer registration to override default values
-            // svc.RegisterMessageHandlers(register => register.AddPooledHandler());
-            
+            // TODO: Use customer registration to override default values            
             return RegisterMessageHandlers(svc);
+
+            /********* Custom AWS Handler Configuration **********
+            svc.RegisterMessageHandlers(register =>
+                {
+                    register.AddPooledHandler<Hello>((m) =>
+                        {
+                            Log.Debug("Server Says: " + m.GetBody().Text);
+                            return null;
+                        }, null, null, null, null, null, null); //// Override default values.
+
+                    register.AddHandler<Hello2>((m) =>
+                    {
+                        Log.Debug("Server Says: " + m.GetBody().Text);
+                        
+                        // No Response
+                        return null;
+                    });
+                   
+                });
+              
+             return svc;
+            */
         }
 
-        //private static IMessageService RegisterMessageHandlers<T>(MqServer2<T> messageService) 
-        //    where T : MessageHandlerRegister
-        private static IMessageService RegisterMessageHandlers(MqServer2 messageService) 
+        private static IMessageService RegisterMessageHandlers<T, Th, TBg>(MqServer2<T, Th, TBg> messageService) 
+            where T : DefaultHandlerConfiguration // MessageHandlerRegister<Th>
+            where Th : MessageHandlerRegister<T>
+            where TBg : BackgroundWorkerFactory<T> // private static IMessageService RegisterMessageHandlers(MqServer2 messageService) 
         {            
             // TODO: Add all 'GetStats' to the MqHandlers
             // TODO: Verify that handlers have been registered before creating any clients/server

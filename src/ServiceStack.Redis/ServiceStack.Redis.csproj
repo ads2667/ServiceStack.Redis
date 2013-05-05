@@ -156,14 +156,20 @@
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
     <Compile Include="Messaging\BackgroundWorker.cs" />
+    <Compile Include="Messaging\BackgroundWorkerFactory.cs" />
+    <Compile Include="Messaging\DefaultHandlerConfiguration.cs" />
+    <Compile Include="Messaging\DefaultMessageHandlerRegister.cs" />
     <Compile Include="Messaging\IQueueHandlerStats.cs" />
+    <Compile Include="Messaging\MessageHandlerBackgroundWorker.cs" />
+    <Compile Include="Messaging\MessageHandlerRegister.cs" />
+    <Compile Include="Messaging\MessageReceivedArgs.cs" />
     <Compile Include="Messaging\QueueHandlerWorker.cs" />
     <Compile Include="Messaging\MqServer2.cs" />
-    <Compile Include="Messaging\MessageHandlerWorker.cs" />
+    <Compile Include="Messaging\IMessageHandlerBackgroundWorker.cs" />
     <Compile Include="Messaging\MqHost.cs" />
-    <Compile Include="Messaging\MessageFactory.cs" />
     <Compile Include="Messaging\MqHostPool.cs" />
     <Compile Include="Messaging\MqServer.cs" />
+    <Compile Include="Messaging\Redis\RedisBackgroundWorkerFactory.cs" />
     <Compile Include="Messaging\Redis\RedisMessageHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisMessageFactory.cs" />
     <Compile Include="Messaging\Redis\RedisMessageProducer.cs" />
@@ -175,6 +181,7 @@
     <Compile Include="Messaging\Redis\RedisQueueHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageFactory.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageService.cs" />
+    <Compile Include="Messaging\VersionedQueueNames.cs" />
     <Compile Include="Messaging\WorkerStatus.cs" />
     <Compile Include="RedisClientManagerCacheClient.cs" />
     <Compile Include="RedisClientsManagerExtensions.cs" />
@@ -278,6 +285,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Messaging\MessagingClassDiagram.cd" />
+    <None Include="Messaging\Redis\RedisMessagingClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

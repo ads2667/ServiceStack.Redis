@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Messaging.Core;
 using ServiceStack.Aws.Messaging;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
-using ServiceStack.Redis;
-using ServiceStack.Redis.Messaging;
-using ServiceStack.Redis.Messaging.Redis;
 
 namespace Playground
 {    
@@ -38,6 +29,8 @@ namespace Playground
 
             Log.Info("===== Starting Client =====");
             IMessageQueueClient c;
+            AwsSqsMessageQueueClient sqsMessageQueueClient;
+
             // var svc = new InMemoryTransientMessageService();
             // var svc = new RedisMqServer(new PooledRedisClientManager(new[] { "localhost:6379" }));
             var svc = MessageServerFactory.CreateMessageService();
@@ -64,8 +57,12 @@ namespace Playground
                     {
                         var obj = response.ToMessage<Hello3Response>().GetBody();
                         Log.InfoFormat("Message response received: {0}", obj.ResponseText);
-                        ((AwsSqsMessageQueueClient) messageQueueClient).DeleteMessageFromQueue(responseQueueName,
-                                                                                               obj.ReceiptHandle);
+                        sqsMessageQueueClient = messageQueueClient as AwsSqsMessageQueueClient;
+                        if (sqsMessageQueueClient != null)
+                        {
+                            sqsMessageQueueClient.DeleteMessageFromQueue(responseQueueName, obj.ReceiptHandle);                            
+                        }
+
                         Log.InfoFormat("Deleted response message from queue: {0}", obj.QueueName);
                     }
                     else
@@ -86,8 +83,12 @@ namespace Playground
                     {
                         var obj = uniqueResponse.ToMessage<Hello4Response>().GetBody();
                         Log.InfoFormat("Message response received: {0}", obj.ResponseText);
-                        ((AwsSqsMessageQueueClient) messageQueueClient).DeleteMessageFromQueue(uniqueCallbackQ,
-                                                                                               obj.ReceiptHandle);
+                        sqsMessageQueueClient = messageQueueClient as AwsSqsMessageQueueClient;
+                        if (sqsMessageQueueClient != null)
+                        {
+                            sqsMessageQueueClient.DeleteMessageFromQueue(uniqueCallbackQ, obj.ReceiptHandle);
+                        }
+
                         Log.InfoFormat("Deleted response message from queue: {0}", obj.QueueName);
                     }
                     else
@@ -96,7 +97,11 @@ namespace Playground
                     }
 
                     // Optionally, delete the mq.
-                    ((AwsSqsMessageQueueClient) messageQueueClient).DeleteQueue(uniqueCallbackQ);
+                    sqsMessageQueueClient = messageQueueClient as AwsSqsMessageQueueClient;
+                    if (sqsMessageQueueClient != null)
+                    {
+                        sqsMessageQueueClient.DeleteQueue(uniqueCallbackQ);
+                    }
                     // ===============================================
 
                     // TODO: TEST - messageQueueClient.WaitForNotifyOnAny()

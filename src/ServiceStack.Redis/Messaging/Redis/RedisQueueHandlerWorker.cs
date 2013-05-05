@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using ServiceStack.Messaging;
 
@@ -43,31 +40,14 @@ namespace ServiceStack.Redis.Messaging.Redis
                             subscription.UnSubscribeFromAllChannels(); //Un block thread.
                             return;
                         }
-                        
-                        this.MqServer.NotifyMessageHandlerWorkers(msg);
+
                         this.IncrementMessageCount(1);
-                        /*
-                        // this.Server.NotifyMessageHandlerWorkers(msg);
-                        // Just need to do a little reading on events in multi-threaded environements...
-                        if (!string.IsNullOrEmpty(msg))
-                        {
-                            int[] workerIndexes;
-                            if (queueWorkerIndexMap.TryGetValue(msg, out workerIndexes))
-                            {
-                                foreach (var workerIndex in workerIndexes)
-                                {
-                                    messageWorkers[workerIndex].NotifyNewMessage();
-                                }
-                            }
-                        }
-                        */
+                        var messageReceivedArgs = new MessageReceivedArgs {QueueName = msg};
+                        this.MqServer.NotifyMessageReceived(messageReceivedArgs);                        
                     };
 
                     subscription.SubscribeToChannels(QueueNames.TopicIn); //blocks thread
                 }
-
-                // Only needs to be called on the main thread, not from any queue handler worker.
-                // StopWorkerThreads();
             }
         }
 
@@ -83,12 +63,5 @@ namespace ServiceStack.Redis.Messaging.Redis
         {
             return new RedisQueueHandlerWorker(clientsManager, this.MqServer, this.QueueName, this.ErrorHandler);
         }
-
-        /*
-        protected override IMessageQueueClient CreateMessageQueueClient()
-        {
-           return new RedisMessageQueueClient(clientsManager);
-        }
-        */
     }
 }

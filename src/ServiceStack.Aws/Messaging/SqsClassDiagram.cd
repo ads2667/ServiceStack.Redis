@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsBackgroundWorkerFactory">
+    <Position X="1.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\AwsSqsBackgroundWorkerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsHost">
+    <Position X="12" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAASAAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Messaging\AwsSqsHost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageFactory" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAABEAAAAAAAAAAAAEAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Messaging\AwsSqsMessageFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister">
+    <Position X="12" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAgIAQAAAAAAAACAAAAgAAABAAAAQBAAAAA=</HashCode>
+      <FileName>Messaging\AwsSqsMessageHandlerRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageHandlerWorker">
+    <Position X="7.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAASAAABAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Messaging\AwsSqsMessageHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageProducer">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAAAAAAAAAAAAAAAAAAgAAAAAAAQAAAgAA=</HashCode>
+      <FileName>Messaging\AwsSqsMessageProducer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient">
+    <Position X="6.25" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAECAAGEBAAAAAAAAAAIgAgABAAAAAYAAAwAA=</HashCode>
+      <FileName>Messaging\AwsSqsMessageQueueClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABBAAAQAEAAAAAAAAAAAAAIgACAAAAAAAQAAAAAQ=</HashCode>
+      <FileName>Messaging\AwsSqsQueueHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.AwsSqsServer" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="2.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ServiceStack.Aws.Messaging.AwsSqsServer.ThreadPoolTask" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Messaging\AwsSqsServer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAAAABAASgAAAgAAAAAAAIAIAECCCABAAAAQADCAAg=</HashCode>
+      <FileName>Messaging\AwsSqsServer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.MessageSecurity">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\MessageSecurity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.SqsClient" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAEQEAAgAAAAAAACgAgAAAAAAAAACEAAQ=</HashCode>
+      <FileName>Messaging\SqsClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Aws.Messaging.SqsMessage" BaseTypeListCollapsed="true">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAQAAAAAAAAAAAAAAAAAAAQQEAAIAAAAAAAQ=</HashCode>
+      <FileName>Messaging\SqsMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="ServiceStack.Aws.Messaging.IMessageCoordinator">
+    <Position X="10.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Messaging\AwsSqsServer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ServiceStack.Aws.Messaging.ISqsClient">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEQAAAgAAAAAAACAAgAAAAAAAAACEAAA=</HashCode>
+      <FileName>Messaging\ISqsClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ServiceStack.Aws.Messaging.ISqsMessage">
+    <Position X="3.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAQAAAAAAAAAAAAAAAAAAAQAEAAIAAAAAAAQ=</HashCode>
+      <FileName>Messaging\ISqsMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Messaging.Core;
-using ServiceStack.Aws.Messaging;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
-using ServiceStack.Redis;
-using ServiceStack.Redis.Messaging;
-using ServiceStack.Redis.Messaging.Redis;
 
 namespace Playground
 {    

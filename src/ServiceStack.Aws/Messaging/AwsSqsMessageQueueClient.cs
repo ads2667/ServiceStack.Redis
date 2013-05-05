@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Amazon.SQS.Model;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
-using ServiceStack.Text;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -41,6 +39,16 @@ namespace ServiceStack.Aws.Messaging
             this.SqsClient = sqsClient;
             this.MessageCoordinator = messageCoordinator;
             this.QueueNames = queueNames;
+        }
+
+        protected override string GetQueueName(IMessage message)
+        {
+            return new VersionedQueueNames(message.Body.GetType()).In;
+        }
+
+        protected override string GetQueueName<T>(IMessage<T> message)
+        {
+            return new VersionedQueueNames(typeof(T)).In;
         }
 
         protected override void PublishMessage(string queueName, byte[] messageBytes)
@@ -106,8 +114,6 @@ namespace ServiceStack.Aws.Messaging
                 {
                     if (response.ReceiveMessageResult.Message.Count == 1)
                     {           
-                        // TODO: Get the Stats printing to log when app closed.
-
                         // TODO: Need to verify it is a SqsMessage, so the client has access to the message receipt handle
                         var message = response.ReceiveMessageResult.Message[0];
                         var messageBytes = Convert.FromBase64String(message.Body);

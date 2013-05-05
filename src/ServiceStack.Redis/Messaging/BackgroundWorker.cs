@@ -33,8 +33,7 @@ namespace ServiceStack.Redis.Messaging
             {
                 Log = LogManager.GetLogger(this.GetType());                
             }
-            
-            
+                       
             public void Start()
             {
                 if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
@@ -63,8 +62,6 @@ namespace ServiceStack.Redis.Messaging
                 KillBgThreadIfExists();
                 Start();
             }
-
-            // protected abstract IMessageQueueClient CreateMessageQueueClient();
 
             /// <summary>
             /// The code that will be executed by the background worker.

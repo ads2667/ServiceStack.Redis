@@ -61,6 +61,16 @@ namespace ServiceStack.Redis.Messaging.Redis
             return queueName;
         }
 
+	    protected override string GetQueueName(IMessage message)
+	    {
+	        return message.ToInQueueName();
+	    }
+
+	    protected override string GetQueueName<T>(IMessage<T> message)
+	    {
+            return message.ToInQueueName();
+	    }
+
 	    protected override void PublishMessage(string queueName, byte[] messageBytes)
 	    {
             this.ReadWriteClient.LPush(queueName, messageBytes);

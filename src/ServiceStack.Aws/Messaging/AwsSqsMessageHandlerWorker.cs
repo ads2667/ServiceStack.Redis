@@ -5,7 +5,7 @@ using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
-    public class AwsSqsMessageHandlerWorker : MessageHandlerBackgroundWorker // MessageHandlerWorker
+    public class AwsSqsMessageHandlerWorker : MessageHandlerBackgroundWorker
     {
         public ISqsClient SqsClient { get; private set; }
         public AwsSqsServer MqServer { get; private set; }

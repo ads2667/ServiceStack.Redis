@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Amazon.SQS;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
-    public class AwsSqsMessageHandlerRegister : MessageHandlerRegister
+    public class AwsSqsMessageHandlerRegister : MessageHandlerRegister<AwsSqsHandlerConfiguration>
     {
         public ISqsClient SqsClient { get; private set; }
 
-        public AwsSqsMessageHandlerRegister(MqServer2 messageServer, ISqsClient  sqsClient) 
-            : base(messageServer)
+        public AwsSqsMessageHandlerRegister(MqServer2 messageServer, ISqsClient sqsClient, int retryCount = DefaultRetryCount) 
+            : base(messageServer, retryCount)
         {
             if (sqsClient == null)
             {
@@ -78,20 +73,36 @@ namespace ServiceStack.Aws.Messaging
             Log.DebugFormat("On Message Processing Failed, Queue: {0}.", message.QueueName);
         }
 
-        /*** TODO: Allow default values for queue configuration to be overridden - Add Geneeric Arg to MqServer2 for MessageHandlerRegister, introduce Interface
-        public virtual void AddMessageHandler<T>(
+        // Allow default values for queue configuration to be overridden
+        public void AddHandler<T>(
             Func<IMessage<T>, object> processMessageFn,
             Action<IMessage<T>, Exception> processExceptionEx,
             int noOfThreads,
             int? retryCount,
             TimeSpan? requestTimeOut,
             decimal? maxNumberOfMessagesToReceivePerRequest,
+            decimal? waitTimeInSeconds,
             decimal? messageVisibilityTimeout)
         {
-            // this.MessageServer.R
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, noOfThreads, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
         }
-        */
 
+        public void AddPooledHandler<T>(
+            Func<IMessage<T>, object> processMessageFn,
+            Action<IMessage<T>, Exception> processExceptionEx,
+            int? retryCount,
+            TimeSpan? requestTimeOut,
+            decimal? maxNumberOfMessagesToReceivePerRequest,
+            decimal? waitTimeInSeconds,
+            decimal? messageVisibilityTimeout)
+        {
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, 0, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
+        }
+        
         protected sealed override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             if (processMessageFn == null)
@@ -114,6 +125,22 @@ namespace ServiceStack.Aws.Messaging
             var processWrapper = WrapMessageProcessor(processMessageFn);
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             base.AddPooledMessageHandler(processWrapper, exceptionWrapper);
+        }
+
+        public override AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        {
+            return this.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads, null, null, null);            
+        }
+
+        public AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads, decimal? maxNumberOfMessagesToReceivePerRequest, decimal? waitTimeInSeconds, decimal? messageVisibilityTimeout)
+        {
+            return new AwsSqsHandlerConfiguration(
+                    this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx),
+                    noOfThreads,
+                    maxNumberOfMessagesToReceivePerRequest,
+                    waitTimeInSeconds,
+                    messageVisibilityTimeout
+                );
         }
 
         private Func<IMessage<T>, object> WrapMessageProcessor<T>(Func<IMessage<T>, object> processMessageFn)

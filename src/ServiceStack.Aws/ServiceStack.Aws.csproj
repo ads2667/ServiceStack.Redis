@@ -58,7 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Messaging\AwsQueingService.cs" />
+    <Compile Include="Messaging\AwsSqsBackgroundWorkerFactory.cs" />
+    <Compile Include="Messaging\AwsSqsHandlerConfiguration.cs" />
     <Compile Include="Messaging\AwsSqsHost.cs" />
+    <Compile Include="Messaging\IMessageCoordinator.cs" />
     <Compile Include="Messaging\SqsMessage.cs" />
     <Compile Include="Messaging\AwsSqsMessageFactory.cs" />
     <Compile Include="Messaging\AwsSqsMessageHandlerRegister.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Messaging\SqsClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

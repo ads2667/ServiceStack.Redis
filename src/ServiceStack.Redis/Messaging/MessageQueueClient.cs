@@ -34,34 +34,6 @@ namespace ServiceStack.Redis.Messaging
 		    this.MaxSuccessQueueSize = 100;
 		}
 
-        /*
-		private IRedisNativeClient readWriteClient;
-		public IRedisNativeClient ReadWriteClient
-		{
-			get
-			{
-				if (this.readWriteClient == null)
-				{
-					this.readWriteClient = (IRedisNativeClient)clientsManager.GetClient();
-				}
-				return readWriteClient;
-			}
-		}
-
-		private IRedisNativeClient readOnlyClient;
-		public IRedisNativeClient ReadOnlyClient
-		{
-			get
-			{
-				if (this.readOnlyClient == null)
-				{
-					this.readOnlyClient = (IRedisNativeClient)clientsManager.GetReadOnlyClient();
-				}
-				return readOnlyClient;
-			}
-		}
-        */
-
         protected abstract string GetQueueNameOrUrl(string queueName);
 
 		public void Publish<T>(T messageBody)
@@ -75,28 +47,29 @@ namespace ServiceStack.Redis.Messaging
         public void Publish(IMessage message)
         {
             var messageBytes = message.ToBytes();
-            Publish(message.ToInQueueName(), messageBytes);
+            var queueName = this.GetQueueName(message);
+            Publish(queueName, messageBytes);
         }
 
         public void Publish<T>(IMessage<T> message)
         {
+            var queueName = this.GetQueueName(message);
             var messageBytes = message.ToBytes();
-            Publish(message.ToInQueueName(), messageBytes);
+            Publish(queueName, messageBytes);
         }
 
 		public void Publish(string queueName, byte[] messageBytes)
 		{
-            this.PublishMessage(queueName, messageBytes);
-			/*
-            this.ReadWriteClient.LPush(queueName, messageBytes);
-			this.ReadWriteClient.Publish(QueueNames.TopicIn, queueName.ToUtf8Bytes());
-            */
-
+            this.PublishMessage(queueName, messageBytes);			
 			if (onPublishedCallback != null)
 			{
 				onPublishedCallback();
 			}
 		}
+
+	    protected abstract string GetQueueName(IMessage message);
+
+        protected abstract string GetQueueName<T>(IMessage<T> message);
 
         protected abstract void PublishMessage(string queueName, byte[] messageBytes);
 

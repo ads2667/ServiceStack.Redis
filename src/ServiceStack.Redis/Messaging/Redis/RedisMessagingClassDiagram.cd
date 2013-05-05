@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisBackgroundWorkerFactory">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAEAAAAAQAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisBackgroundWorkerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMessageFactory" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMessageFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMessageHandlerWorker">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMessageHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMessageProducer">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAABAAAAgAAAAIAAgAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMessageProducer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMessageQueueClient">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAECAAEABBABAAgAAAAIAAgABAAAAAIAAAgAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMessageQueueClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMessageQueueClientFactory" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAABAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMessageQueueClientFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMqHost">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMqHost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMqHostPool" BaseTypeListCollapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UECQAAAAACAAAYgAAAAQAAAEAAhCAAAAIgAAAQABAQA=</HashCode>
+      <FileName>Messaging\Redis\RedisMqHostPool.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisMqServer">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAEgAAAABQAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisMqServer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisQueueHandlerWorker">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABBAAAAAAABABAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisQueueHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisTransientMessageFactory" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAASAAAAAAAAAQAQABAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisTransientMessageFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Redis.Messaging.Redis.RedisTransientMessageService">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Messaging\Redis\RedisTransientMessageService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
