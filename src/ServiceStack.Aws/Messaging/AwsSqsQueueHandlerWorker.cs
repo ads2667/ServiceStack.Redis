@@ -73,8 +73,6 @@ namespace ServiceStack.Aws.Messaging
                 var response = this.SqsClient.ReceiveMessage(this.QueueUrl, this.WaitTimeInSeconds, this.MaxNumberOfMessages, this.MessageVisibilityTimeout); // Blocks until timout, or msg received
                 if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)
                 {
-                    // TODO: Reset noOfContinuousErrors, to notify we had a successful run...
-
                     // Place the item in the ready to process queue, and notify workers that a new msg has arrived.                    
                     Log.DebugFormat("Received {0} Message(s) from Queue '{1}'.", response.ReceiveMessageResult.Message.Count, this.QueueName);
 
@@ -83,6 +81,12 @@ namespace ServiceStack.Aws.Messaging
                     {
                         // TODO: Remember; Need to code so no problem if same message received twice... consider cache?
                         // TODO: Need to verify Message MD5, and use 'IsSet()' methods to ensure the msg is valid. Earlier in process.
+                        if (sqsMessage.IsSetMD5OfBody() && !MessageSecurity.IsMd5Valid(sqsMessage.Body, sqsMessage.MD5OfBody))
+                        {
+                            Log.WarnFormat("Message '{0}' has invalid MD5 signature, will not be processed.");
+                            continue;                            
+                        }
+
 
                         var messageBytes = Convert.FromBase64String(sqsMessage.Body);
 

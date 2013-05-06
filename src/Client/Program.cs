@@ -4,6 +4,7 @@ using Messaging.Core;
 using ServiceStack.Aws.Messaging;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
+using ServiceStack.Redis.Messaging;
 
 namespace Playground
 {    
@@ -51,7 +52,7 @@ namespace Playground
                     messageQueueClient.Publish(new Hello3 {Text = "This comes from the client #3"});
 
                     Log.Info("Waiting for message response.");
-                    var responseQueueName = QueueNames<Hello3Response>.In;
+                    var responseQueueName = new VersionedQueueNames(typeof (Hello3Response)).In; // QueueNames<Hello3Response>.In;
                     var response = messageQueueClient.Get(responseQueueName, TimeSpan.FromSeconds(20));
                     if (response != null)
                     {

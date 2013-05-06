@@ -61,12 +61,12 @@ namespace ServiceStack.Redis.Messaging.Redis
             return queueName;
         }
 
-	    protected override string GetQueueName(IMessage message)
+	    protected override string GetInQueueName(IMessage message)
 	    {
 	        return message.ToInQueueName();
 	    }
 
-	    protected override string GetQueueName<T>(IMessage<T> message)
+	    protected override string GetInQueueName<T>(IMessage<T> message)
 	    {
             return message.ToInQueueName();
 	    }

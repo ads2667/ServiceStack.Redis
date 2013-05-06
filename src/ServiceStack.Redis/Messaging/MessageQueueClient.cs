@@ -47,13 +47,13 @@ namespace ServiceStack.Redis.Messaging
         public void Publish(IMessage message)
         {
             var messageBytes = message.ToBytes();
-            var queueName = this.GetQueueName(message);
+            var queueName = this.GetInQueueName(message);
             Publish(queueName, messageBytes);
         }
 
         public void Publish<T>(IMessage<T> message)
         {
-            var queueName = this.GetQueueName(message);
+            var queueName = this.GetInQueueName(message);
             var messageBytes = message.ToBytes();
             Publish(queueName, messageBytes);
         }
@@ -67,9 +67,9 @@ namespace ServiceStack.Redis.Messaging
 			}
 		}
 
-	    protected abstract string GetQueueName(IMessage message);
+	    protected abstract string GetInQueueName(IMessage message);
 
-        protected abstract string GetQueueName<T>(IMessage<T> message);
+        protected abstract string GetInQueueName<T>(IMessage<T> message);
 
         protected abstract void PublishMessage(string queueName, byte[] messageBytes);
 

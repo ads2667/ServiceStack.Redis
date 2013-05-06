@@ -41,18 +41,44 @@ namespace ServiceStack.Aws.Messaging
             this.QueueNames = queueNames;
         }
 
-        protected override string GetQueueName(IMessage message)
+        protected override string GetInQueueName(IMessage message)
         {
             return new VersionedQueueNames(message.Body.GetType()).In;
         }
 
-        protected override string GetQueueName<T>(IMessage<T> message)
+        protected override string GetInQueueName<T>(IMessage<T> message)
         {
             return new VersionedQueueNames(typeof(T)).In;
         }
 
+        private string DetermineQueueName(string queueName, byte[] messageBytes)
+        {
+            var messageBodyType = messageBytes.ToMessage(typeof (IMessage)).Body.GetType();
+            var versionedQueueNames = new VersionedQueueNames(messageBodyType);
+            var queueExt = queueName.Substring(queueName.LastIndexOf('.') + 1).ToLowerInvariant();
+            switch (queueExt)
+            {
+                case "inq":
+                    return versionedQueueNames.In;
+
+                case "priorityq":
+                    return versionedQueueNames.Priority;
+
+                case "outq":
+                    return versionedQueueNames.Out;
+
+                case "dlq":
+                    return versionedQueueNames.Dlq;
+
+                default:
+                    // It's not a standard queue, should be a custom queue.
+                    return queueName;
+            }
+        }
+
         protected override void PublishMessage(string queueName, byte[] messageBytes)
         {
+            queueName = DetermineQueueName(queueName, messageBytes);
             this.CreateMessageQueueIfNotExists(queueName);
 
             // Publish to queue
@@ -62,6 +88,8 @@ namespace ServiceStack.Aws.Messaging
 
         public override void Notify(string queueName, byte[] messageBytes)
         {
+            // TODO: Need to determine the versioned queue to notify
+            queueName = DetermineQueueName(queueName, messageBytes);
             this.CreateMessageQueueIfNotExists(queueName);
 
             // Publish to queue the out queue

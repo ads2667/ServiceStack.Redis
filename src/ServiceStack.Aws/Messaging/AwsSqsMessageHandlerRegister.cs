@@ -86,6 +86,8 @@ namespace ServiceStack.Aws.Messaging
         {
             var processWrapper = WrapMessageProcessor(processMessageFn);
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            //this.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
+            throw new NotImplementedException("Does not require response type, fix this!");
             this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, noOfThreads, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
         }
 
@@ -100,6 +102,8 @@ namespace ServiceStack.Aws.Messaging
         {
             var processWrapper = WrapMessageProcessor(processMessageFn);
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            throw new NotImplementedException("Does not require response type, fix this!");
+            // TODO: Extract the MessageHandlerFactory from the config object, and instead of passing 'noOfThreads', just pass a TYPED config object to the base class! Which calls an abstract method to assign to the handler registration.
             this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, 0, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
         }
         

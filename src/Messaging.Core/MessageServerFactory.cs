@@ -25,7 +25,7 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(null, null)));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAI32WJMKWXTRJ6EHQ", "pjpRGOLvT0WsHrXC0DcKaSENKaNygJKs9zJg1TeG")));
 
             // TODO: Use customer registration to override default values            
             return RegisterMessageHandlers(svc);
@@ -74,7 +74,7 @@ namespace Messaging.Core
                     register.AddPooledHandler<Hello>((m) =>
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
-                        return null;
+                        // return null;
                     }, null);
 
                     register.AddHandler<Hello2>((m) =>
@@ -82,10 +82,10 @@ namespace Messaging.Core
                         Log.Debug("Server Says: " + m.GetBody().Text);
                         
                         // No Response
-                        return null;
+                        // return null; // TODO: Null should not be required if no response type is defined.
                     });
-                   
-                    register.AddHandler<Hello3>((m) =>
+
+                    register.AddHandler<Hello3, Hello3Response>((m) =>
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
 
@@ -93,8 +93,8 @@ namespace Messaging.Core
                         // What if the client calls 'GetAsync()' directly? Currently, it won't work!
                         return new Hello3Response { ResponseText = "The message was processed by the server!" };
                     });
-                    
-                    register.AddHandler<Hello4>((m) =>
+
+                    register.AddHandler<Hello4, Hello4Response>((m) =>
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
                         return new Hello4Response {ResponseText = "Hello4 Response Text"};

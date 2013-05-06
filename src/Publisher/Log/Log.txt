@@ -8275,3 +8275,66 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-05 17:17:19,537 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
 2013-05-05 17:17:19,815 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
 2013-05-05 17:17:31,063 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-06 13:56:52,079 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 13:57:00,351 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 13:57:00,351 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 13:57:00,364 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 13:59:14,800 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 13:59:21,192 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 13:59:21,193 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 13:59:21,196 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 13:59:21,812 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:04:54,088 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:05:00,915 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:05:00,915 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:05:00,928 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:05:01,581 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:31:24,358 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:31:30,719 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:31:30,720 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:31:30,731 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:31:31,338 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:37:13,018 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:38:23,434 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:38:29,961 [10] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:38:29,961 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:38:29,969 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:38:30,497 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:39:41,699 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:39:47,928 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:39:47,929 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:39:47,940 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:39:48,536 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:41:33,570 [8] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:41:39,700 [8] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:41:39,700 [8] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:41:39,711 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:41:40,361 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 14:58:57,432 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:59:04,018 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 14:59:04,018 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:59:04,033 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 14:59:04,781 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 15:02:57,868 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:03:04,815 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 15:03:04,816 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:03:04,828 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 15:03:23,947 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 15:04:59,851 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:05:06,021 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 15:05:06,021 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:05:06,035 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 15:05:12,883 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 15:56:22,090 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:56:28,947 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 15:56:28,947 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:56:28,951 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 15:56:36,652 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 15:57:03,649 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 15:57:03,961 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-06 15:57:07,985 [9] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-06 16:02:08,982 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 16:03:07,260 [9] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-06 16:03:07,260 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 16:03:07,264 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-06 16:03:07,868 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.

@@ -1,13 +1,28 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace ServiceStack.Aws.Messaging
 {
+    // TODO: Security
+    // TODO: Performance Tests
+    // TODO: Unit Tests
+
     public static class MessageSecurity
     {
-        public static void VerifyMessageMd5(string messageBody, string expectedMd5)
+        private static string ToHex(this byte[] hash)
         {
-            return;
+            // convert byte array to hex string
+            var sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("x2"));
+            }
+            return sb.ToString();
+        }
+
+        public static bool IsMd5Valid(string messageBody, string expectedMd5)
+        {
             if (messageBody == null)
             {
                 throw new ArgumentNullException("messageBody");
@@ -17,35 +32,17 @@ namespace ServiceStack.Aws.Messaging
             byte[] hashBytes;
             using (var hash = new MD5Cng())
             {
-                // Compute hash value of our plain text with appended salt.
-                hashBytes = hash.ComputeHash(Convert.FromBase64String(messageBody));
+                hashBytes = hash.ComputeHash(Encoding.UTF8.GetBytes(messageBody));
                 hash.Clear();
             }
-            
-            var messageMd5 = Convert.ToBase64String(hashBytes);
-            if (messageMd5 != expectedMd5)
+
+            var messageBodyMd5 = hashBytes.ToHex();
+            if (messageBodyMd5 == expectedMd5)
             {
-                throw new InvalidOperationException("MD5 is Wrong!");
+                return true;
             }
 
-            /*
-            // TODO: Compate Md5 values
-            // If the computed hash matches the specified hash,
-            // the plain text value must be correct.
-            if (expectedMd5.Length != hashBytes.Length)
-            {
-                throw new InvalidOperationException("Invalid MD5");
-            }
-
-            for (int i = 0; i < expectedMd5.Length; i++)
-            {
-                if (expectedMd5[i] != hashBytes[i])
-                {
-                    throw new InvalidOperationException("Invalid MD5");
-                }
-            }
-            */
-            throw new NotImplementedException("MD5 Verification not implemented");
+            return false;
         }
     }
 }

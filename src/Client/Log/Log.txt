@@ -9641,3 +9641,117 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-05 17:18:35,278 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
 2013-05-05 17:18:35,554 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:62fda8eb6cf54635a1f7083acf93929f
 2013-05-05 17:18:39,430 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-06 13:56:52,090 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 13:56:59,096 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 13:56:59,096 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 13:56:59,364 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 13:57:00,228 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 13:57:00,554 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 13:57:09,083 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-06 13:59:14,784 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 13:59:20,938 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 13:59:20,938 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 13:59:21,166 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 13:59:21,744 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 13:59:22,058 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 13:59:22,358 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-06 14:04:54,095 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:31:24,377 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:31:30,779 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 14:31:30,780 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:31:30,940 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 14:31:31,352 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 14:31:31,717 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 14:31:32,023 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-06 14:31:32,620 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 14:31:33,014 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-06 14:31:33,028 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 14:31:33,418 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 14:31:34,507 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:079f31e1c8c44772856775d7468d96f8
+2013-05-06 14:37:12,988 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:38:23,473 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:38:29,836 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 14:38:29,836 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:38:30,092 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 14:38:30,499 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 14:39:41,687 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:39:47,992 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 14:39:47,992 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:39:48,111 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 14:39:48,533 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 14:39:48,846 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 14:39:49,153 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-06 14:39:49,591 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 14:41:33,516 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:41:39,800 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 14:41:39,801 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 14:41:39,959 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 14:41:40,372 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 14:41:40,680 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 14:41:40,986 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response.inq
+2013-05-06 14:41:41,489 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 14:41:41,847 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response.inq
+2013-05-06 14:41:41,856 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 14:41:42,211 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 14:41:43,222 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:da7b4edd885b4b10bdcca5bcbd3fcb51
+2013-05-06 14:58:57,372 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 14:59:48,939 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 14:59:48,939 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:00:09,167 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 15:00:45,324 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 15:00:48,614 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:02:57,820 [8] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:03:22,124 [8] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 15:03:22,124 [8] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:03:23,633 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 15:03:23,986 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 15:03:25,670 [8] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:03:39,120 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:03:45,668 [8] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 15:03:48,480 [8] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:03:48,486 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 15:03:50,133 [8] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:04:02,382 [8] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:6f22d75e85094b818a12aa18e93964da
+2013-05-06 15:04:59,844 [9] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:05:05,910 [9] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 15:05:05,911 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:05:13,944 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 15:05:15,166 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 15:05:15,491 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:05:18,394 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:05:27,342 [9] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 15:05:27,707 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:05:27,721 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 15:05:29,610 [9] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:05:35,006 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:6713be70ff244520ac664cac207240b5
+2013-05-06 15:05:39,308 [9] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-06 15:05:40,637 [9] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:6713be70ff244520ac664cac207240b5
+2013-05-06 15:56:22,094 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 15:56:28,773 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 15:56:28,774 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 15:56:36,215 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 15:56:36,659 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 15:56:36,994 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:56:44,407 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:56:44,849 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 15:56:45,227 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 15:56:45,244 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 15:56:45,573 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 15:56:46,518 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:484caa0a212f405fa873c67ccfead5a8
+2013-05-06 15:56:47,018 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-06 15:56:47,311 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:484caa0a212f405fa873c67ccfead5a8
+2013-05-06 15:57:10,257 [10] INFO  Playground.Program [(null)] - Stopping Client.
+2013-05-06 16:02:08,967 [10] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-06 16:03:07,260 [10] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-06 16:03:07,260 [10] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-06 16:03:07,477 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-06 16:03:07,907 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-06 16:03:08,411 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 16:03:08,419 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 16:03:08,815 [10] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-06 16:03:09,187 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-06 16:03:09,203 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-06 16:03:09,577 [10] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-06 16:03:10,329 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:62bebeb63d014be6a0ec780179bc1b1a
+2013-05-06 16:03:10,983 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-06 16:03:11,277 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:62bebeb63d014be6a0ec780179bc1b1a

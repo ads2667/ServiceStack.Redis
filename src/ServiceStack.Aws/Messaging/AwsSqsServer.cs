@@ -94,6 +94,18 @@ namespace ServiceStack.Aws.Messaging
                     this.QueueUrls.Add(newQueueName, queueUrl);
                 }   
             }
+
+            // Ensure all of the required response queues are configured.
+            foreach (var responseMessageType in this.MessageHandlerRegister.ResponseMessageTypes)
+            {
+                var queueNamesToCreate = this.GetNewQueueNames(responseMessageType);
+                foreach (var newQueueName in queueNamesToCreate)
+                {
+                    // NOTE: No local queue is required for response queues, as the server does not monitor these.
+                    var queueUrl = this.SqsClient.GetOrCreateQueueUrl(newQueueName);
+                    this.QueueUrls.Add(newQueueName, queueUrl);
+                }
+            }
         }
         
         /*
