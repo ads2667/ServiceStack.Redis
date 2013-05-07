@@ -30,7 +30,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageHandlerWorker">
-    <Position X="7.5" Y="8.25" Width="2.5" />
+    <Position X="6.75" Y="8.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>EAAAABAAASAAABAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Messaging\AwsSqsMessageHandlerWorker.cs</FileName>
@@ -46,28 +46,21 @@
   <Class Name="ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient">
     <Position X="6.25" Y="3.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAECAAGEBAAAAAAAAAAIgAgABAAAAAYAAAwAA=</HashCode>
+      <HashCode>AAAAgAAgUCAAGEBAAAAAAAAAAIgAgABAAAAAYAAAwAA=</HashCode>
       <FileName>Messaging\AwsSqsMessageQueueClient.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker">
-    <Position X="10.25" Y="4.25" Width="1.5" />
+    <Position X="9" Y="4.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAABBAAAQAEAAAAAAAAAAAAAIgACAAAAAAAQAAAAAQ=</HashCode>
+      <HashCode>AAAABBAAAQAEABAAAAAAAAAAAIgACAAAAAAAQAAAAAQ=</HashCode>
       <FileName>Messaging\AwsSqsQueueHandlerWorker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ServiceStack.Aws.Messaging.AwsSqsServer" BaseTypeListCollapsed="true">
-    <Position X="1.5" Y="2.75" Width="1.5" />
-    <NestedTypes>
-      <Class Name="ServiceStack.Aws.Messaging.AwsSqsServer.ThreadPoolTask" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Messaging\AwsSqsServer.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
+    <Position X="0.5" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAABAASgAAAgAAAAAAAIAIAECCCABAAAAQADCAAg=</HashCode>
+      <HashCode>EEAAAABAASgAAAgAAAAAAAIAIAECCCAAAAAAQADCAAg=</HashCode>
       <FileName>Messaging\AwsSqsServer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -75,7 +68,7 @@
   <Class Name="ServiceStack.Aws.Messaging.MessageSecurity">
     <Position X="10.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Messaging\MessageSecurity.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -99,7 +92,7 @@
     <Position X="10.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
-      <FileName>Messaging\AwsSqsServer.cs</FileName>
+      <FileName>Messaging\IMessageCoordinator.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ServiceStack.Aws.Messaging.ISqsClient">

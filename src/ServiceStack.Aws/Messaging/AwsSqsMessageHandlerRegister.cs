@@ -1,5 +1,6 @@
 ﻿using System;
 using ServiceStack.Messaging;
+using ServiceStack.Redis;
 using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
@@ -123,6 +124,18 @@ namespace ServiceStack.Aws.Messaging
         }
         */
 
+        protected override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
+        {
+            if (processMessageFn == null)
+            {
+                throw new ArgumentNullException("processMessageFn");
+            }
+
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddMessageHandler<T>(processWrapper, exceptionWrapper, queueHandlerConfiguration, messageHandlerConfiguration);
+        }
+        /*
         protected override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration handlerConfiguration)
         {
             if (processMessageFn == null)
@@ -134,7 +147,7 @@ namespace ServiceStack.Aws.Messaging
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             base.AddMessageHandler<T>(processWrapper, exceptionWrapper, handlerConfiguration);
         }
-
+        */
         /*
         protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
@@ -149,6 +162,19 @@ namespace ServiceStack.Aws.Messaging
         }
         */
 
+        protected override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
+        {
+            if (processMessageFn == null)
+            {
+                throw new ArgumentNullException("processMessageFn");
+            }
+
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddPooledMessageHandler<T>(processWrapper, exceptionWrapper, queueHandlerConfiguration, messageHandlerConfiguration);
+        }
+
+        /*
         protected override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration handlerConfiguration)
         {
             if (processMessageFn == null)
@@ -160,7 +186,7 @@ namespace ServiceStack.Aws.Messaging
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             base.AddPooledMessageHandler<T>(processWrapper, exceptionWrapper, handlerConfiguration);
         }
-
+        */
         /*
         public override AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
@@ -168,6 +194,14 @@ namespace ServiceStack.Aws.Messaging
         }
         */
 
+        public override HandlerRegistration<AwsSqsHandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
+        {
+            return new HandlerRegistration<AwsSqsHandlerConfiguration>(
+                this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx, messageHandlerConfiguration),
+                queueHandlerConfiguration);
+        }
+
+        /*
         public override HandlerRegistration<AwsSqsHandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx,
                                                                AwsSqsHandlerConfiguration handlerConfiguration)
         {
@@ -175,6 +209,7 @@ namespace ServiceStack.Aws.Messaging
                 this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx),
                 handlerConfiguration);
         }
+        */
 
         /*
         public AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads, decimal? maxNumberOfMessagesToReceivePerRequest, decimal? waitTimeInSeconds, decimal? messageVisibilityTimeout)

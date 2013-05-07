@@ -44,7 +44,7 @@ namespace ServiceStack.Aws.Messaging
         */
 
         // TODO:Add 'Retry Count' to default config parameters?
-        // TODO: Switch 'Task' approach with std ThreadPool, so it is 3.5 compatable?
+        // TODO: Switch 'Task' approach with std ThreadPool, so it is 3.5 compatable? => Finish.
 
         protected override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(HandlerRegistration<AwsSqsHandlerConfiguration> messageHandlerRegistration, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {

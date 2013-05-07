@@ -155,6 +155,7 @@
     <Compile Include="Generic\RedisTypedPipeline.cs" />
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
+    <Compile Include="MessageHandlerConfiguration.cs" />
     <Compile Include="Messaging\BackgroundWorker.cs" />
     <Compile Include="Messaging\BackgroundWorkerFactory.cs" />
     <Compile Include="Messaging\DefaultHandlerConfiguration.cs" />

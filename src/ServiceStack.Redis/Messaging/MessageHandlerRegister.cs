@@ -5,8 +5,8 @@ using ServiceStack.Messaging;
 
 namespace ServiceStack.Redis.Messaging
 {
-    public abstract class MessageHandlerRegister<THandlerConfiguration>
-        where THandlerConfiguration : DefaultHandlerConfiguration, new()
+    public abstract class MessageHandlerRegister<TQueueHandlerConfiguration>
+        where TQueueHandlerConfiguration : DefaultHandlerConfiguration, new()
     {
         protected IMessageService MessageServer { get; private set; }
 
@@ -23,7 +23,7 @@ namespace ServiceStack.Redis.Messaging
             this.MessageServer = messageServer;
             this.RetryCount = retryCount;
             this.ResponseMessageTypes = new List<Type>();
-            this.RegisteredHandlers = new Dictionary<Type, HandlerRegistration<THandlerConfiguration>>();
+            this.RegisteredHandlers = new Dictionary<Type, HandlerRegistration<TQueueHandlerConfiguration>>();
         }
 
         // ================== ORIGINAL HANDLER REGISTRATION ============================
@@ -37,7 +37,7 @@ namespace ServiceStack.Redis.Messaging
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, int noOfThreads)
         {
             // RegisterHandler(processMessageFn, null, noOfThreads);
-            this.AddMessageHandler(processMessageFn, null, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddMessageHandler(processMessageFn, null, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads }, null);
         }
 
         [Obsolete("Use RegisterMessageHandlers instead.")]
@@ -50,7 +50,7 @@ namespace ServiceStack.Redis.Messaging
         public void RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {            
             // RegisterHandler(processMessageFn, processExceptionEx, 1);
-            this.AddMessageHandler(processMessageFn, processExceptionEx, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddMessageHandler(processMessageFn, processExceptionEx, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads }, null);
         }
 
         // ================== NEW HANDLER REGISTRATION ============================
@@ -86,48 +86,46 @@ namespace ServiceStack.Redis.Messaging
         }
         */
         // ========== REQUIRE MESSAGE OUTPUT TYPES TO BE DEFINED, Enable auto-registration of response queues =========
+        /*
         public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn)
         {
-            this.AddPooledHandler<T, TResponse>(processMessageFn, null, null);
-        }
-
-        public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, THandlerConfiguration handlerConfiguration)
-        {
-            this.AddPooledHandler<T, TResponse>(processMessageFn, null, handlerConfiguration);
+            this.AddPooledHandler(processMessageFn, null);
         }
 
         public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
-            this.AddPooledHandler<T, TResponse>(processMessageFn, processExceptionEx, null);
+            this.AddPooledHandler(processMessageFn, processExceptionEx, queueHandlerConfiguration: null);
         }
+        */
 
-        public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
-            this.AddPooledMessageHandler(processMessageFn, processExceptionEx, handlerConfiguration);
+            this.AddPooledHandler(processMessageFn, null, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
+        public void AddPooledHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
+        {
+            this.AddPooledMessageHandler(processMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
+        }
+
+        // ==========
+        /*
         public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn)
         {
-            this.AddPooledHandler(processMessageFn, null, null);
+            this.AddPooledHandler(processMessageFn, queueHandlerConfiguration: null);
         }
+        */
 
-        public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn, THandlerConfiguration handlerConfiguration)
+        public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
-            this.AddPooledHandler(processMessageFn, null, handlerConfiguration);
+            this.AddPooledHandler(processMessageFn, null, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
-        public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
-        {
-            // A thread count of 0, indicates that the handler should use the thread pool
-            this.AddPooledHandler<T>(processMessageFn, processExceptionEx, null);
-            //this.AddMessageHandler(wrappedMessageFn, processExceptionEx, 0);
-        }
-
-        public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        public void AddPooledHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
             // A thread count of 0, indicates that the handler should use the thread pool
             var wrappedMessageFn = WrapActionHandler(processMessageFn);
-            this.AddPooledMessageHandler(wrappedMessageFn, processExceptionEx, handlerConfiguration);
+            this.AddPooledMessageHandler(wrappedMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
             //this.AddMessageHandler(wrappedMessageFn, processExceptionEx, 0);
         }
 
@@ -140,12 +138,12 @@ namespace ServiceStack.Redis.Messaging
 
         public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, int noOfThreads)
         {
-            this.AddHandler(processMessageFn, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddHandler(processMessageFn, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads });
         }
 
-        public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, THandlerConfiguration handlerConfiguration)
+        public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
-            this.AddHandler(processMessageFn, null, handlerConfiguration);
+            this.AddHandler(processMessageFn, null, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
         public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
@@ -155,12 +153,12 @@ namespace ServiceStack.Redis.Messaging
 
         public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
-            this.AddMessageHandler(processMessageFn, processExceptionEx, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddMessageHandler(processMessageFn, processExceptionEx, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads }, messageHandlerConfiguration: null);
         }
 
-        public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        public void AddHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
-            this.AddMessageHandler(processMessageFn, processExceptionEx, handlerConfiguration);
+            this.AddMessageHandler(processMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
         public void AddHandler<T>(Action<IMessage<T>> processMessageFn)
@@ -170,12 +168,12 @@ namespace ServiceStack.Redis.Messaging
 
         public void AddHandler<T>(Action<IMessage<T>> processMessageFn, int noOfThreads)
         {
-            this.AddHandler(processMessageFn, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddHandler(processMessageFn, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads });
         }
 
-        public void AddHandler<T>(Action<IMessage<T>> processMessageFn, THandlerConfiguration handlerConfiguration)
+        public void AddHandler<T>(Action<IMessage<T>> processMessageFn, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
-            this.AddHandler(processMessageFn, null, handlerConfiguration);
+            this.AddHandler(processMessageFn, null, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
         public void AddHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
@@ -185,21 +183,21 @@ namespace ServiceStack.Redis.Messaging
 
         public void AddHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
-            this.AddHandler(processMessageFn, processExceptionEx, new THandlerConfiguration { NoOfThreads = noOfThreads });
+            this.AddHandler(processMessageFn, processExceptionEx, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads });
         }
 
-        public void AddHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        public void AddHandler<T>(Action<IMessage<T>> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration = null, MessageHandlerConfiguration messageHandlerConfiguration = null)
         {
             var wrappedMessageFn = WrapActionHandler(processMessageFn);
-            this.AddMessageHandler(wrappedMessageFn, processExceptionEx, handlerConfiguration);
+            this.AddMessageHandler(wrappedMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
         protected void AddMessageHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
-            this.AddMessageHandler<T, TResponse>(processMessageFn, processExceptionEx, new THandlerConfiguration() { NoOfThreads = noOfThreads });           
+            this.AddMessageHandler(processMessageFn, processExceptionEx, new TQueueHandlerConfiguration { NoOfThreads = noOfThreads }, messageHandlerConfiguration: null);           
         }
 
-        protected void AddMessageHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        protected void AddMessageHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
         {
             if (RegisteredHandlers.ContainsKey(typeof(T)))
             {
@@ -207,7 +205,7 @@ namespace ServiceStack.Redis.Messaging
             }
 
             var wrappedTypedResponseFn = WrapTypedResponseHandler(processMessageFn);
-            this.AddMessageHandler<T>(wrappedTypedResponseFn, processExceptionEx, handlerConfiguration);
+            this.AddMessageHandler<T>(wrappedTypedResponseFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
             // this.RegisteredHandlers.Add(typeof(T), RegisterHandler(wrappedTypedResponseFn, processExceptionEx, noOfThreads));
 
             if (typeof(TResponse) == typeof(object))
@@ -218,11 +216,11 @@ namespace ServiceStack.Redis.Messaging
             this.ResponseMessageTypes.Add(typeof(TResponse)); //// Need to enable queue creation
         }
 
-        protected void AddPooledMessageHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration)
+        protected void AddPooledMessageHandler<T, TResponse>(Func<IMessage<T>, TResponse> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
         {
             // A thread count of 0, indicates that the handler should use the thread pool
             var wrappedTypedResponseFn = WrapTypedResponseHandler(processMessageFn);
-            this.AddPooledMessageHandler<T>(wrappedTypedResponseFn, processExceptionEx, handlerConfiguration);
+            this.AddPooledMessageHandler<T>(wrappedTypedResponseFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
 
             if (typeof(TResponse) == typeof(object))
             {
@@ -232,22 +230,22 @@ namespace ServiceStack.Redis.Messaging
             this.ResponseMessageTypes.Add(typeof(TResponse)); //// Need to enable queue creation
         }
 
-        protected virtual void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx /*) => This needs to a TYPED property*/ , THandlerConfiguration handlerConfiguration)
+        protected virtual void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
         {
             // A thread count of 0, indicates that the handler should use the thread pool
-            handlerConfiguration = handlerConfiguration ?? new THandlerConfiguration();
-            handlerConfiguration.NoOfThreads = 0; // 0 => ThreadPool
-            this.AddMessageHandler<T>(processMessageFn, processExceptionEx/*, 0)*/, handlerConfiguration);
+            queueHandlerConfiguration = queueHandlerConfiguration ?? new TQueueHandlerConfiguration();
+            queueHandlerConfiguration.NoOfThreads = 0; // 0 => ThreadPool
+            this.AddMessageHandler<T>(processMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
-        protected virtual void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx/*, int noOfThreads )*/ , THandlerConfiguration handlerConfiguration)
+        protected virtual void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration)
         {
             if (RegisteredHandlers.ContainsKey(typeof(T)))
             {
                 throw new ArgumentException("Message handler has already been registered for type: " + typeof(T).Name);
             }
 
-            this.RegisteredHandlers.Add(typeof(T), RegisterHandler(processMessageFn, processExceptionEx, handlerConfiguration));
+            this.RegisteredHandlers.Add(typeof(T), RegisterHandler(processMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration));
         }
 
         private static Func<IMessage<T>, object> WrapActionHandler<T>(Action<IMessage<T>> processMessageFn)
@@ -299,21 +297,25 @@ namespace ServiceStack.Redis.Messaging
         /// </summary>
         public Func<object, object> ResponseFilter { get; set; }
 
-        public IDictionary<Type, HandlerRegistration<THandlerConfiguration>> RegisteredHandlers { get; private set; }
+        public IDictionary<Type, HandlerRegistration<TQueueHandlerConfiguration>> RegisteredHandlers { get; private set; }
 
         public IList<Type> ResponseMessageTypes { get; private set; }
 
-        public abstract HandlerRegistration<THandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, THandlerConfiguration handlerConfiguration);
+        public abstract HandlerRegistration<TQueueHandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, TQueueHandlerConfiguration queueHandlerConfiguration, MessageHandlerConfiguration messageHandlerConfiguration);
 
-        protected IMessageHandlerFactory CreateMessageHandlerFactory<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
+        // TODO:Add 'Retry Count' to default config parameters? Request/Response Filters?
+        // TODO: Add Error Count to Queue (And Msg?) BG Handlers
+        // TODO: Switch 'Task' approach with std ThreadPool, so it is 3.5 compatable? => Finish.
+
+        protected IMessageHandlerFactory CreateMessageHandlerFactory<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, MessageHandlerConfiguration messageHandlerConfiguration)
         {
+            messageHandlerConfiguration = messageHandlerConfiguration ?? new MessageHandlerConfiguration();
             return new MessageHandlerFactory<T>(this.MessageServer, processMessageFn, processExceptionEx)
             {
-                RequestFilter = this.RequestFilter,
-                ResponseFilter = this.ResponseFilter,
-                RetryCount = RetryCount,
+                RequestFilter = messageHandlerConfiguration.RequestFilter ?? this.RequestFilter,
+                ResponseFilter = messageHandlerConfiguration.ResponseFilter ?? this.ResponseFilter,
+                RetryCount =  messageHandlerConfiguration.RetryCount ?? this.RetryCount 
             };
         }
     }
-
 }

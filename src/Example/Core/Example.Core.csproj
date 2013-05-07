@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A53F1744-1566-4ED3-8A03-8DA19CE5931E}</ProjectGuid>
+    <ProjectGuid>{8AB2FF55-30E7-48F8-B040-D3C43E8AD389}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceStack.Aws</RootNamespace>
-    <AssemblyName>ServiceStack.Aws</AssemblyName>
+    <RootNamespace>Example.Core</RootNamespace>
+    <AssemblyName>Example.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -34,19 +34,16 @@
   <ItemGroup>
     <Reference Include="AWSSDK, Version=1.5.19.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AWSSDK.1.5.19.0\lib\AWSSDK.dll</HintPath>
+      <HintPath>..\..\packages\AWSSDK.1.5.19.0\lib\AWSSDK.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Common, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Common.dll</HintPath>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.44\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.44\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=3.9.43.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ServiceStack.Text.3.9.43\lib\net35\ServiceStack.Text.dll</HintPath>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\packages\ServiceStack.Text.3.9.44\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,34 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\AwsQueingService.cs" />
-    <Compile Include="Messaging\AwsSqsBackgroundWorkerFactory.cs" />
-    <Compile Include="Messaging\AwsSqsHandlerConfiguration.cs" />
-    <Compile Include="Messaging\AwsSqsHost.cs" />
-    <Compile Include="Messaging\IMessageCoordinator.cs" />
-    <Compile Include="Messaging\SqsMessage.cs" />
-    <Compile Include="Messaging\AwsSqsMessageFactory.cs" />
-    <Compile Include="Messaging\AwsSqsMessageHandlerRegister.cs" />
-    <Compile Include="Messaging\AwsSqsMessageHandlerWorker.cs" />
-    <Compile Include="Messaging\AwsSqsMessageProducer.cs" />
-    <Compile Include="Messaging\AwsSqsMessageQueueClient.cs" />
-    <Compile Include="Messaging\AwsSqsQueueHandlerWorker.cs" />
-    <Compile Include="Messaging\AwsSqsServer.cs" />
-    <Compile Include="Messaging\ISqsClient.cs" />
-    <Compile Include="Messaging\ISqsMessage.cs" />
-    <Compile Include="Messaging\MessageSecurity.cs" />
-    <Compile Include="Messaging\SqsClient.cs" />
+    <Compile Include="Custom\SqsClientWithTimeoutSupport.cs" />
+    <Compile Include="MessageServerFactory.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Messaging\SqsClassDiagram.cd" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ServiceStack.Redis\ServiceStack.Redis.csproj">
-      <Project>{AF99F19B-4C04-4F58-81EF-B092F1FCC540}</Project>
+    <ProjectReference Include="..\..\ServiceStack.Aws\ServiceStack.Aws.csproj">
+      <Project>{a53f1744-1566-4ed3-8a03-8da19ce5931e}</Project>
+      <Name>ServiceStack.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceStack.Redis\ServiceStack.Redis.csproj">
+      <Project>{af99f19b-4c04-4f58-81ef-b092f1fcc540}</Project>
       <Name>ServiceStack.Redis</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

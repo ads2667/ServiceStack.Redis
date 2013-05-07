@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
@@ -215,6 +216,8 @@ namespace ServiceStack.Aws.Messaging
                 Log.DebugFormat("Assigning message {0} to thread pool", messageReceivedArgs.MessageId);
 
                 // ** TODO: Create Factory that creates tasks to assign to threadpool - based on queue name.
+
+                // NOTE: TPL requires .net 4.5 => refactor to use 3.5 ThreadPool.
 
                 var task = new Task(ExecuteUsingThreadPool, messageReceivedArgs, TaskCreationOptions.PreferFairness);
                 task.ContinueWith((t) =>

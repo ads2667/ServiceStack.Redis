@@ -73,6 +73,75 @@ namespace ServiceStack.Redis.Messaging
             messageHandlerRegister.Invoke(this.MessageHandlerRegister);
         }
 
+        /*
+        // TODO: Move threadpool code to base class so it can be re-used.
+        private void ExecuteUsingQueuedWorkItem(object obj)
+        {
+            var threadPoolTask = obj as MessageReceivedArgs;
+            if (threadPoolTask == null)
+            {
+                // TODO: Log, throw ex? We should never get here.
+                return;
+            }
+
+            // TODO: On the thread, create a handler and process the message.
+            Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
+            try
+            {
+                using (var client = this.CreateMessageQueueClient())
+                {
+                    threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
+                }
+            }
+            catch (Exception)
+            {
+                // TODO: Log
+                // TODO: Optionally, execute a custom ex handler?
+                throw;
+            }
+            finally
+            {
+                // Remove a listener from the list
+                lock (manualResetEvents)
+                {
+                    manualResetEvents.Remove(manualResetEvent);
+                }
+            }
+            
+        }      
+
+        IList<WaitHandle> manualResetEvents = new List<WaitHandle>();
+        public override void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
+        {
+            var handlerThreadCount = this.MessageHandlerRegister.RegisteredHandlers[messageReceivedArgs.MessageType].Configuration.NoOfThreads;
+            if (handlerThreadCount == 0) //// 0 => Threadpool
+            {
+                // Threadpool
+                // Queue the item to execute using the thread pool.
+
+                var manualResetEvent = new ManualResetEvent(false);
+                lock (manualResetEvents)
+                {
+                    manualResetEvents.Add(manualResetEvent);
+                }
+
+                // TODO: Wait for all queued work items to complete when stop is called, in DISPOSE method.
+                lock (manualResetEvents)
+                {
+                    WaitHandle.WaitAll(manualResetEvents.ToArray());
+                }
+
+                ThreadPool.QueueUserWorkItem(new WaitCallback(ExecuteUsingQueuedWorkItem), messageReceivedArgs.);
+                // TODO: How to wait for all tasks to complete using this method?
+            }
+            else
+            {
+                // Static Thread
+                base.NotifyMessageReceived(messageReceivedArgs);
+            }            
+        }
+        */
+
         protected override void Init()
         {
             if (messageWorkers == null)
@@ -310,7 +379,7 @@ namespace ServiceStack.Redis.Messaging
 
         private object threadLock = new object();
         public virtual void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
-        {            
+        {               
             // Static Thread
             if (!string.IsNullOrEmpty(messageReceivedArgs.QueueName))
             {
