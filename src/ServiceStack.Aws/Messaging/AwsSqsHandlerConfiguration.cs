@@ -5,8 +5,12 @@ namespace ServiceStack.Aws.Messaging
 {
     public class AwsSqsHandlerConfiguration : DefaultHandlerConfiguration
     {
-        public AwsSqsHandlerConfiguration(IMessageHandlerFactory messageHandlerFactory, int noOfThreads, decimal? maxNumberOfMessagesToReceivePerRequest, decimal? waitTimeInSeconds, decimal? messageVisibilityTimeout)
-            : base(messageHandlerFactory, noOfThreads)
+        public AwsSqsHandlerConfiguration()
+            : base()
+        {            
+        }
+
+        public AwsSqsHandlerConfiguration(decimal? maxNumberOfMessagesToReceivePerRequest, decimal? waitTimeInSeconds, decimal? messageVisibilityTimeout)
         {
             this.MaxNumberOfMessagesToReceivePerRequest = maxNumberOfMessagesToReceivePerRequest;
             this.MessageVisibilityTimeout = messageVisibilityTimeout;

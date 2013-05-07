@@ -10,9 +10,9 @@ namespace ServiceStack.Redis.Messaging
         {
         }
 
-        public override DefaultHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
+        public override HandlerRegistration<DefaultHandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, DefaultHandlerConfiguration handlerConfiguration)
         {
-            return new DefaultHandlerConfiguration(this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx), noOfThreads);
+            return new HandlerRegistration<DefaultHandlerConfiguration>(this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx), handlerConfiguration);
         }
     }
 }

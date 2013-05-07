@@ -25,7 +25,7 @@ namespace Messaging.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAI32WJMKWXTRJ6EHQ", "pjpRGOLvT0WsHrXC0DcKaSENKaNygJKs9zJg1TeG")));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("", "")));
 
             // TODO: Use customer registration to override default values            
             return RegisterMessageHandlers(svc);
@@ -37,7 +37,7 @@ namespace Messaging.Core
                         {
                             Log.Debug("Server Says: " + m.GetBody().Text);
                             return null;
-                        }, null, null, null, null, null, null); //// Override default values.
+                        }, new AwsSqsHandlerConfiguration() null, null, null, null, null, null); //// Override default values.
 
                     register.AddHandler<Hello2>((m) =>
                     {
@@ -54,7 +54,7 @@ namespace Messaging.Core
         }
 
         private static IMessageService RegisterMessageHandlers<T, Th, TBg>(MqServer2<T, Th, TBg> messageService) 
-            where T : DefaultHandlerConfiguration // MessageHandlerRegister<Th>
+            where T : DefaultHandlerConfiguration, new() // MessageHandlerRegister<Th>
             where Th : MessageHandlerRegister<T>
             where TBg : BackgroundWorkerFactory<T> // private static IMessageService RegisterMessageHandlers(MqServer2 messageService) 
         {            
@@ -75,7 +75,7 @@ namespace Messaging.Core
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
                         // return null;
-                    }, null);
+                    });
 
                     register.AddHandler<Hello2>((m) =>
                     {

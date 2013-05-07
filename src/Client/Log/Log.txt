@@ -9755,3 +9755,18 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-06 16:03:10,329 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:62bebeb63d014be6a0ec780179bc1b1a
 2013-05-06 16:03:10,983 [10] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
 2013-05-06 16:03:11,277 [10] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:62bebeb63d014be6a0ec780179bc1b1a
+2013-05-07 09:37:38,013 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-07 09:37:46,616 [1] INFO  Playground.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-07 09:37:46,616 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-07 09:37:46,851 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:37:47,442 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-07 09:37:48,089 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-07 09:37:48,095 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-07 09:37:48,508 [1] INFO  Playground.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-07 09:37:48,825 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-07 09:37:48,841 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-07 09:37:49,260 [1] INFO  Playground.Program [(null)] - Waiting for message response.
+2013-05-07 09:37:50,130 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:eabd9018be354d02b397ebc13745e45d
+2013-05-07 09:37:50,679 [1] INFO  Playground.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-07 09:37:50,976 [1] INFO  Playground.Program [(null)] - Deleted response message from queue: mq:c1:eabd9018be354d02b397ebc13745e45d
+2013-05-07 09:38:55,105 [1] INFO  Playground.Program [(null)] - Stopping Client.

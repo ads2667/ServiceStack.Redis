@@ -5812,3 +5812,318 @@ TotalFailed: 0
 2013-05-06 16:04:09,315 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
 2013-05-06 16:04:09,810 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
 2013-05-06 16:04:10,465 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:37:38,002 [1] INFO  Server.Program [(null)] - ===== Starting Program =====
+2013-05-07 09:37:46,810 [1] INFO  Server.Program [(null)] - ===== Message Queue Server Started =====
+2013-05-07 09:37:46,810 [1] INFO  Server.Program [(null)] - Press ENTER to exit.
+2013-05-07 09:37:46,837 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Kill all background queue worker threads...
+2013-05-07 09:37:46,838 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Starting all background message worker threads...
+2013-05-07 09:37:46,839 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.priorityq...
+2013-05-07 09:37:46,839 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq...
+2013-05-07 09:37:46,839 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.priorityq...
+2013-05-07 09:37:46,842 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq...
+2013-05-07 09:37:46,843 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.priorityq...
+2013-05-07 09:37:46,844 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq...
+2013-05-07 09:37:46,844 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Starting all background queue worker threads...
+2013-05-07 09:37:46,844 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq...
+2013-05-07 09:37:46,844 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq...
+2013-05-07 09:37:46,845 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq...
+2013-05-07 09:37:46,847 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.priorityq' for messages.
+2013-05-07 09:37:46,847 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:37:46,848 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq...
+2013-05-07 09:37:46,850 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:37:46,851 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq...
+2013-05-07 09:37:46,852 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.priorityq' for messages.
+2013-05-07 09:37:46,852 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq...
+2013-05-07 09:37:46,848 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.priorityq' for messages.
+2013-05-07 09:37:46,854 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:37:46,854 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq...
+2013-05-07 09:37:46,855 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Starting Background Worker: AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq...
+2013-05-07 09:37:46,855 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.priorityq' for messages.
+2013-05-07 09:37:46,856 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:37:47,400 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello:1.0.0.0.inq'.
+2013-05-07 09:37:47,522 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Assigning message 57437f51-9e3d-421e-bd8b-6558242283d3 to thread pool
+2013-05-07 09:37:47,523 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:37:47,524 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Executing message 57437f51-9e3d-421e-bd8b-6558242283d3 using thread pool
+2013-05-07 09:37:47,524 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:37:47,577 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,577 [23] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '57437f51-9e3d-421e-bd8b-6558242283d3' has a remaining 9.9979983 seconds to be processed.
+2013-05-07 09:37:47,578 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,578 [23] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '57437f51-9e3d-421e-bd8b-6558242283d3' has a remaining 9.9969963 seconds to be processed.
+2013-05-07 09:37:47,579 [23] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer
+2013-05-07 09:37:47,579 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 57437f51-9e3d-421e-bd8b-6558242283d3 from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,851 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello2:1.0.0.0.inq'.
+2013-05-07 09:37:47,865 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:37:47,865 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello2:1.0.0.0.inq
+2013-05-07 09:37:47,881 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:37:47,881 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '240eb66f-5c24-4c7f-aa54-9e3805063b27' has a remaining 9.9989999 seconds to be processed.
+2013-05-07 09:37:47,883 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer #2
+2013-05-07 09:37:47,883 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 240eb66f-5c24-4c7f-aa54-9e3805063b27 from Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:37:47,898 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello:1.0.0.0.inq'.
+2013-05-07 09:37:47,899 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Assigning message e55a1a01-34d3-4f7b-a2df-70b852cb4117 to thread pool
+2013-05-07 09:37:47,899 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:37:47,900 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Executing message e55a1a01-34d3-4f7b-a2df-70b852cb4117 using thread pool
+2013-05-07 09:37:47,902 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:37:47,903 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,903 [24] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'e55a1a01-34d3-4f7b-a2df-70b852cb4117' has a remaining 10 seconds to be processed.
+2013-05-07 09:37:47,904 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,904 [24] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'e55a1a01-34d3-4f7b-a2df-70b852cb4117' has a remaining 9.9989999 seconds to be processed.
+2013-05-07 09:37:47,906 [24] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the client
+2013-05-07 09:37:47,907 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message e55a1a01-34d3-4f7b-a2df-70b852cb4117 from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:48,108 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello3:1.0.0.0.inq'.
+2013-05-07 09:37:48,118 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:37:48,119 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello3:1.0.0.0.inq
+2013-05-07 09:37:48,133 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello3:1.0.0.0.inq.
+2013-05-07 09:37:48,133 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '727e3cd5-cb0a-40f5-854a-74fc6612e742' has a remaining 9.9979994 seconds to be processed.
+2013-05-07 09:37:48,136 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the client #3
+2013-05-07 09:37:48,137 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 727e3cd5-cb0a-40f5-854a-74fc6612e742 from Queue: mq:Hello3:1.0.0.0.inq.
+2013-05-07 09:37:48,469 [23] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 57437f51-9e3d-421e-bd8b-6558242283d3 from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:48,771 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message e55a1a01-34d3-4f7b-a2df-70b852cb4117 from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:49,052 [AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-07 09:37:49,078 [24] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Notification sent to queue: mq:Hello:1.0.0.0.outq
+2013-05-07 09:37:49,279 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello4:1.0.0.0.inq'.
+2013-05-07 09:37:49,291 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:37:49,291 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello4:1.0.0.0.inq
+2013-05-07 09:37:49,303 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello4:1.0.0.0.inq.
+2013-05-07 09:37:49,304 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '625fd515-2f42-47a9-b0ad-0b7b66093726' has a remaining 9.9980032 seconds to be processed.
+2013-05-07 09:37:49,306 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the client #4
+2013-05-07 09:37:49,306 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 625fd515-2f42-47a9-b0ad-0b7b66093726 from Queue: mq:Hello4:1.0.0.0.inq.
+2013-05-07 09:37:50,247 [AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:c1:eabd9018be354d02b397ebc13745e45d
+2013-05-07 09:38:07,774 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:07,780 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:07,814 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:07,821 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:08,150 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:38:08,200 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:38:08,414 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:38:09,576 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:38:28,073 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:28,091 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:28,099 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:28,111 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:28,450 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:38:28,486 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:38:28,714 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:38:29,877 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:38:45,995 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello:1.0.0.0.inq'.
+2013-05-07 09:38:45,997 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Assigning message 7298dfaa-96c0-49e0-80de-6f2b5acc413c to thread pool
+2013-05-07 09:38:45,997 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:38:46,002 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Executing message 7298dfaa-96c0-49e0-80de-6f2b5acc413c using thread pool
+2013-05-07 09:38:46,002 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:38:46,003 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:46,004 [6] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '7298dfaa-96c0-49e0-80de-6f2b5acc413c' has a remaining 9.9989938 seconds to be processed.
+2013-05-07 09:38:46,005 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:46,005 [6] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '7298dfaa-96c0-49e0-80de-6f2b5acc413c' has a remaining 9.9979986 seconds to be processed.
+2013-05-07 09:38:46,006 [6] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer
+2013-05-07 09:38:46,007 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 7298dfaa-96c0-49e0-80de-6f2b5acc413c from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:46,303 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 7298dfaa-96c0-49e0-80de-6f2b5acc413c from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:46,439 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello2:1.0.0.0.inq'.
+2013-05-07 09:38:46,441 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:38:46,441 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello2:1.0.0.0.inq
+2013-05-07 09:38:46,444 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:46,445 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'c7f2e835-4343-4df0-a2ba-bc15924d5b6f' has a remaining 9.9989992 seconds to be processed.
+2013-05-07 09:38:46,446 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer #2
+2013-05-07 09:38:46,446 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message c7f2e835-4343-4df0-a2ba-bc15924d5b6f from Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:48,051 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello:1.0.0.0.inq'.
+2013-05-07 09:38:48,052 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Assigning message c3a34a79-21b4-42de-9c2e-267d6195df6c to thread pool
+2013-05-07 09:38:48,054 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Executing message c3a34a79-21b4-42de-9c2e-267d6195df6c using thread pool
+2013-05-07 09:38:48,055 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:38:48,056 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:38:48,058 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:48,058 [6] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'c3a34a79-21b4-42de-9c2e-267d6195df6c' has a remaining 10 seconds to be processed.
+2013-05-07 09:38:48,059 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:48,060 [6] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'c3a34a79-21b4-42de-9c2e-267d6195df6c' has a remaining 9.9979835 seconds to be processed.
+2013-05-07 09:38:48,061 [6] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer
+2013-05-07 09:38:48,062 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message c3a34a79-21b4-42de-9c2e-267d6195df6c from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:48,353 [6] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message c3a34a79-21b4-42de-9c2e-267d6195df6c from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:48,360 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:48,362 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello2:1.0.0.0.inq'.
+2013-05-07 09:38:48,363 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:38:48,363 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello2:1.0.0.0.inq
+2013-05-07 09:38:48,365 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:48,366 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '7334ab8a-64d5-468e-af8d-5523eb4f1b4b' has a remaining 9.9989946 seconds to be processed.
+2013-05-07 09:38:48,367 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer #2
+2013-05-07 09:38:48,368 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 7334ab8a-64d5-468e-af8d-5523eb4f1b4b from Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:48,378 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:48,384 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:48,412 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.priorityq' for messages.
+2013-05-07 09:38:49,014 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:38:50,168 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:38:50,849 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello:1.0.0.0.inq'.
+2013-05-07 09:38:50,850 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Assigning message c501d8f7-ce45-4264-afaf-0e3880c49f1f to thread pool
+2013-05-07 09:38:50,851 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Executing message c501d8f7-ce45-4264-afaf-0e3880c49f1f using thread pool
+2013-05-07 09:38:50,851 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.inq' for messages.
+2013-05-07 09:38:50,853 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:38:50,855 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:50,856 [5] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'c501d8f7-ce45-4264-afaf-0e3880c49f1f' has a remaining 9.9989995 seconds to be processed.
+2013-05-07 09:38:50,857 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:50,858 [5] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message 'c501d8f7-ce45-4264-afaf-0e3880c49f1f' has a remaining 9.9970035 seconds to be processed.
+2013-05-07 09:38:50,859 [5] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer
+2013-05-07 09:38:50,860 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message c501d8f7-ce45-4264-afaf-0e3880c49f1f from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:51,153 [5] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message c501d8f7-ce45-4264-afaf-0e3880c49f1f from Queue: mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:51,207 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Received 1 Message(s) from Queue 'mq:Hello2:1.0.0.0.inq'.
+2013-05-07 09:38:51,208 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.inq' for messages.
+2013-05-07 09:38:51,208 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Get Async from queue: mq:Hello2:1.0.0.0.inq
+2013-05-07 09:38:51,214 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - On Pre Message Processing, Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:51,215 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] INFO  ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - The message '9550adc7-45b6-4c90-8290-98e1e3eaccef' has a remaining 9.9990124 seconds to be processed.
+2013-05-07 09:38:51,216 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG Messaging.Core.MessageServerFactory [(null)] - Server Says: This comes from the producer #2
+2013-05-07 09:38:51,217 [AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageHandlerRegister [(null)] - Message processed, deleting Message 9550adc7-45b6-4c90-8290-98e1e3eaccef from Queue: mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:39:08,679 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.priorityq' for messages.
+2013-05-07 09:39:08,685 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello:1.0.0.0.priorityq' for messages.
+2013-05-07 09:39:08,697 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.priorityq' for messages.
+2013-05-07 09:39:08,789 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello2:1.0.0.0.priorityq' for messages.
+2013-05-07 09:39:09,305 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello3:1.0.0.0.inq' for messages.
+2013-05-07 09:39:10,469 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Polling SQS Queue 'mq:Hello4:1.0.0.0.inq' for messages.
+2013-05-07 09:39:10,697 [1] INFO  Server.Program [(null)] - Stopping server...
+2013-05-07 09:39:10,703 [1] INFO  ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - ===============
+#MQ SERVER STATS:
+===============
+Current Status: Stopping
+Listening On: mq:Hello2:1.0.0.0.priorityq, mq:Hello2:1.0.0.0.inq, mq:Hello3:1.0.0.0.priorityq, mq:Hello3:1.0.0.0.inq, mq:Hello4:1.0.0.0.priorityq, mq:Hello4:1.0.0.0.inq
+Times Started: 1
+Num of Errors: 0
+Last ErrorMsg: 
+===============
+===============
+Queue Handler: mq:Hello:1.0.0.0.priorityq
+Total Messages Received: 0
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello:1.0.0.0.inq
+Total Messages Received: 5
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello2:1.0.0.0.priorityq
+Total Messages Received: 0
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello2:1.0.0.0.inq
+Total Messages Received: 4
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello3:1.0.0.0.priorityq
+Total Messages Received: 0
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello3:1.0.0.0.inq
+Total Messages Received: 1
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello4:1.0.0.0.priorityq
+Total Messages Received: 0
+Num of Continuous Errors: 0
+
+---------------
+
+===============
+Queue Handler: mq:Hello4:1.0.0.0.inq
+Total Messages Received: 1
+Num of Continuous Errors: 0
+
+---------------
+
+Stats for Message Type: Hello2, Queue: mq:Hello2:1.0.0.0.priorityq.
+---------------
+
+TotalNormalMessagesReceived: 0
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 0
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+Stats for Message Type: Hello2, Queue: mq:Hello2:1.0.0.0.inq.
+---------------
+
+TotalNormalMessagesReceived: 4
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 4
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+Stats for Message Type: Hello3, Queue: mq:Hello3:1.0.0.0.priorityq.
+---------------
+
+TotalNormalMessagesReceived: 0
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 0
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+Stats for Message Type: Hello3, Queue: mq:Hello3:1.0.0.0.inq.
+---------------
+
+TotalNormalMessagesReceived: 1
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 1
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+Stats for Message Type: Hello4, Queue: mq:Hello4:1.0.0.0.priorityq.
+---------------
+
+TotalNormalMessagesReceived: 0
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 0
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+Stats for Message Type: Hello4, Queue: mq:Hello4:1.0.0.0.inq.
+---------------
+
+TotalNormalMessagesReceived: 1
+TotalPriorityMessagesReceived: 0
+TotalProcessed: 1
+TotalRetries: 0
+TotalFailed: 0
+---------------
+
+
+2013-05-07 09:39:10,711 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Stopping MQ Host...
+2013-05-07 09:39:10,712 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Stopping all queue worker threads...
+2013-05-07 09:39:10,712 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq...
+2013-05-07 09:39:10,814 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq...
+2013-05-07 09:39:10,915 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq...
+2013-05-07 09:39:11,016 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq...
+2013-05-07 09:39:11,117 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq...
+2013-05-07 09:39:11,142 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello:1.0.0.0.inq
+2013-05-07 09:39:11,218 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq...
+2013-05-07 09:39:11,319 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq...
+2013-05-07 09:39:11,420 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq...
+2013-05-07 09:39:11,509 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello2:1.0.0.0.inq
+2013-05-07 09:39:11,521 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Disposing all queue worker threads...
+2013-05-07 09:39:28,978 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello3:1.0.0.0.priorityq
+2013-05-07 09:39:28,993 [AwsSqsQueueHandlerWorker: mq:Hello:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello:1.0.0.0.priorityq
+2013-05-07 09:39:28,998 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello4:1.0.0.0.priorityq
+2013-05-07 09:39:29,079 [AwsSqsQueueHandlerWorker: mq:Hello2:1.0.0.0.priorityq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello2:1.0.0.0.priorityq
+2013-05-07 09:39:29,586 [AwsSqsQueueHandlerWorker: mq:Hello3:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello3:1.0.0.0.inq
+2013-05-07 09:39:30,751 [AwsSqsQueueHandlerWorker: mq:Hello4:1.0.0.0.inq] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopped polling SQS queue: mq:Hello4:1.0.0.0.inq
+2013-05-07 09:39:30,752 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsServer [(null)] - Disposing all message worker threads...
+2013-05-07 09:39:30,753 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.priorityq...
+2013-05-07 09:39:30,856 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello2:1.0.0.0.inq...
+2013-05-07 09:39:30,957 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.priorityq...
+2013-05-07 09:39:31,059 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello3:1.0.0.0.inq...
+2013-05-07 09:39:31,161 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.priorityq...
+2013-05-07 09:39:31,263 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsQueueHandlerWorker [(null)] - Stopping Background Worker: AwsSqsMessageHandlerWorker: mq:Hello4:1.0.0.0.inq...
+2013-05-07 09:39:31,364 [1] INFO  Server.Program [(null)] - Server stopped. Press enter to close.

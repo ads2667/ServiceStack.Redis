@@ -15,7 +15,7 @@ namespace ServiceStack.Redis.Messaging
         : MqServer2
         where TMessageHandlerRegister : MessageHandlerRegister<THandlerConfiguration>
         where TBackgroundWorkerFactory : BackgroundWorkerFactory<THandlerConfiguration> 
-        where THandlerConfiguration : DefaultHandlerConfiguration 
+        where THandlerConfiguration : DefaultHandlerConfiguration, new()
     {
         protected MqServer2(IMessageFactory messageFactory, int retryCount)
             : base(messageFactory, retryCount)
@@ -80,24 +80,24 @@ namespace ServiceStack.Redis.Messaging
                 var workerBuilder = new List<IMessageHandlerBackgroundWorker>();
                 var queuesToMonitor = new Dictionary<string, Type>();
                 
-                foreach (var handlerConfig in this.MessageHandlerRegister.HandlerConfigurations)
+                foreach (var handler in this.MessageHandlerRegister.RegisteredHandlers)
                 {
                     // TODO: Should produce the same results as the loop below, but use custom config constructs.
-                    var messageType = handlerConfig.Key;
-                    var handlerConfiguration = handlerConfig.Value;
+                    var messageType = handler.Key;
+                    var handlerRegistration = handler.Value;
                     var queueNames = new VersionedQueueNames(messageType); //// new QueueNames(messageType);
 
                     if (OnlyEnablePriortyQueuesForTypes == null
                         || OnlyEnablePriortyQueuesForTypes.Any(x => x == messageType))
                     {
                         // Create a priority queue, and associated message handlers
-                        if (handlerConfiguration.NoOfThreads > 0)
+                        if (handlerRegistration.Configuration.NoOfThreads > 0)
                         {
                             // Called for each required background message handler.
-                            handlerConfiguration.NoOfThreads.Times(i =>
+                            handlerRegistration.Configuration.NoOfThreads.Times(i =>
                                               workerBuilder.Add(
                                                   this.BackgroundWorkerFactory.CreateMessageHandlerWorker(
-                                                      handlerConfiguration,
+                                                      handlerRegistration,
                                                       queueNames.Priority,
                                                       WorkerErrorHandler)));
                         }
@@ -105,16 +105,16 @@ namespace ServiceStack.Redis.Messaging
                         queuesToMonitor.Add(queueNames.Priority, messageType);
                     }
 
-                    if (handlerConfiguration.NoOfThreads == 0)
+                    if (handlerRegistration.Configuration.NoOfThreads == 0)
                     {
-                        threadPoolHandlers.Add(messageType, handlerConfiguration.MessageHandlerFactory.CreateMessageHandler());
+                        threadPoolHandlers.Add(messageType, handlerRegistration.MessageHandlerFactory.CreateMessageHandler());
                     }
                     else
                     {
-                        handlerConfiguration.NoOfThreads.Times(i =>
+                        handlerRegistration.Configuration.NoOfThreads.Times(i =>
                                           workerBuilder.Add(
                                             this.BackgroundWorkerFactory.CreateMessageHandlerWorker(
-                                                handlerConfiguration,
+                                                handlerRegistration,
                                                 queueNames.In,
                                                 WorkerErrorHandler)));
                     }
@@ -127,7 +127,7 @@ namespace ServiceStack.Redis.Messaging
                 // Create the background worker thread(s) to monitor message queue(s)
                 queueWorkers = this.BackgroundWorkerFactory.CreateQueueHandlerWorkers(
                     queuesToMonitor,
-                    this.MessageHandlerRegister.HandlerConfigurations,
+                    this.MessageHandlerRegister.RegisteredHandlers,
                     QueueWorkerErrorHandler).ToArray();
 
                 queueWorkerIndexMap = new Dictionary<string, int[]>();

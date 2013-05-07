@@ -8338,3 +8338,15 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-06 16:03:07,260 [9] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
 2013-05-06 16:03:07,264 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
 2013-05-06 16:03:07,868 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:37:38,020 [1] INFO  Playground.Program [(null)] - ===== Starting Client =====
+2013-05-07 09:37:46,671 [1] INFO  Playground.Program [(null)] - ===== Message Producer Started =====
+2013-05-07 09:37:46,671 [1] INFO  Playground.Program [(null)] - Type 'EXIT' to close.
+2013-05-07 09:37:46,679 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-07 09:37:47,367 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:45,674 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:45,968 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:47,465 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:48,024 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:50,354 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-07 09:38:50,824 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-07 09:38:53,026 [1] INFO  Playground.Program [(null)] - Stopping Client.

@@ -24,6 +24,7 @@ namespace ServiceStack.Redis.Messaging.Redis
         public IRedisClientsManager ClientsManager { get; private set; }
         public RedisMqServer RedisMqServer { get; set; }
 
+        /*
         protected internal override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(DefaultHandlerConfiguration messageHandlerConfiguration,
                                                                                                string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {
@@ -36,6 +37,24 @@ namespace ServiceStack.Redis.Messaging.Redis
 
         protected internal override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, IDictionary<Type, DefaultHandlerConfiguration> messageHandlerConfigurations,
                                                                     Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        {
+            return new List<IQueueHandlerBackgroundWorker>
+                {
+                    new RedisQueueHandlerWorker(this.ClientsManager, this.RedisMqServer, "RedisMq", errorHandler)
+                };
+        }
+        */
+
+        protected internal override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(HandlerRegistration<DefaultHandlerConfiguration> messageHandlerRegistration, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
+        {
+            return new RedisMessageHandlerWorker(
+                this.ClientsManager,
+                messageHandlerRegistration.MessageHandlerFactory.CreateMessageHandler(), // messageHandler,
+                queueName,
+                errorHandler);
+        }
+
+        protected internal override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, IDictionary<Type, HandlerRegistration<DefaultHandlerConfiguration>> messageHandlerRegistrations, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
         {
             return new List<IQueueHandlerBackgroundWorker>
                 {

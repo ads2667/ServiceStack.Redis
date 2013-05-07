@@ -17,7 +17,7 @@ namespace ServiceStack.Aws.Messaging
             if (sqsClient == null) throw new ArgumentNullException("sqsClient");
             if (mqServer == null) throw new ArgumentNullException("mqServer");
             if (queueUrls == null) throw new ArgumentNullException("queueUrls");
-
+            
             SqsClient = sqsClient;
             MqServer = mqServer;
             QueueUrls = queueUrls;

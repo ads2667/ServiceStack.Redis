@@ -74,6 +74,7 @@ namespace ServiceStack.Aws.Messaging
         }
 
         // Allow default values for queue configuration to be overridden
+        /*
         public void AddHandler<T>(
             Func<IMessage<T>, object> processMessageFn,
             Action<IMessage<T>, Exception> processExceptionEx,
@@ -88,7 +89,7 @@ namespace ServiceStack.Aws.Messaging
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             //this.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
             throw new NotImplementedException("Does not require response type, fix this!");
-            this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, noOfThreads, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
+            this.RegisteredHandlers.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, noOfThreads, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
         }
 
         public void AddPooledHandler<T>(
@@ -103,10 +104,12 @@ namespace ServiceStack.Aws.Messaging
             var processWrapper = WrapMessageProcessor(processMessageFn);
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             throw new NotImplementedException("Does not require response type, fix this!");
-            // TODO: Extract the MessageHandlerFactory from the config object, and instead of passing 'noOfThreads', just pass a TYPED config object to the base class! Which calls an abstract method to assign to the handler registration.
-            this.HandlerConfigurations.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, 0, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
+            // TODO: instead of passing 'noOfThreads', just pass a TYPED config object to the base class! Which calls an abstract method to assign to the handler registration.
+            this.RegisteredHandlers.Add(typeof(T), RegisterHandler(processWrapper, exceptionWrapper, 0, maxNumberOfMessagesToReceivePerRequest, waitTimeInSeconds, messageVisibilityTimeout));
         }
-        
+        */
+
+        /*
         protected sealed override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             if (processMessageFn == null)
@@ -118,7 +121,21 @@ namespace ServiceStack.Aws.Messaging
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             base.AddMessageHandler(processWrapper, exceptionWrapper, noOfThreads);
         }
+        */
 
+        protected override void AddMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration handlerConfiguration)
+        {
+            if (processMessageFn == null)
+            {
+                throw new ArgumentNullException("processMessageFn");
+            }
+
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddMessageHandler<T>(processWrapper, exceptionWrapper, handlerConfiguration);
+        }
+
+        /*
         protected sealed override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx)
         {
             if (processMessageFn == null)
@@ -130,12 +147,36 @@ namespace ServiceStack.Aws.Messaging
             var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
             base.AddPooledMessageHandler(processWrapper, exceptionWrapper);
         }
+        */
 
+        protected override void AddPooledMessageHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, AwsSqsHandlerConfiguration handlerConfiguration)
+        {
+            if (processMessageFn == null)
+            {
+                throw new ArgumentNullException("processMessageFn");
+            }
+
+            var processWrapper = WrapMessageProcessor(processMessageFn);
+            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
+            base.AddPooledMessageHandler<T>(processWrapper, exceptionWrapper, handlerConfiguration);
+        }
+
+        /*
         public override AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads)
         {
             return this.RegisterHandler(processMessageFn, processExceptionEx, noOfThreads, null, null, null);            
         }
+        */
 
+        public override HandlerRegistration<AwsSqsHandlerConfiguration> RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx,
+                                                               AwsSqsHandlerConfiguration handlerConfiguration)
+        {
+            return new HandlerRegistration<AwsSqsHandlerConfiguration>(
+                this.CreateMessageHandlerFactory(processMessageFn, processExceptionEx),
+                handlerConfiguration);
+        }
+
+        /*
         public AwsSqsHandlerConfiguration RegisterHandler<T>(Func<IMessage<T>, object> processMessageFn, Action<IMessage<T>, Exception> processExceptionEx, int noOfThreads, decimal? maxNumberOfMessagesToReceivePerRequest, decimal? waitTimeInSeconds, decimal? messageVisibilityTimeout)
         {
             return new AwsSqsHandlerConfiguration(
@@ -146,6 +187,7 @@ namespace ServiceStack.Aws.Messaging
                     messageVisibilityTimeout
                 );
         }
+        */
 
         private Func<IMessage<T>, object> WrapMessageProcessor<T>(Func<IMessage<T>, object> processMessageFn)
         {

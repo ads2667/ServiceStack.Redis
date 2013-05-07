@@ -57,7 +57,7 @@ namespace ServiceStack.Aws.Messaging
         {
             get
             {
-                if (this.MessageHandlerRegister.HandlerConfigurations.Count == 0)
+                if (this.MessageHandlerRegister.RegisteredHandlers.Count == 0)
                 {
                     throw new InvalidOperationException("No Message Handlers have been configured. Clients can not be created until one or more message handlers have been registered.");
                 }
@@ -80,7 +80,7 @@ namespace ServiceStack.Aws.Messaging
             base.RegisterMessageHandlers(messageHandlerRegister);
             
             // For Amazon SQS we need to get the Url for each registered message handler.
-            foreach (var handlerConfig in this.MessageHandlerRegister.HandlerConfigurations)
+            foreach (var handlerConfig in this.MessageHandlerRegister.RegisteredHandlers)
             {
                 var queueNamesToCreate = this.GetNewQueueNames(handlerConfig.Key);
                 foreach (var newQueueName in queueNamesToCreate)
@@ -208,7 +208,7 @@ namespace ServiceStack.Aws.Messaging
 
         public override void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
         {
-            var handlerThreadCount = this.MessageHandlerRegister.HandlerConfigurations[messageReceivedArgs.MessageType].NoOfThreads;
+            var handlerThreadCount = this.MessageHandlerRegister.RegisteredHandlers[messageReceivedArgs.MessageType].Configuration.NoOfThreads;
 
             if (handlerThreadCount == 0) //// 0 => Threadpool
             {
