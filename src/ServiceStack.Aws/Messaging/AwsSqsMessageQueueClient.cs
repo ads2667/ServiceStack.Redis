@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Amazon.SQS.Model;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
@@ -189,7 +190,7 @@ namespace ServiceStack.Aws.Messaging
                 return null;
             }
 
-            Log.DebugFormat("Get Async from queue: {0}", queueName);
+            Log.DebugFormat("Get Async from queue: {0}. Thread: {1}.", queueName, Thread.CurrentThread.ManagedThreadId);
             return message.ToBytes();            
         }
 

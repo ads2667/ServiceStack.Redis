@@ -182,6 +182,7 @@
     <Compile Include="Messaging\Redis\RedisQueueHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageFactory.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageService.cs" />
+    <Compile Include="Messaging\ThreadPoolMessageHandlerStats.cs" />
     <Compile Include="Messaging\VersionedQueueNames.cs" />
     <Compile Include="Messaging\WorkerStatus.cs" />
     <Compile Include="RedisClientManagerCacheClient.cs" />

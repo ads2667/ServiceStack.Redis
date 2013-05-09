@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ServiceStack.Messaging;
 using ServiceStack.Redis;
 using ServiceStack.Redis.Messaging;
@@ -32,7 +33,7 @@ namespace ServiceStack.Aws.Messaging
         /// </remarks>
         protected virtual void OnPreMessageProcessed(ISqsMessage message)
         {            
-            Log.DebugFormat("On Pre Message Processing, Queue: {0}.", message.QueueName);
+            Log.DebugFormat("On Pre Message Processing, Queue: {0}. Thread: {1}.", message.QueueName, Thread.CurrentThread.ManagedThreadId);
             var remainingMessageProcessingTime = DateTime.UtcNow.Subtract(message.MessageExpiryTimeUtc).TotalSeconds;
             if (remainingMessageProcessingTime > 0)
             {
@@ -40,8 +41,8 @@ namespace ServiceStack.Aws.Messaging
                 this.Log.WarnFormat("The message '{0}' has passed it's expiry time by {1} seconds. The message will not be processed.", message.MessageId, remainingMessageProcessingTime);
                 throw new NotImplementedException("Exception is not ideal now, should return a bool or alter message");
             }
-            
-            this.Log.InfoFormat("The message '{0}' has a remaining {1} seconds to be processed.", message.MessageId, Math.Abs(remainingMessageProcessingTime));
+
+            this.Log.InfoFormat("The message '{0}' has a remaining {1} seconds to be processed. Thread: {2}.", message.MessageId, Math.Abs(remainingMessageProcessingTime), Thread.CurrentThread.ManagedThreadId);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace ServiceStack.Aws.Messaging
         /// </remarks>
         protected virtual void OnMessageProcessed(ISqsMessage message)
         {            
-            Log.DebugFormat("Message processed, deleting Message {0} from Queue: {1}.", message.MessageId, message.QueueName);
+            Log.DebugFormat("Message processed, deleting Message {0} from Queue: {1}. Thread: {2}.", message.MessageId, message.QueueName, Thread.CurrentThread.ManagedThreadId);
             this.SqsClient.DeleteMessage(message.QueueUrl, message.ReceiptHandle);
         }
 
@@ -71,7 +72,7 @@ namespace ServiceStack.Aws.Messaging
         /// </remarks>
         protected virtual void OnMessageProcessingFailed(ISqsMessage message)
         {
-            Log.DebugFormat("On Message Processing Failed, Queue: {0}.", message.QueueName);
+            Log.DebugFormat("On Message Processing Failed, Queue: {0}. Thread: {1}.", message.QueueName, Thread.CurrentThread.ManagedThreadId);
         }
 
         // Allow default values for queue configuration to be overridden
@@ -169,9 +170,7 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentNullException("processMessageFn");
             }
 
-            var processWrapper = WrapMessageProcessor(processMessageFn);
-            var exceptionWrapper = WrapExceptionHandler(processExceptionEx);
-            base.AddPooledMessageHandler<T>(processWrapper, exceptionWrapper, queueHandlerConfiguration, messageHandlerConfiguration);
+            base.AddPooledMessageHandler<T>(processMessageFn, processExceptionEx, queueHandlerConfiguration, messageHandlerConfiguration);
         }
 
         /*

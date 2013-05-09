@@ -22,6 +22,9 @@ namespace ServiceStack.Redis.Messaging
         {
         }
 
+        private readonly Dictionary<Type, IMessageHandler> threadPoolHandlers = new Dictionary<Type, IMessageHandler>();
+        private readonly Dictionary<Type, IThreadPoolMessageHandlerStats> threadPoolHandlerStats = new Dictionary<Type, IThreadPoolMessageHandlerStats>();
+
         private static readonly object messageHandlerRegisterLock = new object();
         private TMessageHandlerRegister messageHandlerRegister = null;
         protected TMessageHandlerRegister MessageHandlerRegister
@@ -73,44 +76,104 @@ namespace ServiceStack.Redis.Messaging
             messageHandlerRegister.Invoke(this.MessageHandlerRegister);
         }
 
-        /*
-        // TODO: Move threadpool code to base class so it can be re-used.
+        #region "ThreadPool Support"
+
         private void ExecuteUsingQueuedWorkItem(object obj)
         {
+            Log.DebugFormat("Starting threadpool thread: {0}.", Thread.CurrentThread.ManagedThreadId);
             var threadPoolTask = obj as MessageReceivedArgs;
             if (threadPoolTask == null)
             {
-                // TODO: Log, throw ex? We should never get here.
+                Log.Warn("A message was queued to be executed using a threadpool work item, but did not pass the required 'MessageReceivedArgs' parameter.");
                 return;
             }
 
-            // TODO: On the thread, create a handler and process the message.
-            Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
+            Log.DebugFormat("Executing message {0} using thread pool. Thread: {1}.", threadPoolTask.MessageId, Thread.CurrentThread.ManagedThreadId);
+
             try
             {
+                // Thread.Sleep(20000); //// Easy way to test diposing of worker items; need to write unit test.
                 using (var client = this.CreateMessageQueueClient())
                 {
                     threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
                 }
+                
+                // TODO: Need to code 'RetryCode' stat for all message handlers
+                threadPoolHandlerStats[threadPoolTask.MessageType].IncrementMessageProcessedCount(1);                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log
+                threadPoolHandlerStats[threadPoolTask.MessageType].IncrementMessageFailedCount(1);
+                Log.Error(string.Format("Failed to process message {0} using thread pool handler.", threadPoolTask.MessageId), ex);
+                // TODO: Need to UnitTest to ensure that failed messages are moved to DLQ!
                 // TODO: Optionally, execute a custom ex handler?
                 throw;
             }
             finally
             {
                 // Remove a listener from the list
-                lock (manualResetEvents)
+                // lock (manualResetEvents)
+                // {
+                    // pulse if flag set and count == 0
+                    Interlocked.Decrement(ref threadPoolWorkItemCount);
+                    // manualResetEvents.Remove(manualResetEvent);
+                // }
+
+                // Pulse if required -> Notifying that processing of worker items is complete.
+                lock (locker)
                 {
-                    manualResetEvents.Remove(manualResetEvent);
+                    if (disposing && Interlocked.Read(ref threadPoolWorkItemCount) == 0)
+                    {
+                        Log.Debug("Threadpool Worker Items Complete.");
+                        // TODO: Pulse
+                        canDispose = true;
+                        Monitor.Pulse(locker);
+                    }
                 }
             }
-            
-        }      
 
-        IList<WaitHandle> manualResetEvents = new List<WaitHandle>();
+            Log.DebugFormat("Finished threadpool thread: {0}.", Thread.CurrentThread.ManagedThreadId);
+        }
+
+        internal override sealed void DisposeWorkerThreads()
+        {
+            base.DisposeWorkerThreads();
+
+            // TODO: Need to write unit tests to ensure that all work items are completed before the server is stopped.
+            // TODO: Why are pooled items being deleted twice?
+
+            // TODO: Move to DiposeWorkerThreads Method; make virtual (seal), and place code in this class.
+            // Set flag to indicate that a pulse is required, and wait.
+            Log.Debug("Dispose threadpool worker items.");
+            lock (locker)
+            {
+                Log.Debug("Waiting for threadpool worker items to complete.");
+                if (Interlocked.Read(ref threadPoolWorkItemCount) > 0)
+                {
+                    Log.DebugFormat("Worker items to complete: {0}", Interlocked.Read(ref threadPoolWorkItemCount));
+
+                    // Need to wait for pending work items to complete.
+                    disposing = true;
+                    while (!canDispose)
+                    {
+                        Monitor.Wait(locker);
+                    }
+
+                    Log.Debug("Finished processing all worker items.");
+                }
+            }
+
+            Log.Debug("Threadpool worker items disposed.");
+        }
+
+        // TODO: Investigate why DELETE is being executed/logged twice for pooled worker items!?!?
+
+        private bool disposing = false;
+        private bool canDispose = false;
+        private static readonly object locker = new object();
+        private static long threadPoolWorkItemCount = 0;
+
+        // IList<WaitHandle> manualResetEvents = new List<WaitHandle>();
         public override void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
         {
             var handlerThreadCount = this.MessageHandlerRegister.RegisteredHandlers[messageReceivedArgs.MessageType].Configuration.NoOfThreads;
@@ -119,20 +182,26 @@ namespace ServiceStack.Redis.Messaging
                 // Threadpool
                 // Queue the item to execute using the thread pool.
 
-                var manualResetEvent = new ManualResetEvent(false);
-                lock (manualResetEvents)
-                {
-                    manualResetEvents.Add(manualResetEvent);
-                }
+                // TODO: Use Wait and Pulse; Use a incremental lock counter to ensure that all queued work items complete.
+                // var manualResetEvent = new ManualResetEvent(false);
+                // lock (manualResetEvents)
+                // {
+                // TODO: Verify that a lock is not required.
+                    // manualResetEvents.Add(manualResetEvent);
+                    Interlocked.Increment(ref threadPoolWorkItemCount);
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(ExecuteUsingQueuedWorkItem), messageReceivedArgs);
+                    // TODO: How to wait for all tasks to complete using this method?
+                // }
 
+                /*
+                // TODO: Change Project Framework to 3.5
                 // TODO: Wait for all queued work items to complete when stop is called, in DISPOSE method.
                 lock (manualResetEvents)
-                {
+                {                    
+                    // After stop is called, set a flag that indicates pulse should be called when count == 0
+                    // TODO: Loop until count is 0; then pulse (Or, if already 0; pulse instantly)
                     WaitHandle.WaitAll(manualResetEvents.ToArray());
-                }
-
-                ThreadPool.QueueUserWorkItem(new WaitCallback(ExecuteUsingQueuedWorkItem), messageReceivedArgs.);
-                // TODO: How to wait for all tasks to complete using this method?
+                }*/
             }
             else
             {
@@ -140,7 +209,24 @@ namespace ServiceStack.Redis.Messaging
                 base.NotifyMessageReceived(messageReceivedArgs);
             }            
         }
-        */
+
+        #endregion
+
+        public override sealed string GetStatsDescription()
+        {
+            var statsBuilder = new StringBuilder();
+            statsBuilder.Append(base.GetStatsDescription());
+            statsBuilder.AppendLine("---------------");
+            statsBuilder.AppendLine("ThreadPool Message Handler Stats");
+            statsBuilder.AppendLine("---------------");
+            foreach (var threadPoolStats in this.threadPoolHandlerStats)
+            {
+                statsBuilder.AppendLine(threadPoolStats.Value.ToString());
+                statsBuilder.AppendLine("---------------");
+            }
+
+            return statsBuilder.ToString();
+        }
 
         protected override void Init()
         {
@@ -177,6 +263,7 @@ namespace ServiceStack.Redis.Messaging
                     if (handlerRegistration.Configuration.NoOfThreads == 0)
                     {
                         threadPoolHandlers.Add(messageType, handlerRegistration.MessageHandlerFactory.CreateMessageHandler());
+                        threadPoolHandlerStats.Add(messageType, new ThreadPoolMessageHandlerStats(messageType.Name));
                     }
                     else
                     {
@@ -294,9 +381,6 @@ namespace ServiceStack.Redis.Messaging
         protected IQueueHandlerBackgroundWorker[] queueWorkers;
 
         protected Dictionary<string, int[]> queueWorkerIndexMap;
-
-        protected internal readonly Dictionary<Type, IMessageHandler> threadPoolHandlers
-            = new Dictionary<Type, IMessageHandler>();
 
         public MqServer2(
             IMessageFactory messageFactory,
@@ -440,7 +524,7 @@ namespace ServiceStack.Redis.Messaging
             Array.ForEach(messageWorkers, x => x.Stop());
         }
 
-        void DisposeWorkerThreads()
+        internal virtual void DisposeWorkerThreads()
         {
             Log.Debug("Stopping all queue worker threads...");
             if (queueWorkers != null) Array.ForEach(queueWorkers, x => x.Stop());
@@ -558,7 +642,7 @@ namespace ServiceStack.Redis.Messaging
             }
         }
 
-        public string GetStatsDescription()
+        public virtual string GetStatsDescription()
         {
             lock (messageWorkers)
             {
@@ -575,12 +659,12 @@ namespace ServiceStack.Redis.Messaging
                 foreach (var queueWorker in queueWorkers)
                 {
                     sb.AppendLine(queueWorker.GetStats().ToString());
-                    sb.AppendLine("---------------\n");
+                    sb.AppendLine("---------------");
                 }
                 foreach (var worker in messageWorkers)
                 {
                     sb.AppendLine(worker.GetStats().ToString());
-                    sb.AppendLine("---------------\n");
+                    sb.AppendLine("---------------");
                 }
                 return sb.ToString();
             }

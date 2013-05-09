@@ -44,7 +44,7 @@ namespace ServiceStack.Aws.Messaging
         public override void Dispose()
         {
             // Wait for all ThreadPool handlers to execute
-            Task.WaitAll(taskList.ToArray());
+            // Task.WaitAll(taskList.ToArray());
 
             base.Dispose();
             if (this.SqsClient != null)
@@ -165,26 +165,6 @@ namespace ServiceStack.Aws.Messaging
 
         private IDictionary<string, Queue<IMessage>> localMessageQueues = new Dictionary<string, Queue<IMessage>>();
         
-        // TODO: Move threadpool code to base class so it can be re-used.
-        private void ExecuteUsingThreadPool(object obj)
-        {
-            var threadPoolTask = obj as MessageReceivedArgs;
-            if (threadPoolTask == null)
-            {
-                // TODO: Log, throw ex? We should never get here.
-                return;
-            }
-
-            // TODO: On the thread, create a handler and process the message.
-            Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
-            using (var client = this.CreateMessageQueueClient())
-            {
-                threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
-            }
-        }        
-
-        IList<Task> taskList = new List<Task>();
-
         public void EnqueMessage(string queueName, IMessage message, Type messageType)
         {
             // Add the message to the local queue.
@@ -206,6 +186,27 @@ namespace ServiceStack.Aws.Messaging
                 return null;
             }
         }
+
+        /*
+        // TODO: Move threadpool code to base class so it can be re-used.
+        private void ExecuteUsingThreadPool(object obj)
+        {
+            var threadPoolTask = obj as MessageReceivedArgs;
+            if (threadPoolTask == null)
+            {
+                // TODO: Log, throw ex? We should never get here.
+                return;
+            }
+
+            // TODO: On the thread, create a handler and process the message.
+            Log.DebugFormat("Executing message {0} using thread pool", threadPoolTask.MessageId);
+            using (var client = this.CreateMessageQueueClient())
+            {
+                threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
+            }
+        }
+
+        IList<Task> taskList = new List<Task>();
 
         public override void NotifyMessageReceived(MessageReceivedArgs messageReceivedArgs)
         {
@@ -245,5 +246,6 @@ namespace ServiceStack.Aws.Messaging
                 base.NotifyMessageReceived(messageReceivedArgs);
             }                   
         }
+        */
     }
 }
