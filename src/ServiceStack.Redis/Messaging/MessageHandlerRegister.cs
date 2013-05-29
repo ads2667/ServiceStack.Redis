@@ -8,7 +8,7 @@ namespace ServiceStack.Redis.Messaging
     public abstract class MessageHandlerRegister<TQueueHandlerConfiguration>
         where TQueueHandlerConfiguration : DefaultHandlerConfiguration, new()
     {
-        protected IMessageService MessageServer { get; private set; }
+        protected internal IMessageService MessageServer { get; private set; }
 
         protected ILog Log;
 
@@ -281,7 +281,7 @@ namespace ServiceStack.Redis.Messaging
         }
         */
 
-        public const int DefaultRetryCount = 2; //Will be a total of 3 attempts
+        public const int DefaultRetryCount = 3; //Will be a total of 3 attempts
 
         public int RetryCount { get; protected set; }
 

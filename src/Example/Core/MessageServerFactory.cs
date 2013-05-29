@@ -1,4 +1,5 @@
-﻿using ServiceStack.Aws.Messaging;
+﻿using System;
+using ServiceStack.Aws.Messaging;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
 using ServiceStack.Redis;
@@ -25,7 +26,7 @@ namespace Example.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(null, null)));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(, )));
 
             // TODO: Use customer registration to override default values            
             return RegisterMessageHandlers(svc);
@@ -75,6 +76,11 @@ namespace Example.Core
                     {
                         Log.Debug("Server Says: " + m.GetBody().Text);
                         // return null;
+                    });
+
+                    register.AddPooledHandler<FailingMessage>((m) =>
+                    {
+                        throw new InvalidOperationException("Fail. Should be moved to DLQ.");
                     });
 
                     register.AddHandler<Hello2>((m) =>

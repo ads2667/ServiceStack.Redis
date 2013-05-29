@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
 using ServiceStack.Redis.Messaging;
 
@@ -49,7 +50,7 @@ namespace ServiceStack.Aws.Messaging
             base.Dispose();
             if (this.SqsClient != null)
             {
-                this.SqsClient.Dispose();
+                //this.SqsClient.Dispose();
             }
         }
 
@@ -72,7 +73,7 @@ namespace ServiceStack.Aws.Messaging
 
         protected override AwsSqsMessageHandlerRegister CreateMessageHandlerRegister()
         {
-            return new AwsSqsMessageHandlerRegister(this, this.SqsClient);
+            return new AwsSqsMessageHandlerRegister(this, this.SqsClient, new DefaultMessageStateRespository());
         }
 
         // public override void RegisterMessageHandlers(Action<AwsSqsMessageHandlerRegister> messageHandlerRegister)

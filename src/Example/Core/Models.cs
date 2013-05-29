@@ -1,7 +1,12 @@
 ﻿using ServiceStack.Aws.Messaging;
 
 namespace Example.Core
-{    
+{
+    public class FailingMessage : SqsMessage
+    {
+        public string Text { get; set; }
+    }
+
     public class Hello : SqsMessage
     {
         public string Text { get; set; }

@@ -25,6 +25,16 @@ namespace ServiceStack.Redis.Messaging
         private readonly Dictionary<Type, IMessageHandler> threadPoolHandlers = new Dictionary<Type, IMessageHandler>();
         private readonly Dictionary<Type, IThreadPoolMessageHandlerStats> threadPoolHandlerStats = new Dictionary<Type, IThreadPoolMessageHandlerStats>();
 
+        protected override sealed bool HasRegisteredMessageHandlers()
+        {
+            if (threadPoolHandlers != null && threadPoolHandlers.Count > 0)
+            {
+                return true;
+            }
+
+            return base.HasRegisteredMessageHandlers();
+        }
+
         private static readonly object messageHandlerRegisterLock = new object();
         private TMessageHandlerRegister messageHandlerRegister = null;
         protected TMessageHandlerRegister MessageHandlerRegister
@@ -394,6 +404,11 @@ namespace ServiceStack.Redis.Messaging
 
         protected abstract void Init();
 
+        protected virtual bool HasRegisteredMessageHandlers()
+        {
+            return messageWorkers == null || messageWorkers.Length == 0;
+        }
+
         public void Start()
         {
             if (Interlocked.CompareExchange(ref status, 0, 0) == WorkerStatus.Started)
@@ -413,7 +428,7 @@ namespace ServiceStack.Redis.Messaging
                 {
                     Init();
 
-                    if (messageWorkers == null || messageWorkers.Length == 0)
+                    if (!this.HasRegisteredMessageHandlers())
                     {
                         Log.Warn("Cannot start a MQ Server with no Message Handlers registered, ignoring.");
                         Interlocked.CompareExchange(ref status, WorkerStatus.Stopped, WorkerStatus.Starting);

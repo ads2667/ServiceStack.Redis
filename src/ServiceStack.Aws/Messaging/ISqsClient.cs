@@ -39,7 +39,7 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="createQueueRequest">The create new message queue request.</param>
         /// <returns>The create message queue response.</returns>
         CreateQueueResponse CreateMessageQueue(CreateQueueRequest createQueueRequest);
-
+        
         /// <summary>
         /// Attempts to receive a message from a message queue.
         /// </summary>
@@ -47,8 +47,9 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="waitTimeInSeconds">The time in seconds, to wait for a message to be returned from the SQS message queue.</param>
         /// <param name="maxNumberOfMessages">The maximum number of messges to receive per request.</param>
         /// <param name="visibilityTimeout">The time, in seconds, the client has to process the message before it can be received by another client.</param>
+        /// <param name="attributeNames">Optionally, any attributes required.</param>
         /// <returns>The received message reponse.</returns>
-        ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout);
+        ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout, params string[] attributeNames);
 
         /// <summary>
         /// Attempts to receive one or more messages from a message queue.
@@ -70,6 +71,21 @@ namespace ServiceStack.Aws.Messaging
         /// </summary>
         /// <returns>The send message response.</returns>
         SendMessageResponse PublishMessage(SendMessageRequest sendMessageRequest);        
+
+        /// <summary>
+        /// Changes the visibility of a message in an SQS queue.
+        /// </summary>
+        /// <param name="queueUrl">The url of the queue that the message was received from.</param>
+        /// <param name="messageReceiptHandle">The receipt handle of the message that will have it's timeout visbility changed.</param>
+        /// <param name="visibilityTimeoutInSeconds">The visbility timeout value in seconds.</param>
+        /// <returns>The change message visibility response.</returns>
+        ChangeMessageVisibilityResponse ChangeMessageVisibility(string queueUrl, string messageReceiptHandle, decimal visibilityTimeoutInSeconds);
+        
+        /// <summary>
+        /// Changes the visibility of a message in an SQS queue.
+        /// </summary>
+        /// <returns>The change message visibility response.</returns>
+        ChangeMessageVisibilityResponse ChangeMessageVisibility(ChangeMessageVisibilityRequest changeMessageVisibilityRequest);
 
         /// <summary>
         /// Deletes a message from the message queue.

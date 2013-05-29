@@ -8920,3 +8920,87 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-09 17:38:00,412 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
 2013-05-09 17:38:00,770 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
 2013-05-09 17:38:02,857 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-25 16:02:05,865 [8] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-25 16:02:48,413 [10] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-25 16:02:52,907 [10] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-25 16:02:52,908 [10] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-25 16:02:52,920 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-25 16:02:53,708 [10] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-25 16:03:37,062 [10] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-25 17:06:29,630 [9] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-25 17:06:35,983 [9] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-25 17:06:35,984 [9] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-25 17:06:35,995 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-25 17:06:36,465 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-25 17:06:36,804 [9] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-25 17:07:57,887 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-25 17:08:04,309 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-25 17:08:04,310 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-25 17:08:04,320 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-25 17:08:04,775 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-25 17:08:04,965 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-25 17:08:49,259 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-25 17:08:49,445 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-25 17:08:49,725 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-25 17:10:31,649 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-25 17:10:32,117 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-25 17:10:32,300 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-25 17:11:58,889 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-29 18:06:55,037 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:07:01,207 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-29 18:07:01,207 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-29 18:07:01,214 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:07:01,630 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:07:01,899 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:07:33,403 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-29 18:35:39,892 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:36:39,775 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:36:47,384 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-29 18:36:47,384 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-29 18:36:47,397 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:36:47,958 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:36:48,173 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:39:45,562 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:39:51,829 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-29 18:39:51,829 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-29 18:39:51,841 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:39:52,194 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:39:52,462 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:40:30,274 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:40:30,484 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:40:30,789 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:41:15,769 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:41:16,060 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:41:16,237 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:41:56,641 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:41:56,928 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:41:57,141 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:44:01,639 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-29 18:44:34,653 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:44:43,313 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-29 18:44:43,313 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-29 18:44:43,318 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:44:43,626 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:44:43,896 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:45:37,462 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:45:37,720 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:45:38,072 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:51:53,209 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-29 18:52:00,369 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-29 18:52:00,370 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-29 18:52:00,376 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:52:00,729 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:52:01,129 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:52:51,280 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:52:52,093 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:52:52,371 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:52:53,000 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:52:53,204 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:52:53,381 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:52:53,872 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:52:54,050 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:52:54,380 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:52:54,741 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-29 18:52:55,058 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-29 18:52:55,225 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-29 18:53:32,920 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.

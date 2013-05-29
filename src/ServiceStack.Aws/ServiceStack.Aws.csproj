@@ -61,6 +61,8 @@
     <Compile Include="Messaging\AwsSqsBackgroundWorkerFactory.cs" />
     <Compile Include="Messaging\AwsSqsHandlerConfiguration.cs" />
     <Compile Include="Messaging\AwsSqsHost.cs" />
+    <Compile Include="Messaging\Data\DefaultMessageStateRespository.cs" />
+    <Compile Include="Messaging\Data\IMessageStateRepository.cs" />
     <Compile Include="Messaging\IMessageCoordinator.cs" />
     <Compile Include="Messaging\SqsMessage.cs" />
     <Compile Include="Messaging\AwsSqsMessageFactory.cs" />

@@ -30,7 +30,7 @@ namespace ServiceStack.Aws.Messaging
         {
             if (this.SqsClient != null)
             {
-                this.SqsClient.Dispose();
+                //this.SqsClient.Dispose();
             }
         }
 

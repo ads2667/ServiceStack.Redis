@@ -70,7 +70,7 @@ namespace ServiceStack.Aws.Messaging
             {
                 Log.DebugFormat("Polling SQS Queue '{0}' for messages.", this.QueueName);
 
-                var response = this.SqsClient.ReceiveMessage(this.QueueUrl, this.WaitTimeInSeconds, this.MaxNumberOfMessages, this.MessageVisibilityTimeout); // Blocks until timout, or msg received
+                var response = this.SqsClient.ReceiveMessage(this.QueueUrl, this.WaitTimeInSeconds, this.MaxNumberOfMessages, this.MessageVisibilityTimeout, "ApproximateReceiveCount"); // Blocks until timout, or msg received
                 if (response.IsSetReceiveMessageResult() && response.ReceiveMessageResult.Message.Count > 0)
                 {
                     // Place the item in the ready to process queue, and notify workers that a new msg has arrived.                    
@@ -89,9 +89,22 @@ namespace ServiceStack.Aws.Messaging
 
 
                         var messageBytes = Convert.FromBase64String(sqsMessage.Body);
-
-                        // =====================
+                        
+                        // Set standard message properties
                         var message = messageBytes.ToMessage(this.MessageType);
+                        if (sqsMessage.IsSetAttribute() && sqsMessage.Attribute.Count > 0)
+                        {
+                            foreach (var attribute in sqsMessage.Attribute)
+                            {
+                                if (attribute.Name == "ApproximateReceiveCount")
+                                {
+                                    message.RetryAttempts = int.Parse(attribute.Value);    
+                                    break;
+                                }
+                            }                            
+                        }
+
+                        // Set SQS message properties
                         var sqsMessageBody = message.Body as ISqsMessage;
                         if (sqsMessageBody != null)
                         {
@@ -100,7 +113,6 @@ namespace ServiceStack.Aws.Messaging
                             sqsMessageBody.QueueUrl = this.QueueUrl;
                             sqsMessageBody.QueueName = this.QueueName;
                             sqsMessageBody.VisibilityTimeout = this.MessageVisibilityTimeout;
-                            // TODO: Assign the message visibility timeout
                         }
                         else
                         {

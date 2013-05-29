@@ -130,8 +130,9 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="waitTimeInSeconds">The time in seconds, to wait for a message to be returned from the SQS message queue.</param>
         /// <param name="maxNumberOfMessages">The maximum number of messges to receive per request.</param>
         /// <param name="visibilityTimeout">The time, in seconds, the client has to process the message before it can be received by another client.</param>
+        /// <param name="attributeNames">Optionally, any attributes required.</param>
         /// <returns>The received message reponse.</returns>
-        public ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout)
+        public ReceiveMessageResponse ReceiveMessage(string queueUrl, int waitTimeInSeconds, decimal maxNumberOfMessages, decimal visibilityTimeout, params string[] attributeNames)
         {
             if (waitTimeInSeconds > 20)
             {
@@ -143,12 +144,19 @@ namespace ServiceStack.Aws.Messaging
                 throw new ArgumentException("MaxNumberOfMessages must be a minimum value of 1.", "maxNumberOfMessages");
             }
 
-            return this.ReceiveMessage(new ReceiveMessageRequest()
-                                             .WithQueueUrl(queueUrl)
-                                             .WithVisibilityTimeout(visibilityTimeout)
-                                             .WithMaxNumberOfMessages(maxNumberOfMessages)
-                                             .WithWaitTimeSeconds(waitTimeInSeconds));
-        }
+            var request = new ReceiveMessageRequest()                
+                .WithQueueUrl(queueUrl)
+                .WithVisibilityTimeout(visibilityTimeout)
+                .WithMaxNumberOfMessages(maxNumberOfMessages)
+                .WithWaitTimeSeconds(waitTimeInSeconds);
+
+            if (attributeNames != null && attributeNames.Length > 0)
+            {
+                request = request.WithAttributeName(attributeNames);
+            }
+
+            return this.ReceiveMessage(request);
+        }        
 
         /// <summary>
         /// Attempts to receive one or more messages from a message queue.
@@ -198,6 +206,52 @@ namespace ServiceStack.Aws.Messaging
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// Changes the visibility of a message in an SQS queue.
+        /// </summary>
+        /// <param name="queueUrl">The url of the queue that the message was received from.</param>
+        /// <param name="messageReceiptHandle">The receipt handle of the message that will have it's timeout visbility changed.</param>
+        /// <param name="visibilityTimeoutInSeconds">The visbility timeout value in seconds.</param>
+        /// <returns>The change message visibility response.</returns>
+        public virtual ChangeMessageVisibilityResponse ChangeMessageVisibility(string queueUrl, string messageReceiptHandle, decimal visibilityTimeoutInSeconds)
+        {
+            if (string.IsNullOrWhiteSpace(queueUrl))
+            {
+                throw new ArgumentNullException("queueUrl");
+            }
+
+            if (string.IsNullOrWhiteSpace(messageReceiptHandle))
+            {
+                throw new ArgumentNullException("messageReceiptHandle");
+            }
+
+            if (visibilityTimeoutInSeconds < 0 || visibilityTimeoutInSeconds > 43200) //// 0 < visibilityTimeOut < 43200 (12 Hour maximum)
+            {
+                throw new ArgumentException("The visibility timeout must be between 0 and 43200 (12 Hours).", "visibilityTimeoutInSeconds");
+            }
+
+            // Log.DebugFormat("SqsClient: Changing message visibility in queue: {0}.", changeMessageVisibilityRequest.QueueUrl);
+            return this.ChangeMessageVisibility(new ChangeMessageVisibilityRequest()
+                                                    .WithQueueUrl(queueUrl)
+                                                    .WithReceiptHandle(messageReceiptHandle)
+                                                    .WithVisibilityTimeout(visibilityTimeoutInSeconds));
+        }
+
+        /// <summary>
+        /// Changes the visibility of a message in an SQS queue.
+        /// </summary>
+        /// <returns>The change message visibility response.</returns>
+        public virtual ChangeMessageVisibilityResponse ChangeMessageVisibility(ChangeMessageVisibilityRequest changeMessageVisibilityRequest)
+        {
+            if (changeMessageVisibilityRequest == null)
+            {
+                throw new ArgumentNullException("changeMessageVisibilityRequest");
+            }
+
+            // Log.DebugFormat("SqsClient: Changing message visibility in queue: {0}.", changeMessageVisibilityRequest.QueueUrl);
+            return this.Client.ChangeMessageVisibility(changeMessageVisibilityRequest);            
         }
 
         /// <summary>

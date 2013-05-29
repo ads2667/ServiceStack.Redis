@@ -45,6 +45,7 @@ namespace Example.Publisher
             {
                 producer.Publish(new Hello {Text = "This comes from the producer"});
                 producer.Publish(new Hello2 { Text = "This comes from the producer #2" });
+                producer.Publish(new FailingMessage { Text = "This message should end up in the DLQ." });
 
                 var text = Console.ReadLine() ?? string.Empty;
                 if (text.ToUpperInvariant() == "EXIT")
