@@ -139,9 +139,9 @@ namespace ServiceStack.Redis.Tests.Generic
 				trans.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(4)));
 				trans.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(5)));
 				trans.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(6)));
-				trans.QueueCommand(r => r.GetListCount(typedList), intResult => collectionCounts.Add(intResult));
-				trans.QueueCommand(r => r.GetSetCount(typedSet), intResult => collectionCounts.Add(intResult));
-				trans.QueueCommand(r => r.GetSortedSetCount(typedSortedSet), intResult => collectionCounts.Add(intResult));
+				trans.QueueCommand(r => (int)r.GetListCount(typedList), intResult => collectionCounts.Add(intResult));
+                trans.QueueCommand(r => (int)r.GetSetCount(typedSet), intResult => collectionCounts.Add(intResult));
+                trans.QueueCommand(r => (int)r.GetSortedSetCount(typedSortedSet), intResult => collectionCounts.Add(intResult));
 				trans.QueueCommand(r => r.IncrementValue(Key), intResult => incrementResults.Add(intResult));
 
 				trans.Commit();

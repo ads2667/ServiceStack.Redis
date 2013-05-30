@@ -228,7 +228,7 @@ namespace ServiceStack.Aws.Messaging
 
         public void DeleteQueue(string queueName)
         {
-            if (string.IsNullOrWhiteSpace(queueName))
+            if (StringExtensions.IsNullOrWhiteSpace(queueName))
             {
                 throw new ArgumentNullException("queueName");
             }

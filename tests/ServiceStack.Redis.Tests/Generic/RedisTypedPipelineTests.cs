@@ -140,9 +140,9 @@ namespace ServiceStack.Redis.Tests.Generic
 				pipeline.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(4)));
 				pipeline.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(5)));
 				pipeline.QueueCommand(r => r.AddItemToSortedSet(typedSortedSet, modelFactory.CreateInstance(6)));
-				pipeline.QueueCommand(r => r.GetListCount(typedList), intResult => collectionCounts.Add(intResult));
-				pipeline.QueueCommand(r => r.GetSetCount(typedSet), intResult => collectionCounts.Add(intResult));
-				pipeline.QueueCommand(r => r.GetSortedSetCount(typedSortedSet), intResult => collectionCounts.Add(intResult));
+                pipeline.QueueCommand(r => (int)r.GetListCount(typedList), intResult => collectionCounts.Add(intResult));
+                pipeline.QueueCommand(r => (int)r.GetSetCount(typedSet), intResult => collectionCounts.Add(intResult));
+                pipeline.QueueCommand(r => (int)r.GetSortedSetCount(typedSortedSet), intResult => collectionCounts.Add(intResult));
 				pipeline.QueueCommand(r => r.IncrementValue(Key), intResult => incrementResults.Add(intResult));
 
 				pipeline.Flush();

@@ -825,7 +825,7 @@ namespace ServiceStack.Redis
             return ConvertToBytes(merged);
         }
 
-        public int EvalInt(string luaBody, int numberKeysInArgs, params byte[][] keys)
+        public long EvalInt(string luaBody, int numberKeysInArgs, params byte[][] keys)
         {
             if (luaBody == null)
                 throw new ArgumentNullException("luaBody");
@@ -834,7 +834,7 @@ namespace ServiceStack.Redis
             return SendExpectInt(cmdArgs);
         }
 
-        public int EvalShaInt(string sha1, int numberKeysInArgs, params byte[][] keys)
+        public long EvalShaInt(string sha1, int numberKeysInArgs, params byte[][] keys)
         {
             if (sha1 == null)
                 throw new ArgumentNullException("sha1");

@@ -96,7 +96,7 @@ namespace ServiceStack.Redis.Generic
 			get
 			{
 				var setCount = client.GetSetCount(this);
-				return setCount;
+				return (int) setCount;
 			}
 		}
 

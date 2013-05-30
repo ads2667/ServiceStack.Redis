@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using ServiceStack.Logging;
+using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -217,12 +218,12 @@ namespace ServiceStack.Aws.Messaging
         /// <returns>The change message visibility response.</returns>
         public virtual ChangeMessageVisibilityResponse ChangeMessageVisibility(string queueUrl, string messageReceiptHandle, decimal visibilityTimeoutInSeconds)
         {
-            if (string.IsNullOrWhiteSpace(queueUrl))
+            if (StringExtensions.IsNullOrWhiteSpace(queueUrl))
             {
                 throw new ArgumentNullException("queueUrl");
             }
 
-            if (string.IsNullOrWhiteSpace(messageReceiptHandle))
+            if (StringExtensions.IsNullOrWhiteSpace(messageReceiptHandle))
             {
                 throw new ArgumentNullException("messageReceiptHandle");
             }
@@ -261,12 +262,12 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="receiptHandle">The receipt handle of the message to delete.</param>
         public void DeleteMessage(string queueUrl, string receiptHandle)
         {
-            if (string.IsNullOrWhiteSpace(queueUrl))
+            if (StringExtensions.IsNullOrWhiteSpace(queueUrl))
             {
                 throw new ArgumentNullException("queueUrl");
             }
 
-            if (string.IsNullOrWhiteSpace(receiptHandle))
+            if (StringExtensions.IsNullOrWhiteSpace(receiptHandle))
             {
                 throw new ArgumentNullException("receiptHandle");
             }
@@ -296,7 +297,7 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="queueUrl">The url of the queue to delete.</param>
         public virtual void DeleteQueue(string queueUrl)
         {
-            if (string.IsNullOrWhiteSpace(queueUrl))
+            if (StringExtensions.IsNullOrWhiteSpace(queueUrl))
             {
                 throw new ArgumentNullException("queueUrl");
             }

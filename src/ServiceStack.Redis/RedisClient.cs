@@ -230,7 +230,7 @@ namespace ServiceStack.Redis
             return DecrBy(key, count);
         }
 
-        public int AppendToValue(string key, string value)
+        public long AppendToValue(string key, string value)
         {
             return base.Append(key, value.ToUtf8Bytes());
         }
@@ -403,7 +403,7 @@ namespace ServiceStack.Redis
             return new RedisSubscription(this);
         }
 
-        public int PublishMessage(string toChannel, string message)
+        public long PublishMessage(string toChannel, string message)
         {
             return base.Publish(toChannel, message.ToUtf8Bytes());
         }
@@ -702,22 +702,22 @@ namespace ServiceStack.Redis
 
         #region LUA EVAL
 
-        public int ExecLuaAsInt(string body, params string[] args)
+        public long ExecLuaAsInt(string body, params string[] args)
         {
             return base.EvalInt(body, 0, args.ToMultiByteArray());
         }
 
-        public int ExecLuaAsInt(string luaBody, string[] keys, string[] args)
+        public long ExecLuaAsInt(string luaBody, string[] keys, string[] args)
         {
             return base.EvalInt(luaBody, keys.Length, MergeAndConvertToBytes(keys, args));
         }
 
-        public int ExecLuaShaAsInt(string sha1, params string[] args)
+        public long ExecLuaShaAsInt(string sha1, params string[] args)
         {
             return base.EvalShaInt(sha1, args.Length, args.ToMultiByteArray());
         }
 
-        public int ExecLuaShaAsInt(string sha1, string[] keys, string[] args)
+        public long ExecLuaShaAsInt(string sha1, string[] keys, string[] args)
         {
             return base.EvalShaInt(sha1, keys.Length, MergeAndConvertToBytes(keys, args));
         }
