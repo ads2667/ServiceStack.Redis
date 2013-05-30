@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading;
-using ServiceStack.Logging;
 using ServiceStack.Messaging;
-using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
@@ -16,8 +14,6 @@ namespace ServiceStack.Aws.Messaging
         public IMessageCoordinator MessageCoordinator { get; private set; }
         public Type MessageType { get; private set; }
         
-        private readonly ILog Log = LogManager.GetLogger(typeof (AwsSqsQueueHandlerWorker));
-
         public AwsSqsQueueHandlerWorker(
             ISqsClient sqsClient, 
             // IMessageCoordinator messageCoordinator, 

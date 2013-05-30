@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
-using ServiceStack.Redis.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {

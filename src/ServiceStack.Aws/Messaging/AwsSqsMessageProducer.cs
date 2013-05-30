@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Amazon.SQS.Model;
 using ServiceStack.Messaging;
-using ServiceStack.Redis.Messaging;
+using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {

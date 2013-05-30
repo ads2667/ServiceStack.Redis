@@ -32,18 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK, Version=1.5.19.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+    <Reference Include="AWSSDK, Version=1.5.21.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\AWSSDK.1.5.19.0\lib\AWSSDK.dll</HintPath>
+      <HintPath>..\..\packages\AWSSDK.1.5.21.0\lib\AWSSDK.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common">
-      <HintPath>..\..\packages\ServiceStack.Common.3.9.44\lib\net35\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\..\packages\ServiceStack.Common.3.9.44\lib\net35\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\..\packages\ServiceStack.Text.3.9.44\lib\net35\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +60,10 @@
     <ProjectReference Include="..\..\ServiceStack.Aws\ServiceStack.Aws.csproj">
       <Project>{a53f1744-1566-4ed3-8a03-8da19ce5931e}</Project>
       <Name>ServiceStack.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceStack.Messaging\ServiceStack.Messaging.csproj">
+      <Project>{5018D203-6C14-4129-AD33-DCB1D77D1389}</Project>
+      <Name>ServiceStack.Messaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ServiceStack.Redis\ServiceStack.Redis.csproj">
       <Project>{af99f19b-4c04-4f58-81ef-b092f1fcc540}</Project>

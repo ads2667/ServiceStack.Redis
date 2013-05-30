@@ -3,7 +3,7 @@ using System.Threading;
 using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
 using ServiceStack.Redis;
-using ServiceStack.Redis.Messaging;
+using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {

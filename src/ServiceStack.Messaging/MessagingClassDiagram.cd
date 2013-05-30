@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ServiceStack.Messaging.QueueHandlerStats" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAAAAAEAAAAAAACAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>IQueueHandlerStats.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.MessageHandlerBackgroundWorker">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAEAIAAAAAQAAAABAgDEAAEAEQAAIEAAAAABAAA=</HashCode>
+      <FileName>MessageHandlerBackgroundWorker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.MessageProducer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAEAABAAAAAgAgAAAAAAAAAAAgAA=</HashCode>
+      <FileName>MessageProducer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.MessageQueueClient" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAUCAACABAAEAABAAAAAAAgABAAAAAIAAAgAA=</HashCode>
+      <FileName>MessageQueueClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.MqHost" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UEQABIAAQCAAUUgQAAARggEEQBhKAAAEYAACASABAAg=</HashCode>
+      <FileName>MqHost.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.MessageHandlerRegister&lt;TQueueHandlerConfiguration&gt;">
+    <Position X="8.5" Y="9.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAgIAQgBAEAAgAABABgQAAIAAABACCAAAAA=</HashCode>
+      <FileName>MessageHandlerRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Messaging.DefaultMessageHandlerRegister">
+    <Position X="9.5" Y="15" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultMessageHandlerRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Messaging.DefaultHandlerConfiguration" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultHandlerConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Messaging.MqServer2&lt;THandlerConfiguration, TMessageHandlerRegister, TBackgroundWorkerFactory&gt;">
+    <Position X="4.25" Y="16.75" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAAAAAAgAIYECCAAQAEAACAEAAAAIAiASCAACAAA=</HashCode>
+      <FileName>MqServer2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceStack.Messaging.MqServer2">
+    <Position X="5.5" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>UEQgAABAQGAIEQgAAAAQAAFEABzKABAIYCACAQCBAQg=</HashCode>
+      <FileName>MqServer2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.QueueHandlerBackgroundWorker">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIVAIAAAAAQAAAAAAgCEAAAAAQAEIAAAAAABAAA=</HashCode>
+      <FileName>QueueHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ServiceStack.Messaging.WorkerStatus">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAIAAAAEAAAAAAAAAAIAAAAAABAAAAACAAQ=</HashCode>
+      <FileName>WorkerStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ServiceStack.Messaging.IQueueHandlerStats">
+    <Position X="14" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>IQueueHandlerStats.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ServiceStack.Messaging.IMessageHandlerBackgroundWorker">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAABAAA=</HashCode>
+      <FileName>IMessageHandlerBackgroundWorker.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ServiceStack.Messaging.IQueueHandlerBackgroundWorker">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAA=</HashCode>
+      <FileName>QueueHandlerWorker.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

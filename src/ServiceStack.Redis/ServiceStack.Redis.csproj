@@ -31,6 +31,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,10 +123,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ServiceStack.Common">
-      <HintPath>..\..\lib\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\..\lib\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\packages\ServiceStack.Redis.3.9.48\lib\net35\ServiceStack.Redis.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\lib\ServiceStack.Text.dll</HintPath>
@@ -156,20 +161,6 @@
     <Compile Include="Generic\RedisTypedCommandQueue.cs" />
     <Compile Include="IRedisClientFactory.cs" />
     <Compile Include="MessageHandlerConfiguration.cs" />
-    <Compile Include="Messaging\BackgroundWorker.cs" />
-    <Compile Include="Messaging\BackgroundWorkerFactory.cs" />
-    <Compile Include="Messaging\DefaultHandlerConfiguration.cs" />
-    <Compile Include="Messaging\DefaultMessageHandlerRegister.cs" />
-    <Compile Include="Messaging\IQueueHandlerStats.cs" />
-    <Compile Include="Messaging\MessageHandlerBackgroundWorker.cs" />
-    <Compile Include="Messaging\MessageHandlerRegister.cs" />
-    <Compile Include="Messaging\MessageReceivedArgs.cs" />
-    <Compile Include="Messaging\QueueHandlerWorker.cs" />
-    <Compile Include="Messaging\MqServer2.cs" />
-    <Compile Include="Messaging\IMessageHandlerBackgroundWorker.cs" />
-    <Compile Include="Messaging\MqHost.cs" />
-    <Compile Include="Messaging\MqHostPool.cs" />
-    <Compile Include="Messaging\MqServer.cs" />
     <Compile Include="Messaging\Redis\RedisBackgroundWorkerFactory.cs" />
     <Compile Include="Messaging\Redis\RedisMessageHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisMessageFactory.cs" />
@@ -182,9 +173,6 @@
     <Compile Include="Messaging\Redis\RedisQueueHandlerWorker.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageFactory.cs" />
     <Compile Include="Messaging\Redis\RedisTransientMessageService.cs" />
-    <Compile Include="Messaging\ThreadPoolMessageHandlerStats.cs" />
-    <Compile Include="Messaging\VersionedQueueNames.cs" />
-    <Compile Include="Messaging\WorkerStatus.cs" />
     <Compile Include="RedisClientManagerCacheClient.cs" />
     <Compile Include="RedisClientsManagerExtensions.cs" />
     <Compile Include="Pipeline\QueuedRedisCommand.cs" />
@@ -224,10 +212,6 @@
     <Compile Include="Generic\RedisTypedClient_Set.cs" />
     <Compile Include="Generic\RedisTypedClient_List.cs" />
     <Compile Include="RedisClientSortedSet.cs" />
-    <Compile Include="Messaging\TransientMessageFactory.cs" />
-    <Compile Include="Messaging\MessageProducer.cs" />
-    <Compile Include="Messaging\MessageQueueClient.cs" />
-    <Compile Include="Messaging\TransientMessageService.cs" />
     <Compile Include="Pipeline\RedisCommandQueue.cs" />
     <Compile Include="RedisException.cs" />
     <Compile Include="RedisLock.cs" />
@@ -255,7 +239,6 @@
     <Compile Include="RedisNativeClient_Utils.cs" />
     <Compile Include="RedisResponseException.cs" />
     <Compile Include="RedisExtensions.cs" />
-    <Compile Include="Messaging\MessageQueueClientFactory.cs" />
     <Compile Include="Support\IOrderedDictionary.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -289,10 +272,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Messaging\MessagingClassDiagram.cd" />
     <None Include="Messaging\Redis\RedisMessagingClassDiagram.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStack.Messaging\ServiceStack.Messaging.csproj">
+      <Project>{5018d203-6c14-4129-ad33-dcb1d77d1389}</Project>
+      <Name>ServiceStack.Messaging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

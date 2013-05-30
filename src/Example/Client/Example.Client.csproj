@@ -34,17 +34,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSSDK, Version=1.5.21.0, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AWSSDK.1.5.21.0\lib\AWSSDK.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\..\Visual Studio 2012\Projects\SocialMeWeb\packages\log4net.2.0.0\lib\net35-client\log4net.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common">
-      <HintPath>..\..\..\..\Visual Studio 2012\Projects\SocialMeWeb\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\..\..\..\Visual Studio 2012\Projects\SocialMeWeb\packages\ServiceStack.Common.3.9.43\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.48\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Logging.Log4Net">
-      <HintPath>..\..\..\..\Visual Studio 2012\Projects\SocialMeWeb\packages\ServiceStack.Logging.Log4Net.1.0.8.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Logging.Log4Net.1.0.9.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\..\..\Visual Studio 2012\Projects\SocialMeWeb\packages\ServiceStack.Text.3.9.43\lib\net35\ServiceStack.Text.dll</HintPath>
@@ -70,6 +74,10 @@
     <ProjectReference Include="..\..\ServiceStack.Aws\ServiceStack.Aws.csproj">
       <Project>{a53f1744-1566-4ed3-8a03-8da19ce5931e}</Project>
       <Name>ServiceStack.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceStack.Messaging\ServiceStack.Messaging.csproj">
+      <Project>{5018D203-6C14-4129-AD33-DCB1D77D1389}</Project>
+      <Name>ServiceStack.Messaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ServiceStack.Redis\ServiceStack.Redis.csproj">
       <Project>{af99f19b-4c04-4f58-81ef-b092f1fcc540}</Project>

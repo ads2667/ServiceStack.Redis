@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ServiceStack.Messaging;
 
 namespace ServiceStack.Redis.Messaging.Redis
 {
@@ -45,7 +46,7 @@ namespace ServiceStack.Redis.Messaging.Redis
         }
         */
 
-        protected internal override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(HandlerRegistration<DefaultHandlerConfiguration> messageHandlerRegistration, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
+        protected override IMessageHandlerBackgroundWorker CreateMessageHandlerWorker(HandlerRegistration<DefaultHandlerConfiguration> messageHandlerRegistration, string queueName, Action<IMessageHandlerBackgroundWorker, Exception> errorHandler)
         {
             return new RedisMessageHandlerWorker(
                 this.ClientsManager,
@@ -54,7 +55,7 @@ namespace ServiceStack.Redis.Messaging.Redis
                 errorHandler);
         }
 
-        protected internal override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, IDictionary<Type, HandlerRegistration<DefaultHandlerConfiguration>> messageHandlerRegistrations, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
+        protected override IList<IQueueHandlerBackgroundWorker> CreateQueueHandlerWorkers(IDictionary<string, Type> messageQueueNames, IDictionary<Type, HandlerRegistration<DefaultHandlerConfiguration>> messageHandlerRegistrations, Action<IQueueHandlerBackgroundWorker, Exception> errorHandler)
         {
             return new List<IQueueHandlerBackgroundWorker>
                 {

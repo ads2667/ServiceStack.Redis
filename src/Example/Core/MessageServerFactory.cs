@@ -26,7 +26,7 @@ namespace Example.Core
 
         private static IMessageService CreateAwsMessageService()
         {
-            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient(, )));
+            var svc = new AwsSqsServer(new SqsClient(new Amazon.SQS.AmazonSQSClient("AKIAIZ65P5ZEGIU3X2FA", "OeGi9c0lH3791+SBZkTTuDtuIg+t5TNOE6oLjCrf")));
 
             // TODO: Use customer registration to override default values            
             return RegisterMessageHandlers(svc);

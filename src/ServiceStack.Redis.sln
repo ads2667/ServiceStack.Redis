@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Publisher", "Exampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Aws.Tests", "ServiceStack.Aws.Tests\ServiceStack.Aws.Tests.csproj", "{6106B42C-90E5-468A-ADC2-83AFE0F03EDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Messaging", "ServiceStack.Messaging\ServiceStack.Messaging.csproj", "{5018D203-6C14-4129-AD33-DCB1D77D1389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,18 @@ Global
 		{6106B42C-90E5-468A-ADC2-83AFE0F03EDB}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Release|Any CPU
 		{6106B42C-90E5-468A-ADC2-83AFE0F03EDB}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Release|Any CPU
 		{6106B42C-90E5-468A-ADC2-83AFE0F03EDB}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.MonoTouch|Any CPU.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.MonoTouch|Any CPU.Build.0 = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.MonoTouch|x86.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.Release|x86.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Release|Any CPU
+		{5018D203-6C14-4129-AD33-DCB1D77D1389}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
