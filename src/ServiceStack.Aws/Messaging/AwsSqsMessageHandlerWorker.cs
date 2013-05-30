@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ServiceStack.Messaging;
-using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {

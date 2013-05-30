@@ -9004,3 +9004,17 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-29 18:52:55,058 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
 2013-05-29 18:52:55,225 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
 2013-05-29 18:53:32,920 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-30 19:12:19,908 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-30 19:12:25,509 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-30 19:12:25,510 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-30 19:12:25,520 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-30 19:12:26,186 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-30 19:12:26,747 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-30 19:13:00,471 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.
+2013-05-30 19:54:24,057 [1] INFO  Example.Publisher.Program [(null)] - ===== Starting Client =====
+2013-05-30 19:54:30,371 [1] INFO  Example.Publisher.Program [(null)] - ===== Message Producer Started =====
+2013-05-30 19:54:30,371 [1] INFO  Example.Publisher.Program [(null)] - Type 'EXIT' to close.
+2013-05-30 19:54:30,381 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello:1.0.0.0.inq.
+2013-05-30 19:54:30,715 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:Hello2:1.0.0.0.inq.
+2013-05-30 19:54:30,936 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageProducer [(null)] - Publishing message to queue mq:FailingMessage:1.0.0.0.inq.
+2013-05-30 19:54:38,470 [1] INFO  Example.Publisher.Program [(null)] - Stopping Client.

@@ -10400,3 +10400,33 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-29 18:52:02,866 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
 2013-05-29 18:52:03,057 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:5bbca057959e4eb7923d114b4f7a01d5
 2013-05-29 18:53:35,632 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-05-30 19:12:19,995 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-05-30 19:12:25,643 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-30 19:12:25,643 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-05-30 19:12:25,822 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-30 19:12:26,187 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-30 19:12:26,439 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-05-30 19:12:26,445 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-30 19:12:26,705 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-30 19:12:26,909 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-30 19:12:26,925 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-30 19:12:27,141 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-05-30 19:12:28,036 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:c3a40cf608944020850f37d9dc7e0060
+2013-05-30 19:12:28,533 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-30 19:12:28,695 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:c3a40cf608944020850f37d9dc7e0060
+2013-05-30 19:12:48,215 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-05-30 19:54:24,031 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-05-30 19:54:29,812 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-05-30 19:54:29,812 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-05-30 19:54:30,084 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-05-30 19:54:30,350 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-05-30 19:54:30,574 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-05-30 19:54:30,580 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-30 19:54:30,991 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-05-30 19:54:31,197 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-05-30 19:54:31,213 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-05-30 19:54:31,496 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-05-30 19:54:32,142 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:2842b00ccbdd4fc1bd8f9f8418b3e981
+2013-05-30 19:54:32,991 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-05-30 19:54:33,158 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:2842b00ccbdd4fc1bd8f9f8418b3e981
+2013-05-30 19:54:44,111 [1] INFO  Example.Client.Program [(null)] - Stopping Client.

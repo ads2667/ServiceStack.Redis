@@ -2,8 +2,6 @@
 using System.Threading;
 using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
-using ServiceStack.Redis;
-using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {

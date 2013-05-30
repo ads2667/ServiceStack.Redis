@@ -4,7 +4,6 @@ using System.Threading;
 using Amazon.SQS.Model;
 using ServiceStack.Logging;
 using ServiceStack.Messaging;
-using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
