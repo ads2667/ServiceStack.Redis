@@ -102,7 +102,6 @@ namespace ServiceStack.Messaging
 
             try
             {
-                // Thread.Sleep(20000); //// Easy way to test diposing of worker items; need to write unit test.
                 using (var client = this.CreateMessageQueueClient())
                 {
                     threadPoolHandlers[threadPoolTask.MessageType].ProcessQueue(client, threadPoolTask.QueueName, () => false);
@@ -350,7 +349,7 @@ namespace ServiceStack.Messaging
 
         public const int DefaultRetryCount = 2; //Will be a total of 3 attempts
 
-        public int RetryCount { get; private set; }
+        public virtual int RetryCount { get; private set; }
 
         /// <summary>
         /// Execute global error handler logic. Must be thread-safe.

@@ -47,7 +47,7 @@ namespace ServiceStack.Aws.Messaging
             {
                 throw new ArgumentNullException("message");
             }
-
+            
             Log.DebugFormat("On Pre Message Processing, Queue: {0}. Thread: {1}.", message.QueueName, Thread.CurrentThread.ManagedThreadId);
             var remainingMessageProcessingTime = DateTime.UtcNow.Subtract(message.MessageExpiryTimeUtc).TotalSeconds;
             if (remainingMessageProcessingTime > 0)
@@ -118,7 +118,7 @@ namespace ServiceStack.Aws.Messaging
         /// <param name="message">The message that failed processing.</param>
         /// <param name="retryAttempts">The number of times the message has been retried.</param>
         /// <returns>The time to wait before the message is processed again.</returns>
-        protected virtual TimeSpan GetMessageVisibilityTimeout(ISqsMessage message, int retryAttempts)
+        public virtual TimeSpan GetMessageVisibilityTimeout(ISqsMessage message, int retryAttempts)
         {
             // Default to 5 seconds. It is recommended any implementations implement their own logic here.
             return TimeSpan.FromSeconds(5);
@@ -299,7 +299,8 @@ namespace ServiceStack.Aws.Messaging
                 {
                     if (!this.OnPreMessageProcessed(sqsMessage))
                     {
-                        return null;
+                        // Need to return an exception so that the exception handler is run, and DLQ is supported.
+                        return new DoNotProcessMessageException();
                     }
                 }
                 else
@@ -310,6 +311,7 @@ namespace ServiceStack.Aws.Messaging
                 }
 
                 // Process the messge using the handler registration method.
+                Log.DebugFormat("Executing messge {0}, retry attempt: {1}.", message.Id, message.RetryAttempts);
                 var result = processMessageFn.Invoke(message);
 
                 if (sqsMessage != null)
@@ -365,7 +367,7 @@ namespace ServiceStack.Aws.Messaging
                         throw new InvalidOperationException("Expected a SQS Message.");
                     }
 
-                    Log.DebugFormat("Message {0} has failed {1} times, moving to DLQ.", message.Id, message.RetryAttempts + 1);
+                    Log.DebugFormat("Message {0} has failed {1} times, moving to DLQ.", message.Id, message.RetryAttempts);
 
                     var queueNames = new VersionedQueueNames(sqsMessage.GetType());
                     try

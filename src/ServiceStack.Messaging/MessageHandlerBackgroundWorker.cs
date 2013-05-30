@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using ServiceStack.Messaging;
 using ServiceStack.Text;
 
 namespace ServiceStack.Messaging
