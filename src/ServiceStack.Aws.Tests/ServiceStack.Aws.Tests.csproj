@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Messaging\AwsSqsMessageHandlerRegisterTests.cs" />
+    <Compile Include="Messaging\AwsSqsMessageProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

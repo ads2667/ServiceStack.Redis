@@ -61,7 +61,7 @@ namespace ServiceStack.Aws.Messaging
                 var messageConfiguration = messageRegistration.Configuration;
                 var waitTimeInSeconds = messageConfiguration.WaitTimeInSeconds.HasValue ? Convert.ToInt32(messageConfiguration.WaitTimeInSeconds.Value) : Convert.ToInt32(this.SqsServer.RequestTimeOut.TotalSeconds);
                 var maxNumberOfMessagesToReceivePerRequest = messageConfiguration.MaxNumberOfMessagesToReceivePerRequest.HasValue ? messageConfiguration.MaxNumberOfMessagesToReceivePerRequest.Value : this.SqsServer.MaxNumberOfMessagesToReceivePerRequest;
-                var messageVisibilityTimeout = messageConfiguration.MessageVisibilityTimeout.HasValue ? messageConfiguration.MessageVisibilityTimeout.Value : this.SqsServer.MessageVisibilityTimeout;
+                var messageVisibilityTimeout = messageConfiguration.MessageVisibilityTimeout.HasValue ? messageConfiguration.MessageVisibilityTimeout.Value : this.SqsServer.MessageVisibilityTimeoutInSeconds;
                 queueHandlers.Add(new AwsSqsQueueHandlerWorker(this.SqsServer.SqsClient, this.SqsServer, queue.Value, queue.Key, this.SqsServer.QueueUrls[queue.Key], errorHandler, waitTimeInSeconds, maxNumberOfMessagesToReceivePerRequest, messageVisibilityTimeout));
             }
 

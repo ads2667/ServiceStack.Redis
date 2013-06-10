@@ -109,6 +109,7 @@ namespace ServiceStack.Aws.Messaging
                             sqsMessageBody.QueueUrl = this.QueueUrl;
                             sqsMessageBody.QueueName = this.QueueName;
                             sqsMessageBody.VisibilityTimeout = this.MessageVisibilityTimeout;
+                            message.RetryAttempts += sqsMessageBody.PreviousRetryAttempts;
                         }
                         else
                         {

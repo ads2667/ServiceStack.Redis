@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Messaging
 {
     public class AwsSqsServer : MqServer2<AwsSqsHandlerConfiguration, AwsSqsMessageHandlerRegister, AwsSqsBackgroundWorkerFactory> /*<AwsSqsMessageHandlerRegister>*/, IMessageCoordinator
     {        
-        public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null, decimal maxNumberOfMessagesToReceivePerRequest = 10, decimal messageVisibilityTimeout = 10)
+        public AwsSqsServer(ISqsClient sqsClient, int retryCount = DefaultRetryCount, TimeSpan? requestTimeOut = null, decimal maxNumberOfMessagesToReceivePerRequest = 10, decimal messageVisibilityTimeoutInSeconds = 30)
             : base(null, retryCount) //// Default to use Long Polling
         {
             if (sqsClient == null)
@@ -19,14 +18,14 @@ namespace ServiceStack.Aws.Messaging
             this.SqsClient = sqsClient;
             this.RequestTimeOut = requestTimeOut.HasValue ? requestTimeOut.Value : TimeSpan.FromSeconds(20);
             this.MaxNumberOfMessagesToReceivePerRequest = maxNumberOfMessagesToReceivePerRequest;
-            this.MessageVisibilityTimeout = messageVisibilityTimeout;
+            this.MessageVisibilityTimeoutInSeconds = messageVisibilityTimeoutInSeconds;
             this.QueueUrls = new Dictionary<string, string>();
         }
 
         public ISqsClient SqsClient { get; private set; }
         public TimeSpan RequestTimeOut { get; private set; }
         public decimal MaxNumberOfMessagesToReceivePerRequest { get; private set; }
-        public decimal MessageVisibilityTimeout { get; private set; }
+        public decimal MessageVisibilityTimeoutInSeconds { get; private set; }
 
         public override IMessageQueueClient CreateMessageQueueClient()
         {
@@ -67,9 +66,20 @@ namespace ServiceStack.Aws.Messaging
 
         public IDictionary<string, string> QueueUrls { get; private set; }
 
+        protected virtual IMessageProcessor CreateMessageProcessor()
+        {
+            return new AwsSqsMessageProcessor(this.SqsClient);
+        }
+
         protected override AwsSqsMessageHandlerRegister CreateMessageHandlerRegister()
         {
-            return new AwsSqsMessageHandlerRegister(this, this.SqsClient, new DefaultMessageStateRespository());
+            var messageProcessor = this.CreateMessageProcessor();
+            if (messageProcessor == null)
+            {
+                throw new InvalidOperationException("'CreateMessageProcessor' did not create an instance of an IMessageProcessor.");
+            }
+
+            return new AwsSqsMessageHandlerRegister(this, messageProcessor, this.RetryCount);
         }
 
         // public override void RegisterMessageHandlers(Action<AwsSqsMessageHandlerRegister> messageHandlerRegister)

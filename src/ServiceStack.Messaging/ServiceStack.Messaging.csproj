@@ -55,6 +55,7 @@
     <Compile Include="DefaultHandlerConfiguration.cs" />
     <Compile Include="DefaultMessageHandlerRegister.cs" />
     <Compile Include="IMessageHandlerBackgroundWorker.cs" />
+    <Compile Include="IMessageProcessor.cs" />
     <Compile Include="IQueueHandlerStats.cs" />
     <Compile Include="MessageHandlerBackgroundWorker.cs" />
     <Compile Include="MessageHandlerConfiguration.cs" />

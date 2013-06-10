@@ -40,6 +40,11 @@ namespace ServiceStack.Aws.Messaging
         public decimal VisibilityTimeout { get; set; }
 
         /// <summary>
+        /// Gets or sets the count of the number of times that this message has been attempted to be processed.
+        /// </summary>
+        public int PreviousRetryAttempts { get; set; }
+
+        /// <summary>
         /// Gets the message expiry time in UTC. This is the time when the message
         /// expires in the SQS and can be recevied by another message queue client.
         /// </summary>

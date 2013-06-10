@@ -9,7 +9,7 @@ namespace ServiceStack.Messaging
     {
         protected internal IMessageService MessageServer { get; private set; }
 
-        protected ILog Log;
+        protected readonly ILog Log;
 
         protected MessageHandlerRegister(IMessageService messageServer, int retryCount)
         {

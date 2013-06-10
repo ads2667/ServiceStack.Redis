@@ -10503,3 +10503,64 @@ System.Threading.ThreadAbortException: Thread was being aborted.
 2013-05-30 22:44:14,768 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
 2013-05-30 22:44:14,916 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:e33fc395c3a346929e852159085a68ca
 2013-05-30 22:44:47,243 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-06-05 20:19:49,789 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-06-05 20:21:23,341 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-06-05 20:21:28,371 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-06-05 20:21:28,371 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-06-05 20:21:28,592 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-06-05 20:21:28,864 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-06-05 20:21:29,035 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:21:29,038 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:21:30,260 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-06-05 20:21:30,443 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:21:30,461 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-06-05 20:21:30,941 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:21:31,515 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:28a7d9081982489dbbe5e6a2ead15462
+2013-06-05 20:21:31,758 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-06-05 20:21:31,912 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:28a7d9081982489dbbe5e6a2ead15462
+2013-06-05 20:25:19,607 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-06-05 20:26:21,882 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-06-05 20:26:27,097 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-06-05 20:26:27,097 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-06-05 20:26:27,288 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-06-05 20:26:27,513 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-06-05 20:26:27,702 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:26:27,708 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:26:28,933 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-06-05 20:26:29,169 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:26:29,180 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-06-05 20:26:29,349 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:26:29,995 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:b71b24786d6e4221b8e13cc461c8c763
+2013-06-05 20:26:30,197 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-06-05 20:26:30,343 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:b71b24786d6e4221b8e13cc461c8c763
+2013-06-05 20:27:46,741 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-06-05 20:28:58,465 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-06-05 20:29:03,509 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-06-05 20:29:03,509 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-06-05 20:29:03,712 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-06-05 20:29:04,014 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-06-05 20:29:04,157 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:29:04,163 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:29:05,192 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-06-05 20:29:05,373 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:29:05,390 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-06-05 20:29:05,816 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:29:06,395 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:8afc9c797c2440b5b26faf9a838a82a1
+2013-06-05 20:29:06,955 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-06-05 20:29:07,215 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:8afc9c797c2440b5b26faf9a838a82a1
+2013-06-05 20:43:12,113 [1] INFO  Example.Client.Program [(null)] - Stopping Client.
+2013-06-05 20:50:41,955 [1] INFO  Example.Client.Program [(null)] - ===== Starting Client =====
+2013-06-05 20:50:47,517 [1] INFO  Example.Client.Program [(null)] - ===== Message Queue Client Started =====
+2013-06-05 20:50:47,517 [1] INFO  Example.Client.Program [(null)] - Type 'EXIT' to close.
+2013-06-05 20:50:47,799 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello:1.0.0.0.inq
+2013-06-05 20:50:48,018 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello3:1.0.0.0.inq
+2013-06-05 20:50:48,174 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:50:48,174 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:50:49,143 [1] INFO  Example.Client.Program [(null)] - Message response received: The message was processed by the server!
+2013-06-05 20:50:49,299 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:Hello3Response:1.0.0.0.inq
+2013-06-05 20:50:49,299 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Publishing to queue: mq:Hello4:1.0.0.0.inq
+2013-06-05 20:50:49,611 [1] INFO  Example.Client.Program [(null)] - Waiting for message response.
+2013-06-05 20:50:50,096 [1] DEBUG ServiceStack.Aws.Messaging.AwsSqsMessageQueueClient [(null)] - Sync Get from queue: mq:c1:43b1f90249374d86b9e4248fe7728c7a
+2013-06-05 20:50:50,440 [1] INFO  Example.Client.Program [(null)] - Message response received: Hello4 Response Text
+2013-06-05 20:50:50,596 [1] INFO  Example.Client.Program [(null)] - Deleted response message from queue: mq:c1:43b1f90249374d86b9e4248fe7728c7a
+2013-06-05 20:53:11,962 [1] INFO  Example.Client.Program [(null)] - Stopping Client.

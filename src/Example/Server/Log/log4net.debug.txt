@@ -106,3 +106,13 @@ System.Threading.ThreadAbortException: Thread was being aborted.
    at log4net.Repository.Hierarchy.Logger.CallAppenders(LoggingEvent loggingEvent)
    at log4net.Repository.Hierarchy.Logger.ForcedLog(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)
    at log4net.Repository.Hierarchy.Logger.Log(Type callerStackBoundaryDeclaringType, Level level, Object message, Exception exception)
+log4net:WARN Exception while rendering format [Failed message with new Id {0} has been re-published to the queue {1}.]
+System.FormatException: Index (zero based) must be greater than or equal to zero and less than the size of the argument list.
+   at System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   at System.String.Format(IFormatProvider provider, String format, Object[] args)
+   at log4net.Util.SystemStringFormat.StringFormat(IFormatProvider provider, String format, Object[] args)
+log4net:WARN Exception while rendering format [Failed message with new Id {0} has been re-published to the queue {1}.]
+System.FormatException: Index (zero based) must be greater than or equal to zero and less than the size of the argument list.
+   at System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   at System.String.Format(IFormatProvider provider, String format, Object[] args)
+   at log4net.Util.SystemStringFormat.StringFormat(IFormatProvider provider, String format, Object[] args)

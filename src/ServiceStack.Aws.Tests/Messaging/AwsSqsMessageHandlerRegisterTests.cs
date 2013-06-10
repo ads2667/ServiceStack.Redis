@@ -1,9 +1,7 @@
 ﻿using System;
-using Amazon.SQS.Model;
 using Moq;
 using NUnit.Framework;
 using ServiceStack.Aws.Messaging;
-using ServiceStack.Aws.Messaging.Data;
 using ServiceStack.Messaging;
 
 namespace ServiceStack.Aws.Tests.Messaging
@@ -14,16 +12,13 @@ namespace ServiceStack.Aws.Tests.Messaging
         public AwsSqsMessageHandlerRegisterTests()
         {
             this.MessageServer = new Mock<IMessageService>(MockBehavior.Strict);
-            this.SqsClient = new Mock<ISqsClient>(MockBehavior.Strict);
-            this.MessageStateRepository = new Mock<IMessageStateRepository>(MockBehavior.Strict);
-            this.MessageHandlerRegister = new AwsSqsMessageHandlerRegister(this.MessageServer.Object, this.SqsClient.Object, this.MessageStateRepository.Object);
+            this.MessageProcessor = new Mock<IMessageProcessor>(MockBehavior.Strict);
+            this.MessageHandlerRegister = new AwsSqsMessageHandlerRegister(this.MessageServer.Object, this.MessageProcessor.Object);
         }
 
         protected AwsSqsMessageHandlerRegister MessageHandlerRegister { get; set; }
 
-        protected Mock<IMessageStateRepository> MessageStateRepository { get; set; }
-
-        protected Mock<ISqsClient> SqsClient { get; set; }
+        protected Mock<IMessageProcessor> MessageProcessor { get; set; }
 
         protected Mock<IMessageService> MessageServer { get; set; }
 
@@ -31,159 +26,172 @@ namespace ServiceStack.Aws.Tests.Messaging
         [ExpectedException(typeof(ArgumentNullException))]
         public void CtorThrowsExWithNullMessageServer()
         {
-            new AwsSqsMessageHandlerRegister(null, this.SqsClient.Object, this.MessageStateRepository.Object);
+            new AwsSqsMessageHandlerRegister(null, this.MessageProcessor.Object);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void CtorThrowsExWithNullSqsClient()
+        public void CtorThrowsExWithNullMessageProcessor()
         {
-            new AwsSqsMessageHandlerRegister(this.MessageServer.Object, null, this.MessageStateRepository.Object);
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void CtorThrowsExWithNullMessageStateRepository()
-        {
-            new AwsSqsMessageHandlerRegister(this.MessageServer.Object, this.SqsClient.Object, null);
+            new AwsSqsMessageHandlerRegister(this.MessageServer.Object, null);
         }
 
         [Test]
         public void CtorCorrectlyAssignsArgsToProperties()
         {
-            // Assert.AreSame(this.MessageServer.Object, this.MessageHandlerRegister.MessageServer);
-            Assert.AreSame(this.SqsClient.Object, this.MessageHandlerRegister.SqsClient);
-            Assert.AreSame(this.MessageStateRepository.Object, this.MessageHandlerRegister.MessageStateRepository);
+            Assert.AreSame(this.MessageProcessor.Object, this.MessageHandlerRegister.MessageProcessor);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void OnPreMessageProcessedWithNullMessageThrowsEx()
+        public void WrapExceptionHandlerExecutesCustomExceptionHandler()
         {
-            this.MessageHandlerRegister.OnPreMessageProcessed(null);
+            // Arrange    
+            var msg = new Message<int>(1);
+            var ex = new InvalidOperationException();
+            var exFuncInvoked = false;
+            this.MessageProcessor
+                .Setup(x => x.OnMessageProcessingFailed(msg, ex, false))
+                .Verifiable();
+
+            var exHandler = this.MessageHandlerRegister.WrapExceptionHandler<int>((message, exception) => exFuncInvoked = true);
+
+            // Test the the MessageProcessor is invoked!  
+            exHandler.Invoke(msg, ex);
+
+            // Assert
+            Assert.IsTrue(exFuncInvoked);
+            this.MessageProcessor.Verify(x => x.OnMessageProcessingFailed(msg, ex, false), Times.Once());
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void OnMessageProcessedSuccessfullyWithNullMessageThrowsEx()
+        public void WrapExceptionHandlerDoesNotExecuteCustomExHandlerIfMessageWasNotProcessed()
         {
-            this.MessageHandlerRegister.OnMessageProcessed(null);
+            // Arrange    
+            var msg = new Message<int>(1);
+            var ex = new MessageNotProcessedException();
+            var exFuncInvoked = false;
+            this.MessageProcessor
+                .Setup(x => x.OnMessageProcessingFailed(msg, ex, false))
+                .Verifiable();
+
+            var exHandler = this.MessageHandlerRegister.WrapExceptionHandler<int>((message, exception) => exFuncInvoked = true);
+
+            // Test the the MessageProcessor is invoked!  
+            exHandler.Invoke(msg, ex);
+
+            // Assert
+            Assert.IsFalse(exFuncInvoked);
+            this.MessageProcessor.Verify(x => x.OnMessageProcessingFailed(msg, ex, false), Times.Once());
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void OnMessageProcessingFailedWithNullMessageThrowsEx()
+        public void WrapExceptionHandlerIndicatesMoveToDlqWhenRetryCountIsExceeded()
         {
-            this.MessageHandlerRegister.OnMessageProcessingFailed(null, 0, false);
+            // Arrange    
+            var msg = new Message<int>(1);
+            msg.RetryAttempts = 1000; // Ensure it exceeds the retry limit.
+            var ex = new MessageNotProcessedException();
+            var exFuncInvoked = false;
+            this.MessageProcessor
+                .Setup(x => x.OnMessageProcessingFailed(msg, ex, true))
+                .Verifiable();
+
+            var exHandler = this.MessageHandlerRegister.WrapExceptionHandler<int>((message, exception) => exFuncInvoked = true);
+
+            // Test that when the retry count is exceeded, the parameter 'moveMessageToDlq' is true. 
+            exHandler.Invoke(msg, ex);
+
+            // Assert
+            Assert.IsFalse(exFuncInvoked);
+            this.MessageProcessor.Verify(x => x.OnMessageProcessingFailed(msg, ex, true), Times.Once());
         }
 
         [Test]
-        public void OnPreMessageProcessedReturnsFalseIfMessageHasPassedItsExpiryTime()
+        public void WrapMessageProcessorReturnsExceptionWhenMessageProcessorCanNotProcessMessage()
         {
-            var message = new SqsMessage
-                {
-                    MessageId = Guid.NewGuid().ToString(),
-                    QueueName = "TestQueue",
-                    QueueUrl = "http://testqueue.com/",
-                    ReceiptHandle = "ABC123",
-                    VisibilityTimeout = 10,
-                    MessageExpiryTimeUtc = DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(5))
-                };
+           // Arrange    
+            var msg = new Message<int>(1);
+            var expectedResult = 10;
 
-            var result = this.MessageHandlerRegister.OnPreMessageProcessed(message);
-            Assert.IsFalse(result);
+            this.MessageProcessor
+                .Setup(x => x.CanProcessMessage(msg))
+                .Returns(false)
+                .Verifiable();
+
+            var wrapper = this.MessageHandlerRegister.WrapMessageProcessor<int>(message => expectedResult);
+
+            // Act
+            var result = wrapper.Invoke(msg);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<MessageNotProcessedException>(result);
+            this.MessageProcessor.VerifyAll();
         }
 
         [Test]
-        public void OnPreMessageProcessedExecutesMessageStateRepositoryCanProcessMessageMethod()
+        public void WrapMessageInvokesCustomProcessHandlerFollowedByOnMessageProcessed()
         {
-            var message = new SqsMessage
-            {
-                MessageId = Guid.NewGuid().ToString(),
-                QueueName = "TestQueue",
-                QueueUrl = "http://testqueue.com/",
-                ReceiptHandle = "ABC123",
-                VisibilityTimeout = 10,
-                MessageExpiryTimeUtc = DateTime.UtcNow.AddSeconds(10)
-            };
-            
-            this.MessageStateRepository
-                .Expect(x => x.CanProcessMessage(message.MessageId))
+            // Arrange    
+            var msg = new Message<int>(1);
+            var expectedResult = 10;
+
+            this.MessageProcessor
+                .Setup(x => x.CanProcessMessage(msg))
                 .Returns(true)
                 .Verifiable();
 
-            var result = this.MessageHandlerRegister.OnPreMessageProcessed(message);
+            var wrapper = this.MessageHandlerRegister.WrapMessageProcessor<int>(message => expectedResult);
 
-            Assert.IsTrue(result);
-            this.MessageStateRepository.VerifyAll();
+            this.MessageProcessor
+                .Setup(x => x.OnMessageProcessed(msg))
+                .Verifiable();
+
+            // Act
+            var result = wrapper.Invoke(msg);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expectedResult, result);
+            this.MessageProcessor.VerifyAll();
+            this.MessageProcessor.Verify(x => x.CanProcessMessage(msg), Times.Once());
+            this.MessageProcessor.Verify(x => x.OnMessageProcessed(msg), Times.Once());
         }
 
         [Test]
-        public void OnMessageProcessedDeletesMessageAndUpdatesMessageState()
+        public void WrapMessageInvokesCustomProcessAndDoesNotCatchException()
         {
-            var message = new SqsMessage
+            // Arrange    
+            var msg = new Message<int>(1);
+            var expectedResult = 10;
+
+            this.MessageProcessor
+                .Setup(x => x.CanProcessMessage(msg))
+                .Throws(new InvalidOperationException())
+                .Verifiable();
+
+            var wrapper = this.MessageHandlerRegister.WrapMessageProcessor<int>(message => expectedResult);
+
+            // Act
+            object result = null;
+            bool exceptionThrown = false;
+            try
             {
-                MessageId = Guid.NewGuid().ToString(),
-                QueueName = "TestQueue",
-                QueueUrl = "http://testqueue.com/",
-                ReceiptHandle = "ABC123",
-                VisibilityTimeout = 10,
-                MessageExpiryTimeUtc = DateTime.UtcNow.AddSeconds(10)
-            };
-
-            this.SqsClient
-                .Expect(x => x.DeleteMessage(message.QueueUrl, message.ReceiptHandle))
-                .Verifiable();
-
-            this.MessageStateRepository
-                .Expect(x => x.MessageProcessingSucceeded(message.MessageId))
-                .Verifiable();
-
-            this.MessageHandlerRegister.OnMessageProcessed(message);
-
-            this.SqsClient.VerifyAll();
-            this.MessageStateRepository.VerifyAll();
-        }
-
-        [Test]
-        public void OnMessageProcessingFailedUpdatesMessageVisibilityTimeoutAndUpdatesMessageState()
-        {
-            var message = new SqsMessage
+                result = wrapper.Invoke(msg);
+            }
+            catch (Exception ex)
             {
-                MessageId = Guid.NewGuid().ToString(),
-                QueueName = "TestQueue",
-                QueueUrl = "http://testqueue.com/",
-                ReceiptHandle = "ABC123",
-                VisibilityTimeout = 10,
-                MessageExpiryTimeUtc = DateTime.UtcNow.AddSeconds(10)
-            };
+                // Bury, for testing.
+                exceptionThrown = true;
+            }
 
-            this.SqsClient
-                .Expect(x => x.ChangeMessageVisibility(message.QueueUrl, message.ReceiptHandle, 5))
-                .Returns(new ChangeMessageVisibilityResponse())
-                .Verifiable();
+            // Assert
+            Assert.IsNull(result);
+            Assert.IsTrue(exceptionThrown);
 
-            this.MessageStateRepository
-                .Expect(x => x.MessageProcessingFailed(message.MessageId))
-                .Verifiable();
-
-            this.MessageHandlerRegister.OnMessageProcessingFailed(message, 3, false);
-
-            this.SqsClient.VerifyAll();
-            this.MessageStateRepository.VerifyAll();
-        }
-
-        /// <summary>
-        /// Helper class for testing.
-        /// </summary>
-        private class SqsMessage : ISqsMessage
-        {
-            public string MessageId { get; set; }
-            public string ReceiptHandle { get; set; }
-            public string QueueUrl { get; set; }
-            public string QueueName { get; set; }
-            public decimal VisibilityTimeout { get; set; }
-            public DateTime MessageExpiryTimeUtc { get; set; }
+            this.MessageProcessor.VerifyAll();
+            this.MessageProcessor.Verify(x => x.CanProcessMessage(msg), Times.Once());
+            this.MessageProcessor.Verify(x => x.OnMessageProcessed(msg), Times.Never());
         }
     }
 }
