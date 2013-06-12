@@ -159,7 +159,7 @@ namespace ServiceStack.Aws.Tests.Messaging
         }
 
         [Test]
-        public void WrapMessageInvokesCustomProcessAndDoesNotCatchException()
+        public void WrapMessageInvokesCustomProcessAndHandlesAnyUncaughtExceptions()
         {
             // Arrange    
             var msg = new Message<int>(1);
@@ -181,13 +181,14 @@ namespace ServiceStack.Aws.Tests.Messaging
             }
             catch (Exception ex)
             {
-                // Bury, for testing.
+                // Determine result, for testing.
                 exceptionThrown = true;
             }
 
             // Assert
-            Assert.IsNull(result);
-            Assert.IsTrue(exceptionThrown);
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOf<MessageNotProcessedException>(result);
+            Assert.IsFalse(exceptionThrown);
 
             this.MessageProcessor.VerifyAll();
             this.MessageProcessor.Verify(x => x.CanProcessMessage(msg), Times.Once());

@@ -40,18 +40,18 @@ namespace ServiceStack.Aws.Messaging
             if (remainingMessageProcessingTime > 0)
             {
                 // The message is expired.
-                this.Log.WarnFormat("The message '{0}' has passed it's expiry time by {1} seconds. The message will not be processed.", messageBody.MessageId, remainingMessageProcessingTime);
+                this.Log.WarnFormat("The message '{0}' has passed it's expiry time by {1} seconds. The message will not be processed.", message.Id, remainingMessageProcessingTime);
                 return false;
             }
 
-            this.Log.InfoFormat("The message '{0}' has a remaining {1} seconds to be processed. Thread: {2}.", messageBody.MessageId, Math.Abs(remainingMessageProcessingTime), Thread.CurrentThread.ManagedThreadId);
+            this.Log.InfoFormat("The message '{0}' has a remaining {1} seconds to be processed. Thread: {2}.", message.Id, Math.Abs(remainingMessageProcessingTime), Thread.CurrentThread.ManagedThreadId);
             return true;
         }
 
         public virtual void OnMessageProcessed<T>(IMessage<T> message)
         {
             var messageBody = GetSqsMessageBody(message);
-            Log.DebugFormat("Message processed, deleting Message {0} from Queue: {1}. Thread: {2}.", messageBody.MessageId, messageBody.QueueName, Thread.CurrentThread.ManagedThreadId);
+            Log.DebugFormat("Message processed, deleting Message {0} from Queue: {1}. Thread: {2}.", message.Id, messageBody.QueueName, Thread.CurrentThread.ManagedThreadId);
 
             try
             {
@@ -59,7 +59,7 @@ namespace ServiceStack.Aws.Messaging
             }
             catch (Exception ex)
             {
-                Log.Error(string.Format("Error Deleting message {0} from queue {1} after being processed successfully.", messageBody.MessageId, messageBody.QueueName), ex);
+                Log.Error(string.Format("Error Deleting message {0} from queue {1} after being processed successfully.", message.Id, messageBody.QueueName), ex);
             }
         }
 
@@ -79,25 +79,25 @@ namespace ServiceStack.Aws.Messaging
         }
 
         /// <summary>
-        /// Gets the message body, cast to an <see cref="ISqsMessage"/> type.
+        /// Gets the message body, cast to an <see cref="ISqsMessageBody"/> type.
         /// </summary>
         /// <param name="message">The original MQ message.</param>
         /// <returns>
-        /// An instance of an <see cref="ISqsMessage"/>. 
+        /// An instance of an <see cref="ISqsMessageBody"/>. 
         /// An exception is thrown if the message body does not implement this interface.
         /// </returns>
-        protected static ISqsMessage GetSqsMessageBody<T>(IMessage<T> message)
+        protected static ISqsMessageBody GetSqsMessageBody<T>(IMessage<T> message)
         {
             if (message == null)
             {
                 throw new ArgumentNullException("message");
             }
 
-            var messageBody = message.Body as ISqsMessage;            
+            var messageBody = message.Body as ISqsMessageBody;            
             if (messageBody == null)
             {
                 var messageBodyType = message.Body == null ? "Null" : message.Body.GetType().Name;
-                throw new InvalidOperationException(string.Format("The AwsSqsMessageProcessor requires the message body implements ISqsMessage. This message type '{0}' does not implement the required interface.", messageBodyType));
+                throw new InvalidOperationException(string.Format("The AwsSqsMessageProcessor requires the message body implements ISqsMessageBody. This message type '{0}' does not implement the required interface.", messageBodyType));
             }
 
             return messageBody;
@@ -124,7 +124,7 @@ namespace ServiceStack.Aws.Messaging
             {
                 var timeoutInSeconds = (decimal)this.GetMessageVisibilityTimeout(message).TotalSeconds;
 
-                Log.DebugFormat("Message {0} failed. Updating msg visibility timeout value to {1} seconds.", messageBody.MessageId, timeoutInSeconds);
+                Log.DebugFormat("Message {0} failed. Updating msg visibility timeout value to {1} seconds.", message.Id, timeoutInSeconds);
                 this.SqsClient.ChangeMessageVisibility(messageBody.QueueUrl, messageBody.ReceiptHandle, timeoutInSeconds);
             }
             catch (Exception ex)

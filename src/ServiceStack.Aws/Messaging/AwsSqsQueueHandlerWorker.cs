@@ -101,10 +101,9 @@ namespace ServiceStack.Aws.Messaging
                         }
 
                         // Set SQS message properties
-                        var sqsMessageBody = message.Body as ISqsMessage;
+                        var sqsMessageBody = message.Body as ISqsMessageBody;
                         if (sqsMessageBody != null)
                         {
-                            sqsMessageBody.MessageId = sqsMessage.MessageId;
                             sqsMessageBody.ReceiptHandle = sqsMessage.ReceiptHandle;
                             sqsMessageBody.QueueUrl = this.QueueUrl;
                             sqsMessageBody.QueueName = this.QueueName;
@@ -113,7 +112,7 @@ namespace ServiceStack.Aws.Messaging
                         }
                         else
                         {
-                            Log.WarnFormat("The message type '{0}' is using the AwsSqsQueueHandler, but does not implement 'ISqsMessage'. No AwsSqsMessageHandlerRegister pre,post or error message handlers will be executed.", this.MessageType.Name);
+                            Log.WarnFormat("The message type '{0}' is using the AwsSqsQueueHandler, but does not implement 'ISqsMessageBody'. No AwsSqsMessageHandlerRegister pre,post or error message handlers will be executed.", this.MessageType.Name);
                         }
                         // =====================
                         

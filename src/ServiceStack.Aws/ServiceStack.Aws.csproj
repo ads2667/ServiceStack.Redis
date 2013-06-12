@@ -62,7 +62,7 @@
     <Compile Include="Messaging\AwsSqsMessageProcessor.cs" />
     <Compile Include="Messaging\MessageNotProcessedException.cs" />
     <Compile Include="Messaging\IMessageCoordinator.cs" />
-    <Compile Include="Messaging\SqsMessage.cs" />
+    <Compile Include="Messaging\SqsMessageBody.cs" />
     <Compile Include="Messaging\AwsSqsMessageFactory.cs" />
     <Compile Include="Messaging\AwsSqsMessageHandlerRegister.cs" />
     <Compile Include="Messaging\AwsSqsMessageHandlerWorker.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="Messaging\AwsSqsQueueHandlerWorker.cs" />
     <Compile Include="Messaging\AwsSqsServer.cs" />
     <Compile Include="Messaging\ISqsClient.cs" />
-    <Compile Include="Messaging\ISqsMessage.cs" />
+    <Compile Include="Messaging\ISqsMessageBody.cs" />
     <Compile Include="Messaging\MessageSecurity.cs" />
     <Compile Include="Messaging\SqsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

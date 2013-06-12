@@ -2,47 +2,39 @@
 
 namespace ServiceStack.Aws.Messaging
 {
-    public abstract class SqsMessage : ISqsMessage
+    public interface ISqsMessageBody
     {
-        private DateTime dateCreated;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqsMessage"/> class.
-        /// </summary>
-        protected SqsMessage()
-        {
-            this.dateCreated = DateTime.UtcNow;
-        }
-
+        /*
         /// <summary>
         /// Gets or sets the message Id.
         /// </summary>
-        public string MessageId { get; set; }
+        string MessageId { get; set; }
+        */
 
         /// <summary>
         /// Gets or sets the receipt handle of the message.
         /// </summary>
-        public string ReceiptHandle { get; set; }
+        string ReceiptHandle { get; set; }
 
         /// <summary>
         /// Gets or sets the URL of the queue where the message was received from.
         /// </summary>
-        public string QueueUrl { get; set; }
+        string QueueUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the queue where the message was received from.
         /// </summary>
-        public string QueueName { get; set; }
+        string QueueName { get; set; }
 
         /// <summary>
         /// Gets or sets the visibility timeout of the message.
         /// </summary>
-        public decimal VisibilityTimeout { get; set; }
+        decimal VisibilityTimeout { get; set; }
 
         /// <summary>
         /// Gets or sets the count of the number of times that this message has been attempted to be processed.
         /// </summary>
-        public int PreviousRetryAttempts { get; set; }
+        int PreviousRetryAttempts { get; set; }
 
         /// <summary>
         /// Gets the message expiry time in UTC. This is the time when the message
@@ -52,9 +44,6 @@ namespace ServiceStack.Aws.Messaging
         /// If a message has not already been processed before it's expiry time, it should
         /// not be processed. The next client that receives the message should process it.
         /// </remarks>
-        public DateTime MessageExpiryTimeUtc
-        {
-            get { return this.dateCreated.AddSeconds((double)this.VisibilityTimeout); }
-        }
+        DateTime MessageExpiryTimeUtc { get; }
     }
 }

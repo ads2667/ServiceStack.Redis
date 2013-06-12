@@ -138,10 +138,10 @@ namespace ServiceStack.Aws.Tests.Messaging
             this.SqsClient.Verify(x => x.ChangeMessageVisibility(messageBody.QueueUrl, messageBody.ReceiptHandle, It.IsAny<decimal>()), Times.Never());
         }
 
-        private IMessage<SqsMessage> CreateNewMessage(DateTime expiryDateTime = default(DateTime))
+        private IMessage<SqsMessageBody> CreateNewMessage(DateTime expiryDateTime = default(DateTime))
         {
-            return new Message<SqsMessage>(
-                new SqsMessage
+            return new Message<SqsMessageBody>(
+                new SqsMessageBody
                     {
                         MessageId = Guid.NewGuid().ToString(),
                         QueueName = "TestQueue",
@@ -155,7 +155,7 @@ namespace ServiceStack.Aws.Tests.Messaging
         /// <summary>
         /// Helper class for testing.
         /// </summary>
-        private class SqsMessage : ISqsMessage
+        private class SqsMessageBody : ISqsMessageBody
         {
             public string MessageId { get; set; }
             public string ReceiptHandle { get; set; }

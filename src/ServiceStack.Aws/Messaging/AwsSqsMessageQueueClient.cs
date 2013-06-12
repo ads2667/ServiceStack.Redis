@@ -142,19 +142,16 @@ namespace ServiceStack.Aws.Messaging
                 {
                     if (response.ReceiveMessageResult.Message.Count == 1)
                     {           
-                        // TODO: Need to verify it is a SqsMessage, so the client has access to the message receipt handle
+                        // TODO: Need to verify it is a SqsMessageBody, so the client has access to the message receipt handle
                         var message = response.ReceiveMessageResult.Message[0];
                         var messageBytes = Convert.FromBase64String(message.Body);
 
                         // =====================
-                        // TODO: This code has been copied and pasted (Q-Handler), refactor into SqsMessageUtil class
-                        // TODO: Can we get the message type based on the queue name!?! Even for a reply queue? NO.
-                        
+                        // TODO: This code has been copied and pasted (Q-Handler), refactor into SqsMessageUtil class                        
                         var m1 = messageBytes.ToMessage<IMessage>();
-                        var sqsMessage = m1.Body as ISqsMessage;
+                        var sqsMessage = m1.Body as ISqsMessageBody;
                         if (sqsMessage != null)
                         {
-                            sqsMessage.MessageId = message.MessageId;
                             sqsMessage.ReceiptHandle = message.ReceiptHandle;
                             sqsMessage.QueueUrl = this.GetQueueNameOrUrl(queueName);
                             sqsMessage.QueueName = queueName;

@@ -52,9 +52,18 @@ namespace ServiceStack.Aws.Messaging
             // Wrap func with another that enables message to be deleted from queue after successful processing...
             var processWrapper = new Func<IMessage<T>, object>(message =>
             {
-                if (!this.MessageProcessor.CanProcessMessage(message))
+                try
                 {
-                    // Need to return an exception so that the exception handler is run, and DLQ is supported.
+                    if (!this.MessageProcessor.CanProcessMessage(message))
+                    {
+                        // Need to return an exception so that the exception handler is run, and DLQ is supported.
+                        return new MessageNotProcessedException();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // If an ex is caught here, the custom exception handler should not be invoked.
+                    Log.Error("An error was thrown from the message processor 'CanProcessMessage' method.", ex);
                     return new MessageNotProcessedException();
                 }
                
@@ -62,7 +71,16 @@ namespace ServiceStack.Aws.Messaging
                 Log.DebugFormat("Executing messge {0}, retry attempt: {1}.", message.Id, message.RetryAttempts);
                 var result = processMessageFn.Invoke(message);
 
-                this.MessageProcessor.OnMessageProcessed(message);                
+                try
+                {
+                    this.MessageProcessor.OnMessageProcessed(message);
+                }
+                catch (Exception ex)
+                {
+                    // If an ex is caught here, the custom exception handler should not be invoked.
+                    Log.Error("An error was thrown from the message processor 'OnMessageProcessed' method.", ex);
+                }
+
                 return result;
             });
 
@@ -95,7 +113,14 @@ namespace ServiceStack.Aws.Messaging
                     Log.Error("Message exception handler threw an error", exHandlerEx);
                 }
 
-                this.MessageProcessor.OnMessageProcessingFailed(message, exception, moveMessageToDlq);           
+                try
+                {
+                    this.MessageProcessor.OnMessageProcessingFailed(message, exception, moveMessageToDlq);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Message processor 'OnMessageProcessingFailed' threw an error", ex);
+                }
             });
 
             return exceptionWrapper;

@@ -2,37 +2,37 @@
 
 namespace Example.Core
 {
-    public class FailingMessage : SqsMessage
+    public class FailingMessage : SqsMessageBody
     {
         public string Text { get; set; }
     }
 
-    public class Hello : SqsMessage
+    public class Hello : SqsMessageBody
     {
         public string Text { get; set; }
     }
 
-    public class Hello2 : SqsMessage
+    public class Hello2 : SqsMessageBody
     {
         public string Text { get; set; }
     }
 
-    public class Hello3 : SqsMessage
+    public class Hello3 : SqsMessageBody
     {
         public string Text { get; set; }
     }
     
-    public class Hello3Response : SqsMessage
+    public class Hello3Response : SqsMessageBody
     {
         public string ResponseText { get; set; }
     }
 
-    public class Hello4 : SqsMessage
+    public class Hello4 : SqsMessageBody
     {
         public string Text { get; set; }
     }
 
-    public class Hello4Response : SqsMessage
+    public class Hello4Response : SqsMessageBody
     {
         public string ResponseText { get; set; }
     }
